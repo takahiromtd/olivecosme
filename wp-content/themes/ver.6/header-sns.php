@@ -1,0 +1,5 @@
+<div class="fb-like pull-right mr3" data-href="https://www.facebook.com/mushashugyo.net" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+<p class="pull-right mr3"><a href="https://twitter.com/mushashugyo_" class="twitter-follow-button" data-show-count="false" data-lang="ja" data-show-screen-name="false">@mushashugyo_さんをフォロー</a></p>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<p class="text-right mt-1"><a class="fs11 btn btn-success btn-xs mr3 prl10" href="/entry" role="button">説明会に参加する</a></p>
+</div>

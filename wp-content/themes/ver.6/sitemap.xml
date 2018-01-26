@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://localhost:8888/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/feature/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/ex/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/facilitator/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/hoian/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/sche/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/entry/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/company/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/contact/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/news/20151007/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/news/2015sum/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/sapporo150716/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/sales/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/dream/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/challenge/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/1stchallenge/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/about/how-to-entry/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/qa/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/pamphlet/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/note/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/privacy/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/sitemap/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/es/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/shinfuri/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/14days/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/kokuyo/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/column/logic/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/company/president/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/sapporo150715/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/hukuoka150708/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/hukuoka150707/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/tokyo150623/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/sapporo150620/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/sapporo150619/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/nagoya150612/</loc>
+</url>
+<url>
+  <loc>http://localhost:8888/event/ut150611/</loc>
+</url>
+</urlset>

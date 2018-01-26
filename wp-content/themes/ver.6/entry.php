@@ -1,0 +1,1 @@
+<div class="text-center mt20 mb20 entry-button"><a class="btn btn-default bold" href="/entry/" title="説明会の詳細はこちら">説明会に申し込む</a></div>
