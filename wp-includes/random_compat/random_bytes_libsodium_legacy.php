@@ -26,6 +26,10 @@
  * SOFTWARE.
  */
 
+<<<<<<< HEAD
+=======
+if ( ! is_callable( 'random_bytes' ) ):
+>>>>>>> origin/master
 /**
  * If the libsodium PHP extension is loaded, we'll use it above any other
  * solution.
@@ -84,3 +88,7 @@ function random_bytes($bytes)
         'Could not gather sufficient random data'
     );
 }
+<<<<<<< HEAD
+=======
+endif;
+>>>>>>> origin/master

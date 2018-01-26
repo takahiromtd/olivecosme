@@ -220,7 +220,11 @@ class Types_Field_Type_Definition_Factory {
 		foreach( $field_types as $field_type ) {
 			$field_type_names[ $field_type->get_slug() ] = array(
 				'slug' => $field_type->get_slug(),
+<<<<<<< HEAD
 				'displayName' => $field_type->get_display_name(),
+=======
+				'displayName' => stripslashes( $field_type->get_display_name() ),
+>>>>>>> origin/master
 				'canBeRepetitive' => $field_type->can_be_repetitive(),
 				'iconClasses' => $field_type->get_icon_classes()
 			);

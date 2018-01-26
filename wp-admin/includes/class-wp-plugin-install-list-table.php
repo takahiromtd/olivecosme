@@ -32,6 +32,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Return a list of slugs of installed plugins, if known.
 	 *
 	 * Uses the transient data from the updates API to determine the slugs of
@@ -39,27 +40,69 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 	 * within get_plugins().
 	 *
 	 * @since 4.0.0
+=======
+	 * Return the list of known plugins.
+	 *
+	 * Uses the transient data from the updates API to determine the known
+	 * installed plugins.
+	 *
+	 * @since 4.9.0
+>>>>>>> origin/master
 	 * @access protected
 	 *
 	 * @return array
 	 */
+<<<<<<< HEAD
 	protected function get_installed_plugin_slugs() {
 		$slugs = array();
+=======
+	protected function get_installed_plugins() {
+		$plugins = array();
+>>>>>>> origin/master
 
 		$plugin_info = get_site_transient( 'update_plugins' );
 		if ( isset( $plugin_info->no_update ) ) {
 			foreach ( $plugin_info->no_update as $plugin ) {
+<<<<<<< HEAD
 				$slugs[] = $plugin->slug;
+=======
+				$plugin->upgrade          = false;
+				$plugins[ $plugin->slug ] = $plugin;
+>>>>>>> origin/master
 			}
 		}
 
 		if ( isset( $plugin_info->response ) ) {
 			foreach ( $plugin_info->response as $plugin ) {
+<<<<<<< HEAD
 				$slugs[] = $plugin->slug;
 			}
 		}
 
 		return $slugs;
+=======
+				$plugin->upgrade          = true;
+				$plugins[ $plugin->slug ] = $plugin;
+			}
+		}
+
+		return $plugins;
+	}
+
+	/**
+	 * Return a list of slugs of installed plugins, if known.
+	 *
+	 * Uses the transient data from the updates API to determine the slugs of
+	 * known installed plugins. This might be better elsewhere, perhaps even
+	 * within get_plugins().
+	 *
+	 * @since 4.0.0
+	 *
+	 * @return array
+	 */
+	protected function get_installed_plugin_slugs() {
+		return array_keys( $this->get_installed_plugins() );
+>>>>>>> origin/master
 	}
 
 	/**
@@ -125,6 +168,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		if ( empty( $tab ) || ( !isset( $tabs[ $tab ] ) && !in_array( $tab, (array) $nonmenu_tabs ) ) )
 			$tab = key( $tabs );
 
+<<<<<<< HEAD
+=======
+		$installed_plugins = $this->get_installed_plugins();
+
+>>>>>>> origin/master
 		$args = array(
 			'page' => $paged,
 			'per_page' => $per_page,
@@ -135,7 +183,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 			),
 			// Send the locale and installed plugin slugs to the API so it can provide context-sensitive results.
 			'locale' => get_user_locale(),
+<<<<<<< HEAD
 			'installed_plugins' => $this->get_installed_plugin_slugs(),
+=======
+			'installed_plugins' => array_keys( $installed_plugins ),
+>>>>>>> origin/master
 		);
 
 		switch ( $tab ) {
@@ -225,6 +277,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 		if ( isset( $api->info['groups'] ) ) {
 			$this->groups = $api->info['groups'];
 		}
+<<<<<<< HEAD
 	}
 
 	/**
@@ -237,6 +290,40 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 			$message = __( 'No plugins match your request.' );
 		}
 		echo '<div class="no-plugin-results">' . $message . '</div>';
+=======
+
+		if ( $installed_plugins ) {
+			$js_plugins = array_fill_keys(
+				array( 'all', 'search', 'active', 'inactive', 'recently_activated', 'mustuse', 'dropins' ),
+				array()
+			);
+
+			$js_plugins['all'] = array_values( wp_list_pluck( $installed_plugins, 'plugin' ) );
+			$upgrade_plugins   = wp_filter_object_list( $installed_plugins, array( 'upgrade' => true ), 'and', 'plugin' );
+
+			if ( $upgrade_plugins ) {
+				$js_plugins['upgrade'] = array_values( $upgrade_plugins );
+			}
+
+			wp_localize_script( 'updates', '_wpUpdatesItemCounts', array(
+				'plugins' => $js_plugins,
+				'totals'  => wp_get_update_data(),
+			) );
+		}
+	}
+
+	/**
+	 */
+	public function no_items() {
+		if ( isset( $this->error ) ) { ?>
+			<div class="inline error"><p><?php echo $this->error->get_error_message(); ?></p>
+				<p class="hide-if-no-js"><button class="button try-again"><?php _e( 'Try Again' ); ?></button></p>
+			</div>
+		<?php } else { ?>
+			<div class="no-plugin-results"><?php _e( 'No plugins found. Try a different search.' ); ?></div>
+		<?php
+		}
+>>>>>>> origin/master
 	}
 
 	/**
@@ -251,9 +338,15 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 
 		$display_tabs = array();
 		foreach ( (array) $tabs as $action => $text ) {
+<<<<<<< HEAD
 			$class = ( $action === $tab ) ? ' current' : '';
 			$href = self_admin_url('plugin-install.php?tab=' . $action);
 			$display_tabs['plugin-install-'.$action] = "<a href='$href' class='$class'>$text</a>";
+=======
+			$current_link_attributes = ( $action === $tab ) ? ' class="current" aria-current="page"' : '';
+			$href = self_admin_url('plugin-install.php?tab=' . $action);
+			$display_tabs['plugin-install-'.$action] = "<a href='$href'$current_link_attributes>$text</a>";
+>>>>>>> origin/master
 		}
 		// No longer a real tab.
 		unset( $display_tabs['plugin-install-upload'] );
@@ -470,7 +563,11 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 					case 'newer_installed':
 						if ( is_plugin_active( $status['file'] ) ) {
 							$action_links[] = '<button type="button" class="button button-disabled" disabled="disabled">' . _x( 'Active', 'plugin' ) . '</button>';
+<<<<<<< HEAD
 						} elseif ( current_user_can( 'activate_plugins' ) ) {
+=======
+						} elseif ( current_user_can( 'activate_plugin', $status['file'] ) ) {
+>>>>>>> origin/master
 							$button_text  = __( 'Activate' );
 							/* translators: %s: Plugin name */
 							$button_label = _x( 'Activate %s', 'plugin' );
@@ -561,6 +658,7 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 				<div class="column-downloaded">
 					<?php
 					if ( $plugin['active_installs'] >= 1000000 ) {
+<<<<<<< HEAD
 						$active_installs_text = _x( '1+ Million', 'Active plugin installs' );
 					} elseif ( 0 == $plugin['active_installs'] ) {
 						$active_installs_text = _x( 'Less Than 10', 'Active plugin installs' );
@@ -568,6 +666,15 @@ class WP_Plugin_Install_List_Table extends WP_List_Table {
 						$active_installs_text = number_format_i18n( $plugin['active_installs'] ) . '+';
 					}
 					printf( __( '%s Active Installs' ), $active_installs_text );
+=======
+						$active_installs_text = _x( '1+ Million', 'Active plugin installations' );
+					} elseif ( 0 == $plugin['active_installs'] ) {
+						$active_installs_text = _x( 'Less Than 10', 'Active plugin installations' );
+					} else {
+						$active_installs_text = number_format_i18n( $plugin['active_installs'] ) . '+';
+					}
+					printf( __( '%s Active Installations' ), $active_installs_text );
+>>>>>>> origin/master
 					?>
 				</div>
 				<div class="column-compatibility">

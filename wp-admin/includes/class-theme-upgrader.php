@@ -24,7 +24,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * Result of the theme upgrade offer.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array|WP_Error $result
 	 * @see WP_Upgrader::$result
 	 */
@@ -34,7 +37,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * Whether multiple themes are being upgraded/installed in bulk.
 	 *
 	 * @since 2.9.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var bool $bulk
 	 */
 	public $bulk = false;
@@ -43,12 +49,20 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * Initialize the upgrade strings.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function upgrade_strings() {
 		$this->strings['up_to_date'] = __('The theme is at the latest version.');
 		$this->strings['no_package'] = __('Update package not available.');
+<<<<<<< HEAD
 		$this->strings['downloading_package'] = __('Downloading update from <span class="code">%s</span>&#8230;');
+=======
+		/* translators: %s: package URL */
+		$this->strings['downloading_package'] = sprintf( __( 'Downloading update from %s&#8230;' ), '<span class="code">%s</span>' );
+>>>>>>> origin/master
 		$this->strings['unpack_package'] = __('Unpacking the update&#8230;');
 		$this->strings['remove_old'] = __('Removing the old version of the theme&#8230;');
 		$this->strings['remove_old_failed'] = __('Could not remove the old theme.');
@@ -57,6 +71,7 @@ class Theme_Upgrader extends WP_Upgrader {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Initialize the install strings.
 	 *
 	 * @since 2.8.0
@@ -69,6 +84,20 @@ class Theme_Upgrader extends WP_Upgrader {
 		$this->strings['installing_package'] = __('Installing the theme&#8230;');
 		$this->strings['no_files'] = __('The theme contains no files.');
 		$this->strings['process_failed'] = __('Theme install failed.');
+=======
+	 * Initialize the installation strings.
+	 *
+	 * @since 2.8.0
+	 */
+	public function install_strings() {
+		$this->strings['no_package'] = __('Installation package not available.');
+		/* translators: %s: package URL */
+		$this->strings['downloading_package'] = sprintf( __( 'Downloading installation package from %s&#8230;' ), '<span class="code">%s</span>' );
+		$this->strings['unpack_package'] = __('Unpacking the package&#8230;');
+		$this->strings['installing_package'] = __('Installing the theme&#8230;');
+		$this->strings['no_files'] = __('The theme contains no files.');
+		$this->strings['process_failed'] = __('Theme installation failed.');
+>>>>>>> origin/master
 		$this->strings['process_success'] = __('Theme installed successfully.');
 		/* translators: 1: theme name, 2: version */
 		$this->strings['process_success_specific'] = __('Successfully installed the theme <strong>%1$s %2$s</strong>.');
@@ -79,7 +108,12 @@ class Theme_Upgrader extends WP_Upgrader {
 		$this->strings['parent_theme_currently_installed'] = __('The parent theme, <strong>%1$s %2$s</strong>, is currently installed.');
 		/* translators: 1: theme name, 2: version */
 		$this->strings['parent_theme_install_success'] = __('Successfully installed the parent theme, <strong>%1$s %2$s</strong>.');
+<<<<<<< HEAD
 		$this->strings['parent_theme_not_found'] = __('<strong>The parent theme could not be found.</strong> You will need to install the parent theme, <strong>%s</strong>, before you can use this child theme.');
+=======
+		/* translators: %s: theme name */
+		$this->strings['parent_theme_not_found'] = sprintf( __( '<strong>The parent theme could not be found.</strong> You will need to install the parent theme, %s, before you can use this child theme.' ), '<strong>%s</strong>' );
+>>>>>>> origin/master
 	}
 
 	/**
@@ -88,7 +122,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * Hooked to the {@see 'upgrader_post_install'} filter by Theme_Upgrader::install().
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param bool  $install_result
 	 * @param array $hook_extra
@@ -115,7 +152,11 @@ class Theme_Upgrader extends WP_Upgrader {
 
 		if ( ! $api || is_wp_error($api) ) {
 			$this->skin->feedback( 'parent_theme_not_found', $theme_info->get('Template') );
+<<<<<<< HEAD
 			// Don't show activate or preview actions after install
+=======
+			// Don't show activate or preview actions after installation
+>>>>>>> origin/master
 			add_filter('install_theme_complete_actions', array($this, 'hide_activate_preview_actions') );
 			return $install_result;
 		}
@@ -162,7 +203,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * a child theme and installing the parent theme fails.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $actions Preview actions.
 	 * @return array
@@ -177,7 +221,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $package The full local path or URI of the package.
 	 * @param array  $args {
@@ -187,7 +234,11 @@ class Theme_Upgrader extends WP_Upgrader {
 	 *                                    Default true.
 	 * }
 	 *
+<<<<<<< HEAD
 	 * @return bool|WP_Error True if the install was successful, false or a WP_Error object otherwise.
+=======
+	 * @return bool|WP_Error True if the installation was successful, false or a WP_Error object otherwise.
+>>>>>>> origin/master
 	 */
 	public function install( $package, $args = array() ) {
 
@@ -235,7 +286,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $theme The theme slug.
 	 * @param array  $args {
@@ -306,7 +360,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 3.0.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $themes The theme slugs.
 	 * @param array $args {
@@ -427,7 +484,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * files.
 	 *
 	 * @since 3.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem Subclass
 	 *
@@ -486,7 +546,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * Theme_Upgrader::bulk_upgrade().
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param bool|WP_Error  $return
 	 * @param array          $theme
@@ -514,7 +577,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * and Theme_Upgrader::bulk_upgrade().
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param bool|WP_Error  $return
 	 * @param array          $theme
@@ -549,7 +615,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 * and Theme_Upgrader::bulk_upgrade().
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem Subclass
 	 *
@@ -583,7 +652,10 @@ class Theme_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.0.0 The `$theme` argument was added.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $theme The directory name of the theme. This is optional, and if not supplied,
 	 *                      the directory name from the last result will be used.

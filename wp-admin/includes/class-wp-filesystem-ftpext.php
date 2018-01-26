@@ -10,15 +10,23 @@
  * WordPress Filesystem Class for implementing FTP.
  *
  * @since 2.5.0
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Filesystem
  * @uses WP_Filesystem_Base Extends class
+=======
+ *
+ * @see WP_Filesystem_Base
+>>>>>>> origin/master
  */
 class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	public $link;
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $opt
 	 */
@@ -64,7 +72,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return bool
 	 */
@@ -106,7 +117,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	 * Retrieves the file contents.
 	 *
 	 * @since 2.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file Filename.
 	 * @return string|false File contents on success, false if no temp file could be opened,
@@ -139,7 +153,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return array
@@ -149,7 +166,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @param string $contents
@@ -191,7 +211,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string
 	 */
@@ -203,7 +226,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $dir
 	 * @return bool
@@ -213,7 +239,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @param int $mode
@@ -244,7 +273,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return string
@@ -254,7 +286,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 		return $dir[$file]['owner'];
 	}
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return string
@@ -265,7 +300,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return string
@@ -276,7 +314,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $source
 	 * @param string $destination
@@ -294,7 +335,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $source
 	 * @param string $destination
@@ -306,7 +350,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @param bool $recursive
@@ -329,7 +376,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -345,7 +395,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -355,7 +408,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @return bool
@@ -371,7 +427,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -381,7 +440,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -391,7 +453,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -401,7 +466,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return int
@@ -411,7 +479,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return int
@@ -421,7 +492,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -431,7 +505,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param mixed $chmod
@@ -451,7 +528,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param bool $recursive
@@ -462,7 +542,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @staticvar bool $is_windows
 	 * @param string $line
@@ -544,7 +627,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param bool $include_hidden
@@ -601,7 +687,10 @@ class WP_Filesystem_FTPext extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __destruct() {
 		if ( $this->link )

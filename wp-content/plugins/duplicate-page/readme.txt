@@ -1,11 +1,18 @@
 === Duplicate Page ===
 Contributors: mndpsingh287
+<<<<<<< HEAD
 
 Donate link: http://www.webdesi9.com/donate/?plugin=duplicate-page
 Tags: Page Duplicate, Post duplicate, duplicate custom posts, duplicate page, duplicate post, duplicate ,custom posts, post, page, duplicate this, duplicate, content duplicate, duplicate content, data duplicate, duplicate data, copy page, clone page,wordpress page duplicate, wordpress post duplicate, Copy post, wordpress page duplicator, wordpress post duplicator, Cloner
 Requires at least: 3.4
 Tested up to: 4.7.2
 Stable tag: 2.3
+=======
+Tags: Page Duplicate, Post duplicate, duplicate custom posts, duplicate page, duplicate post, duplicate ,custom posts, post, page, duplicate this, duplicate, content duplicate, duplicate content, data duplicate, duplicate data, copy page, clone page,wordpress page duplicate, wordpress post duplicate, Copy post, wordpress page duplicator, wordpress post duplicator, Cloner
+Requires at least: 3.4
+Tested up to: 4.9
+Stable tag: 2.4
+>>>>>>> origin/master
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +21,27 @@ Duplicate Posts, Pages and Custom Posts easily using single click
 == Description ==
 
 Duplicate Posts, Pages and Custom Posts easily using single click. You can duplicate your pages, posts and custom post by just one click and it will save as your selected options (draft, private, public, pending).
+<<<<<<< HEAD
+=======
+
+= Key Features in Duplicate Page Pro Editions =
+
+* **User Roles:** Allow User Roles To access Duplicate Page.
+* **Post Types:** Filter to show Duplicate Page link in post types.
+* **Clone Link Location:** Option where to show clone link.
+* **Status:** Option to select Duplicate Posts Status.
+* **Redirection:** Option to Redirect after click on clone link..
+* **Clone Link Title:** Option to change Duplicate Post Link Title.
+* **Post Prefix:** Option to add Post Prefix.
+* **Post Suffix:** Option to add Post Suffix.
+* **Editor**: And Many More Filters and Features.
+
+> <strong>[Buy Pro Version](http://www.webdesi9.com/product/duplicate-page-pro/)</strong> with various features & support.
+> <strong>[Contact us](http://www.webdesi9.com/support/)</strong> for Support Only Pro Version Users.
+
+**[Upgrade to Pro Version](http://www.webdesi9.com/product/duplicate-page-pro/)**
+
+>>>>>>> origin/master
 https://www.youtube.com/watch?v=Fj8BHxvebXs&feature=youtu.be
 
 == Installation ==
@@ -68,6 +96,13 @@ https://www.youtube.com/watch?v=Fj8BHxvebXs&feature=youtu.be
 
 * Minor Fixes
 
+<<<<<<< HEAD
+=======
+= 2.4 (29th Nov, 2017) =
+
+* Duplicate Page appends original post name issue fixed.
+
+>>>>>>> origin/master
 == Other Notes ==
 
 = Minimum requirements for Duplicate Page =
@@ -75,6 +110,7 @@ https://www.youtube.com/watch?v=Fj8BHxvebXs&feature=youtu.be
 *   PHP 5.x
 *   MySQL 5.x
 
+<<<<<<< HEAD
 If any problem occurs, please contact us at [mandeep.singh@mysenseinc.com](mailto:mandeep.singh@mysenseinc.com).
 
 
@@ -83,3 +119,6 @@ If any problem occurs, please contact us at [mandeep.singh@mysenseinc.com](mailt
 
 
 
+=======
+If any problem occurs, please contact us at [mandeep.singh@mysenseinc.com](mailto:mandeep.singh@mysenseinc.com).
+>>>>>>> origin/master

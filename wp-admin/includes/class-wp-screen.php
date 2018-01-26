@@ -18,7 +18,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $action;
 
@@ -28,7 +31,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $base;
 
@@ -37,7 +43,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.4.0
 	 * @var int
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $columns = 0;
 
@@ -46,7 +55,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $id;
 
@@ -55,7 +67,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.5.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	protected $in_admin;
 
@@ -67,7 +82,10 @@ final class WP_Screen {
 	 * @since 3.3.0
 	 * @deprecated 3.5.0
 	 * @var bool
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $is_network;
 
@@ -79,7 +97,10 @@ final class WP_Screen {
 	 * @since 3.3.0
 	 * @deprecated 3.5.0
 	 * @var bool
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $is_user;
 
@@ -90,7 +111,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $parent_base;
 
@@ -100,7 +124,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $parent_file;
 
@@ -111,7 +138,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $post_type;
 
@@ -120,7 +150,10 @@ final class WP_Screen {
 	 * The 'edit-tags.php?taxonomy=category' screen has a taxonomy of 'category'.
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public $taxonomy;
 
@@ -129,7 +162,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var array
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $_help_tabs = array();
 
@@ -138,7 +174,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $_help_sidebar = '';
 
@@ -146,7 +185,10 @@ final class WP_Screen {
 	 * The accessible hidden headings and text associated with the screen, if any.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	private $_screen_reader_content = array();
@@ -155,7 +197,10 @@ final class WP_Screen {
 	 * Stores old string-based help.
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @var array
 	 */
@@ -166,7 +211,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var array
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $_options = array();
 
@@ -176,7 +224,10 @@ final class WP_Screen {
 	 * @since 3.3.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @var array
 	 */
@@ -187,7 +238,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var bool
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $_show_screen_options;
 
@@ -196,7 +250,10 @@ final class WP_Screen {
 	 *
 	 * @since 3.3.0
 	 * @var string
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private $_screen_settings;
 
@@ -204,7 +261,10 @@ final class WP_Screen {
 	 * Fetches a screen object.
 	 *
 	 * @since 3.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @static
 	 *
@@ -308,6 +368,12 @@ final class WP_Screen {
 					if ( null === $post_type && is_object_in_taxonomy( 'post', $taxonomy ? $taxonomy : 'post_tag' ) )
 						$post_type = 'post';
 					break;
+<<<<<<< HEAD
+=======
+				case 'upload':
+					$post_type = 'attachment';
+					break;
+>>>>>>> origin/master
 			}
 		}
 
@@ -397,7 +463,10 @@ final class WP_Screen {
 	 * Constructor
 	 *
 	 * @since 3.3.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 */
 	private function __construct() {}
 
@@ -1082,9 +1151,18 @@ final class WP_Screen {
 				continue;
 			}
 
+<<<<<<< HEAD
 			if ( 'comments' == $column ) {
 				$title = __( 'Comments' );
 			}
+=======
+			/*
+			 * The Comments column uses HTML in the display name with some screen
+			 * reader text. Make sure to strip tags from the Comments column
+			 * title and any other custom column title plugins might add.
+			 */
+			$title = wp_strip_all_tags( $title );
+>>>>>>> origin/master
 
 			$id = "$column-hide";
 			echo '<label>';
@@ -1163,7 +1241,11 @@ final class WP_Screen {
 			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
 		} else {
 			/** This filter is documented in wp-admin/includes/class-wp-list-table.php */
+<<<<<<< HEAD
 			$per_page = apply_filters( $option, $per_page );
+=======
+			$per_page = apply_filters( "{$option}", $per_page );
+>>>>>>> origin/master
 		}
 
 		// Back compat
@@ -1193,6 +1275,11 @@ final class WP_Screen {
 	 * Render the list table view mode preferences.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
+=======
+	 *
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 */
 	public function render_view_mode() {
 		$screen = get_current_screen();
@@ -1210,7 +1297,11 @@ final class WP_Screen {
 		 * @since 4.4.0
 		 *
 		 * @param array $view_mode_post_types Array of post types that can change view modes.
+<<<<<<< HEAD
 		 *                                    Default hierarchical post types with show_ui on.
+=======
+		 *                                    Default non-hierarchical post types with show_ui on.
+>>>>>>> origin/master
 		 */
 		$view_mode_post_types = apply_filters( 'view_mode_post_types', $view_mode_post_types );
 

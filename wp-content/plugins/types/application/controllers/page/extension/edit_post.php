@@ -22,7 +22,12 @@ final class Types_Page_Extension_Edit_Post {
 
 		// if no post or no page
 		if( $post_type != 'post' && $post_type != 'page' ) {
+<<<<<<< HEAD
 			$custom_types = get_option( WPCF_OPTION_NAME_CUSTOM_TYPES, array() );
+=======
+			$post_type_option = new Types_Utils_Post_Type_Option();
+			$custom_types = $post_type_option->get_post_types();
+>>>>>>> origin/master
 
 			// abort if also no custom post type of types
 			if( ! array_key_exists( $post_type, $custom_types ) )

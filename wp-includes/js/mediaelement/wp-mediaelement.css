@@ -1,5 +1,9 @@
 .mejs-container {
 	clear: both;
+<<<<<<< HEAD
+=======
+	max-width: 100%;
+>>>>>>> origin/master
 }
 
 .mejs-container * {
@@ -13,6 +17,14 @@
 	background: #222;
 }
 
+<<<<<<< HEAD
+=======
+.mejs-time {
+	font-weight: normal;
+	word-wrap: normal;
+}
+
+>>>>>>> origin/master
 .mejs-controls a.mejs-horizontal-volume-slider {
 	display: table;
 }
@@ -37,6 +49,7 @@
 	border-radius: 0;
 }
 
+<<<<<<< HEAD
 .mejs-controls .mejs-offscreen {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute;
@@ -62,6 +75,8 @@
 	width: auto;
 }
 
+=======
+>>>>>>> origin/master
 .mejs-overlay-loading {
 	background: transparent;
 }
@@ -117,7 +132,11 @@
 }
 
 .media-embed-details .setting a:hover {
+<<<<<<< HEAD
 	color: #f00;
+=======
+	color: #dc3232;
+>>>>>>> origin/master
 }
 
 .media-embed-details .embed-media-settings .checkbox-setting {
@@ -171,7 +190,11 @@ video.wp-video-shortcode,
 
 .wp-playlist .mejs-container {
 	margin: 0;
+<<<<<<< HEAD
 	width: 100%;
+=======
+	max-width: 100%;
+>>>>>>> origin/master
 }
 
 .wp-playlist .mejs-controls .mejs-button button {

@@ -190,15 +190,25 @@ class Text_Diff_Engine_native {
                 }
                 $matches = $ymatches[$line];
                 reset($matches);
+<<<<<<< HEAD
                 while (list(, $y) = each($matches)) {
+=======
+                while ($y = current($matches)) {
+>>>>>>> origin/master
                     if (empty($this->in_seq[$y])) {
                         $k = $this->_lcsPos($y);
                         assert($k > 0);
                         $ymids[$k] = $ymids[$k - 1];
                         break;
                     }
+<<<<<<< HEAD
                 }
                 while (list(, $y) = each($matches)) {
+=======
+                    next($matches);
+                }
+                while ($y = current($matches)) {
+>>>>>>> origin/master
                     if ($y > $this->seq[$k - 1]) {
                         assert($y <= $this->seq[$k]);
                         /* Optimization: this is a common case: next match is
@@ -211,6 +221,10 @@ class Text_Diff_Engine_native {
                         assert($k > 0);
                         $ymids[$k] = $ymids[$k - 1];
                     }
+<<<<<<< HEAD
+=======
+                    next($matches);
+>>>>>>> origin/master
                 }
             }
         }
@@ -330,7 +344,11 @@ class Text_Diff_Engine_native {
         $i = 0;
         $j = 0;
 
+<<<<<<< HEAD
         assert('count($lines) == count($changed)');
+=======
+        assert(count($lines) == count($changed));
+>>>>>>> origin/master
         $len = count($lines);
         $other_len = count($other_changed);
 
@@ -351,7 +369,11 @@ class Text_Diff_Engine_native {
             }
 
             while ($i < $len && ! $changed[$i]) {
+<<<<<<< HEAD
                 assert('$j < $other_len && ! $other_changed[$j]');
+=======
+                assert($j < $other_len && ! $other_changed[$j]);
+>>>>>>> origin/master
                 $i++; $j++;
                 while ($j < $other_len && $other_changed[$j]) {
                     $j++;
@@ -383,11 +405,19 @@ class Text_Diff_Engine_native {
                     while ($start > 0 && $changed[$start - 1]) {
                         $start--;
                     }
+<<<<<<< HEAD
                     assert('$j > 0');
                     while ($other_changed[--$j]) {
                         continue;
                     }
                     assert('$j >= 0 && !$other_changed[$j]');
+=======
+                    assert($j > 0);
+                    while ($other_changed[--$j]) {
+                        continue;
+                    }
+                    assert($j >= 0 && !$other_changed[$j]);
+>>>>>>> origin/master
                 }
 
                 /* Set CORRESPONDING to the end of the changed run, at the
@@ -408,7 +438,11 @@ class Text_Diff_Engine_native {
                         $i++;
                     }
 
+<<<<<<< HEAD
                     assert('$j < $other_len && ! $other_changed[$j]');
+=======
+                    assert($j < $other_len && ! $other_changed[$j]);
+>>>>>>> origin/master
                     $j++;
                     if ($j < $other_len && $other_changed[$j]) {
                         $corresponding = $i;
@@ -424,11 +458,19 @@ class Text_Diff_Engine_native {
             while ($corresponding < $i) {
                 $changed[--$start] = 1;
                 $changed[--$i] = 0;
+<<<<<<< HEAD
                 assert('$j > 0');
                 while ($other_changed[--$j]) {
                     continue;
                 }
                 assert('$j >= 0 && !$other_changed[$j]');
+=======
+                assert($j > 0);
+                while ($other_changed[--$j]) {
+                    continue;
+                }
+                assert($j >= 0 && !$other_changed[$j]);
+>>>>>>> origin/master
             }
         }
     }

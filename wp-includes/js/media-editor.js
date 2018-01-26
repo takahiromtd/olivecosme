@@ -30,19 +30,26 @@
 		return attrs[ key ];
 	};
 
+<<<<<<< HEAD
 	/**
 	 * wp.media.string
 	 * @namespace
 	 */
+=======
+	/** @namespace wp.media.string */
+>>>>>>> origin/master
 	wp.media.string = {
 		/**
 		 * Joins the `props` and `attachment` objects,
 		 * outputting the proper object format based on the
 		 * attachment's type.
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.view.settings
 		 * @global getUserSetting()
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {Object} [props={}] Attachment details (align, link, size, etc).
 		 * @param {Object} attachment The attachment object, media version of Post.
 		 * @returns {Object} Joined props
@@ -109,8 +116,11 @@
 		/**
 		 * Create link markup that is suitable for passing to the editor
 		 *
+<<<<<<< HEAD
 		 * @global wp.html.string
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {Object} props Attachment details (align, link, size, etc).
 		 * @param {Object} attachment The attachment object, media version of Post.
 		 * @returns {string} The link markup
@@ -159,9 +169,12 @@
 		 *
 		 * @access private
 		 *
+<<<<<<< HEAD
 		 * @global wp.shortcode
 		 * @global wp.media.view.settings
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {string} type The shortcode tag name: 'audio' or 'video'.
 		 * @param {Object} props Attachment details (align, link, size, etc).
 		 * @param {Object} attachment The attachment object, media version of Post.
@@ -210,9 +223,12 @@
 		 * Create image markup, optionally with a link and/or wrapped in a caption shortcode,
 		 *  that is suitable for passing to the editor
 		 *
+<<<<<<< HEAD
 		 * @global wp.html
 		 * @global wp.shortcode
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {Object} props Attachment details (align, link, size, etc).
 		 * @param {Object} attachment The attachment object, media version of Post.
 		 * @returns {string}
@@ -341,16 +357,31 @@
 		}
 	};
 
+<<<<<<< HEAD
 	wp.media.collection = function(attributes) {
 		var collections = {};
 
 		return _.extend( {
+=======
+	/**
+	 * @class wp.media.collection
+	 *
+	 * @param {Object} attributes
+	 */
+	wp.media.collection = function(attributes) {
+		var collections = {};
+
+		return _.extend(/** @lends wp.media.collection.prototype */{
+>>>>>>> origin/master
 			coerce : wp.media.coerce,
 			/**
 			 * Retrieve attachments based on the properties of the passed shortcode
 			 *
+<<<<<<< HEAD
 			 * @global wp.media.query
 			 *
+=======
+>>>>>>> origin/master
 			 * @param {wp.shortcode} shortcode An instance of wp.shortcode().
 			 * @returns {wp.media.model.Attachments} A Backbone.Collection containing
 			 *      the media items belonging to a collection.
@@ -417,9 +448,12 @@
 			/**
 			 * Triggered when clicking 'Insert {label}' or 'Update {label}'
 			 *
+<<<<<<< HEAD
 			 * @global wp.shortcode
 			 * @global wp.media.model.Attachments
 			 *
+=======
+>>>>>>> origin/master
 			 * @param {wp.media.model.Attachments} attachments A Backbone.Collection containing
 			 *      the media items belonging to a collection.
 			 *      The query[ this.tag ] property is a Backbone.Model
@@ -488,10 +522,13 @@
 			 * Triggered when double-clicking a collection shortcode placeholder
 			 *   in the editor
 			 *
+<<<<<<< HEAD
 			 * @global wp.shortcode
 			 * @global wp.media.model.Selection
 			 * @global wp.media.view.l10n
 			 *
+=======
+>>>>>>> origin/master
 			 * @param {string} content Content that is searched for possible
 			 *    shortcode markup matching the passed tag name,
 			 *
@@ -610,15 +647,23 @@
 	});
 
 	/**
+<<<<<<< HEAD
 	 * wp.media.featuredImage
 	 * @namespace
+=======
+	 * @namespace wp.media.featuredImage
+	 * @memberOf wp.media
+>>>>>>> origin/master
 	 */
 	wp.media.featuredImage = {
 		/**
 		 * Get the featured image post ID
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.view.settings
 		 *
+=======
+>>>>>>> origin/master
 		 * @returns {wp.media.view.settings.post.featuredImageId|number}
 		 */
 		get: function() {
@@ -628,9 +673,12 @@
 		 * Set the featured image id, save the post thumbnail data and
 		 * set the HTML in the post meta box to the new featured image.
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.view.settings
 		 * @global wp.media.post
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {number} id The post ID of the featured image, or -1 to unset it.
 		 */
 		set: function( id ) {
@@ -660,9 +708,12 @@
 		/**
 		 * The Featured Image workflow
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.controller.FeaturedImage
 		 * @global wp.media.view.l10n
 		 *
+=======
+>>>>>>> origin/master
 		 * @this wp.media.featuredImage
 		 *
 		 * @returns {wp.media.view.MediaFrame.Select} A media workflow.
@@ -705,8 +756,11 @@
 		 * 'select' callback for Featured Image workflow, triggered when
 		 *  the 'Set Featured Image' button is clicked in the media modal.
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.view.settings
 		 *
+=======
+>>>>>>> origin/master
 		 * @this wp.media.controller.FeaturedImage
 		 */
 		select: function() {
@@ -723,8 +777,11 @@
 		 * the post thumbnail is clicked.
 		 *
 		 * Update the featured image id when the 'remove' link is clicked.
+<<<<<<< HEAD
 		 *
 		 * @global wp.media.view.settings
+=======
+>>>>>>> origin/master
 		 */
 		init: function() {
 			$('#postimagediv').on( 'click', '#set-post-thumbnail', function( event ) {
@@ -742,19 +799,26 @@
 
 	$( wp.media.featuredImage.init );
 
+<<<<<<< HEAD
 	/**
 	 * wp.media.editor
 	 * @namespace
 	 */
+=======
+	/** @namespace wp.media.editor */
+>>>>>>> origin/master
 	wp.media.editor = {
 		/**
 		 * Send content to the editor
 		 *
+<<<<<<< HEAD
 		 * @global tinymce
 		 * @global QTags
 		 * @global wpActiveEditor
 		 * @global tb_remove() - Possibly overloaded by legacy plugins
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {string} html Content to send to the editor
 		 */
 		insert: function( html ) {
@@ -805,8 +869,11 @@
 		 * Setup 'workflow' and add to the 'workflows' cache. 'open' can
 		 *  subsequently be called upon it.
 		 *
+<<<<<<< HEAD
 		 * @global wp.media.view.l10n
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {string} id A slug used to identify the workflow.
 		 * @param {Object} [options={}]
 		 *
@@ -914,9 +981,12 @@
 		/**
 		 * Determines the proper current workflow id
 		 *
+<<<<<<< HEAD
 		 * @global wpActiveEditor
 		 * @global tinymce
 		 *
+=======
+>>>>>>> origin/master
 		 * @param {string} [id=''] A slug used to identify the workflow.
 		 *
 		 * @returns {wpActiveEditor|string|tinymce.activeEditor.id}
@@ -962,17 +1032,24 @@
 			id = this.id( id );
 			delete workflows[ id ];
 		},
+<<<<<<< HEAD
 		/**
 		 * @namespace
 		 */
+=======
+		/** @namespace wp.media.editor.send */
+>>>>>>> origin/master
 		send: {
 			/**
 			 * Called when sending an attachment to the editor
 			 *   from the medial modal.
 			 *
+<<<<<<< HEAD
 			 * @global wp.media.view.settings
 			 * @global wp.media.post
 			 *
+=======
+>>>>>>> origin/master
 			 * @param {Object} props Attachment details (align, link, size, etc).
 			 * @param {Object} attachment The attachment object, media version of Post.
 			 * @returns {Promise}
@@ -1028,8 +1105,11 @@
 			/**
 			 * Called when 'Insert From URL' source is not an image. Example: YouTube url.
 			 *
+<<<<<<< HEAD
 			 * @global wp.media.view.settings
 			 *
+=======
+>>>>>>> origin/master
 			 * @param {Object} embed
 			 * @returns {Promise}
 			 */
@@ -1075,8 +1155,11 @@
 
 		/**
 		 * Bind click event for .insert-media using event delegation
+<<<<<<< HEAD
 		 *
 		 * @global wp.media.view.l10n
+=======
+>>>>>>> origin/master
 		 */
 		init: function() {
 			$(document.body)

@@ -12,11 +12,14 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 $title = __('Tools');
 
 get_current_screen()->add_help_tab( array(
+<<<<<<< HEAD
 	'id'      => 'press-this',
 	'title'   => __('Press This'),
 	'content' => '<p>' . __('Press This is a bookmarklet that makes it easy to blog about something you come across on the web. You can use it to just grab a link, or to post an excerpt. Press This will even allow you to choose from images included on the page and use them in your post. Just drag the Press This link on this screen to your bookmarks bar in your browser, and you&#8217;ll be on your way to easier content creation. Clicking on it while on another website opens a popup window with all these options.') . '</p>',
 ) );
 get_current_screen()->add_help_tab( array(
+=======
+>>>>>>> origin/master
 	'id'      => 'converter',
 	'title'   => __('Categories and Tags Converter'),
 	'content' => '<p>' . __('Categories have hierarchy, meaning that you can nest sub-categories. Tags do not have hierarchy and cannot be nested. Sometimes people start out using one on their posts, then later realize that the other would work better for their content.' ) . '</p>' .
@@ -34,6 +37,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap">
 <h1><?php echo esc_html( $title ); ?></h1>
+<<<<<<< HEAD
 
 <?php if ( current_user_can('edit_posts') ) : ?>
 <div class="card pressthis">
@@ -95,6 +99,9 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 <?php
 endif;
 
+=======
+<?php
+>>>>>>> origin/master
 if ( current_user_can( 'import' ) ) :
 $cats = get_taxonomy('category');
 $tags = get_taxonomy('post_tag');

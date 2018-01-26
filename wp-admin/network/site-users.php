@@ -11,11 +11,16 @@
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! current_user_can('manage_sites') )
+<<<<<<< HEAD
 	wp_die(__('Sorry, you are not allowed to edit this site.'));
+=======
+	wp_die( __( 'Sorry, you are not allowed to edit this site.' ), 403 );
+>>>>>>> origin/master
 
 $wp_list_table = _get_list_table('WP_Users_List_Table');
 $wp_list_table->prepare_items();
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __('Overview'),
@@ -32,6 +37,10 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://codex.wordpress.org/Network_Admin_Sites_Screen">Documentation on Site Management</a>') . '</p>' .
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/">Support Forums</a>') . '</p>'
 );
+=======
+get_current_screen()->add_help_tab( get_site_screen_help_tab_args() );
+get_current_screen()->set_help_sidebar( get_site_screen_help_sidebar_content() );
+>>>>>>> origin/master
 
 get_current_screen()->set_screen_reader_content( array(
 	'heading_views'      => __( 'Filter site users list' ),
@@ -80,6 +89,7 @@ if ( $action ) {
 				if ( false === $user_id ) {
 		 			$update = 'err_new_dup';
 				} else {
+<<<<<<< HEAD
 					add_user_to_blog( $id, $user_id, $_POST['new_role'] );
 					$update = 'newuser';
 					/**
@@ -90,6 +100,23 @@ if ( $action ) {
 					  * @param int $user_id ID of the newly created user.
 					  */
 					do_action( 'network_site_users_created_user', $user_id );
+=======
+					$result = add_user_to_blog( $id, $user_id, $_POST['new_role'] );
+
+					if ( is_wp_error( $result ) ) {
+						$update = 'err_add_fail';
+					} else {
+						$update = 'newuser';
+						/**
+						  * Fires after a user has been created via the network site-users.php page.
+						  *
+						  * @since 4.4.0
+						  *
+						  * @param int $user_id ID of the newly created user.
+						  */
+						do_action( 'network_site_users_created_user', $user_id );
+					}
+>>>>>>> origin/master
 				}
 			}
 			break;
@@ -101,10 +128,22 @@ if ( $action ) {
 				$newuser = $_POST['newuser'];
 				$user = get_user_by( 'login', $newuser );
 				if ( $user && $user->exists() ) {
+<<<<<<< HEAD
 					if ( ! is_user_member_of_blog( $user->ID, $id ) )
 						add_user_to_blog( $id, $user->ID, $_POST['new_role'] );
 					else
 						$update = 'err_add_member';
+=======
+					if ( ! is_user_member_of_blog( $user->ID, $id ) ) {
+						$result = add_user_to_blog( $id, $user->ID, $_POST['new_role'] );
+
+						if ( is_wp_error( $result ) ) {
+							$update = 'err_add_fail';
+						}
+					} else {
+						$update = 'err_add_member';
+					}
+>>>>>>> origin/master
 				} else {
 					$update = 'err_add_notfound';
 				}
@@ -115,7 +154,11 @@ if ( $action ) {
 
 		case 'remove':
 			if ( ! current_user_can( 'remove_users' ) ) {
+<<<<<<< HEAD
 				wp_die( __( 'Sorry, you are not allowed to remove users.' ) );
+=======
+				wp_die( __( 'Sorry, you are not allowed to remove users.' ), 403 );
+>>>>>>> origin/master
 			}
 
 			check_admin_referer( 'bulk-users' );
@@ -138,8 +181,20 @@ if ( $action ) {
 		case 'promote':
 			check_admin_referer( 'bulk-users' );
 			$editable_roles = get_editable_roles();
+<<<<<<< HEAD
 			if ( empty( $editable_roles[ $_REQUEST['new_role'] ] ) ) {
 				wp_die( __( 'Sorry, you are not allowed to give users that role.' ) );
+=======
+			$role = false;
+			if ( ! empty( $_REQUEST['new_role2'] ) ) {
+				$role = $_REQUEST['new_role2'];
+			} elseif ( ! empty( $_REQUEST['new_role'] ) ) {
+				$role = $_REQUEST['new_role'];
+			}
+
+			if ( empty( $editable_roles[ $role ] ) ) {
+				wp_die( __( 'Sorry, you are not allowed to give users that role.' ), 403 );
+>>>>>>> origin/master
 			}
 
 			if ( isset( $_REQUEST['users'] ) ) {
@@ -158,7 +213,11 @@ if ( $action ) {
 					}
 
 					$user = get_userdata( $user_id );
+<<<<<<< HEAD
 					$user->set_role( $_REQUEST['new_role'] );
+=======
+					$user->set_role( $role );
+>>>>>>> origin/master
 				}
 			} else {
 				$update = 'err_promote';
@@ -230,6 +289,12 @@ if ( isset($_GET['update']) ) :
 	case 'err_add_member':
 		echo '<div id="message" class="error notice is-dismissible"><p>' . __( 'User is already a member of this site.' ) . '</p></div>';
 		break;
+<<<<<<< HEAD
+=======
+	case 'err_add_fail':
+		echo '<div id="message" class="error notice is-dismissible"><p>' . __( 'User could not be added to this site.' ) . '</p></div>';
+		break;
+>>>>>>> origin/master
 	case 'err_add_notfound':
 		echo '<div id="message" class="error notice is-dismissible"><p>' . __( 'Enter the username of an existing user.' ) . '</p></div>';
 		break;
@@ -292,7 +357,15 @@ if ( current_user_can( 'promote_users' ) && apply_filters( 'show_network_site_us
 		<tr>
 			<th scope="row"><label for="new_role_adduser"><?php _e( 'Role' ); ?></label></th>
 			<td><select name="new_role" id="new_role_adduser">
+<<<<<<< HEAD
 			<?php wp_dropdown_roles( get_option( 'default_role' ) ); ?>
+=======
+			<?php
+			switch_to_blog( $id );
+			wp_dropdown_roles( get_option( 'default_role' ) );
+			restore_current_blog();
+			?>
+>>>>>>> origin/master
 			</select></td>
 		</tr>
 	</table>
@@ -325,7 +398,15 @@ if ( current_user_can( 'create_users' ) && apply_filters( 'show_network_site_use
 		<tr>
 			<th scope="row"><label for="new_role_newuser"><?php _e( 'Role' ); ?></label></th>
 			<td><select name="new_role" id="new_role_newuser">
+<<<<<<< HEAD
 			<?php wp_dropdown_roles( get_option( 'default_role' ) ); ?>
+=======
+			<?php
+			switch_to_blog( $id );
+			wp_dropdown_roles( get_option( 'default_role' ) );
+			restore_current_blog();
+			?>
+>>>>>>> origin/master
 			</select></td>
 		</tr>
 		<tr class="form-field">

@@ -37,7 +37,10 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function before() {
 		$name = $this->upgrader->get_name_for_update( $this->language_update );
@@ -58,14 +61,20 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function after() {
 		echo '</div>';
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function bulk_footer() {
 		$this->decrement_update_count( 'translation' );

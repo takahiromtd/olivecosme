@@ -25,7 +25,17 @@ elseif ( ! get_userdata( $user_id ) )
 
 wp_enqueue_script('user-profile');
 
+<<<<<<< HEAD
 $title = IS_PROFILE_PAGE ? __('Profile') : __('Edit User');
+=======
+if ( IS_PROFILE_PAGE ) {
+	$title = __( 'Profile' );
+} else {
+	/* translators: %s: user's display name */
+	$title = __( 'Edit User %s' );
+}
+
+>>>>>>> origin/master
 if ( current_user_can('edit_users') && !IS_PROFILE_PAGE )
 	$submenu_file = 'users.php';
 else
@@ -82,13 +92,21 @@ if ( is_multisite()
 }
 
 // Execute confirmed email change. See send_confirmation_on_profile_email().
+<<<<<<< HEAD
 if ( is_multisite() && IS_PROFILE_PAGE && isset( $_GET[ 'newuseremail' ] ) && $current_user->ID ) {
+=======
+if ( IS_PROFILE_PAGE && isset( $_GET[ 'newuseremail' ] ) && $current_user->ID ) {
+>>>>>>> origin/master
 	$new_email = get_user_meta( $current_user->ID, '_new_email', true );
 	if ( $new_email && hash_equals( $new_email[ 'hash' ], $_GET[ 'newuseremail' ] ) ) {
 		$user = new stdClass;
 		$user->ID = $current_user->ID;
 		$user->user_email = esc_html( trim( $new_email[ 'newemail' ] ) );
+<<<<<<< HEAD
 		if ( $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM {$wpdb->signups} WHERE user_login = %s", $current_user->user_login ) ) ) {
+=======
+		if ( is_multisite() && $wpdb->get_var( $wpdb->prepare( "SELECT user_login FROM {$wpdb->signups} WHERE user_login = %s", $current_user->user_login ) ) ) {
+>>>>>>> origin/master
 			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->signups} SET user_email = %s WHERE user_login = %s", $user->user_email, $current_user->user_login ) );
 		}
 		wp_update_user( $user );
@@ -98,7 +116,11 @@ if ( is_multisite() && IS_PROFILE_PAGE && isset( $_GET[ 'newuseremail' ] ) && $c
 	} else {
 		wp_redirect( add_query_arg( array( 'error' => 'new-email' ), self_admin_url( 'profile.php' ) ) );
 	}
+<<<<<<< HEAD
 } elseif ( is_multisite() && IS_PROFILE_PAGE && !empty( $_GET['dismiss'] ) && $current_user->ID . '_new_email' === $_GET['dismiss'] ) {
+=======
+} elseif ( IS_PROFILE_PAGE && ! empty( $_GET['dismiss'] ) && $current_user->ID . '_new_email' === $_GET['dismiss'] ) {
+>>>>>>> origin/master
 	check_admin_referer( 'dismiss-' . $current_user->ID . '_new_email' );
 	delete_user_meta( $current_user->ID, '_new_email' );
 	wp_redirect( add_query_arg( array('updated' => 'true'), self_admin_url( 'profile.php' ) ) );
@@ -166,13 +188,21 @@ $profileuser = get_user_to_edit($user_id);
 if ( !current_user_can('edit_user', $user_id) )
 	wp_die(__('Sorry, you are not allowed to edit this user.'));
 
+<<<<<<< HEAD
+=======
+$title = sprintf( $title, $profileuser->display_name );
+>>>>>>> origin/master
 $sessions = WP_Session_Tokens::get_instance( $profileuser->ID );
 
 include(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 
 <?php if ( !IS_PROFILE_PAGE && is_super_admin( $profileuser->ID ) && current_user_can( 'manage_network_options' ) ) { ?>
+<<<<<<< HEAD
 	<div class="updated"><p><strong><?php _e('Important:'); ?></strong> <?php _e('This user has super admin privileges.'); ?></p></div>
+=======
+	<div class="notice notice-info"><p><strong><?php _e('Important:'); ?></strong> <?php _e('This user has super admin privileges.'); ?></p></div>
+>>>>>>> origin/master
 <?php } ?>
 <?php if ( isset($_GET['updated']) ) : ?>
 <div id="message" class="updated notice is-dismissible">
@@ -182,7 +212,11 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 	<p><strong><?php _e('User updated.') ?></strong></p>
 	<?php endif; ?>
 	<?php if ( $wp_http_referer && false === strpos( $wp_http_referer, 'user-new.php' ) && ! IS_PROFILE_PAGE ) : ?>
+<<<<<<< HEAD
 	<p><a href="<?php echo esc_url( $wp_http_referer ); ?>"><?php _e('&larr; Back to Users'); ?></a></p>
+=======
+	<p><a href="<?php echo esc_url( wp_validate_redirect( esc_url_raw( $wp_http_referer ), self_admin_url( 'users.php' ) ) ); ?>"><?php _e('&larr; Back to Users'); ?></a></p>
+>>>>>>> origin/master
 	<?php endif; ?>
 </div>
 <?php endif; ?>
@@ -198,17 +232,33 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 <?php endif; ?>
 
 <div class="wrap" id="profile-page">
+<<<<<<< HEAD
 <h1>
 <?php
 echo esc_html( $title );
+=======
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+>>>>>>> origin/master
 if ( ! IS_PROFILE_PAGE ) {
 	if ( current_user_can( 'create_users' ) ) { ?>
 		<a href="user-new.php" class="page-title-action"><?php echo esc_html_x( 'Add New', 'user' ); ?></a>
 	<?php } elseif ( is_multisite() && current_user_can( 'promote_users' ) ) { ?>
 		<a href="user-new.php" class="page-title-action"><?php echo esc_html_x( 'Add Existing', 'user' ); ?></a>
 	<?php }
+<<<<<<< HEAD
 } ?>
 </h1>
+=======
+}
+?>
+
+<hr class="wp-header-end">
+
+>>>>>>> origin/master
 <form id="your-profile" action="<?php echo esc_url( self_admin_url( IS_PROFILE_PAGE ? 'profile.php' : 'user-edit.php' ) ); ?>" method="post" novalidate="novalidate"<?php
 	/**
 	 * Fires inside the your-profile form tag on the user editing screen.
@@ -235,6 +285,29 @@ if ( ! IS_PROFILE_PAGE ) {
 		<td><label for="rich_editing"><input name="rich_editing" type="checkbox" id="rich_editing" value="false" <?php if ( ! empty( $profileuser->rich_editing ) ) checked( 'false', $profileuser->rich_editing ); ?> /> <?php _e( 'Disable the visual editor when writing' ); ?></label></td>
 	</tr>
 <?php endif; ?>
+<<<<<<< HEAD
+=======
+<?php
+$show_syntax_highlighting_preference = (
+	// For Custom HTML widget and Additional CSS in Customizer.
+	user_can( $profileuser, 'edit_theme_options' )
+	||
+	// Edit plugins.
+	user_can( $profileuser, 'edit_plugins' )
+	||
+	// Edit themes.
+	user_can( $profileuser, 'edit_themes' )
+);
+?>
+<?php if ( $show_syntax_highlighting_preference ) : ?>
+	<tr class="user-syntax-highlighting-wrap">
+		<th scope="row"><?php _e( 'Syntax Highlighting' ); ?></th>
+		<td>
+			<label for="syntax_highlighting"><input name="syntax_highlighting" type="checkbox" id="syntax_highlighting" value="false" <?php if ( ! empty( $profileuser->syntax_highlighting ) ) checked( 'false', $profileuser->syntax_highlighting ); ?> /> <?php _e( 'Disable syntax highlighting when editing code' ); ?></label>
+		</td>
+	</tr>
+<?php endif; ?>
+>>>>>>> origin/master
 <?php if ( count($_wp_admin_css_colors) > 1 && has_action('admin_color_scheme_picker') ) : ?>
 <tr class="user-admin-color-wrap">
 <th scope="row"><?php _e('Admin Color Scheme')?></th>

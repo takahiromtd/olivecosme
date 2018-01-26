@@ -18,7 +18,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	/**
 	 * @see Text_Diff_Renderer::_leading_context_lines
 	 * @var int
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 */
 	public $_leading_context_lines  = 10000;
@@ -26,7 +29,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	/**
 	 * @see Text_Diff_Renderer::_trailing_context_lines
 	 * @var int
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 */
 	public $_trailing_context_lines = 10000;
@@ -35,7 +41,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Threshold for when a diff should be saved or omitted.
 	 *
 	 * @var float
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 */
 	protected $_diff_threshold = 0.6;
@@ -44,7 +53,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Inline display helper object name.
 	 *
 	 * @var string
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 */
 	protected $inline_diff_renderer = 'WP_Text_Diff_Renderer_inline';
@@ -53,7 +65,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Should we show the split view or not
 	 *
 	 * @var string
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @since 3.6.0
 	 */
 	protected $_show_split_view = true;
@@ -136,7 +151,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 
 	/**
 	 * @ignore
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $lines
 	 * @param bool $encode
@@ -175,7 +193,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 
 	/**
 	 * @ignore
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $lines
 	 * @param bool $encode
@@ -202,7 +223,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 
 	/**
 	 * @ignore
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $lines
 	 * @param bool $encode
@@ -232,7 +256,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * (TRAC style) sometimes these lines can actually be deleted or added rows.
 	 * We do additional processing to figure that out
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 *
 	 * @param array $orig
@@ -319,6 +346,7 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	/**
 	 * Takes changed blocks and matches which rows in orig turned into which rows in final.
 	 *
+<<<<<<< HEAD
 	 * Returns
 	 *	*_matches ( which rows match with which )
 	 *	*_rows ( order of rows in each column interleaved with blank rows as
@@ -329,6 +357,32 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * @param array $orig
 	 * @param array $final
 	 * @return array
+=======
+	 * @since 2.6.0
+	 *
+	 * @param array $orig  Lines of the original version of the text.
+	 * @param array $final Lines of the final version of the text.
+	 * @return array {
+	 *    Array containing results of comparing the original text to the final text.
+	 *
+	 *    @type array $orig_matches  Associative array of original matches. Index == row
+	 *                               number of `$orig`, value == corresponding row number
+	 *                               of that same line in `$final` or 'x' if there is no
+	 *                               corresponding row (indicating it is a deleted line).
+	 *    @type array $final_matches Associative array of final matches. Index == row
+	 *                               number of `$final`, value == corresponding row number
+	 *                               of that same line in `$orig` or 'x' if there is no
+	 *                               corresponding row (indicating it is a new line).
+	 *    @type array $orig_rows     Associative array of interleaved rows of `$orig` with
+	 *                               blanks to keep matches aligned with side-by-side diff
+	 *                               of `$final`. A value >= 0 corresponds to index of `$orig`.
+	 *                               Value < 0 indicates a blank row.
+	 *    @type array $final_rows    Associative array of interleaved rows of `$final` with
+	 *                               blanks to keep matches aligned with side-by-side diff
+	 *                               of `$orig`. A value >= 0 corresponds to index of `$final`.
+	 *                               Value < 0 indicates a blank row.
+	 * }
+>>>>>>> origin/master
 	 */
 	public function interleave_changed_lines( $orig, $final ) {
 
@@ -451,7 +505,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Make private properties readable for backward compatibility.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $name Property to get.
 	 * @return mixed Property.
@@ -466,7 +523,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Make private properties settable for backward compatibility.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $name  Property to check if set.
 	 * @param mixed  $value Property value.
@@ -482,7 +542,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Make private properties checkable for backward compatibility.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $name Property to check if set.
 	 * @return bool Whether the property is set.
@@ -497,7 +560,10 @@ class WP_Text_Diff_Renderer_Table extends Text_Diff_Renderer {
 	 * Make private properties un-settable for backward compatibility.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $name Property to unset.
 	 */

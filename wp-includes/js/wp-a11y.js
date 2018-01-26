@@ -1,10 +1,19 @@
+<<<<<<< HEAD
+=======
+/** @namespace wp */
+>>>>>>> origin/master
 window.wp = window.wp || {};
 
 ( function ( wp, $ ) {
 	'use strict';
 
 	var $containerPolite,
+<<<<<<< HEAD
 		$containerAssertive;
+=======
+		$containerAssertive,
+		previousMessage = '';
+>>>>>>> origin/master
 
 	/**
 	 * Update the ARIA live notification area text node.
@@ -12,9 +21,16 @@ window.wp = window.wp || {};
 	 * @since 4.2.0
 	 * @since 4.3.0 Introduced the 'ariaLive' argument.
 	 *
+<<<<<<< HEAD
 	 * @param {String} message  The message to be announced by Assistive Technologies.
 	 * @param {String} ariaLive Optional. The politeness level for aria-live. Possible values:
 	 *                          polite or assertive. Default polite.
+=======
+	 * @param {String} message    The message to be announced by Assistive Technologies.
+	 * @param {String} [ariaLive] The politeness level for aria-live. Possible values:
+	 *                            polite or assertive. Default polite.
+	 * @returns {void}
+>>>>>>> origin/master
 	 */
 	function speak( message, ariaLive ) {
 		// Clear previous messages to allow repeated strings being read out.
@@ -23,6 +39,20 @@ window.wp = window.wp || {};
 		// Ensure only text is sent to screen readers.
 		message = $( '<p>' ).html( message ).text();
 
+<<<<<<< HEAD
+=======
+		/*
+		 * Safari 10+VoiceOver don't announce repeated, identical strings. We use
+		 * a `no-break space` to force them to think identical strings are different.
+		 * See ticket #36853.
+		 */
+		if ( previousMessage === message ) {
+			message = message + '\u00A0';
+		}
+
+		previousMessage = message;
+
+>>>>>>> origin/master
 		if ( $containerAssertive && 'assertive' === ariaLive ) {
 			$containerAssertive.text( message );
 		} else if ( $containerPolite ) {
@@ -82,6 +112,10 @@ window.wp = window.wp || {};
 		}
 	});
 
+<<<<<<< HEAD
+=======
+	/** @namespace wp.a11y */
+>>>>>>> origin/master
 	wp.a11y = wp.a11y || {};
 	wp.a11y.speak = speak;
 

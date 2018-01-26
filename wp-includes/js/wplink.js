@@ -312,7 +312,11 @@ var wpLink;
 			var html = '<a href="' + attrs.href + '"';
 
 			if ( attrs.target ) {
+<<<<<<< HEAD
 				html += ' target="' + attrs.target + '"';
+=======
+				html += ' rel="noopener" target="' + attrs.target + '"';
+>>>>>>> origin/master
 			}
 
 			return html + '>';
@@ -337,6 +341,16 @@ var wpLink;
 			attrs = wpLink.getAttrs();
 			text = inputs.text.val();
 
+<<<<<<< HEAD
+=======
+			var parser = document.createElement( 'a' );
+			parser.href = attrs.href;
+
+			if ( 'javascript:' === parser.protocol || 'data:' === parser.protocol ) { // jshint ignore:line
+				attrs.href = '';
+			}
+
+>>>>>>> origin/master
 			// If there's no href, return.
 			if ( ! attrs.href ) {
 				return;
@@ -380,6 +394,10 @@ var wpLink;
 
 			wpLink.close();
 			textarea.focus();
+<<<<<<< HEAD
+=======
+			$( textarea ).trigger( 'change' );
+>>>>>>> origin/master
 
 			// Audible confirmation message when a link has been inserted in the Editor.
 			wp.a11y.speak( wpLinkL10n.linkInserted );
@@ -389,6 +407,16 @@ var wpLink;
 			var attrs = wpLink.getAttrs(),
 				$link, text, hasText, $mceCaret;
 
+<<<<<<< HEAD
+=======
+			var parser = document.createElement( 'a' );
+			parser.href = attrs.href;
+
+			if ( 'javascript:' === parser.protocol || 'data:' === parser.protocol ) { // jshint ignore:line
+				attrs.href = '';
+			}
+
+>>>>>>> origin/master
 			if ( ! attrs.href ) {
 				editor.execCommand( 'unlink' );
 				wpLink.close();

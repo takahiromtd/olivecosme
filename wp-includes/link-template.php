@@ -247,9 +247,15 @@ function get_permalink( $post = 0, $leavename = false ) {
  *
  * @global WP_Rewrite $wp_rewrite
  *
+<<<<<<< HEAD
  * @param int $id         Optional. Post ID. Default uses the global `$post`.
  * @param bool $leavename Optional, defaults to false. Whether to keep post name. Default false.
  * @param bool $sample    Optional, defaults to false. Is it a sample permalink. Default false.
+=======
+ * @param int|WP_Post $id        Optional. Post ID or post object. Default is the global `$post`.
+ * @param bool        $leavename Optional, defaults to false. Whether to keep post name. Default false.
+ * @param bool        $sample    Optional, defaults to false. Is it a sample permalink. Default false.
+>>>>>>> origin/master
  * @return string|WP_Error The post permalink.
  */
 function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
@@ -264,12 +270,20 @@ function get_post_permalink( $id = 0, $leavename = false, $sample = false ) {
 
 	$slug = $post->post_name;
 
+<<<<<<< HEAD
 	$draft_or_pending = get_post_status( $id ) && in_array( get_post_status( $id ), array( 'draft', 'pending', 'auto-draft', 'future' ) );
+=======
+	$draft_or_pending = get_post_status( $post ) && in_array( get_post_status( $post ), array( 'draft', 'pending', 'auto-draft', 'future' ) );
+>>>>>>> origin/master
 
 	$post_type = get_post_type_object($post->post_type);
 
 	if ( $post_type->hierarchical ) {
+<<<<<<< HEAD
 		$slug = get_page_uri( $id );
+=======
+		$slug = get_page_uri( $post );
+>>>>>>> origin/master
 	}
 
 	if ( !empty($post_link) && ( !$draft_or_pending || $sample ) ) {
@@ -846,7 +860,11 @@ function get_term_feed_link( $term_id, $taxonomy = 'category', $feed = '' ) {
 		 *
 		 * @param string $link The taxonomy feed link.
 		 * @param string $feed Feed type.
+<<<<<<< HEAD
 		 * @param string $feed The taxonomy name.
+=======
+		 * @param string $taxonomy The taxonomy name.
+>>>>>>> origin/master
 		 */
 		$link = apply_filters( 'taxonomy_feed_link', $link, $feed, $taxonomy );
 	}
@@ -1262,8 +1280,13 @@ function get_preview_post_link( $post = null, $query_args = array(), $preview_li
  *
  * @since 2.3.0
  *
+<<<<<<< HEAD
  * @param int    $id      Optional. Post ID. Default is the ID of the global `$post`.
  * @param string $context Optional. How to output the '&' character. Default '&amp;'.
+=======
+ * @param int|WP_Post $id      Optional. Post ID or post object. Default is the global `$post`.
+ * @param string      $context Optional. How to output the '&' character. Default '&amp;'.
+>>>>>>> origin/master
  * @return string|null The edit post link for the given post. null if the post type is invalid or does
  *                     not allow an editing UI.
  */
@@ -1310,11 +1333,19 @@ function get_edit_post_link( $id = 0, $context = 'display' ) {
  * @since 1.0.0
  * @since 4.4.0 The `$class` argument was added.
  *
+<<<<<<< HEAD
  * @param string $text   Optional. Anchor text. If null, default is 'Edit This'. Default null.
  * @param string $before Optional. Display before edit link. Default empty.
  * @param string $after  Optional. Display after edit link. Default empty.
  * @param int    $id     Optional. Post ID. Default is the ID of the global `$post`.
  * @param string $class  Optional. Add custom class to link. Default 'post-edit-link'.
+=======
+ * @param string      $text   Optional. Anchor text. If null, default is 'Edit This'. Default null.
+ * @param string      $before Optional. Display before edit link. Default empty.
+ * @param string      $after  Optional. Display after edit link. Default empty.
+ * @param int|WP_Post $id     Optional. Post ID or post object. Default is the global `$post`.
+ * @param string      $class  Optional. Add custom class to link. Default 'post-edit-link'.
+>>>>>>> origin/master
  */
 function edit_post_link( $text = null, $before = '', $after = '', $id = 0, $class = 'post-edit-link' ) {
 	if ( ! $post = get_post( $id ) ) {
@@ -1350,9 +1381,15 @@ function edit_post_link( $text = null, $before = '', $after = '', $id = 0, $clas
  *
  * @since 2.9.0
  *
+<<<<<<< HEAD
  * @param int    $id           Optional. Post ID. Default is the ID of the global `$post`.
  * @param string $deprecated   Not used.
  * @param bool   $force_delete Optional. Whether to bypass trash and force deletion. Default false.
+=======
+ * @param int|WP_Post $id           Optional. Post ID or post object. Default is the global `$post`.
+ * @param string      $deprecated   Not used.
+ * @param bool        $force_delete Optional. Whether to bypass trash and force deletion. Default false.
+>>>>>>> origin/master
  * @return string|void The delete post link URL for the given post.
  */
 function get_delete_post_link( $id = 0, $deprecated = '', $force_delete = false ) {
@@ -1707,10 +1744,17 @@ function get_adjacent_post( $in_same_term = false, $excluded_terms = '', $previo
 	 * @since 2.5.0
 	 * @since 4.4.0 Added the `$taxonomy` and `$post` parameters.
 	 *
+<<<<<<< HEAD
 	 * @param string $where          The `WHERE` clause in the SQL.
 	 * @param bool   $in_same_term   Whether post should be in a same taxonomy term.
 	 * @param array  $excluded_terms Array of excluded term IDs.
 	 * @param string $taxonomy       Taxonomy. Used to identify the term used when `$in_same_term` is true.
+=======
+	 * @param string  $where          The `WHERE` clause in the SQL.
+	 * @param bool    $in_same_term   Whether post should be in a same taxonomy term.
+	 * @param array   $excluded_terms Array of excluded term IDs.
+	 * @param string  $taxonomy       Taxonomy. Used to identify the term used when `$in_same_term` is true.
+>>>>>>> origin/master
 	 * @param WP_Post $post           WP_Post object.
 	 */
 	$where = apply_filters( "get_{$adjacent}_post_where", $wpdb->prepare( "WHERE p.post_date $op %s AND p.post_type = %s $where", $current_post_date, $post->post_type ), $in_same_term, $excluded_terms, $taxonomy, $post );
@@ -1723,11 +1767,21 @@ function get_adjacent_post( $in_same_term = false, $excluded_terms = '', $previo
 	 *
 	 * @since 2.5.0
 	 * @since 4.4.0 Added the `$post` parameter.
+<<<<<<< HEAD
 	 *
 	 * @param string $order_by The `ORDER BY` clause in the SQL.
 	 * @param WP_Post $post    WP_Post object.
 	 */
 	$sort  = apply_filters( "get_{$adjacent}_post_sort", "ORDER BY p.post_date $order LIMIT 1", $post );
+=======
+	 * @since 4.9.0 Added the `$order` parameter.
+	 *
+	 * @param string $order_by The `ORDER BY` clause in the SQL.
+	 * @param WP_Post $post    WP_Post object.
+	 * @param string  $order   Sort order. 'DESC' for previous post, 'ASC' for next.
+	 */
+	$sort  = apply_filters( "get_{$adjacent}_post_sort", "ORDER BY p.post_date $order LIMIT 1", $post, $order );
+>>>>>>> origin/master
 
 	$query = "SELECT p.ID FROM $wpdb->posts AS p $join $where $sort";
 	$query_key = 'adjacent_post_' . md5( $query );
@@ -1932,7 +1986,11 @@ function get_boundary_post( $in_same_term = false, $excluded_terms = '', $start 
  * @since 3.7.0
  *
  * @param string       $format         Optional. Link anchor format. Default '&laquo; %link'.
+<<<<<<< HEAD
  * @param string       $link           Optional. Link permalink format. Default '%title%'.
+=======
+ * @param string       $link           Optional. Link permalink format. Default '%title'.
+>>>>>>> origin/master
  * @param bool         $in_same_term   Optional. Whether link should be in a same taxonomy term. Default false.
  * @param array|string $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default empty.
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
@@ -2872,8 +2930,15 @@ function get_the_comments_pagination( $args = array() ) {
 	) );
 	$args['echo'] = false;
 
+<<<<<<< HEAD
 	// Make sure we get plain links, so we get a string we can work with.
 	$args['type'] = 'plain';
+=======
+	// Make sure we get a string back. Plain is the next best thing.
+	if ( isset( $args['type'] ) && 'array' == $args['type'] ) {
+		$args['type'] = 'plain';
+	}
+>>>>>>> origin/master
 
 	$links = paginate_comments_links( $args );
 
@@ -2896,6 +2961,7 @@ function the_comments_pagination( $args = array() ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves the Press This bookmarklet link.
  *
  * @since 2.6.0
@@ -2952,6 +3018,8 @@ function get_shortcut_link() {
 }
 
 /**
+=======
+>>>>>>> origin/master
  * Retrieves the URL for the current site where the front end is accessible.
  *
  * Returns the 'home' option with the appropriate protocol. The protocol will be 'https'
@@ -3397,12 +3465,33 @@ function user_admin_url( $path = '', $scheme = 'admin' ) {
  * @return string Admin URL link with optional path appended.
  */
 function self_admin_url( $path = '', $scheme = 'admin' ) {
+<<<<<<< HEAD
 	if ( is_network_admin() )
 		return network_admin_url($path, $scheme);
 	elseif ( is_user_admin() )
 		return user_admin_url($path, $scheme);
 	else
 		return admin_url($path, $scheme);
+=======
+	if ( is_network_admin() ) {
+		$url = network_admin_url( $path, $scheme );
+	} elseif ( is_user_admin() ) {
+		$url = user_admin_url( $path, $scheme );
+	} else {
+		$url = admin_url( $path, $scheme );
+	}
+
+	/**
+	 * Filters the admin URL for the current site or network depending on context.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @param string $url    The complete URL including scheme and path.
+	 * @param string $path   Path relative to the URL. Blank string if no path is specified.
+	 * @param string $scheme The scheme to use.
+	 */
+	return apply_filters( 'self_admin_url', $url, $path, $scheme );
+>>>>>>> origin/master
 }
 
 /**
@@ -3472,13 +3561,21 @@ function get_dashboard_url( $user_id = 0, $path = '', $scheme = 'admin' ) {
 	$user_id = $user_id ? (int) $user_id : get_current_user_id();
 
 	$blogs = get_blogs_of_user( $user_id );
+<<<<<<< HEAD
 	if ( ! is_super_admin() && empty($blogs) ) {
+=======
+	if ( is_multisite() && ! user_can( $user_id, 'manage_network' ) && empty($blogs) ) {
+>>>>>>> origin/master
 		$url = user_admin_url( $path, $scheme );
 	} elseif ( ! is_multisite() ) {
 		$url = admin_url( $path, $scheme );
 	} else {
 		$current_blog = get_current_blog_id();
+<<<<<<< HEAD
 		if ( $current_blog  && ( is_super_admin( $user_id ) || in_array( $current_blog, array_keys( $blogs ) ) ) ) {
+=======
+		if ( $current_blog  && ( user_can( $user_id, 'manage_network' ) || in_array( $current_blog, array_keys( $blogs ) ) ) ) {
+>>>>>>> origin/master
 			$url = admin_url( $path, $scheme );
 		} else {
 			$active = get_active_blog_for_user( $user_id );
@@ -3583,8 +3680,13 @@ function wp_get_canonical_url( $post = null ) {
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param string  $string The post's canonical URL.
 	 * @param WP_Post $post   Post object.
+=======
+	 * @param string  $canonical_url The post's canonical URL.
+	 * @param WP_Post $post          Post object.
+>>>>>>> origin/master
 	 */
 	return apply_filters( 'get_canonical_url', $canonical_url, $post );
 }

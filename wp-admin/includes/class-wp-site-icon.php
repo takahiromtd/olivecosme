@@ -18,7 +18,10 @@ class WP_Site_Icon {
 	 * The minimum size of the site icon.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $min_size  = 512;
@@ -27,7 +30,10 @@ class WP_Site_Icon {
 	 * The size to which to crop the image so that we can display it in the UI nicely.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $page_crop = 512;
@@ -36,7 +42,10 @@ class WP_Site_Icon {
 	 * List of site icon sizes.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $site_icon_sizes = array(
@@ -70,7 +79,10 @@ class WP_Site_Icon {
 	 * Registers actions and filters.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __construct() {
 		add_action( 'delete_attachment', array( $this, 'delete_attachment_data' ) );
@@ -110,7 +122,10 @@ class WP_Site_Icon {
 	 * Inserts an attachment.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array  $object Attachment object.
 	 * @param string $file   File path of the attached image.
@@ -139,7 +154,10 @@ class WP_Site_Icon {
 	 * Adds additional sizes to be made when creating the site_icon images.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $sizes List of additional sizes.
 	 * @return array Additional image sizes.
@@ -184,7 +202,10 @@ class WP_Site_Icon {
 	 * Adds Site Icon sizes to the array of image sizes on demand.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $sizes List of image sizes.
 	 * @return array List of intermediate image sizes.
@@ -203,7 +224,10 @@ class WP_Site_Icon {
 	 * Deletes the Site Icon when the image file is deleted.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int $post_id Attachment ID.
 	 */
@@ -219,7 +243,10 @@ class WP_Site_Icon {
 	 * Adds custom image sizes when meta data for an image is requested, that happens to be used as Site Icon.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param null|array|string $value    The value get_metadata() should return a single metadata value, or an
 	 *                                    array of values.

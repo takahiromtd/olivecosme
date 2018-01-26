@@ -7,10 +7,37 @@ wpWidgets = {
 	/**
 	 * A closed Sidebar that gets a Widget dragged over it.
 	 *
+<<<<<<< HEAD
 	 * @var element|null
 	 */
 	hoveredSidebar: null,
 
+=======
+	 * @var {element|null}
+	 */
+	hoveredSidebar: null,
+
+	/**
+	 * Translations.
+	 *
+	 * Exported from PHP in wp_default_scripts().
+	 *
+	 * @var {object}
+	 */
+	l10n: {
+		save: '{save}',
+		saved: '{saved}',
+		saveAlert: '{saveAlert}'
+	},
+
+	/**
+	 * Lookup of which widgets have had change events triggered.
+	 *
+	 * @var {object}
+	 */
+	dirtyWidgets: {},
+
+>>>>>>> origin/master
 	init : function() {
 		var rem, the_id,
 			self = this,
@@ -19,6 +46,7 @@ wpWidgets = {
 			sidebars = $('div.widgets-sortables'),
 			isRTL = !! ( 'undefined' !== typeof isRtl && isRtl );
 
+<<<<<<< HEAD
 		$('#widgets-right .sidebar-name').click( function() {
 			var $this = $(this),
 				$wrap = $this.closest('.widgets-holder-wrap');
@@ -35,19 +63,123 @@ wpWidgets = {
 
 		$('#widgets-left .sidebar-name').click( function() {
 			$(this).closest('.widgets-holder-wrap').toggleClass('closed');
+=======
+		// Handle the widgets containers in the right column.
+		$( '#widgets-right .sidebar-name' )
+			/*
+			 * Toggle the widgets containers when clicked and update the toggle
+			 * button `aria-expanded` attribute value.
+			 */
+			.click( function() {
+				var $this = $( this ),
+					$wrap = $this.closest( '.widgets-holder-wrap '),
+					$toggle = $this.find( '.handlediv' );
+
+				if ( $wrap.hasClass( 'closed' ) ) {
+					$wrap.removeClass( 'closed' );
+					$toggle.attr( 'aria-expanded', 'true' );
+					// Refresh the jQuery UI sortable items.
+					$this.parent().sortable( 'refresh' );
+				} else {
+					$wrap.addClass( 'closed' );
+					$toggle.attr( 'aria-expanded', 'false' );
+				}
+
+				// Update the admin menu "sticky" state.
+				$document.triggerHandler( 'wp-pin-menu' );
+			})
+			/*
+			 * Set the initial `aria-expanded` attribute value on the widgets
+			 * containers toggle button. The first one is expanded by default.
+			 */
+			.find( '.handlediv' ).each( function( index ) {
+				if ( 0 === index ) {
+					// jQuery equivalent of `continue` within an `each()` loop.
+					return;
+				}
+
+				$( this ).attr( 'aria-expanded', 'false' );
+			});
+
+		// Show AYS dialog when there are unsaved widget changes.
+		$( window ).on( 'beforeunload.widgets', function( event ) {
+			var dirtyWidgetIds = [], unsavedWidgetsElements;
+			$.each( self.dirtyWidgets, function( widgetId, dirty ) {
+				if ( dirty ) {
+					dirtyWidgetIds.push( widgetId );
+				}
+			});
+			if ( 0 !== dirtyWidgetIds.length ) {
+				unsavedWidgetsElements = $( '#widgets-right' ).find( '.widget' ).filter( function() {
+					return -1 !== dirtyWidgetIds.indexOf( $( this ).prop( 'id' ).replace( /^widget-\d+_/, '' ) );
+				});
+				unsavedWidgetsElements.each( function() {
+					if ( ! $( this ).hasClass( 'open' ) ) {
+						$( this ).find( '.widget-title-action:first' ).click();
+					}
+				});
+
+				// Bring the first unsaved widget into view and focus on the first tabbable field.
+				unsavedWidgetsElements.first().each( function() {
+					if ( this.scrollIntoViewIfNeeded ) {
+						this.scrollIntoViewIfNeeded();
+					} else {
+						this.scrollIntoView();
+					}
+					$( this ).find( '.widget-inside :tabbable:first' ).focus();
+				} );
+
+				event.returnValue = wpWidgets.l10n.saveAlert;
+				return event.returnValue;
+			}
+		});
+
+		// Handle the widgets containers in the left column.
+		$( '#widgets-left .sidebar-name' ).click( function() {
+			var $wrap = $( this ).closest( '.widgets-holder-wrap' );
+
+			$wrap
+				.toggleClass( 'closed' )
+				.find( '.handlediv' ).attr( 'aria-expanded', ! $wrap.hasClass( 'closed' ) );
+
+			// Update the admin menu "sticky" state.
+>>>>>>> origin/master
 			$document.triggerHandler( 'wp-pin-menu' );
 		});
 
 		$(document.body).bind('click.widgets-toggle', function(e) {
 			var target = $(e.target),
 				css = { 'z-index': 100 },
+<<<<<<< HEAD
 				widget, inside, targetWidth, widgetWidth, margin;
+=======
+				widget, inside, targetWidth, widgetWidth, margin, saveButton, widgetId,
+				toggleBtn = target.closest( '.widget' ).find( '.widget-top button.widget-action' );
+>>>>>>> origin/master
 
 			if ( target.parents('.widget-top').length && ! target.parents('#available-widgets').length ) {
 				widget = target.closest('div.widget');
 				inside = widget.children('.widget-inside');
+<<<<<<< HEAD
 				targetWidth = parseInt( widget.find('input.widget-width').val(), 10 ),
 				widgetWidth = widget.parent().width();
+=======
+				targetWidth = parseInt( widget.find('input.widget-width').val(), 10 );
+				widgetWidth = widget.parent().width();
+				widgetId = inside.find( '.widget-id' ).val();
+
+				// Save button is initially disabled, but is enabled when a field is changed.
+				if ( ! widget.data( 'dirty-state-initialized' ) ) {
+					saveButton = inside.find( '.widget-control-save' );
+					saveButton.prop( 'disabled', true ).val( wpWidgets.l10n.saved );
+					inside.on( 'input change', function() {
+						self.dirtyWidgets[ widgetId ] = true;
+						widget.addClass( 'widget-dirty' );
+						saveButton.prop( 'disabled', false ).val( wpWidgets.l10n.save );
+					});
+					widget.data( 'dirty-state-initialized', true );
+				}
+>>>>>>> origin/master
 
 				if ( inside.is(':hidden') ) {
 					if ( targetWidth > 250 && ( targetWidth + 30 > widgetWidth ) && widget.closest('div.widgets-sortables').length ) {
@@ -60,10 +192,28 @@ wpWidgets = {
 						css[ margin ] = widgetWidth - ( targetWidth + 30 ) + 'px';
 						widget.css( css );
 					}
+<<<<<<< HEAD
 					widget.addClass( 'open' );
 					inside.slideDown('fast');
 				} else {
 					inside.slideUp('fast', function() {
+=======
+					/*
+					 * Don't change the order of attributes changes and animation:
+					 * it's important for screen readers, see ticket #31476.
+					 */
+					toggleBtn.attr( 'aria-expanded', 'true' );
+					inside.slideDown( 'fast', function() {
+						widget.addClass( 'open' );
+					});
+				} else {
+					/*
+					 * Don't change the order of attributes changes and animation:
+					 * it's important for screen readers, see ticket #31476.
+					 */
+					toggleBtn.attr( 'aria-expanded', 'false' );
+					inside.slideUp( 'fast', function() {
+>>>>>>> origin/master
 						widget.attr( 'style', '' );
 						widget.removeClass( 'open' );
 					});
@@ -78,6 +228,10 @@ wpWidgets = {
 			} else if ( target.hasClass('widget-control-close') ) {
 				widget = target.closest('div.widget');
 				widget.removeClass( 'open' );
+<<<<<<< HEAD
+=======
+				toggleBtn.attr( 'aria-expanded', 'false' );
+>>>>>>> origin/master
 				wpWidgets.close( widget );
 				e.preventDefault();
 			} else if ( target.attr( 'id' ) === 'inactive-widgets-control-remove' ) {
@@ -92,7 +246,11 @@ wpWidgets = {
 			wpWidgets.appendTitle( this );
 
 			if ( $this.find( 'p.widget-error' ).length ) {
+<<<<<<< HEAD
 				$this.find( 'a.widget-action' ).trigger('click');
+=======
+				$this.find( '.widget-action' ).trigger( 'click' ).attr( 'aria-expanded', 'true' );
+>>>>>>> origin/master
 			}
 		});
 
@@ -136,7 +294,11 @@ wpWidgets = {
 			/**
 			 * Open Sidebar when a Widget gets dragged over it.
 			 *
+<<<<<<< HEAD
 			 * @param event
+=======
+			 * @param {object} event jQuery event object.
+>>>>>>> origin/master
 			 */
 			over: function( event ) {
 				var $wrap = $( event.target ).parent();
@@ -148,7 +310,13 @@ wpWidgets = {
 
 				if ( $wrap.hasClass( 'closed' ) ) {
 					wpWidgets.hoveredSidebar = $wrap;
+<<<<<<< HEAD
 					$wrap.removeClass( 'closed' );
+=======
+					$wrap
+						.removeClass( 'closed' )
+						.find( '.handlediv' ).attr( 'aria-expanded', 'true' );
+>>>>>>> origin/master
 				}
 
 				$( this ).sortable( 'refresh' );
@@ -157,7 +325,11 @@ wpWidgets = {
 			/**
 			 * Close Sidebar when the Widget gets dragged out of it.
 			 *
+<<<<<<< HEAD
 			 * @param event
+=======
+			 * @param {object} event jQuery event object.
+>>>>>>> origin/master
 			 */
 			out: function( event ) {
 				if ( wpWidgets.hoveredSidebar ) {
@@ -182,6 +354,10 @@ wpWidgets = {
 
 				if ( inside.css('display') === 'block' ) {
 					ui.item.removeClass('open');
+<<<<<<< HEAD
+=======
+					ui.item.find( '.widget-top button.widget-action' ).attr( 'aria-expanded', 'false' );
+>>>>>>> origin/master
 					inside.hide();
 					$(this).sortable('refreshPositions');
 				}
@@ -239,7 +415,14 @@ wpWidgets = {
 				$sidebar = $widget.parent();
 
 				if ( $sidebar.parent().hasClass('closed') ) {
+<<<<<<< HEAD
 					$sidebar.parent().removeClass('closed');
+=======
+					$sidebar.parent()
+						.removeClass( 'closed' )
+						.find( '.handlediv' ).attr( 'aria-expanded', 'true' );
+
+>>>>>>> origin/master
 					$children = $sidebar.children('.widget');
 
 					// Make sure the dropped widget is at the top
@@ -254,7 +437,11 @@ wpWidgets = {
 				}
 
 				if ( addNew ) {
+<<<<<<< HEAD
 					$widget.find( 'a.widget-action' ).trigger('click');
+=======
+					$widget.find( '.widget-action' ).trigger( 'click' );
+>>>>>>> origin/master
 				} else {
 					wpWidgets.saveOrder( $sidebar.attr('id') );
 				}
@@ -396,8 +583,20 @@ wpWidgets = {
 	},
 
 	save : function( widget, del, animate, order ) {
+<<<<<<< HEAD
 		var sidebarId = widget.closest('div.widgets-sortables').attr('id'),
 			data = widget.find('form').serialize(), a;
+=======
+		var self = this, data, a,
+			sidebarId = widget.closest( 'div.widgets-sortables' ).attr( 'id' ),
+			form = widget.find( 'form' );
+
+		if ( ! del && form.prop( 'checkValidity' ) && ! form[0].checkValidity() ) {
+			return;
+		}
+
+		data = form.serialize();
+>>>>>>> origin/master
 
 		widget = $(widget);
 		$( '.spinner', widget ).addClass( 'is-active' );
@@ -415,11 +614,18 @@ wpWidgets = {
 		data += '&' + $.param(a);
 
 		$.post( ajaxurl, data, function(r) {
+<<<<<<< HEAD
 			var id;
 
 			if ( del ) {
 				if ( ! $('input.widget_number', widget).val() ) {
 					id = $('input.widget-id', widget).val();
+=======
+			var id = $('input.widget-id', widget).val();
+
+			if ( del ) {
+				if ( ! $('input.widget_number', widget).val() ) {
+>>>>>>> origin/master
 					$('#available-widgets').find('input.widget-id').each(function(){
 						if ( $(this).val() === id ) {
 							$(this).closest('div.widget').show();
@@ -429,12 +635,23 @@ wpWidgets = {
 
 				if ( animate ) {
 					order = 0;
+<<<<<<< HEAD
 					widget.slideUp('fast', function(){
 						$(this).remove();
 						wpWidgets.saveOrder();
 					});
 				} else {
 					widget.remove();
+=======
+					widget.slideUp( 'fast', function() {
+						$( this ).remove();
+						wpWidgets.saveOrder();
+						delete self.dirtyWidgets[ id ];
+					});
+				} else {
+					widget.remove();
+					delete self.dirtyWidgets[ id ];
+>>>>>>> origin/master
 
 					if ( sidebarId === 'wp_inactive_widgets' ) {
 						$( '#inactive-widgets-control-remove' ).prop( 'disabled' , ! $( '#wp_inactive_widgets .widget' ).length );
@@ -445,6 +662,18 @@ wpWidgets = {
 				if ( r && r.length > 2 ) {
 					$( 'div.widget-content', widget ).html( r );
 					wpWidgets.appendTitle( widget );
+<<<<<<< HEAD
+=======
+
+					// Re-disable the save button.
+					widget.find( '.widget-control-save' ).prop( 'disabled', true ).val( wpWidgets.l10n.saved );
+
+					widget.removeClass( 'widget-dirty' );
+
+					// Clear the dirty flag from the widget.
+					delete self.dirtyWidgets[ id ];
+
+>>>>>>> origin/master
 					$document.trigger( 'widget-updated', [ widget ] );
 
 					if ( sidebarId === 'wp_inactive_widgets' ) {
@@ -460,7 +689,11 @@ wpWidgets = {
 	},
 
 	removeInactiveWidgets : function() {
+<<<<<<< HEAD
 		var $element = $( '.remove-inactive-widgets' ), a, data;
+=======
+		var $element = $( '.remove-inactive-widgets' ), self = this, a, data;
+>>>>>>> origin/master
 
 		$( '.spinner', $element ).addClass( 'is-active' );
 
@@ -472,8 +705,17 @@ wpWidgets = {
 		data = $.param( a );
 
 		$.post( ajaxurl, data, function() {
+<<<<<<< HEAD
 			$( '#wp_inactive_widgets .widget' ).remove();
 			$( '#inactive-widgets-control-remove' ).prop( 'disabled' , true );
+=======
+			$( '#wp_inactive_widgets .widget' ).each(function() {
+				var $widget = $( this );
+				delete self.dirtyWidgets[ $widget.find( 'input.widget-id' ).val() ];
+				$widget.remove();
+			});
+			$( '#inactive-widgets-control-remove' ).prop( 'disabled', true );
+>>>>>>> origin/master
 			$( '.spinner', $element ).removeClass( 'is-active' );
 		} );
 	},
@@ -492,7 +734,14 @@ wpWidgets = {
 
 	close : function(widget) {
 		widget.children('.widget-inside').slideUp('fast', function() {
+<<<<<<< HEAD
 			widget.attr( 'style', '' );
+=======
+			widget.attr( 'style', '' )
+				.find( '.widget-top button.widget-action' )
+					.attr( 'aria-expanded', 'false' )
+					.focus();
+>>>>>>> origin/master
 		});
 	},
 
@@ -524,8 +773,15 @@ wpWidgets = {
 			$( '#' + widgetId ).hide();
 		}
 
+<<<<<<< HEAD
 		// Open the widgets container
 		sidebar.closest( '.widgets-holder-wrap' ).removeClass('closed');
+=======
+		// Open the widgets container.
+		sidebar.closest( '.widgets-holder-wrap' )
+			.removeClass( 'closed' )
+			.find( '.handlediv' ).attr( 'aria-expanded', 'true' );
+>>>>>>> origin/master
 
 		sidebar.append( widget );
 		sidebar.sortable('refresh');
@@ -581,11 +837,22 @@ wpWidgets = {
 	 *
 	 * Used when a Widget gets dragged in/out of the Sidebar and never dropped.
 	 *
+<<<<<<< HEAD
 	 * @param sidebar
 	 */
 	closeSidebar: function( sidebar ) {
 		this.hoveredSidebar.addClass( 'closed' );
 		$( sidebar.target ).css( 'min-height', '' );
+=======
+	 * @param {object} event jQuery event object.
+	 */
+	closeSidebar: function( event ) {
+		this.hoveredSidebar
+			.addClass( 'closed' )
+			.find( '.handlediv' ).attr( 'aria-expanded', 'false' );
+
+		$( event.target ).css( 'min-height', '' );
+>>>>>>> origin/master
 		this.hoveredSidebar = null;
 	}
 };

@@ -16,11 +16,19 @@ list( $display_version ) = explode( '-', get_bloginfo( 'version' ) );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
+<<<<<<< HEAD
 <div class="wrap about-wrap">
 
 <h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
 
 <p class="about-text"><?php printf( __( 'Thank you for updating to the latest version! WordPress %s helps you get your site set up the way you want it.' ), $display_version ); ?></p>
+=======
+<div class="wrap about-wrap full-width-layout">
+
+<h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
+
+<p class="about-text"><?php printf( __( 'Thank you for updating to the latest version! WordPress %s will smooth your design workflow and keep you safe from coding errors.' ), $display_version ); ?></p>
+>>>>>>> origin/master
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -28,8 +36,15 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 	<a href="about.php" class="nav-tab"><?php _e( 'What&#8217;s New' ); ?></a>
 	<a href="credits.php" class="nav-tab nav-tab-active"><?php _e( 'Credits' ); ?></a>
 	<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
+<<<<<<< HEAD
 </h2>
 
+=======
+	<a href="privacy.php" class="nav-tab"><?php _e( 'Privacy' ); ?></a>
+</h2>
+
+<div class="about-wrap-content">
+>>>>>>> origin/master
 <?php
 
 $credits = wp_credits();
@@ -43,6 +58,10 @@ if ( ! $credits ) {
 	);
 	echo '</p>';
 	echo '</div>';
+<<<<<<< HEAD
+=======
+	echo '</div>';
+>>>>>>> origin/master
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
 	exit;
 }
@@ -106,6 +125,10 @@ foreach ( $credits['groups'] as $group_slug => $group_data ) {
 ?></p>
 
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> origin/master
 <?php
 
 include( ABSPATH . 'wp-admin/admin-footer.php' );
@@ -115,7 +138,11 @@ return;
 // These are strings returned by the API that we want to be translatable
 __( 'Project Leaders' );
 __( 'Core Contributors to WordPress %s' );
+<<<<<<< HEAD
 __( 'Contributing Developers' );
+=======
+__( 'Noteworthy Contributors' );
+>>>>>>> origin/master
 __( 'Cofounder, Project Lead' );
 __( 'Lead Developer' );
 __( 'Release Lead' );

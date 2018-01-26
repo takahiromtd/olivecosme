@@ -13,6 +13,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 if ( ! current_user_can( 'manage_sites' ) )
 	wp_die( __( 'Sorry, you are not allowed to manage themes for this site.' ) );
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __('Overview'),
@@ -29,6 +30,10 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __('<a href="https://codex.wordpress.org/Network_Admin_Sites_Screen">Documentation on Site Management</a>') . '</p>' .
 	'<p>' . __('<a href="https://wordpress.org/support/forum/multisite/">Support Forums</a>') . '</p>'
 );
+=======
+get_current_screen()->add_help_tab( get_site_screen_help_tab_args() );
+get_current_screen()->set_help_sidebar( get_site_screen_help_sidebar_content() );
+>>>>>>> origin/master
 
 get_current_screen()->set_screen_reader_content( array(
 	'heading_views'      => __( 'Filter site themes list' ),
@@ -124,20 +129,36 @@ if ( $action ) {
 				check_admin_referer( 'bulk-themes' );
 				$themes = (array) $_POST['checked'];
 				$n = count( $themes );
+<<<<<<< HEAD
+=======
+				$screen = get_current_screen()->id;
+
+>>>>>>> origin/master
 				/**
 				 * Fires when a custom bulk action should be handled.
 				 *
 				 * The redirect link should be modified with success or failure feedback
 				 * from the action to be used to display feedback to the user.
 				 *
+<<<<<<< HEAD
+=======
+				 * The dynamic portion of the hook name, `$screen`, refers to the current screen ID.
+				 *
+>>>>>>> origin/master
 				 * @since 4.7.0
 				 *
 				 * @param string $redirect_url The redirect URL.
 				 * @param string $action       The action being taken.
 				 * @param array  $items        The items to take the action on.
+<<<<<<< HEAD
 				 * @param int    $site_id      The site id.
 				 */
 				$referer = apply_filters( 'handle_network_bulk_actions-' . get_current_screen()->id, $referer, $action, $themes, $id );
+=======
+				 * @param int    $site_id      The site ID.
+				 */
+				$referer = apply_filters( "handle_network_bulk_actions-{$screen}", $referer, $action, $themes, $id );
+>>>>>>> origin/master
 			} else {
 				$action = 'error';
 				$n = 'none';

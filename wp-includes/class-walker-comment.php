@@ -20,7 +20,10 @@ class Walker_Comment extends Walker {
 	 * What the class handles.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 *
 	 * @see Walker::$tree_type
@@ -31,7 +34,10 @@ class Walker_Comment extends Walker {
 	 * Database fields to use.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 *
 	 * @see Walker::$db_fields
@@ -43,12 +49,19 @@ class Walker_Comment extends Walker {
 	 * Starts the list before the elements are added.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::start_lvl()
 	 * @global int $comment_depth
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Optional. Depth of the current comment. Default 0.
 	 * @param array  $args   Optional. Uses 'style' argument for type of HTML list. Default empty array.
 	 */
@@ -72,12 +85,19 @@ class Walker_Comment extends Walker {
 	 * Ends the list of items after the elements are added.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::end_lvl()
 	 * @global int $comment_depth
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Optional. Depth of the current comment. Default 0.
 	 * @param array  $args   Optional. Will only append content if style argument value is 'ol' or 'ul'.
 	 *                       Default empty array.
@@ -118,7 +138,10 @@ class Walker_Comment extends Walker {
 	 *      2.2
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::display_element()
 	 * @see wp_list_comments()
@@ -157,7 +180,10 @@ class Walker_Comment extends Walker {
 	 * Starts the element output.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::start_el()
 	 * @see wp_list_comments()
@@ -201,7 +227,10 @@ class Walker_Comment extends Walker {
 	 * Ends the element output, if needed.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::end_el()
 	 * @see wp_list_comments()
@@ -228,7 +257,10 @@ class Walker_Comment extends Walker {
 	 * Outputs a pingback comment.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @see wp_list_comments()
 	 *
@@ -250,7 +282,10 @@ class Walker_Comment extends Walker {
 	 * Outputs a single comment.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @see wp_list_comments()
 	 *
@@ -314,7 +349,10 @@ class Walker_Comment extends Walker {
 	 * Outputs a comment in the HTML5 format.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @see wp_list_comments()
 	 *

@@ -20,7 +20,10 @@ class Walker_Category extends Walker {
 	 * What the class handles.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 *
 	 * @see Walker::$tree_type
@@ -31,7 +34,10 @@ class Walker_Category extends Walker {
 	 * Database fields to use.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 *
 	 * @see Walker::$db_fields
@@ -43,7 +49,10 @@ class Walker_Category extends Walker {
 	 * Starts the list before the elements are added.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::start_lvl()
 	 *
@@ -64,7 +73,10 @@ class Walker_Category extends Walker {
 	 * Ends the list of after the elements are added.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::end_lvl()
 	 *
@@ -85,11 +97,18 @@ class Walker_Category extends Walker {
 	 * Starts the element output.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @see Walker::start_el()
 	 *
 	 * @param string $output   Passed by reference. Used to append additional content.
+=======
+	 *
+	 * @see Walker::start_el()
+	 *
+	 * @param string $output   Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $category Category data object.
 	 * @param int    $depth    Optional. Depth of category in reference to parents. Default 0.
 	 * @param array  $args     Optional. An array of arguments. See wp_list_categories(). Default empty array.
@@ -215,11 +234,18 @@ class Walker_Category extends Walker {
 	 * Ends the element output, if needed.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @see Walker::end_el()
 	 *
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 *
+	 * @see Walker::end_el()
+	 *
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $page   Not used.
 	 * @param int    $depth  Optional. Depth of category. Not used.
 	 * @param array  $args   Optional. An array of arguments. Only uses 'list' for whether should append

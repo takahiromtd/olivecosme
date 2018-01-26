@@ -28,6 +28,14 @@ if ( ! is_network_admin() ) {
 }
 
 $installed_themes = search_theme_directories();
+<<<<<<< HEAD
+=======
+
+if ( false === $installed_themes ) {
+	$installed_themes = array();
+}
+
+>>>>>>> origin/master
 foreach ( $installed_themes as $k => $v ) {
 	if ( false !== strpos( $k, '/' ) ) {
 		unset( $installed_themes[ $k ] );
@@ -53,11 +61,19 @@ wp_localize_script( 'theme', '_wpThemeSettings', array(
 			__( 'An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="%s">support forums</a>.' ),
 			__( 'https://wordpress.org/support/' )
 		),
+<<<<<<< HEAD
+=======
+		'tryAgain'            => __( 'Try Again' ),
+>>>>>>> origin/master
 		'themesFound'         => __( 'Number of Themes found: %d' ),
 		'noThemesFound'       => __( 'No themes found. Try a different search.' ),
 		'collapseSidebar'     => __( 'Collapse Sidebar' ),
 		'expandSidebar'       => __( 'Expand Sidebar' ),
+<<<<<<< HEAD
 		/* translators: hidden accessibility text */
+=======
+		/* translators: accessibility text */
+>>>>>>> origin/master
 		'selectFeatureFilter' => __( 'Select one or more Theme features to filter by' ),
 	),
 	'installedThemes' => array_keys( $installed_themes ),
@@ -71,7 +87,11 @@ if ( $tab ) {
 	 * Fires before each of the tabs are rendered on the Install Themes page.
 	 *
 	 * The dynamic portion of the hook name, `$tab`, refers to the current
+<<<<<<< HEAD
 	 * theme install tab. Possible values are 'dashboard', 'search', 'upload',
+=======
+	 * theme installation tab. Possible values are 'dashboard', 'search', 'upload',
+>>>>>>> origin/master
 	 * 'featured', 'new', or 'updated'.
 	 *
 	 * @since 2.8.0
@@ -119,8 +139,14 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 
 ?>
 <div class="wrap">
+<<<<<<< HEAD
 	<h1><?php
 	echo esc_html( $title );
+=======
+	<h1 class="wp-heading-inline"><?php echo esc_html( $title ); ?></h1>
+
+	<?php
+>>>>>>> origin/master
 
 	/**
 	 * Filters the tabs shown on the Add Themes screen.
@@ -135,7 +161,14 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 	if ( ! empty( $tabs['upload'] ) && current_user_can( 'upload_themes' ) ) {
 		echo ' <button type="button" class="upload-view-toggle page-title-action hide-if-no-js" aria-expanded="false">' . __( 'Upload Theme' ) . '</button>';
 	}
+<<<<<<< HEAD
 	?></h1>
+=======
+	?>
+
+	<hr class="wp-header-end">
+
+>>>>>>> origin/master
 	<div class="error hide-if-js">
 		<p><?php _e( 'The Theme Installer screen requires JavaScript.' ); ?></p>
 	</div>
@@ -160,7 +193,11 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 
 		<button type="button" class="button drawer-toggle" aria-expanded="false"><?php _e( 'Feature Filter' ); ?></button>
 
+<<<<<<< HEAD
 		<div class="search-form"></div>
+=======
+		<form class="search-form"></form>
+>>>>>>> origin/master
 
 		<div class="favorites-form">
 			<?php
@@ -188,7 +225,11 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 				<button type="button" class="clear-filters button" aria-label="<?php esc_attr_e( 'Clear current filters' ); ?>"><?php _e( 'Clear' ); ?></button>
 			</div>
 		<?php
+<<<<<<< HEAD
 		$feature_list = get_theme_feature_list();
+=======
+		$feature_list = get_theme_feature_list( false ); // Use the core list, rather than the .org API, due to inconsistencies and to ensure tags are translated.
+>>>>>>> origin/master
 		foreach ( $feature_list as $feature_name => $features ) {
 			echo '<fieldset class="filter-group">';
 			$feature_name = esc_html( $feature_name );
@@ -197,7 +238,11 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 			foreach ( $features as $feature => $feature_name ) {
 				$feature = esc_attr( $feature );
 				echo '<input type="checkbox" id="filter-id-' . $feature . '" value="' . $feature . '" /> ';
+<<<<<<< HEAD
 				echo '<label for="filter-id-' . $feature . '">' . $feature_name . '</label><br>';
+=======
+				echo '<label for="filter-id-' . $feature . '">' . $feature_name . '</label>';
+>>>>>>> origin/master
 			}
 			echo '</div>';
 			echo '</fieldset>';
@@ -227,7 +272,11 @@ if ( $tab ) {
 	 * Fires at the top of each of the tabs on the Install Themes page.
 	 *
 	 * The dynamic portion of the hook name, `$tab`, refers to the current
+<<<<<<< HEAD
 	 * theme install tab. Possible values are 'dashboard', 'search', 'upload',
+=======
+	 * theme installation tab. Possible values are 'dashboard', 'search', 'upload',
+>>>>>>> origin/master
 	 * 'featured', 'new', or 'updated'.
 	 *
 	 * @since 2.8.0
@@ -254,6 +303,7 @@ if ( $tab ) {
 		printf( __( 'By %s' ), '{{ data.author }}' );
 		?>
 	</div>
+<<<<<<< HEAD
 	<h3 class="theme-name">{{ data.name }}</h3>
 
 	<div class="theme-actions">
@@ -278,6 +328,35 @@ if ( $tab ) {
 			<a class="button button-primary theme-install" data-name="{{ data.name }}" data-slug="{{ data.id }}" href="{{ data.install_url }}" aria-label="<?php echo esc_attr( $aria_label ); ?>"><?php _e( 'Install' ); ?></a>
 			<button class="button preview install-theme-preview"><?php _e( 'Preview' ); ?></button>
 		<# } #>
+=======
+
+	<div class="theme-id-container">
+		<h3 class="theme-name">{{ data.name }}</h3>
+
+		<div class="theme-actions">
+			<# if ( data.installed ) { #>
+				<?php
+				/* translators: %s: Theme name */
+				$aria_label = sprintf( _x( 'Activate %s', 'theme' ), '{{ data.name }}' );
+				?>
+				<# if ( data.activate_url ) { #>
+					<a class="button button-primary activate" href="{{ data.activate_url }}" aria-label="<?php echo esc_attr( $aria_label ); ?>"><?php _e( 'Activate' ); ?></a>
+				<# } #>
+				<# if ( data.customize_url ) { #>
+					<a class="button load-customize" href="{{ data.customize_url }}"><?php _e( 'Live Preview' ); ?></a>
+				<# } else { #>
+					<button class="button preview install-theme-preview"><?php _e( 'Preview' ); ?></button>
+				<# } #>
+			<# } else { #>
+				<?php
+				/* translators: %s: Theme name */
+				$aria_label = sprintf( __( 'Install %s' ), '{{ data.name }}' );
+				?>
+				<a class="button button-primary theme-install" data-name="{{ data.name }}" data-slug="{{ data.id }}" href="{{ data.install_url }}" aria-label="<?php echo esc_attr( $aria_label ); ?>"><?php _e( 'Install' ); ?></a>
+				<button class="button preview install-theme-preview"><?php _e( 'Preview' ); ?></button>
+			<# } #>
+		</div>
+>>>>>>> origin/master
 	</div>
 
 	<# if ( data.installed ) { #>

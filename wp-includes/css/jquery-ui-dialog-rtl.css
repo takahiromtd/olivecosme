@@ -107,7 +107,10 @@
 	position: absolute;
 	font-size: 0.1px;
 	display: block;
+<<<<<<< HEAD
 	-ms-touch-action: none;
+=======
+>>>>>>> origin/master
 	touch-action: none;
 }
 .ui-resizable-disabled .ui-resizable-handle,
@@ -191,16 +194,24 @@
 	border-width: 1px;
 	border-style: solid;
 	-webkit-appearance: none;
+<<<<<<< HEAD
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	white-space: nowrap;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+=======
+	border-radius: 3px;
+	white-space: nowrap;
+>>>>>>> origin/master
 	box-sizing: border-box;
 	color: #555;
 	border-color: #cccccc;
 	background: #f7f7f7;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 0 #cccccc;
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 0 #cccccc;
  	vertical-align: top;
 }
@@ -226,17 +237,25 @@
 
 .ui-button:focus {
 	border-color: #5b9dd9;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+=======
+>>>>>>> origin/master
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 }
 
 .ui-button:active {
 	background: #eee;
 	border-color: #999;
+<<<<<<< HEAD
 	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	-webkit-transform: translateY(1px);
 	-ms-transform: translateY(1px);
+=======
+	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+	-webkit-transform: translateY(1px);
+>>>>>>> origin/master
 	transform: translateY(1px);
 }
 
@@ -245,12 +264,18 @@
 	color: #a0a5aa !important;
 	border-color: #ddd !important;
 	background: #f7f7f7 !important;
+<<<<<<< HEAD
 	-webkit-box-shadow: none !important;
+=======
+>>>>>>> origin/master
 	box-shadow: none !important;
 	text-shadow: 0 1px 0 #fff !important;
 	cursor: default;
 	-webkit-transform: none !important;
+<<<<<<< HEAD
 	-ms-transform: none !important;
+=======
+>>>>>>> origin/master
 	transform: none !important;
 }
 
@@ -275,7 +300,10 @@
 	right: 0;
 	z-index: 100102;
 	background-color: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+=======
+>>>>>>> origin/master
 	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
 }
 
@@ -292,7 +320,10 @@
 .ui-button.ui-dialog-titlebar-close {
 	background: none;
 	border: none;
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 	color: #666;
 	cursor: pointer;

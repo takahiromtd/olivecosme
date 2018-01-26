@@ -1,4 +1,15 @@
 /* global postboxes, commentL10n */
+<<<<<<< HEAD
+=======
+
+/**
+ * @summary Binds to the document ready event.
+ *
+ * @since 2.5.0
+ *
+ * @param {jQuery} $ The jQuery object.
+ */
+>>>>>>> origin/master
 jQuery(document).ready( function($) {
 
 	postboxes.add_postbox_toggles('comment');
@@ -9,8 +20,22 @@ jQuery(document).ready( function($) {
 		$timestampwrap = $timestampdiv.find( '.timestamp-wrap' ),
 		$edittimestamp = $timestampdiv.siblings( 'a.edit-timestamp' );
 
+<<<<<<< HEAD
 	$edittimestamp.click( function( event ) {
 		if ( $timestampdiv.is( ':hidden' ) ) {
+=======
+	/**
+	 * @summary Adds event that opens the time stamp form if the form is hidden.
+	 *
+	 * @listens $edittimestamp:click
+	 *
+	 * @param {Event} event The event object.
+	 * @returns {void}
+	 */
+	$edittimestamp.click( function( event ) {
+		if ( $timestampdiv.is( ':hidden' ) ) {
+			// Slide down the form and set focus on the first field.
+>>>>>>> origin/master
 			$timestampdiv.slideDown( 'fast', function() {
 				$( 'input, select', $timestampwrap ).first().focus();
 			} );
@@ -19,6 +44,18 @@ jQuery(document).ready( function($) {
 		event.preventDefault();
 	});
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @summary Resets the time stamp values when the cancel button is clicked.
+	 *
+	 * @listens .cancel-timestamp:click
+	 *
+	 * @param {Event} event The event object.
+	 * @returns {void}
+	 */
+
+>>>>>>> origin/master
 	$timestampdiv.find('.cancel-timestamp').click( function( event ) {
 		// Move focus back to the Edit link.
 		$edittimestamp.show().focus();
@@ -32,6 +69,17 @@ jQuery(document).ready( function($) {
 		event.preventDefault();
 	});
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @summary Sets the time stamp values when the ok button is clicked.
+	 *
+	 * @listens .save-timestamp:click
+	 *
+	 * @param {Event} event The event object.
+	 * @returns {void}
+	 */
+>>>>>>> origin/master
 	$timestampdiv.find('.save-timestamp').click( function( event ) { // crazyhorse - multiple ok cancels
 		var aa = $('#aa').val(), mm = $('#mm').val(), jj = $('#jj').val(), hh = $('#hh').val(), mn = $('#mn').val(),
 			newD = new Date( aa, mm - 1, jj, hh, mn );

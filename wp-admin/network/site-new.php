@@ -10,11 +10,20 @@
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 
+<<<<<<< HEAD
 /** WordPress Translation Install API */
 require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
 if ( ! current_user_can( 'manage_sites' ) )
 	wp_die( __( 'Sorry, you are not allowed to add sites to this network.' ) );
+=======
+/** WordPress Translation Installation API */
+require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
+
+if ( ! current_user_can( 'create_sites' ) ) {
+	wp_die( __( 'Sorry, you are not allowed to add sites to this network.' ) );
+}
+>>>>>>> origin/master
 
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
@@ -41,7 +50,11 @@ if ( isset($_REQUEST['action']) && 'add-site' == $_REQUEST['action'] ) {
 	if ( preg_match( '|^([a-zA-Z0-9-])+$|', $blog['domain'] ) )
 		$domain = strtolower( $blog['domain'] );
 
+<<<<<<< HEAD
 	// If not a subdomain install, make sure the domain isn't a reserved word
+=======
+	// If not a subdomain installation, make sure the domain isn't a reserved word
+>>>>>>> origin/master
 	if ( ! is_subdomain_install() ) {
 		$subdirectory_reserved_names = get_subdirectory_reserved_names();
 
@@ -61,11 +74,21 @@ if ( isset($_REQUEST['action']) && 'add-site' == $_REQUEST['action'] ) {
 		'public' => 1
 	);
 
+<<<<<<< HEAD
 	// Handle translation install for the new site.
 	if ( isset( $_POST['WPLANG'] ) ) {
 		if ( '' === $_POST['WPLANG'] ) {
 			$meta['WPLANG'] = ''; // en_US
 		} elseif ( wp_can_install_language_pack() ) {
+=======
+	// Handle translation installation for the new site.
+	if ( isset( $_POST['WPLANG'] ) ) {
+		if ( '' === $_POST['WPLANG'] ) {
+			$meta['WPLANG'] = ''; // en_US
+		} elseif ( in_array( $_POST['WPLANG'], get_available_languages() ) ) {
+			$meta['WPLANG'] = $_POST['WPLANG'];
+		} elseif ( current_user_can( 'install_languages' ) ) {
+>>>>>>> origin/master
 			$language = wp_download_language_pack( wp_unslash( $_POST['WPLANG'] ) );
 			if ( $language ) {
 				$meta['WPLANG'] = $language;
@@ -233,7 +256,11 @@ if ( ! empty( $messages ) ) {
 						'selected'                    => $lang,
 						'languages'                   => $languages,
 						'translations'                => $translations,
+<<<<<<< HEAD
 						'show_available_translations' => wp_can_install_language_pack(),
+=======
+						'show_available_translations' => current_user_can( 'install_languages' ),
+>>>>>>> origin/master
 					) );
 					?>
 				</td>
@@ -244,7 +271,11 @@ if ( ! empty( $messages ) ) {
 			<td><input name="blog[email]" type="email" class="regular-text wp-suggest-user" id="admin-email" data-autocomplete-type="search" data-autocomplete-field="user_email" /></td>
 		</tr>
 		<tr class="form-field">
+<<<<<<< HEAD
 			<td colspan="2"><?php _e( 'A new user will be created if the above email address is not in the database.' ) ?><br /><?php _e( 'The username and password will be mailed to this email address.' ) ?></td>
+=======
+			<td colspan="2"><?php _e( 'A new user will be created if the above email address is not in the database.' ) ?><br /><?php _e( 'The username and a link to set the password will be mailed to this email address.' ) ?></td>
+>>>>>>> origin/master
 		</tr>
 	</table>
 

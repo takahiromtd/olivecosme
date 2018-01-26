@@ -21,7 +21,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Site status list.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $status_list;
@@ -30,7 +33,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Constructor.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_List_Table::__construct() for more information on default arguments.
 	 *
@@ -186,7 +192,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function no_items() {
 		_e( 'No sites found.' );
@@ -207,7 +216,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string $mode
+=======
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 *
 	 * @param string $which
 	 */
@@ -239,7 +252,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		/**
 		 * Filters the displayed site columns in Sites list table.
 		 *
+<<<<<<< HEAD
 		 * @since MU
+=======
+		 * @since MU (3.0.0)
+>>>>>>> origin/master
 		 *
 		 * @param array $sites_columns An array of displayed site columns. Default 'cb',
 		 *                             'blogname', 'lastupdated', 'registered', 'users'.
@@ -262,7 +279,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the checkbox column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -281,7 +301,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the ID column output.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -293,9 +316,14 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the site name column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @global string $mode
+=======
+	 *
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -315,7 +343,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		if ( ! empty( $blog_states ) ) {
 			$state_count = count( $blog_states );
 			$i = 0;
+<<<<<<< HEAD
 			$blog_state .= ' - ';
+=======
+			$blog_state .= ' &mdash; ';
+>>>>>>> origin/master
 			foreach ( $blog_states as $state ) {
 				++$i;
 				$sep = ( $i == $state_count ) ? '' : ', ';
@@ -324,7 +356,14 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		}
 
 		?>
+<<<<<<< HEAD
 		<a href="<?php echo esc_url( network_admin_url( 'site-info.php?id=' . $blog['blog_id'] ) ); ?>" class="edit"><?php echo $blogname . $blog_state; ?></a>
+=======
+		<strong>
+			<a href="<?php echo esc_url( network_admin_url( 'site-info.php?id=' . $blog['blog_id'] ) ); ?>" class="edit"><?php echo $blogname; ?></a>
+			<?php echo $blog_state; ?>
+		</strong>
+>>>>>>> origin/master
 		<?php
 		if ( 'list' !== $mode ) {
 			switch_to_blog( $blog['blog_id'] );
@@ -344,7 +383,12 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the lastupdated column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+	 *
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -364,7 +408,12 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the registered column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+	 *
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -388,7 +437,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the users column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -412,7 +464,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles the plugins column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -423,7 +478,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 			 *
 			 * By default this column is hidden unless something is hooked to the action.
 			 *
+<<<<<<< HEAD
 			 * @since MU
+=======
+			 * @since MU (3.0.0)
+>>>>>>> origin/master
 			 *
 			 * @param int $blog_id The site ID.
 			 */
@@ -435,7 +494,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Handles output for the default column.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array  $blog        Current site.
 	 * @param string $column_name Current column name.
@@ -480,7 +542,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Gets the name of the default primary column.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string Name of the default primary column, in this case, 'blogname'.
 	 */
@@ -492,7 +557,10 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * Generates and displays row action links.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param object $blog        Site being acted upon.
 	 * @param string $column_name Current column name.
@@ -542,7 +610,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 			}
 		}
 
+<<<<<<< HEAD
 		$actions['visit']	= "<a href='" . esc_url( get_home_url( $blog['blog_id'], '/' ) ) . "' rel='permalink'>" . __( 'Visit' ) . '</a>';
+=======
+		$actions['visit']	= "<a href='" . esc_url( get_home_url( $blog['blog_id'], '/' ) ) . "' rel='bookmark'>" . __( 'Visit' ) . '</a>';
+>>>>>>> origin/master
 
 		/**
 		 * Filters the action links displayed for each site in the Sites list table.
@@ -557,7 +629,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		 * @param array  $actions  An array of action links to be displayed.
 		 * @param int    $blog_id  The site ID.
 		 * @param string $blogname Site path, formatted depending on whether it is a sub-domain
+<<<<<<< HEAD
 		 *                         or subdirectory multisite install.
+=======
+		 *                         or subdirectory multisite installation.
+>>>>>>> origin/master
 		 */
 		$actions = apply_filters( 'manage_sites_action_links', array_filter( $actions ), $blog['blog_id'], $blogname );
 		return $this->row_actions( $actions );

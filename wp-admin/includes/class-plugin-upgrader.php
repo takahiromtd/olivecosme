@@ -24,7 +24,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 * Plugin upgrade result.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array|WP_Error $result
 	 *
 	 * @see WP_Upgrader::$result
@@ -32,10 +35,16 @@ class Plugin_Upgrader extends WP_Upgrader {
 	public $result;
 
 	/**
+<<<<<<< HEAD
 	 * Whether a bulk upgrade/install is being performed.
 	 *
 	 * @since 2.9.0
 	 * @access public
+=======
+	 * Whether a bulk upgrade/installation is being performed.
+	 *
+	 * @since 2.9.0
+>>>>>>> origin/master
 	 * @var bool $bulk
 	 */
 	public $bulk = false;
@@ -44,12 +53,20 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 * Initialize the upgrade strings.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function upgrade_strings() {
 		$this->strings['up_to_date'] = __('The plugin is at the latest version.');
 		$this->strings['no_package'] = __('Update package not available.');
+<<<<<<< HEAD
 		$this->strings['downloading_package'] = __('Downloading update from <span class="code">%s</span>&#8230;');
+=======
+		/* translators: %s: package URL */
+		$this->strings['downloading_package'] = sprintf( __( 'Downloading update from %s&#8230;' ), '<span class="code">%s</span>' );
+>>>>>>> origin/master
 		$this->strings['unpack_package'] = __('Unpacking the update&#8230;');
 		$this->strings['remove_old'] = __('Removing the old version of the plugin&#8230;');
 		$this->strings['remove_old_failed'] = __('Could not remove the old plugin.');
@@ -59,6 +76,7 @@ class Plugin_Upgrader extends WP_Upgrader {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Initialize the install strings.
 	 *
 	 * @since 2.8.0
@@ -71,6 +89,20 @@ class Plugin_Upgrader extends WP_Upgrader {
 		$this->strings['installing_package'] = __('Installing the plugin&#8230;');
 		$this->strings['no_files'] = __('The plugin contains no files.');
 		$this->strings['process_failed'] = __('Plugin install failed.');
+=======
+	 * Initialize the installation strings.
+	 *
+	 * @since 2.8.0
+	 */
+	public function install_strings() {
+		$this->strings['no_package'] = __('Installation package not available.');
+		/* translators: %s: package URL */
+		$this->strings['downloading_package'] = sprintf( __( 'Downloading installation package from %s&#8230;' ), '<span class="code">%s</span>' );
+		$this->strings['unpack_package'] = __('Unpacking the package&#8230;');
+		$this->strings['installing_package'] = __('Installing the plugin&#8230;');
+		$this->strings['no_files'] = __('The plugin contains no files.');
+		$this->strings['process_failed'] = __('Plugin installation failed.');
+>>>>>>> origin/master
 		$this->strings['process_success'] = __('Plugin installed successfully.');
 	}
 
@@ -79,7 +111,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the plugin update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $package The full local path or URI of the package.
 	 * @param array  $args {
@@ -88,7 +123,11 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 *     @type bool $clear_update_cache Whether to clear the plugin updates cache if successful.
 	 *                                    Default true.
 	 * }
+<<<<<<< HEAD
 	 * @return bool|WP_Error True if the install was successful, false or a WP_Error otherwise.
+=======
+	 * @return bool|WP_Error True if the installation was successful, false or a WP_Error otherwise.
+>>>>>>> origin/master
 	 */
 	public function install( $package, $args = array() ) {
 
@@ -134,7 +173,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the plugin update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $plugin The basename path to the main plugin file.
 	 * @param array  $args {
@@ -206,7 +248,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 3.7.0 The `$args` parameter was added, making clearing the plugin update cache optional.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $plugins Array of the basename paths of the plugins' main files.
 	 * @param array $args {
@@ -325,7 +370,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 * Plugin_Upgrader::install().
 	 *
 	 * @since 3.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem Subclass
 	 *
@@ -368,7 +416,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 * This isn't used internally in the class, but is called by the skins.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string|false The full path to the main plugin file, or false.
 	 */
@@ -394,7 +445,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 *
 	 * @since 2.8.0
 	 * @since 4.1.0 Added a return value.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param bool|WP_Error  $return Upgrade offer return.
 	 * @param array          $plugin Plugin package arguments.
@@ -406,7 +460,11 @@ class Plugin_Upgrader extends WP_Upgrader {
 			return $return;
 
 		// When in cron (background updates) don't deactivate the plugin, as we require a browser to reactivate it
+<<<<<<< HEAD
 		if ( defined( 'DOING_CRON' ) && DOING_CRON )
+=======
+		if ( wp_doing_cron() )
+>>>>>>> origin/master
 			return $return;
 
 		$plugin = isset($plugin['plugin']) ? $plugin['plugin'] : '';
@@ -428,7 +486,10 @@ class Plugin_Upgrader extends WP_Upgrader {
 	 * Plugin_Upgrader::upgrade() and Plugin_Upgrader::bulk_upgrade().
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem Subclass
      *

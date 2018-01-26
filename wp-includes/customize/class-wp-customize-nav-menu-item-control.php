@@ -18,7 +18,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * Control type.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $type = 'nav_menu_item';
@@ -27,7 +30,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * The nav menu item setting.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var WP_Customize_Nav_Menu_Item_Setting
 	 */
 	public $setting;
@@ -36,7 +42,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * Constructor.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_Customize_Control::__construct()
 	 *
@@ -52,7 +61,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * Don't render the control's content - it's rendered with a JS template.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function render_content() {}
 
@@ -60,7 +72,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * JS/Underscore template for the control UI.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function content_template() {
 		?>
@@ -141,7 +156,11 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 				</p>
 				<# } #>
 
+<<<<<<< HEAD
 				<button type="button" class="button-link item-delete submitdelete deletion"><?php _e( 'Remove' ); ?></button>
+=======
+				<button type="button" class="button-link button-link-delete item-delete submitdelete deletion"><?php _e( 'Remove' ); ?></button>
+>>>>>>> origin/master
 				<span class="spinner"></span>
 			</div>
 			<input type="hidden" name="menu-item-db-id[{{ data.menu_item_id }}]" class="menu-item-data-db-id" value="{{ data.menu_item_id }}" />
@@ -155,7 +174,10 @@ class WP_Customize_Nav_Menu_Item_Control extends WP_Customize_Control {
 	 * Return parameters for this control.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Exported parameters.
 	 */

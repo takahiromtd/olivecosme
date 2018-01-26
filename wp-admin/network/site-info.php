@@ -14,6 +14,7 @@ if ( ! current_user_can( 'manage_sites' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to edit this site.' ) );
 }
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',
 	'title'   => __( 'Overview' ),
@@ -30,6 +31,10 @@ get_current_screen()->set_help_sidebar(
 	'<p>' . __( '<a href="https://codex.wordpress.org/Network_Admin_Sites_Screen">Documentation on Site Management</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://wordpress.org/support/forum/multisite/">Support Forums</a>' ) . '</p>'
 );
+=======
+get_current_screen()->add_help_tab( get_site_screen_help_tab_args() );
+get_current_screen()->set_help_sidebar( get_site_screen_help_sidebar_content() );
+>>>>>>> origin/master
 
 $id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
 
@@ -162,7 +167,11 @@ if ( ! empty( $messages ) ) {
 		if ( $is_main_site ) : ?>
 		<tr class="form-field">
 			<th scope="row"><?php _e( 'Site Address (URL)' ); ?></th>
+<<<<<<< HEAD
 			<td><?php echo esc_url( $details->domain . $details->path ); ?></td>
+=======
+			<td><?php echo esc_url( $parsed_scheme . '://' . $details->domain . $details->path ); ?></td>
+>>>>>>> origin/master
 		</tr>
 		<?php
 		// For any other site, the scheme, domain, and path can all be changed.

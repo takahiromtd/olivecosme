@@ -100,8 +100,11 @@ input#link_url {
 	margin-left: 10px;
 	padding: 0;
 	font-size: 11px;
+<<<<<<< HEAD
 	text-decoration: underline;
 	color: #0073aa;
+=======
+>>>>>>> origin/master
 }
 
 #comment-link-box {
@@ -120,7 +123,11 @@ input#link_url {
 #editable-post-name input {
 	font-size: 13px;
 	font-weight: 400;
+<<<<<<< HEAD
 	height: 22px;
+=======
+	height: 24px;
+>>>>>>> origin/master
 	margin: 0;
 	width: 16em;
 }
@@ -156,7 +163,10 @@ body.post-new-php .submitbox .submitdelete {
 	position: relative;
 	min-width: 255px;
 	border: 1px solid #e5e5e5;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	background: #fff;
 }
@@ -281,10 +291,15 @@ ul.wp-tab-bar li {
 	height: auto;
 	width: auto;
 	vertical-align: top;
+<<<<<<< HEAD
 	background-image: -webkit-linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), -webkit-linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
 	background-image: linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
 	background-position: 100% 0, 10px 10px;
 	-webkit-background-size: 20px 20px;
+=======
+	background-image: linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4), linear-gradient(-45deg, #c4c4c4 25%, transparent 25%, transparent 75%, #c4c4c4 75%, #c4c4c4);
+	background-position: 100% 0, 10px 10px;
+>>>>>>> origin/master
 	background-size: 20px 20px;
 }
 
@@ -317,7 +332,10 @@ form#tags-filter {
 	border: 1px solid #e5e5e5;
 	border-top: none;
 	background-color: #f7f7f7;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	z-index: 999;
 }
@@ -370,7 +388,10 @@ form#tags-filter {
 }
 
 .wp-editor-expand #wp-content-editor-container {
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 	margin-top: -1px;
 }
@@ -513,7 +534,10 @@ span.wp-media-buttons-icon:before {
 	width: 450px;
 	margin-right: -225px;
 	background: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
+=======
+>>>>>>> origin/master
 	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
 	line-height: 1.5;
 	z-index: 1000005;
@@ -537,7 +561,12 @@ span.wp-media-buttons-icon:before {
 	margin: 25px;
 }
 
+<<<<<<< HEAD
 #post-lock-dialog .post-locked-message a.button {
+=======
+#post-lock-dialog .post-locked-message a.button,
+#file-editor-warning .button {
+>>>>>>> origin/master
 	margin-left: 10px;
 }
 
@@ -582,7 +611,11 @@ span.wp-media-buttons-icon:before {
 	position: absolute;
 }
 
+<<<<<<< HEAD
 .tagchecklist > span {
+=======
+.tagchecklist > li {
+>>>>>>> origin/master
 	float: right;
 	margin-left: 25px;
 	font-size: 13px;
@@ -797,7 +830,10 @@ span.wp-media-buttons-icon:before {
 .post-state-format:before,
 .post-format-icon:before {
 	color: #ddd;
+<<<<<<< HEAD
 	-webkit-transition: all .1s ease-in-out;
+=======
+>>>>>>> origin/master
 	transition: all .1s ease-in-out;
 }
 
@@ -1035,6 +1071,7 @@ span.description,
 	width: 260px;
 }
 
+<<<<<<< HEAD
 .tagcloud-link.button-link {
 	color: #0073aa;
 	text-decoration: underline;
@@ -1054,6 +1091,8 @@ span.description,
 		0 0 2px 1px rgba(30, 140, 190, .8);
 }
 
+=======
+>>>>>>> origin/master
 #post-body-content .tagsdiv .the-tags {
 	margin: 0 5px;
 }
@@ -1079,6 +1118,17 @@ p.popular-tags a {
 	margin: 2px 0 12px;
 }
 
+<<<<<<< HEAD
+=======
+.the-tagcloud ul {
+	margin: 0;
+}
+
+.the-tagcloud ul li {
+	display: inline-block;
+}
+
+>>>>>>> origin/master
 /* Suggest.js autocomplete, no more used by core. */
 .ac_results {
 	display: none;
@@ -1113,6 +1163,20 @@ p.popular-tags a {
 	text-decoration: underline;
 }
 
+<<<<<<< HEAD
+=======
+#edittag {
+	max-width: 800px;
+}
+
+.edit-tag-actions {
+	margin-top: 20px;
+	overflow: hidden;
+	padding: 10px;
+	margin-left: 10px;
+}
+
+>>>>>>> origin/master
 /* Comments */
 
 .comment-php .wp-editor-area {
@@ -1240,11 +1304,16 @@ table.links-table {
 .focus-on #screen-meta-links,
 .focus-on #screen-meta {
 	opacity: 0;
+<<<<<<< HEAD
 	-webkit-transition-duration: 0.6s;
 	transition-duration: 0.6s;
 	-webkit-transition-property: opacity;
 	transition-property: opacity;
 	-webkit-transition-timing-function: ease-in-out;
+=======
+	transition-duration: 0.6s;
+	transition-property: opacity;
+>>>>>>> origin/master
 	transition-timing-function: ease-in-out;
 }
 
@@ -1264,11 +1333,16 @@ table.links-table {
 .focus-off #screen-meta-links,
 .focus-off #screen-meta {
 	opacity: 1;
+<<<<<<< HEAD
 	-webkit-transition-duration: 0.2s;
 	transition-duration: 0.2s;
 	-webkit-transition-property: opacity;
 	transition-property: opacity;
 	-webkit-transition-timing-function: ease-in-out;
+=======
+	transition-duration: 0.2s;
+	transition-property: opacity;
+>>>>>>> origin/master
 	transition-timing-function: ease-in-out;
 }
 
@@ -1278,6 +1352,7 @@ table.links-table {
 
 .focus-on #adminmenuback,
 .focus-on #adminmenuwrap {
+<<<<<<< HEAD
 	-webkit-transition-duration: 0.6s;
 	transition-duration: 0.6s;
 	-webkit-transition-property: -webkit-transform;
@@ -1285,19 +1360,29 @@ table.links-table {
 	transition-property: transform;
 	transition-property: transform, -webkit-transform;
 	-webkit-transition-timing-function: ease-in-out;
+=======
+	transition-duration: 0.6s;
+	transition-property: -webkit-transform;
+	transition-property: transform;
+	transition-property: transform, -webkit-transform;
+>>>>>>> origin/master
 	transition-timing-function: ease-in-out;
 }
 
 .focus-on #adminmenuback,
 .focus-on #adminmenuwrap {
 	-webkit-transform: translateX( 100% );
+<<<<<<< HEAD
 	-ms-transform: translateX( 100% );
+=======
+>>>>>>> origin/master
 	transform: translateX( 100% );
 }
 
 .focus-off #adminmenuback,
 .focus-off #adminmenuwrap {
 	-webkit-transform: translateX( 0 );
+<<<<<<< HEAD
 	-ms-transform: translateX( 0 );
 	transform: translateX( 0 );
 	-webkit-transition-duration: 0.2s;
@@ -1307,6 +1392,13 @@ table.links-table {
 	transition-property: transform;
 	transition-property: transform, -webkit-transform;
 	-webkit-transition-timing-function: ease-in-out;
+=======
+	transform: translateX( 0 );
+	transition-duration: 0.2s;
+	transition-property: -webkit-transform;
+	transition-property: transform;
+	transition-property: transform, -webkit-transform;
+>>>>>>> origin/master
 	transition-timing-function: ease-in-out;
 }
 
@@ -1322,7 +1414,10 @@ table.links-table {
 	#content-resize-handle,
 	#post-body .wp_themeSkin .mceStatusbar a.mceResize {
 		background: transparent url(../images/resize-2x.gif) no-repeat scroll left bottom;
+<<<<<<< HEAD
 		-webkit-background-size: 11px 11px;
+=======
+>>>>>>> origin/master
 		background-size: 11px 11px;
 	}
 
@@ -1369,6 +1464,13 @@ table.links-table {
 }
 
 @media screen and ( max-width: 782px ) {
+<<<<<<< HEAD
+=======
+	.wp-core-ui .edit-tag-actions .button-primary {
+		margin-bottom: 0;
+	}
+
+>>>>>>> origin/master
 	#post-body-content {
 		min-width: 0;
 	}
@@ -1468,7 +1570,11 @@ table.links-table {
 		margin: 25px 10px;
 	}
 
+<<<<<<< HEAD
 	.tagchecklist > span {
+=======
+	.tagchecklist > li {
+>>>>>>> origin/master
 		font-size: 16px;
 		line-height: 1.4;
 	}

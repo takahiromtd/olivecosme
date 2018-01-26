@@ -23,7 +23,10 @@
 	top: 0;
 	height: 82px;
 	background: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -33,8 +36,11 @@
 	height: 0.7em;
 	top: 7px;
 	max-width: 70%;
+<<<<<<< HEAD
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+=======
+>>>>>>> origin/master
 	box-sizing: border-box;
 	background-color: #fff;
 }
@@ -43,8 +49,11 @@
 	position: absolute;
 	height: 100%;
 	border-left: 1px solid #a0a5aa;
+<<<<<<< HEAD
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+=======
+>>>>>>> origin/master
 	box-sizing: border-box;
 }
 
@@ -77,12 +86,18 @@
 	vertical-align: middle;
 	opacity: 0;
 	width: 100%;
+<<<<<<< HEAD
 	width: -webkit-calc( 100% - 30px );
 	width: calc( 100% - 30px );
 	top: 50%;
 	top: -webkit-calc( 50% - 10px );
 	top: calc( 50% - 10px );
 	-webkit-transition: opacity 0.5s;
+=======
+	width: calc( 100% - 30px );
+	top: 50%;
+	top: calc( 50% - 10px );
+>>>>>>> origin/master
 	transition: opacity 0.5s;
 	filter: alpha(opacity=0); /* ie8 and earlier */
 }
@@ -103,7 +118,10 @@ body.folded .revisions .loading-indicator {
 }
 
 .revisions .diff {
+<<<<<<< HEAD
 	-webkit-transition: opacity 0.5s;
+=======
+>>>>>>> origin/master
 	transition: opacity 0.5s;
 }
 
@@ -119,12 +137,18 @@ body.folded .revisions .loading-indicator {
 .revisions-meta {
 	margin-top: 20px;
 	background-color: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .revisions.pinned .revisions-meta {
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 }
 
@@ -183,7 +207,10 @@ body.folded .revisions .loading-indicator {
 .revisions-diff {
 	padding: 15px;
 	background-color: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -368,7 +395,10 @@ table.diff .diff-addedline ins {
 	width: 25px;
 	height: 25px;
 	-webkit-transform: rotate(45deg);
+<<<<<<< HEAD
 	-ms-transform: rotate(45deg);
+=======
+>>>>>>> origin/master
 	transform: rotate(45deg);
 }
 
@@ -411,7 +441,10 @@ table.diff .diff-addedline ins {
 .arrow:after {
 	z-index: 9999;
 	background-color: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -432,7 +465,10 @@ table.diff .diff-addedline ins {
 	width: 25px;
 	height: 25px;
 	-webkit-transform: rotate(45deg);
+<<<<<<< HEAD
 	-ms-transform: rotate(45deg);
+=======
+>>>>>>> origin/master
 	transform: rotate(45deg);
 }
 
@@ -459,7 +495,10 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 }
 
 .wp-slider .ui-slider-handle {
+<<<<<<< HEAD
 	-webkit-border-radius: 50%;
+=======
+>>>>>>> origin/master
 	border-radius: 50%;
 	height: 18px;
 	margin-top: -5px;
@@ -468,7 +507,10 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 	position: absolute;
 	width: 18px;
 	z-index: 2;
+<<<<<<< HEAD
 	-ms-touch-action: none;
+=======
+>>>>>>> origin/master
 	touch-action: none;
 }
 
@@ -476,7 +518,10 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 .wp-slider .ui-slider-handle.focus {
 	background: #f7f7f7;
 	border: 1px solid #ccc;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 0 #cccccc;
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 0 #cccccc;
 }
 
@@ -490,10 +535,15 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 .wp-slider .ui-slider-handle.ui-state-active {
 	background: #eee;
 	border-color: #999;
+<<<<<<< HEAD
  	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
  	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
  	-webkit-transform: translateY(1px);
  	-ms-transform: translateY(1px);
+=======
+ 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+ 	-webkit-transform: translateY(1px);
+>>>>>>> origin/master
  	transform: translateY(1px);
 }
 

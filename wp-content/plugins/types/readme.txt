@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 === Toolset Types ===
+=======
+=== Toolset Types - Custom Post Types, Custom Fields and Taxonomies ===
+>>>>>>> origin/master
 Contributors: AmirHelzer, brucepearson, christianglingener, jadpm, zaantar
 Donate link: http://wp-types.com
 Tags: CMS, custom field, custom fields, custom post type, custom post types, field, fields post, post type, post types, taxonomies, taxonomy, toolset
@@ -6,14 +10,23 @@ Text Domain: wpcf
 Domain Path: /embedded/locale
 License: GPLv2
 Requires at least: 3.7
+<<<<<<< HEAD
 Tested up to: 4.7.3
 Stable tag: 2.2.9
+=======
+Tested up to: 4.9
+Stable tag: 2.2.21
+>>>>>>> origin/master
 
 The complete and reliable plugin for managing custom post types, custom taxonomies and custom fields.
 
 == Description ==
 
+<<<<<<< HEAD
 **Types let's you customize the WordPress admin by adding content types, custom fields and taxonomies. You will be able to craft the WordPress admin and turn it into your very own content management system.**
+=======
+**Toolset Types let’s you add custom post types, custom fields and custom taxonomies to the WordPress admin. A convenient dashboard lets you control everything from one place.**
+>>>>>>> origin/master
 
 [vimeo https://vimeo.com/176428571]
 
@@ -145,6 +158,7 @@ Additionally, Types is the only plugin that lets you define parent/child relatio
 
 == Screenshots ==
 
+<<<<<<< HEAD
 1. Post Types list
 2. Custom Taxonomies list
 3. Edit Post Type
@@ -157,6 +171,75 @@ Additionally, Types is the only plugin that lets you define parent/child relatio
 
 == Changelog ==
 
+=======
+1. Toolset Dashboard
+2. Post Types list
+3. Custom Taxonomies list
+4. Edit Post Type
+5. Edit Taxonomy
+6. Editing post field group
+7. Editing user field group
+8. Inserting custom fields to content
+9. Custom fields on the post editing page
+10. Bulk editing child content using Field Tables
+
+== Changelog ==
+
+= 2.2.21 =
+* Fixed a compatibility issue with Beaver Builder
+* Fixed an issue with extra backslashes when using quotes in field name
+* Removed the Toolset overlay while saving
+* Removed the dependency of GLOB_BRACE
+
+= 2.2.20 =
+* Fixed an issue that field title was not available on filter "wpt_field_options"
+* Fixed an issue with the background when resizing transparent indexed colored PNGs
+* Fixed an issue with special character entities import
+
+= 2.2.19 =
+* Fixed an issue when using 3rd party shortcodes on the WYSIWYG field
+
+= 2.2.18 =
+* Fixed an issue when adding option to checkbox / radio / select field
+* Fixed an issue with Custom Post Types loading (since WordPress 4.8.2)
+
+= 2.2.17 =
+* Fixed an issue when saving field conditional while the latest version of Views was active.
+* Updated the list of WordPress reserved names.
+* Fixed a formatting issue when using a WYSIWYG field in Content Templates.
+
+= 2.2.16 =
+* Fixed a bug with numeric validation used a different decimal sign than a dot.
+* Fixed a compatibility issue with the The7 theme.
+* Display an admin message if there are other Toolset plugins that are not registered. This should not affect local and staging sites.
+
+= 2.2.15.1 =
+* Fixed a bug that caused WCML to request registration in order to receive updates.
+
+= 2.2.15 =
+* Fixed a bug that caused Types to request registration in order to receive updates.
+
+= 2.2.14 =
+* Improved translations
+* Fixed notice in term listing page when image field URL is not valid
+
+= 2.2.13 =
+* Fixed an issue between the Image field and databases using utf8mb4 character set
+
+= 2.2.12 =
+* Improved the performance of the Image field.
+
+= 2.2.11 =
+* Removed notices, to push users to activate Layouts theme integration plugins based on the current theme
+* Added filter to remove/add automatic notices on demand
+
+= 2.2.10 =
+* Compatibility changes for CRED 1.9
+* Updated Font Awesome to version 4.7.0
+* Fixed broken link in parent relationship table on unpublished posts
+* Fixed a compatibility issue with Soliloquy Slider
+
+>>>>>>> origin/master
 = 2.2.9 =
 * Added the feature to display posts and pages in Toolset dashboard by default.
 * Added the ability to set the purpose of a View or a WordPress Archive, when creating from the Toolset Dashboard.

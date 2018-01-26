@@ -11,6 +11,11 @@
  * handle and implement future compatibility issues and it will
  * reduce memory usage by loading the code only when needed.
  *
+<<<<<<< HEAD
+=======
+ * Use this as a singleton in production code.
+ *
+>>>>>>> origin/master
  * @since 2.2.7
  */
 class Types_Interop_Mediator {
@@ -18,14 +23,21 @@ class Types_Interop_Mediator {
 	private static $instance;
 
 	public static function initialize() {
+<<<<<<< HEAD
 		if( null === self::$instance ) {
 			self::$instance = new self();
+=======
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+			self::$instance->initialize_interop_handlers();
+>>>>>>> origin/master
 		}
 
 		// Not giving away the instance on purpose
 	}
 
 
+<<<<<<< HEAD
 	private function __clone() { }
 
 	private function __construct() {
@@ -33,6 +45,8 @@ class Types_Interop_Mediator {
 	}
 
 
+=======
+>>>>>>> origin/master
 	/**
 	 * Get definitions of all interop handlers.
 	 *
@@ -51,13 +65,25 @@ class Types_Interop_Mediator {
 				'class_name' => 'Wpml'
 			),
 			array(
+<<<<<<< HEAD
 				'is_needed' => array( $this, 'is_divi_active'),
+=======
+				'is_needed' => array( $this, 'is_divi_active' ),
+>>>>>>> origin/master
 				'class_name' => 'Divi'
 			),
 			array(
 				'is_needed' => array( $this, 'is_use_any_font_active' ),
 				'class_name' => 'Use_Any_Font'
+<<<<<<< HEAD
 			)
+=======
+			),
+			array(
+				'is_needed' => array( $this, 'is_the7_active' ),
+				'class_name' => 'The7'
+			),
+>>>>>>> origin/master
 		);
 
 		return $interop_handlers;
@@ -69,6 +95,7 @@ class Types_Interop_Mediator {
 	 *
 	 * @since 2.2.7
 	 */
+<<<<<<< HEAD
 	private function initialize_interop_handlers() {
 
 		$interop_handlers = $this->get_interop_handler_definitions();
@@ -76,6 +103,23 @@ class Types_Interop_Mediator {
 			$is_needed = call_user_func( $handler_definition['is_needed'] );
 
 			if( $is_needed ) {
+=======
+	public function initialize_interop_handlers() {
+
+		/**
+		 * types_get_interop_handler_definitions
+		 *
+		 * Allows for adjusting interop handlers. See Types_Interop_Mediator::get_interop_handler_definitions() for details.
+		 *
+		 * @since 2.2.17
+		 */
+		$interop_handlers = apply_filters( 'types_get_interop_handler_definitions', $this->get_interop_handler_definitions() );
+
+		foreach ( $interop_handlers as $handler_definition ) {
+			$is_needed = call_user_func( $handler_definition['is_needed'] );
+
+			if ( $is_needed ) {
+>>>>>>> origin/master
 				$handler_class_name = 'Types_Interop_Handler_' . $handler_definition['class_name'];
 				call_user_func( $handler_class_name . '::initialize' );
 			}
@@ -113,8 +157,83 @@ class Types_Interop_Mediator {
 	}
 
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Check whether the The7 theme is loaded.
+	 *
+	 * @return bool
+	 */
+	protected function is_the7_active() {
+		return ( 'the7' === $this->get_parent_theme_slug() );
+	}
+
+
+	/**
+	 * Check whether the Use Any Font plugin is loaded.
+	 *
+	 * @return bool
+	 */
+>>>>>>> origin/master
 	protected function is_use_any_font_active() {
 		return function_exists( 'uaf_activate' );
 	}
 
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Retrieve a "slugized" theme name.
+	 *
+	 * @return string
+	 * @since 2.2.16
+	 */
+	private function get_parent_theme_slug() {
+
+		/**
+		 * @var WP_Theme|null $theme It should be WP_Theme but experience tells us that sometimes the theme
+		 * manages to send an invalid value our way.
+		 */
+		$theme = wp_get_theme();
+
+		if( ! $theme instanceof WP_Theme ) {
+			// Something went wrong but we'll try to recover.
+			$theme_name = $this->get_theme_name_from_stylesheet();
+		} elseif ( is_child_theme() ) {
+
+			$parent_theme = $theme->parent();
+
+			// Because is_child_theme() can return true while $theme->parent() still returns false, oh dear god.
+			if( ! $parent_theme instanceof WP_Theme ) {
+				$theme_name = $this->get_theme_name_from_stylesheet();
+			} else {
+				$theme_name = $parent_theme->get( 'Name' );
+			}
+		} else {
+			$theme_name = $theme->get( 'Name' );
+		}
+
+		// Handle $theme->get() returning false when the Name header is not set.
+		if( false === $theme_name ) {
+			return '';
+		}
+
+		$slug = str_replace( '-', '_', sanitize_title( $theme_name ) );
+
+		return $slug;
+	}
+
+
+	private function get_theme_name_from_stylesheet() {
+		$theme_name = '';
+
+		$stylesheet = get_stylesheet();
+		if( is_string( $stylesheet ) && ! empty( $stylesheet ) ) {
+			$theme_name = $stylesheet;
+		}
+
+		return $theme_name;
+	}
+
+>>>>>>> origin/master
 }

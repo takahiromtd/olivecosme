@@ -29,7 +29,10 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 * Constructor.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_List_Table::__construct() for more information on default arguments.
 	 *
@@ -247,7 +250,15 @@ class WP_Comments_List_Table extends WP_List_Table {
 			$link = add_query_arg( 'comment_type', $comment_type, $link );
 
 		foreach ( $stati as $status => $label ) {
+<<<<<<< HEAD
 			$class = ( $status === $comment_status ) ? ' class="current"' : '';
+=======
+			$current_link_attributes = '';
+
+			if ( $status === $comment_status ) {
+				$current_link_attributes = ' class="current" aria-current="page"';
+			}
+>>>>>>> origin/master
 
 			if ( !isset( $num_comments->$status ) )
 				$num_comments->$status = 10;
@@ -259,7 +270,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 			if ( !empty( $_REQUEST['s'] ) )
 				$link = add_query_arg( 's', esc_attr( wp_unslash( $_REQUEST['s'] ) ), $link );
 			*/
+<<<<<<< HEAD
 			$status_links[ $status ] = "<a href='$link'$class>" . sprintf(
+=======
+			$status_links[ $status ] = "<a href='$link'$current_link_attributes>" . sprintf(
+>>>>>>> origin/master
 				translate_nooped_plural( $label, $num_comments->$status ),
 				sprintf( '<span class="%s-count">%s</span>',
 					( 'moderated' === $status ) ? 'pending' : $status,
@@ -319,6 +334,14 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 */
 	protected function extra_tablenav( $which ) {
 		global $comment_status, $comment_type;
+<<<<<<< HEAD
+=======
+		static $has_items;
+
+		if ( ! isset( $has_items ) ) {
+			$has_items = $this->has_items();
+		}
+>>>>>>> origin/master
 ?>
 		<div class="alignleft actions">
 <?php
@@ -354,7 +377,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 			submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
 		}
 
+<<<<<<< HEAD
 		if ( ( 'spam' === $comment_status || 'trash' === $comment_status ) && current_user_can( 'moderate_comments' ) ) {
+=======
+		if ( ( 'spam' === $comment_status || 'trash' === $comment_status ) && current_user_can( 'moderate_comments' ) && $has_items ) {
+>>>>>>> origin/master
 			wp_nonce_field( 'bulk-destroy', '_destroy_nonce' );
 			$title = ( 'spam' === $comment_status ) ? esc_attr__( 'Empty Spam' ) : esc_attr__( 'Empty Trash' );
 			submit_button( $title, 'apply', 'delete_all', false );
@@ -423,7 +450,10 @@ class WP_Comments_List_Table extends WP_List_Table {
 	 * Get the name of the default primary column.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string Name of the default primary column, in this case, 'comment'.
 	 */
@@ -432,7 +462,10 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
@@ -505,7 +538,10 @@ class WP_Comments_List_Table extends WP_List_Table {
  	 * Generate and display row actions links.
  	 *
  	 * @since 4.3.0
+<<<<<<< HEAD
  	 * @access protected
+=======
+>>>>>>> origin/master
  	 *
  	 * @global string $comment_status Status for the current listed comments.
  	 *
@@ -690,7 +726,11 @@ class WP_Comments_List_Table extends WP_List_Table {
 
 		if ( $this->user_can ) {
 			if ( ! empty( $comment->comment_author_email ) ) {
+<<<<<<< HEAD
 				/* This filter is documented in wp-includes/comment-template.php */
+=======
+				/** This filter is documented in wp-includes/comment-template.php */
+>>>>>>> origin/master
 				$email = apply_filters( 'comment_email', $comment->comment_author_email, $comment );
 
 				if ( ! empty( $email ) && '@' !== $email ) {
@@ -710,7 +750,10 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_Comment $comment The comment object.
 	 */
@@ -736,7 +779,10 @@ class WP_Comments_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_Comment $comment The comment object.
 	 */

@@ -19,7 +19,11 @@ if ( is_multisite() && ! is_network_admin() ) {
 	exit();
 }
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' ) && ! current_user_can( 'update_plugins' ) )
+=======
+if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_themes' ) && ! current_user_can( 'update_plugins' ) && ! current_user_can( 'update_languages' ) )
+>>>>>>> origin/master
 	wp_die( __( 'Sorry, you are not allowed to update this site.' ) );
 
 /**
@@ -252,6 +256,18 @@ function list_plugin_updates() {
 	foreach ( (array) $plugins as $plugin_file => $plugin_data ) {
 		$plugin_data = (object) _get_plugin_data_markup_translate( $plugin_file, (array) $plugin_data, false, true );
 
+<<<<<<< HEAD
+=======
+		$icon = '<span class="dashicons dashicons-admin-plugins"></span>';
+		$preferred_icons = array( 'svg', '1x', '2x', 'default' );
+		foreach ( $preferred_icons as $preferred_icon ) {
+			if ( ! empty( $plugin_data->update->icons[ $preferred_icon ] ) ) {
+				$icon = '<img src="' . esc_url( $plugin_data->update->icons[ $preferred_icon ] ) . '" alt="" />';
+				break;
+			}			
+		}
+
+>>>>>>> origin/master
 		// Get plugin compat for running version of WordPress.
 		if ( isset($plugin_data->update->tested) && version_compare($plugin_data->update->tested, $cur_wp_version, '>=') ) {
 			$compat = '<br />' . sprintf(__('Compatibility with WordPress %1$s: 100%% (according to its author)'), $cur_wp_version);
@@ -302,6 +318,10 @@ function list_plugin_updates() {
 				?></label>
 			</td>
 			<td class="plugin-title"><p>
+<<<<<<< HEAD
+=======
+				<?php echo $icon; ?>
+>>>>>>> origin/master
 				<strong><?php echo $plugin_data->Name; ?></strong>
 				<?php
 					/* translators: 1: plugin version, 2: new version */
@@ -608,6 +628,7 @@ if ( 'upgrade-core' == $action ) {
 	echo ' &nbsp; <a class="button" href="' . esc_url( self_admin_url('update-core.php?force-check=1') ) . '">' . __( 'Check Again' ) . '</a>';
 	echo '</p>';
 
+<<<<<<< HEAD
 	if ( $core = current_user_can( 'update_core' ) )
 		core_upgrade_preamble();
 	if ( $plugins = current_user_can( 'update_plugins' ) )
@@ -617,6 +638,21 @@ if ( 'upgrade-core' == $action ) {
 	if ( $core || $plugins || $themes )
 		list_translation_updates();
 	unset( $core, $plugins, $themes );
+=======
+	if ( current_user_can( 'update_core' ) ) {
+		core_upgrade_preamble();
+	}
+	if ( current_user_can( 'update_plugins' ) ) {
+		list_plugin_updates();
+	}
+	if ( current_user_can( 'update_themes' ) ) {
+		list_theme_updates();
+	}
+	if ( current_user_can( 'update_languages' ) ) {
+		list_translation_updates();
+	}
+
+>>>>>>> origin/master
 	/**
 	 * Fires after the core, plugin, and theme update tables.
 	 *
@@ -729,7 +765,11 @@ if ( 'upgrade-core' == $action ) {
 
 } elseif ( 'do-translation-upgrade' == $action ) {
 
+<<<<<<< HEAD
 	if ( ! current_user_can( 'update_core' ) && ! current_user_can( 'update_plugins' ) && ! current_user_can( 'update_themes' ) )
+=======
+	if ( ! current_user_can( 'update_languages' ) )
+>>>>>>> origin/master
 		wp_die( __( 'Sorry, you are not allowed to update this site.' ) );
 
 	check_admin_referer( 'upgrade-translations' );

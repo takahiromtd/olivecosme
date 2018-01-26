@@ -12,7 +12,12 @@
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @global int $blog_id
+=======
+ * @global int    $blog_id    The current site ID.
+ * @global string $wp_version The WordPress version string.
+>>>>>>> origin/master
  */
 function wp_initial_constants() {
 	global $blog_id;
@@ -349,7 +354,11 @@ function wp_templating_constants() {
 	define('STYLESHEETPATH', get_stylesheet_directory());
 
 	/**
+<<<<<<< HEAD
 	 * Slug of the default theme for this install.
+=======
+	 * Slug of the default theme for this installation.
+>>>>>>> origin/master
 	 * Used as the default theme when installing new sites.
 	 * It will be used as the fallback if the current theme doesn't exist.
 	 *

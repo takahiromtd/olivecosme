@@ -15,7 +15,10 @@ class WP_MatchesMapRegex {
 	/**
 	 * store for matches
 	 *
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	private $_matches;
@@ -23,7 +26,10 @@ class WP_MatchesMapRegex {
 	/**
 	 * store for mapping result
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $output;
@@ -31,7 +37,10 @@ class WP_MatchesMapRegex {
 	/**
 	 * subject to perform mapping on (query string containing $matches[] references
 	 *
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $_subject;
@@ -61,7 +70,10 @@ class WP_MatchesMapRegex {
 	 * static helper function to ease use
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $subject subject
 	 * @param array  $matches data used for substitution
@@ -75,7 +87,10 @@ class WP_MatchesMapRegex {
 	/**
 	 * do the actual mapping
 	 *
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @return string
 	 */
 	private function _map() {
@@ -86,7 +101,10 @@ class WP_MatchesMapRegex {
 	/**
 	 * preg_replace_callback hook
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @param  array $matches preg_replace regexp matches
 	 * @return string
 	 */

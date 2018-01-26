@@ -43,7 +43,11 @@ do_action( 'rss_tag_pre', 'atom-comments' );
 
 	<updated><?php
 		$date = get_lastcommentmodified( 'GMT' );
+<<<<<<< HEAD
 		echo $date ? mysql2date( 'Y-m-d\TH:i:s\Z', $date ) : date( 'Y-m-d\TH:i:s\Z' );
+=======
+		echo $date ? mysql2date( 'Y-m-d\TH:i:s\Z', $date, false ) : date( 'Y-m-d\TH:i:s\Z' );
+>>>>>>> origin/master
 	?></updated>
 
 <?php if ( is_singular() ) { ?>

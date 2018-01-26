@@ -18,12 +18,16 @@ class WP_Customize_Nav_Menu_Control extends WP_Customize_Control {
 	 * Control type.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $type = 'nav_menu';
 
 	/**
+<<<<<<< HEAD
 	 * The nav menu setting.
 	 *
 	 * @since 4.3.0
@@ -37,6 +41,11 @@ class WP_Customize_Nav_Menu_Control extends WP_Customize_Control {
 	 *
 	 * @since 4.3.0
 	 * @access public
+=======
+	 * Don't render the control's content - it uses a JS template instead.
+	 *
+	 * @since 4.3.0
+>>>>>>> origin/master
 	 */
 	public function render_content() {}
 
@@ -44,6 +53,7 @@ class WP_Customize_Nav_Menu_Control extends WP_Customize_Control {
 	 * JS/Underscore template for the control UI.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
 	 */
 	public function content_template() {
@@ -83,13 +93,33 @@ class WP_Customize_Nav_Menu_Control extends WP_Customize_Control {
 
 		</ul>
 		<?php endif;
+=======
+	 */
+	public function content_template() {
+		?>
+		<p class="new-menu-item-invitation"><?php _e( 'Time to add some links! Click &#8220;Add menu items&#8221; to start putting pages, categories, and custom links in your menu. Add as many things as you&#8217;d like.' ); ?></p>
+		<div class="customize-control-nav_menu-buttons">
+			<button type="button" class="button add-new-menu-item" aria-label="<?php esc_attr_e( 'Add or remove menu items' ); ?>" aria-expanded="false" aria-controls="available-menu-items">
+				<?php _e( 'Add Items' ); ?>
+			</button>
+			<button type="button" class="button-link reorder-toggle" aria-label="<?php esc_attr_e( 'Reorder menu items' ); ?>" aria-describedby="reorder-items-desc-{{ data.menu_id }}">
+				<span class="reorder"><?php _e( 'Reorder' ); ?></span>
+				<span class="reorder-done"><?php _e( 'Done' ); ?></span>
+			</button>
+		</div>
+		<p class="screen-reader-text" id="reorder-items-desc-{{ data.menu_id }}"><?php _e( 'When in reorder mode, additional controls to reorder menu items will be available in the items list above.' ); ?></p>
+		<?php
+>>>>>>> origin/master
 	}
 
 	/**
 	 * Return parameters for this control.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Exported parameters.
 	 */

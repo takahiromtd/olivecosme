@@ -1,4 +1,9 @@
 /* global _wpUtilSettings */
+<<<<<<< HEAD
+=======
+
+/** @namespace wp */
+>>>>>>> origin/master
 window.wp = window.wp || {};
 
 (function ($) {

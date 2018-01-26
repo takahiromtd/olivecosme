@@ -99,7 +99,10 @@ class WP_Locale {
 	 * The thousands separator and decimal point values used for localizing numbers.
 	 *
 	 * @since 2.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $number_format;
@@ -122,7 +125,10 @@ class WP_Locale {
 	 * specific calendar names and text direction.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @global string $text_direction
 	 */
@@ -240,7 +246,10 @@ class WP_Locale {
 	 * Outputs an admin notice if the /build directory must be used for RTL.
 	 *
 	 * @since 3.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function rtl_src_admin_notice() {
 		/* translators: %s: Name of the directory (build) */
@@ -255,7 +264,10 @@ class WP_Locale {
 	 * and ends on Saturday with is fetched by using 6 (six).
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int $weekday_number 0 for Sunday through 6 Saturday
 	 * @return string Full translated weekday
@@ -273,7 +285,10 @@ class WP_Locale {
 	 * not conflict.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $weekday_name
 	 * @return string
@@ -289,7 +304,10 @@ class WP_Locale {
 	 * full weekday word.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $weekday_name Full translated weekday word
 	 * @return string Translated weekday abbreviation
@@ -310,7 +328,10 @@ class WP_Locale {
 	 * '0' before the numbers less than 10 for you.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string|int $month_number '01' through '12'
 	 * @return string Translated full month name
@@ -326,7 +347,10 @@ class WP_Locale {
 	 * translatable version of the month.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $month_name Translated month to get abbreviated version
 	 * @return string Translated abbreviated month
@@ -341,7 +365,10 @@ class WP_Locale {
 	 * The $meridiem parameter is expected to not be translated.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $meridiem Either 'am', 'pm', 'AM', or 'PM'. Not translated version.
 	 * @return string Translated version
@@ -356,7 +383,10 @@ class WP_Locale {
 	 * For backward compatibility only.
 	 *
 	 * @deprecated For backward compatibility only.
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @global array $weekday
 	 * @global array $weekday_initial

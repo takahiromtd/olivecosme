@@ -615,9 +615,15 @@ function wp_kses_one_attr( $string, $element ) {
  * @global array $allowedtags
  * @global array $allowedentitynames
  *
+<<<<<<< HEAD
  * @param string $context The context for which to retrieve tags.
  *                        Allowed values are post, strip, data,entities, or
  *                        the name of a field filter such as pre_user_description.
+=======
+ * @param string|array $context The context for which to retrieve tags.
+ *                              Allowed values are post, strip, data, entities, or
+ *                              the name of a field filter such as pre_user_description.
+>>>>>>> origin/master
  * @return array List of allowed tags and their allowed attributes.
  */
 function wp_kses_allowed_html( $context = '' ) {
@@ -629,9 +635,14 @@ function wp_kses_allowed_html( $context = '' ) {
 		 *
 		 * @since 3.5.0
 		 *
+<<<<<<< HEAD
 		 * @param string $tags    Allowed tags, attributes, and/or entities.
 		 * @param string $context Context to judge allowed tags by. Allowed values are 'post',
 		 *                        'data', 'strip', 'entities', 'explicit', or the name of a filter.
+=======
+		 * @param array  $context      Context to judge allowed tags by.
+		 * @param string $context_type Context type (explicit).
+>>>>>>> origin/master
 		 */
 		return apply_filters( 'wp_kses_allowed_html', $context, 'explicit' );
 	}
@@ -828,8 +839,14 @@ function wp_kses_attr($element, $attr, $allowed_html, $allowed_protocols) {
 		$xhtml_slash = ' /';
 
 	// Are any attributes allowed at all for this element?
+<<<<<<< HEAD
 	if ( ! isset($allowed_html[strtolower($element)]) || count($allowed_html[strtolower($element)]) == 0 )
 		return "<$element$xhtml_slash>";
+=======
+	if ( ! isset( $allowed_html[ strtolower( $element ) ] ) || true === $allowed_html[ strtolower( $element ) ] || count( $allowed_html[ strtolower( $element ) ] ) == 0 ) {
+		return "<$element$xhtml_slash>";
+	}
+>>>>>>> origin/master
 
 	// Split it
 	$attrarr = wp_kses_hair($attr, $allowed_protocols);
@@ -1449,6 +1466,10 @@ function wp_kses_normalize_entities2($matches) {
  * This function helps wp_kses_normalize_entities() to only accept valid Unicode
  * numeric entities in hex form.
  *
+<<<<<<< HEAD
+=======
+ * @since 2.7.0
+>>>>>>> origin/master
  * @access private
  *
  * @param array $matches preg_replace_callback() matches array
@@ -1465,6 +1486,11 @@ function wp_kses_normalize_entities3($matches) {
 /**
  * Helper function to determine if a Unicode value is valid.
  *
+<<<<<<< HEAD
+=======
+ * @since 2.7.0
+ *
+>>>>>>> origin/master
  * @param int $i Unicode value
  * @return bool True if the value was a valid Unicode number
  */
@@ -1497,6 +1523,11 @@ function wp_kses_decode_entities($string) {
 /**
  * Regex callback for wp_kses_decode_entities()
  *
+<<<<<<< HEAD
+=======
+ * @since 2.9.0
+ *
+>>>>>>> origin/master
  * @param array $match preg match
  * @return string
  */
@@ -1507,6 +1538,11 @@ function _wp_kses_decode_entities_chr( $match ) {
 /**
  * Regex callback for wp_kses_decode_entities()
  *
+<<<<<<< HEAD
+=======
+ * @since 2.9.0
+ *
+>>>>>>> origin/master
  * @param array $match preg match
  * @return string
  */

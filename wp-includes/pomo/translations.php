@@ -7,6 +7,10 @@
  * @subpackage translations
  */
 
+<<<<<<< HEAD
+=======
+require_once dirname(__FILE__) . '/plural-forms.php';
+>>>>>>> origin/master
 require_once dirname(__FILE__) . '/entry.php';
 
 if ( ! class_exists( 'Translations', false ) ):
@@ -17,7 +21,11 @@ class Translations {
 	/**
 	 * Add entry to the PO structure
 	 *
+<<<<<<< HEAD
 	 * @param array|Translation_Entry &$entry
+=======
+	 * @param array|Translation_Entry $entry
+>>>>>>> origin/master
 	 * @return bool true on success, false if the entry doesn't have a key
 	 */
 	function add_entry($entry) {
@@ -140,7 +148,11 @@ class Translations {
 	/**
 	 * Merge $other in the current object.
 	 *
+<<<<<<< HEAD
 	 * @param Object &$other Another Translation object, whose translations will be merged in this one
+=======
+	 * @param Object $other Another Translation object, whose translations will be merged in this one (passed by reference).
+>>>>>>> origin/master
 	 * @return void
 	 **/
 	function merge_with(&$other) {
@@ -187,7 +199,11 @@ class Gettext_Translations extends Translations {
 	function nplurals_and_expression_from_header($header) {
 		if (preg_match('/^\s*nplurals\s*=\s*(\d+)\s*;\s+plural\s*=\s*(.+)$/', $header, $matches)) {
 			$nplurals = (int)$matches[1];
+<<<<<<< HEAD
 			$expression = trim($this->parenthesize_plural_exression($matches[2]));
+=======
+			$expression = trim( $matches[2] );
+>>>>>>> origin/master
 			return array($nplurals, $expression);
 		} else {
 			return array(2, 'n != 1');
@@ -201,11 +217,21 @@ class Gettext_Translations extends Translations {
 	 * @param string $expression
 	 */
 	function make_plural_form_function($nplurals, $expression) {
+<<<<<<< HEAD
 		$expression = str_replace('n', '$n', $expression);
 		$func_body = "
 			\$index = (int)($expression);
 			return (\$index < $nplurals)? \$index : $nplurals - 1;";
 		return create_function('$n', $func_body);
+=======
+		try {
+			$handler = new Plural_Forms( rtrim( $expression, ';' ) );
+			return array( $handler, 'get' );
+		} catch ( Exception $e ) {
+			// Fall back to default plural-form function.
+			return $this->make_plural_form_function( 2, 'n != 1' );
+		}
+>>>>>>> origin/master
 	}
 
 	/**

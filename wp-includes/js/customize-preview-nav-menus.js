@@ -1,4 +1,9 @@
 /* global _wpCustomizePreviewNavMenusExports */
+<<<<<<< HEAD
+=======
+
+/** @namespace wp.customize.navMenusPreview */
+>>>>>>> origin/master
 wp.customize.navMenusPreview = wp.customize.MenusCustomizerPreview = ( function( $, _, wp, api ) {
 	'use strict';
 
@@ -72,11 +77,21 @@ wp.customize.navMenusPreview = wp.customize.MenusCustomizerPreview = ( function(
 		/**
 		 * Partial representing an invocation of wp_nav_menu().
 		 *
+<<<<<<< HEAD
+=======
+		 * @memberOf wp.customize.navMenusPreview
+		 * @alias wp.customize.navMenusPreview.NavMenuInstancePartial
+		 *
+>>>>>>> origin/master
 		 * @class
 		 * @augments wp.customize.selectiveRefresh.Partial
 		 * @since 4.5.0
 		 */
+<<<<<<< HEAD
 		self.NavMenuInstancePartial = api.selectiveRefresh.Partial.extend({
+=======
+		self.NavMenuInstancePartial = api.selectiveRefresh.Partial.extend(/** @lends wp.customize.navMenusPreview.NavMenuInstancePartial.prototype */{
+>>>>>>> origin/master
 
 			/**
 			 * Constructor.

@@ -24,13 +24,21 @@ class Core_Upgrader extends WP_Upgrader {
 	 * Initialize the upgrade strings.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function upgrade_strings() {
 		$this->strings['up_to_date'] = __('WordPress is at the latest version.');
 		$this->strings['locked'] = __('Another update is currently in progress.');
 		$this->strings['no_package'] = __('Update package not available.');
+<<<<<<< HEAD
 		$this->strings['downloading_package'] = __('Downloading update from <span class="code">%s</span>&#8230;');
+=======
+		/* translators: %s: package URL */
+		$this->strings['downloading_package'] = sprintf( __( 'Downloading update from %s&#8230;' ), '<span class="code">%s</span>' );
+>>>>>>> origin/master
 		$this->strings['unpack_package'] = __('Unpacking the update&#8230;');
 		$this->strings['copy_failed'] = __('Could not copy files.');
 		$this->strings['copy_failed_space'] = __('Could not copy files. You may have run out of disk space.' );
@@ -42,7 +50,10 @@ class Core_Upgrader extends WP_Upgrader {
 	 * Upgrade WordPress core.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Filesystem_Base $wp_filesystem Subclass
 	 * @global callable           $_wp_filesystem_direct_method
@@ -97,7 +108,11 @@ class Core_Upgrader extends WP_Upgrader {
 
 		/*
 		 * If partial update is returned from the API, use that, unless we're doing
+<<<<<<< HEAD
 		 * a reinstall. If we cross the new_bundled version number, then use
+=======
+		 * a reinstallation. If we cross the new_bundled version number, then use
+>>>>>>> origin/master
 		 * the new_bundled zip. Don't though if the constant is set to skip bundled items.
 		 * If the API returns a no_content zip, go with it. Finally, default to the full zip.
 		 */
@@ -228,7 +243,10 @@ class Core_Upgrader extends WP_Upgrader {
 	 * Determines if this WordPress Core version should update to an offered version or not.
 	 *
 	 * @since 3.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @static
 	 *
@@ -337,7 +355,10 @@ class Core_Upgrader extends WP_Upgrader {
 	 * Compare the disk file checksums against the expected checksums.
 	 *
 	 * @since 3.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global string $wp_version
 	 * @global string $wp_local_package

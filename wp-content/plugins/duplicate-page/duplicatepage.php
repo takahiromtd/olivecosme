@@ -4,7 +4,11 @@ Plugin Name: Duplicate Page
 Plugin URI: https://wordpress.org/plugins/duplicate-page/
 Description: Duplicate Posts, Pages and Custom Posts using single click.
 Author: mndpsingh287
+<<<<<<< HEAD
 Version: 2.3
+=======
+Version: 2.4
+>>>>>>> origin/master
 Author URI: https://profiles.wordpress.org/mndpsingh287/
 License: GPLv2
 Text Domain: duplicate_page
@@ -31,7 +35,11 @@ if(!class_exists('duplicate_page')):
 		* Localization - 19-dec-2016
 		*/
 		public function duplicate_page_load_text_domain(){
+<<<<<<< HEAD
 			load_plugin_textdomain('duplicate_page', false, DUPLICATE_PAGE_PLUGIN_DIRNAME . "/languages");
+=======
+			load_plugin_textdomain('duplicate-page', false, DUPLICATE_PAGE_PLUGIN_DIRNAME . "/languages");
+>>>>>>> origin/master
 		}
 		/*
 		* Activation Hook
@@ -52,8 +60,13 @@ if(!class_exists('duplicate_page')):
 		*/
 		public function duplicate_page_plugin_action_links($links, $file){
 			if ( $file == plugin_basename( __FILE__ ) ) {
+<<<<<<< HEAD
 				$duplicate_page_links = '<a href="'.get_admin_url().'options-general.php?page=duplicate_page_settings">'.__('Settings', 'duplicate_page').'</a>';
 				$duplicate_page_donate = '<a href="http://www.webdesi9.com/donate/?plugin=duplicate-page" title="Donate Now" target="_blank" style="font-weight:bold">'.__('Donate', 'duplicate_page').'</a>';
+=======
+				$duplicate_page_links = '<a href="'.get_admin_url().'options-general.php?page=duplicate_page_settings">'.__('Settings', 'duplicate-page').'</a>';
+				$duplicate_page_donate = '<a href="http://www.webdesi9.com/donate/?plugin=duplicate-page" title="Donate Now" target="_blank" style="font-weight:bold">'.__('Donate', 'duplicate-page').'</a>';
+>>>>>>> origin/master
 				array_unshift( $links, $duplicate_page_donate );
 				array_unshift( $links, $duplicate_page_links );
 			}
@@ -64,7 +77,11 @@ if(!class_exists('duplicate_page')):
 		* Admin Menu 
 		*/
 		public function duplicate_page_options_page(){	
+<<<<<<< HEAD
 		 add_options_page( __( 'Duplicate Page', 'duplicate_page' ), __( 'Duplicate Page', 'duplicate_page' ), 'manage_options', 'duplicate_page_settings',array(&$this, 'duplicate_page_settings'));
+=======
+		 add_options_page( __( 'Duplicate Page', 'duplicate-page' ), __( 'Duplicate Page', 'duplicate-page' ), 'manage_options', 'duplicate_page_settings',array(&$this, 'duplicate_page_settings'));
+>>>>>>> origin/master
 		}
 		/*
 		* Duplicate Page Admin Settings
@@ -114,7 +131,11 @@ if(!class_exists('duplicate_page')):
 				 'post_author' => $new_post_author,
 				 'post_content' => $post->post_content,
 				 'post_excerpt' => $post->post_excerpt,
+<<<<<<< HEAD
 				 'post_name' => $post->post_name,
+=======
+				 //'post_name' => $post->post_name,
+>>>>>>> origin/master
 				 'post_parent' => $post->post_parent,
 				 'post_password' => $post->post_password,
 				 'post_status' => $post_status,
@@ -176,7 +197,11 @@ if(!class_exists('duplicate_page')):
 			$opt = get_option('duplicate_page_options');
 			$post_status = !empty($opt['duplicate_post_status']) ? $opt['duplicate_post_status'] : 'draft';	
 			 if (current_user_can('edit_posts')) {
+<<<<<<< HEAD
 			 $actions['duplicate'] = '<a href="admin.php?action=dt_duplicate_post_as_draft&amp;post=' . $post->ID . '" title="Duplicate this as '.$post_status.'" rel="permalink">'.__( "Duplicate This", "duplicate_page" ).'</a>';
+=======
+			 $actions['duplicate'] = '<a href="admin.php?action=dt_duplicate_post_as_draft&amp;post=' . $post->ID . '" title="Duplicate this as '.$post_status.'" rel="permalink">'.__( "Duplicate This", "duplicate-page" ).'</a>';
+>>>>>>> origin/master
 			 }
 			 return $actions;
 		} 
@@ -189,7 +214,11 @@ if(!class_exists('duplicate_page')):
 			$post_status = !empty($opt['duplicate_post_status']) ? $opt['duplicate_post_status'] : 'draft';	
 				$html  = '<div id="major-publishing-actions">';
 				$html .= '<div id="export-action">';
+<<<<<<< HEAD
 				$html .= '<a href="admin.php?action=dt_duplicate_post_as_draft&amp;post=' . $post->ID . '" title="Duplicate this as '.$post_status.'" rel="permalink">'.__( "Duplicate This", "duplicate_page" ).'</a>';
+=======
+				$html .= '<a href="admin.php?action=dt_duplicate_post_as_draft&amp;post=' . $post->ID . '" title="Duplicate this as '.$post_status.'" rel="permalink">'.__( "Duplicate This", "duplicate-page" ).'</a>';
+>>>>>>> origin/master
 				$html .= '</div>';
 				$html .= '</div>';
 				echo $html;
@@ -211,7 +240,11 @@ if(!class_exists('duplicate_page')):
 				$wp_admin_bar->add_menu( array(
 				'parent' => 'edit',
 				'id' => 'duplicate_this',
+<<<<<<< HEAD
 				'title' => __("Duplicate this as ".$post_status."", 'duplicate_page'),
+=======
+				'title' => __("Duplicate this as ".$post_status."", 'duplicate-page'),
+>>>>>>> origin/master
 				'href' => admin_url().'admin.php?action=dt_duplicate_post_as_draft&amp;post='. $post->ID
 				) );
 			}

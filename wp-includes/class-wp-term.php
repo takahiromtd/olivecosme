@@ -11,6 +11,11 @@
  * Core class used to implement the WP_Term object.
  *
  * @since 4.4.0
+<<<<<<< HEAD
+=======
+ *
+ * @property-read object $data Sanitized term data.
+>>>>>>> origin/master
  */
 final class WP_Term {
 
@@ -18,7 +23,10 @@ final class WP_Term {
 	 * Term ID.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $term_id;
@@ -27,7 +35,10 @@ final class WP_Term {
 	 * The term's name.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $name = '';
@@ -36,7 +47,10 @@ final class WP_Term {
 	 * The term's slug.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $slug = '';
@@ -45,7 +59,10 @@ final class WP_Term {
 	 * The term's term_group.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $term_group = '';
@@ -54,7 +71,10 @@ final class WP_Term {
 	 * Term Taxonomy ID.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $term_taxonomy_id = 0;
@@ -63,7 +83,10 @@ final class WP_Term {
 	 * The term's taxonomy name.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $taxonomy = '';
@@ -72,7 +95,10 @@ final class WP_Term {
 	 * The term's description.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $description = '';
@@ -81,7 +107,10 @@ final class WP_Term {
 	 * ID of a term's parent term.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $parent = 0;
@@ -90,7 +119,10 @@ final class WP_Term {
 	 * Cached object count for this term.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $count = 0;
@@ -101,7 +133,10 @@ final class WP_Term {
 	 * Does not correspond to a database field.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $filter = 'raw';
@@ -110,7 +145,10 @@ final class WP_Term {
 	 * Retrieve WP_Term instance.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
@@ -134,6 +172,12 @@ final class WP_Term {
 
 		// If there isn't a cached version, hit the database.
 		if ( ! $_term || ( $taxonomy && $taxonomy !== $_term->taxonomy ) ) {
+<<<<<<< HEAD
+=======
+			// Any term found in the cache is not a match, so don't use it.
+			$_term = false;
+
+>>>>>>> origin/master
 			// Grab all matching terms, in case any are shared between taxonomies.
 			$terms = $wpdb->get_results( $wpdb->prepare( "SELECT t.*, tt.* FROM $wpdb->terms AS t INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id WHERE t.term_id = %d", $term_id ) );
 			if ( ! $terms ) {
@@ -197,7 +241,10 @@ final class WP_Term {
 	 * Constructor.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_Term|object $term Term object.
 	 */
@@ -211,7 +258,10 @@ final class WP_Term {
 	 * Sanitizes term fields, according to the filter type provided.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $filter Filter context. Accepts 'edit', 'db', 'display', 'attribute', 'js', 'raw'.
 	 */
@@ -223,7 +273,10 @@ final class WP_Term {
 	 * Converts an object to array.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Object as array.
 	 */
@@ -235,7 +288,10 @@ final class WP_Term {
 	 * Getter.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $key Property to get.
 	 * @return mixed Property value.

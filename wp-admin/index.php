@@ -15,8 +15,12 @@ require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
 wp_dashboard_setup();
 
 wp_enqueue_script( 'dashboard' );
+<<<<<<< HEAD
 if ( current_user_can( 'edit_theme_options' ) )
 	wp_enqueue_script( 'customize-loader' );
+=======
+
+>>>>>>> origin/master
 if ( current_user_can( 'install_plugins' ) ) {
 	wp_enqueue_script( 'plugin-install' );
 	wp_enqueue_script( 'updates' );
@@ -138,4 +142,9 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 </div><!-- wrap -->
 
 <?php
+<<<<<<< HEAD
+=======
+wp_print_community_events_templates();
+
+>>>>>>> origin/master
 require( ABSPATH . 'wp-admin/admin-footer.php' );

@@ -21,7 +21,10 @@ class WP_SimplePie_File extends SimplePie_File {
 	 *
 	 * @since 2.8.0
 	 * @since 3.2.0 Updated to use a PHP5 constructor.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string       $url             Remote file URL.
 	 * @param integer      $timeout         Optional. How long the connection should stay open in seconds.

@@ -77,13 +77,22 @@ themes.view.Appearance = wp.Backbone.View.extend({
 		// Render search form.
 		this.search();
 
+<<<<<<< HEAD
+=======
+		this.$el.removeClass( 'search-loading' );
+
+>>>>>>> origin/master
 		// Render and append
 		this.view.render();
 		this.$el.empty().append( this.view.el ).addClass( 'rendered' );
 	},
 
 	// Defines search element container
+<<<<<<< HEAD
 	searchContainer: $( '#wpbody h1:first' ),
+=======
+	searchContainer: $( '.search-form' ),
+>>>>>>> origin/master
 
 	// Search input and view
 	// for current theme collection
@@ -100,12 +109,23 @@ themes.view.Appearance = wp.Backbone.View.extend({
 			collection: self.collection,
 			parent: this
 		});
+<<<<<<< HEAD
+=======
+		self.SearchView = view;
+>>>>>>> origin/master
 
 		// Render and append after screen title
 		view.render();
 		this.searchContainer
 			.append( $.parseHTML( '<label class="screen-reader-text" for="wp-filter-search-input">' + l10n.search + '</label>' ) )
+<<<<<<< HEAD
 			.append( view.el );
+=======
+			.append( view.el )
+			.on( 'submit', function( event ) {
+				event.preventDefault();
+			});
+>>>>>>> origin/master
 	},
 
 	// Checks when the user gets close to the bottom
@@ -492,7 +512,11 @@ themes.view.Theme = wp.Backbone.View.extend({
 		themes.focusedTheme = this.$el;
 
 		// Construct a new Preview view.
+<<<<<<< HEAD
 		preview = new themes.view.Preview({
+=======
+		themes.preview = preview = new themes.view.Preview({
+>>>>>>> origin/master
 			model: this.model
 		});
 
@@ -572,6 +596,10 @@ themes.view.Theme = wp.Backbone.View.extend({
 		this.listenTo( preview, 'preview:close', function() {
 			self.current = self.model;
 		});
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	},
 
 	// Handles .disabled classes for previous/next buttons in theme installer preview
@@ -679,7 +707,11 @@ themes.view.Details = wp.Backbone.View.extend({
 
 		// Set initial focus on the primary action control.
 		_.delay( function() {
+<<<<<<< HEAD
 			$( '.theme-wrap a.button-primary:visible' ).focus();
+=======
+			$( '.theme-overlay' ).focus();
+>>>>>>> origin/master
 		}, 100 );
 
 		// Constrain tabbing within the modal.
@@ -885,7 +917,11 @@ themes.view.Preview = themes.view.Details.extend({
 			self.tooglePreviewDeviceButtons( currentPreviewDevice );
 		}
 
+<<<<<<< HEAD
 		themes.router.navigate( themes.router.baseUrl( themes.router.themePath + this.model.get( 'id' ) ), { replace: true } );
+=======
+		themes.router.navigate( themes.router.baseUrl( themes.router.themePath + this.model.get( 'id' ) ), { replace: false } );
+>>>>>>> origin/master
 
 		this.$el.fadeIn( 200, function() {
 			$body.addClass( 'theme-installer-active full-overlay-active' );
@@ -911,7 +947,17 @@ themes.view.Preview = themes.view.Details.extend({
 			}
 		}).removeClass( 'iframe-ready' );
 
+<<<<<<< HEAD
 		themes.router.navigate( themes.router.baseUrl( '' ) );
+=======
+		// Restore the previous browse tab if available.
+		if ( themes.router.selectedTab ) {
+			themes.router.navigate( themes.router.baseUrl( '?browse=' + themes.router.selectedTab ) );
+			themes.router.selectedTab = false;
+		} else {
+			themes.router.navigate( themes.router.baseUrl( '' ) );
+		}
+>>>>>>> origin/master
 		this.trigger( 'preview:close' );
 		this.undelegateEvents();
 		this.unbind();
@@ -1335,17 +1381,28 @@ themes.view.Search = wp.Backbone.View.extend({
 			event.target.value = '';
 		}
 
+<<<<<<< HEAD
 		/**
 		 * Since doSearch is debounced, it will only run when user input comes to a rest
 		 */
+=======
+		// Since doSearch is debounced, it will only run when user input comes to a rest.
+>>>>>>> origin/master
 		this.doSearch( event );
 	},
 
 	// Runs a search on the theme collection.
+<<<<<<< HEAD
 	doSearch: _.debounce( function( event ) {
 		var options = {};
 
 		this.collection.doSearch( event.target.value );
+=======
+	doSearch: function( event ) {
+		var options = {};
+
+		this.collection.doSearch( event.target.value.replace( /\+/g, ' ' ) );
+>>>>>>> origin/master
 
 		// if search is initiated and key is not return
 		if ( this.searching && event.which !== 13 ) {
@@ -1360,13 +1417,21 @@ themes.view.Search = wp.Backbone.View.extend({
 		} else {
 			themes.router.navigate( themes.router.baseUrl( '' ) );
 		}
+<<<<<<< HEAD
 	}, 500 ),
+=======
+	},
+>>>>>>> origin/master
 
 	pushState: function( event ) {
 		var url = themes.router.baseUrl( '' );
 
 		if ( event.target.value ) {
+<<<<<<< HEAD
 			url = themes.router.baseUrl( themes.router.searchPath + event.target.value );
+=======
+			url = themes.router.baseUrl( themes.router.searchPath + encodeURIComponent( event.target.value ) );
+>>>>>>> origin/master
 		}
 
 		this.searching = false;
@@ -1375,6 +1440,25 @@ themes.view.Search = wp.Backbone.View.extend({
 	}
 });
 
+<<<<<<< HEAD
+=======
+/**
+ * Navigate router.
+ *
+ * @since 4.9.0
+ *
+ * @param {string} url - URL to navigate to.
+ * @param {object} state - State.
+ * @returns {void}
+ */
+function navigateRouter( url, state ) {
+	var router = this;
+	if ( Backbone.history._hasPushState ) {
+		Backbone.Router.prototype.navigate.call( router, url, state );
+	}
+}
+
+>>>>>>> origin/master
 // Sets up the routes events for relevant url queries
 // Listens to [theme] and [search] params
 themes.Router = Backbone.Router.extend({
@@ -1395,18 +1479,26 @@ themes.Router = Backbone.Router.extend({
 	searchPath: '?search=',
 
 	search: function( query ) {
+<<<<<<< HEAD
 		$( '.wp-filter-search' ).val( query );
+=======
+		$( '.wp-filter-search' ).val( query.replace( /\+/g, ' ' ) );
+>>>>>>> origin/master
 	},
 
 	themes: function() {
 		$( '.wp-filter-search' ).val( '' );
 	},
 
+<<<<<<< HEAD
 	navigate: function() {
 		if ( Backbone.history._hasPushState ) {
 			Backbone.Router.prototype.navigate.apply( this, arguments );
 		}
 	}
+=======
+	navigate: navigateRouter
+>>>>>>> origin/master
 
 });
 
@@ -1423,6 +1515,12 @@ themes.Run = {
 		});
 
 		this.render();
+<<<<<<< HEAD
+=======
+
+		// Start debouncing user searches after Backbone.history.start().
+		this.view.SearchView.doSearch = _.debounce( this.view.SearchView.doSearch, 500 );
+>>>>>>> origin/master
 	},
 
 	render: function() {
@@ -1431,6 +1529,12 @@ themes.Run = {
 		this.view.render();
 		this.routes();
 
+<<<<<<< HEAD
+=======
+		if ( Backbone.History.started ) {
+			Backbone.history.stop();
+		}
+>>>>>>> origin/master
 		Backbone.history.start({
 			root: themes.data.settings.adminUrl,
 			pushState: true,
@@ -1495,7 +1599,11 @@ themes.view.InstallerSearch =  themes.view.Search.extend({
 		this.doSearch( event.target.value );
 	},
 
+<<<<<<< HEAD
 	doSearch: _.debounce( function( value ) {
+=======
+	doSearch: function( value ) {
+>>>>>>> origin/master
 		var request = {};
 
 		// Don't do anything if the search terms haven't changed.
@@ -1526,7 +1634,14 @@ themes.view.InstallerSearch =  themes.view.Search.extend({
 			request.tag = [ value.slice( 4 ) ];
 		}
 
+<<<<<<< HEAD
 		$( '.filter-links li > a.current' ).removeClass( 'current' );
+=======
+		$( '.filter-links li > a.current' )
+			.removeClass( 'current' )
+			.removeAttr( 'aria-current' );
+
+>>>>>>> origin/master
 		$( 'body' ).removeClass( 'show-filters filters-applied show-favorites-form' );
 		$( '.drawer-toggle' ).attr( 'aria-expanded', 'false' );
 
@@ -1535,8 +1650,13 @@ themes.view.InstallerSearch =  themes.view.Search.extend({
 		this.collection.query( request );
 
 		// Set route
+<<<<<<< HEAD
 		themes.router.navigate( themes.router.baseUrl( themes.router.searchPath + value ), { replace: true } );
 	}, 500 )
+=======
+		themes.router.navigate( themes.router.baseUrl( themes.router.searchPath + encodeURIComponent( value ) ), { replace: true } );
+	}
+>>>>>>> origin/master
 });
 
 themes.view.Installer = themes.view.Appearance.extend({
@@ -1590,7 +1710,15 @@ themes.view.Installer = themes.view.Appearance.extend({
 		this.listenTo( this.collection, 'query:fail', function() {
 			$( 'body' ).removeClass( 'loading-content' );
 			$( '.theme-browser' ).find( 'div.error' ).remove();
+<<<<<<< HEAD
 			$( '.theme-browser' ).find( 'div.themes' ).before( '<div class="error"><p>' + l10n.error + '</p></div>' );
+=======
+			$( '.theme-browser' ).find( 'div.themes' ).before( '<div class="error"><p>' + l10n.error + '</p><p><button class="button try-again">' + l10n.tryAgain + '</button></p></div>' );
+			$( '.theme-browser .error .try-again' ).on( 'click', function( e ) {
+				e.preventDefault();
+				$( 'input.wp-filter-search' ).trigger( 'input' );
+			} );
+>>>>>>> origin/master
 		});
 
 		if ( this.view ) {
@@ -1643,8 +1771,21 @@ themes.view.Installer = themes.view.Appearance.extend({
 	sort: function( sort ) {
 		this.clearSearch();
 
+<<<<<<< HEAD
 		$( '.filter-links li > a, .theme-filter' ).removeClass( this.activeClass );
 		$( '[data-sort="' + sort + '"]' ).addClass( this.activeClass );
+=======
+		// Track sorting so we can restore the correct tab when closing preview.
+		themes.router.selectedTab = sort;
+
+		$( '.filter-links li > a, .theme-filter' )
+			.removeClass( this.activeClass )
+			.removeAttr( 'aria-current' );
+
+		$( '[data-sort="' + sort + '"]' )
+			.addClass( this.activeClass )
+			.attr( 'aria-current', 'page' );
+>>>>>>> origin/master
 
 		if ( 'favorites' === sort ) {
 			$( 'body' ).addClass( 'show-favorites-form' );
@@ -1666,8 +1807,17 @@ themes.view.Installer = themes.view.Appearance.extend({
 			return;
 		}
 
+<<<<<<< HEAD
 		$( '.filter-links li > a, .theme-section' ).removeClass( this.activeClass );
 		$el.addClass( this.activeClass );
+=======
+		$( '.filter-links li > a, .theme-section' )
+			.removeClass( this.activeClass )
+			.removeAttr( 'aria-current' );
+		$el
+			.addClass( this.activeClass )
+			.attr( 'aria-current', 'page' );
+>>>>>>> origin/master
 
 		if ( ! filter ) {
 			return;
@@ -1705,7 +1855,14 @@ themes.view.Installer = themes.view.Appearance.extend({
 		}
 
 		$( 'body' ).addClass( 'filters-applied' );
+<<<<<<< HEAD
 		$( '.filter-links li > a.current' ).removeClass( 'current' );
+=======
+		$( '.filter-links li > a.current' )
+			.removeClass( 'current' )
+			.removeAttr( 'aria-current' );
+
+>>>>>>> origin/master
 		filteringBy.empty();
 
 		_.each( tags, function( tag ) {
@@ -1773,10 +1930,13 @@ themes.view.Installer = themes.view.Appearance.extend({
 
 	activeClass: 'current',
 
+<<<<<<< HEAD
 	// Overwrite search container class to append search
 	// in new location
 	searchContainer: $( '.wp-filter .search-form' ),
 
+=======
+>>>>>>> origin/master
 	/*
 	 * When users press the "Upload Theme" button, show the upload form in place.
 	 */
@@ -1856,6 +2016,7 @@ themes.InstallerRouter = Backbone.Router.extend({
 	searchPath: '?search=',
 
 	search: function( query ) {
+<<<<<<< HEAD
 		$( '.wp-filter-search' ).val( query );
 	},
 
@@ -1864,6 +2025,12 @@ themes.InstallerRouter = Backbone.Router.extend({
 			Backbone.Router.prototype.navigate.apply( this, arguments );
 		}
 	}
+=======
+		$( '.wp-filter-search' ).val( query.replace( /\+/g, ' ' ) );
+	},
+
+	navigate: navigateRouter
+>>>>>>> origin/master
 });
 
 
@@ -1880,6 +2047,11 @@ themes.RunInstaller = {
 		// Render results
 		this.render();
 
+<<<<<<< HEAD
+=======
+		// Start debouncing user searches after Backbone.history.start().
+		this.view.SearchView.doSearch = _.debounce( this.view.SearchView.doSearch, 500 );
+>>>>>>> origin/master
 	},
 
 	render: function() {
@@ -1888,6 +2060,12 @@ themes.RunInstaller = {
 		this.view.render();
 		this.routes();
 
+<<<<<<< HEAD
+=======
+		if ( Backbone.History.started ) {
+			Backbone.history.stop();
+		}
+>>>>>>> origin/master
 		Backbone.history.start({
 			root: themes.data.settings.adminUrl,
 			pushState: true,
@@ -1906,11 +2084,38 @@ themes.RunInstaller = {
 		// Handles `theme` route event
 		// Queries the API for the passed theme slug
 		themes.router.on( 'route:preview', function( slug ) {
+<<<<<<< HEAD
 			request.theme = slug;
 			self.view.collection.query( request );
 			self.view.collection.once( 'update', function() {
 				self.view.view.theme.preview();
 			});
+=======
+
+			// Remove existing handlers.
+			if ( themes.preview ) {
+				themes.preview.undelegateEvents();
+				themes.preview.unbind();
+			}
+
+			// If the theme preview is active, set the current theme.
+			if ( self.view.view.theme && self.view.view.theme.preview ) {
+				self.view.view.theme.model = self.view.collection.findWhere( { 'slug': slug } );
+				self.view.view.theme.preview();
+			} else {
+
+				// Select the theme by slug.
+				request.theme = slug;
+				self.view.collection.query( request );
+				self.view.collection.trigger( 'update' );
+
+				// Open the theme preview.
+				self.view.collection.once( 'query:success', function() {
+					$( 'div[data-slug="' + slug + '"]' ).trigger( 'click' );
+				});
+
+			}
+>>>>>>> origin/master
 		});
 
 		// Handles sorting / browsing routes
@@ -1919,9 +2124,20 @@ themes.RunInstaller = {
 		themes.router.on( 'route:sort', function( sort ) {
 			if ( ! sort ) {
 				sort = 'featured';
+<<<<<<< HEAD
 			}
 			self.view.sort( sort );
 			self.view.trigger( 'theme:close' );
+=======
+				themes.router.navigate( themes.router.baseUrl( '?browse=featured' ), { replace: true } );
+			}
+			self.view.sort( sort );
+
+			// Close the preview if open.
+			if ( themes.preview ) {
+				themes.preview.close();
+			}
+>>>>>>> origin/master
 		});
 
 		// The `search` route event. The router populates the input field.
@@ -1945,6 +2161,22 @@ $( document ).ready(function() {
 		themes.Run.init();
 	}
 
+<<<<<<< HEAD
+=======
+	// Update the return param just in time.
+	$( document.body ).on( 'click', '.load-customize', function() {
+		var link = $( this ), urlParser = document.createElement( 'a' );
+		urlParser.href = link.prop( 'href' );
+		urlParser.search = $.param( _.extend(
+			wp.customize.utils.parseQueryString( urlParser.search.substr( 1 ) ),
+			{
+				'return': window.location.href
+			}
+		) );
+		link.prop( 'href', urlParser.href );
+	});
+
+>>>>>>> origin/master
 	$( '.broken-themes .delete-theme' ).on( 'click', function() {
 		return confirm( _wpThemeSettings.settings.confirmDelete );
 	});

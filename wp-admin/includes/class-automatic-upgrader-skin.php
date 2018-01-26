@@ -50,7 +50,10 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array
 	 */
@@ -59,6 +62,10 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> origin/master
 	 * @param string|array|WP_Error $data
 	 */
 	public function feedback( $data ) {
@@ -98,14 +105,20 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function header() {
 		ob_start();
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function footer() {
 		$output = ob_get_clean();

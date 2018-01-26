@@ -22,7 +22,10 @@ class WP_Http_Curl {
 	 * Temporary header storage for during requests.
 	 *
 	 * @since 3.2.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $headers = '';
@@ -31,7 +34,10 @@ class WP_Http_Curl {
 	 * Temporary body storage for during requests.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $body = '';
@@ -40,7 +46,10 @@ class WP_Http_Curl {
 	 * The maximum amount of data to receive from the remote server.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	private $max_body_length = false;
@@ -49,7 +58,10 @@ class WP_Http_Curl {
 	 * The file resource used for streaming to file.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var resource
 	 */
 	private $stream_handle = false;
@@ -58,7 +70,10 @@ class WP_Http_Curl {
 	 * The total bytes written in the current request.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	private $bytes_written_total = 0;
@@ -66,7 +81,10 @@ class WP_Http_Curl {
 	/**
 	 * Send a HTTP request to a URI using cURL extension.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 *
 	 * @param string $url The request URL.
@@ -185,8 +203,19 @@ class WP_Http_Curl {
 				$this->stream_handle = @fopen( $r['filename'], 'w+' );
 			else
 				$this->stream_handle = fopen( $r['filename'], 'w+' );
+<<<<<<< HEAD
 			if ( ! $this->stream_handle )
 				return new WP_Error( 'http_request_failed', sprintf( __( 'Could not open handle for fopen() to %s' ), $r['filename'] ) );
+=======
+			if ( ! $this->stream_handle ) {
+				return new WP_Error( 'http_request_failed', sprintf(
+					/* translators: 1: fopen() 2: file name */
+					__( 'Could not open handle for %1$s to %2$s.' ),
+					'fopen()',
+					$r['filename']
+				) );
+			}
+>>>>>>> origin/master
 		} else {
 			$this->stream_handle = false;
 		}
@@ -213,7 +242,11 @@ class WP_Http_Curl {
 		 *
 		 * @since 2.8.0
 		 *
+<<<<<<< HEAD
 		 * @param resource &$handle The cURL handle returned by curl_init().
+=======
+		 * @param resource $handle  The cURL handle returned by curl_init() (passed by reference).
+>>>>>>> origin/master
 		 * @param array    $r       The HTTP request arguments.
 		 * @param string   $url     The request URL.
 		 */
@@ -304,7 +337,10 @@ class WP_Http_Curl {
 	 * for temporary storage
 	 *
 	 * @since 3.2.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @param resource $handle  cURL handle.
 	 * @param string   $headers cURL request headers.
@@ -323,7 +359,10 @@ class WP_Http_Curl {
 	 * `$data` passed in will cause cURL to abort the request with `CURLE_WRITE_ERROR`.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @param resource $handle  cURL handle.
 	 * @param string   $data    cURL request body.

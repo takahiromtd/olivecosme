@@ -1,7 +1,13 @@
 /* global getUserSetting, setUserSetting */
 ( function( tinymce ) {
 // Set the minimum value for the modals z-index higher than #wpadminbar (100000)
+<<<<<<< HEAD
 tinymce.ui.FloatPanel.zIndex = 100100;
+=======
+if ( ! tinymce.ui.FloatPanel.zIndex || tinymce.ui.FloatPanel.zIndex < 100100 ) {
+	tinymce.ui.FloatPanel.zIndex = 100100;
+}
+>>>>>>> origin/master
 
 tinymce.PluginManager.add( 'wordpress', function( editor ) {
 	var wpAdvButton, style,
@@ -129,6 +135,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 					'/>';
 				} );
 			}
+<<<<<<< HEAD
 
 			// Remove spaces from empty paragraphs.
 			// Try to avoid a lot of backtracking, can freeze the editor. See #35890 and #38294.
@@ -140,6 +147,22 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 				return tag;
 			});
 		}
+=======
+		}
+	});
+
+	editor.on( 'setcontent', function() {
+		// Remove spaces from empty paragraphs.
+		editor.$( 'p' ).each( function( i, node ) {
+			if ( node.innerHTML && node.innerHTML.length < 10 ) {
+				var html = tinymce.trim( node.innerHTML );
+
+				if ( ! html || html === '&nbsp;' ) {
+					node.innerHTML = ( tinymce.Env.ie && tinymce.Env.ie < 11 ) ? '' : '<br data-mce-bogus="1">';
+				}
+			}
+		} );
+>>>>>>> origin/master
 	});
 
 	editor.on( 'PostProcess', function( event ) {
@@ -182,7 +205,12 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 		var parent, html, title,
 			classname = 'wp-more-tag',
 			dom = editor.dom,
+<<<<<<< HEAD
 			node = editor.selection.getNode();
+=======
+			node = editor.selection.getNode(),
+			rootNode = editor.getBody();
+>>>>>>> origin/master
 
 		tag = tag || 'more';
 		classname += ' mce-wp-' + tag;
@@ -192,14 +220,22 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			'data-wp-more="' + tag + '" data-mce-resize="false" data-mce-placeholder="1" />';
 
 		// Most common case
+<<<<<<< HEAD
 		if ( node.nodeName === 'BODY' || ( node.nodeName === 'P' && node.parentNode.nodeName === 'BODY' ) ) {
+=======
+		if ( node === rootNode || ( node.nodeName === 'P' && node.parentNode === rootNode ) ) {
+>>>>>>> origin/master
 			editor.insertContent( html );
 			return;
 		}
 
 		// Get the top level parent node
 		parent = dom.getParent( node, function( found ) {
+<<<<<<< HEAD
 			if ( found.parentNode && found.parentNode.nodeName === 'BODY' ) {
+=======
+			if ( found.parentNode && found.parentNode === rootNode ) {
+>>>>>>> origin/master
 				return true;
 			}
 
@@ -540,11 +576,24 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 			editor.on( 'PastePostProcess', function( event ) {
 				// Remove empty paragraphs
+<<<<<<< HEAD
 				each( dom.select( 'p', event.node ), function( node ) {
+=======
+				editor.$( 'p', event.node ).each( function( i, node ) {
+>>>>>>> origin/master
 					if ( dom.isEmpty( node ) ) {
 						dom.remove( node );
 					}
 				});
+<<<<<<< HEAD
+=======
+
+				if ( tinymce.isIE ) {
+					editor.$( 'a', event.node ).find( 'font, u' ).each( function( i, node ) {
+						dom.remove( node, true );
+					});
+				}
+>>>>>>> origin/master
 			});
 		}
 
@@ -673,7 +722,12 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			mceIframe = document.getElementById( editor.id + '_ifr' ),
 			mceToolbar,
 			mceStatusbar,
+<<<<<<< HEAD
 			wpStatusbar;
+=======
+			wpStatusbar,
+			isChromeRtl = ( editor.rtl && /Chrome/.test( navigator.userAgent ) );
+>>>>>>> origin/master
 
 			if ( container ) {
 				mceToolbar = tinymce.$( '.mce-toolbar-grp', container )[0];
@@ -917,6 +971,19 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 			toolbar.on( 'show', function() {
 				this.reposition();
+<<<<<<< HEAD
+=======
+
+				if ( isChromeRtl ) {
+					tinymce.$( '.mce-widget.mce-tooltip' ).addClass( 'wp-hide-mce-tooltip' );
+				}
+			} );
+
+			toolbar.on( 'hide', function() {
+				if ( isChromeRtl ) {
+					tinymce.$( '.mce-widget.mce-tooltip' ).removeClass( 'wp-hide-mce-tooltip' );
+				}
+>>>>>>> origin/master
 			} );
 
 			toolbar.on( 'keydown', function( event ) {
@@ -963,11 +1030,20 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			}
 
 			if ( args.toolbar ) {
+<<<<<<< HEAD
 				if ( activeToolbar !== args.toolbar ) {
 					activeToolbar = args.toolbar;
 					activeToolbar.show();
 				} else {
 					activeToolbar.reposition();
+=======
+				activeToolbar = args.toolbar;
+
+				if ( activeToolbar.visible() ) {
+					activeToolbar.reposition();
+				} else {
+					activeToolbar.show();
+>>>>>>> origin/master
 				}
 			} else {
 				activeToolbar = false;

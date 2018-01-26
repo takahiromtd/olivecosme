@@ -426,6 +426,7 @@ function wp_nav_menu_item_post_type_meta_box( $object, $box ) {
 				 * The dynamic portion of the hook name, `$post_type_name`, refers to the post type name.
 				 *
 				 * @since 4.3.0
+<<<<<<< HEAD
 				 *
 				 * @param array $most_recent An array of post objects being listed.
 				 * @param array $args        An array of WP_Query arguments.
@@ -434,6 +435,18 @@ function wp_nav_menu_item_post_type_meta_box( $object, $box ) {
 				$most_recent = apply_filters( "nav_menu_items_{$post_type_name}_recent", $most_recent, $args, $box );
 
 				echo walk_nav_menu_tree( array_map('wp_setup_nav_menu_item', $most_recent), 0, (object) $args );
+=======
+				 * @since 4.9.0 Added the `$recent_args` parameter.
+				 *
+				 * @param array $most_recent An array of post objects being listed.
+				 * @param array $args        An array of WP_Query arguments for the meta box.
+				 * @param array $box         Arguments passed to wp_nav_menu_item_post_type_meta_box().
+				 * @param array $recent_args An array of WP_Query arguments for 'Most Recent' tab.
+				 */
+				$most_recent = apply_filters( "nav_menu_items_{$post_type_name}_recent", $most_recent, $args, $box, $recent_args );
+
+				echo walk_nav_menu_tree( array_map( 'wp_setup_nav_menu_item', $most_recent ), 0, (object) $args );
+>>>>>>> origin/master
 				?>
 			</ul>
 		</div><!-- /.tabs-panel -->
@@ -605,6 +618,10 @@ function wp_nav_menu_item_post_type_meta_box( $object, $box ) {
 function wp_nav_menu_item_taxonomy_meta_box( $object, $box ) {
 	global $nav_menu_selected_id;
 	$taxonomy_name = $box['args']->name;
+<<<<<<< HEAD
+=======
+	$taxonomy = get_taxonomy( $taxonomy_name );
+>>>>>>> origin/master
 
 	// Paginate browsing for large numbers of objects.
 	$per_page = 50;
@@ -680,7 +697,11 @@ function wp_nav_menu_item_taxonomy_meta_box( $object, $box ) {
 		<ul id="taxonomy-<?php echo $taxonomy_name; ?>-tabs" class="taxonomy-tabs add-menu-item-tabs">
 			<li <?php echo ( 'most-used' == $current_tab ? ' class="tabs"' : '' ); ?>>
 				<a class="nav-tab-link" data-type="tabs-panel-<?php echo esc_attr( $taxonomy_name ); ?>-pop" href="<?php if ( $nav_menu_selected_id ) echo esc_url(add_query_arg($taxonomy_name . '-tab', 'most-used', remove_query_arg($removed_args))); ?>#tabs-panel-<?php echo $taxonomy_name; ?>-pop">
+<<<<<<< HEAD
 					<?php _e( 'Most Used' ); ?>
+=======
+					<?php echo esc_html( $taxonomy->labels->most_used ); ?>
+>>>>>>> origin/master
 				</a>
 			</li>
 			<li <?php echo ( 'all' == $current_tab ? ' class="tabs"' : '' ); ?>>
@@ -996,7 +1017,11 @@ function _wp_delete_orphaned_draft_menu_items() {
 	$delete_timestamp = time() - ( DAY_IN_SECONDS * EMPTY_TRASH_DAYS );
 
 	// Delete orphaned draft menu items.
+<<<<<<< HEAD
 	$menu_items_to_delete = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts AS p LEFT JOIN $wpdb->postmeta AS m ON p.ID = m.post_id WHERE post_type = 'nav_menu_item' AND post_status = 'draft' AND meta_key = '_menu_item_orphaned' AND meta_value < '%d'", $delete_timestamp ) );
+=======
+	$menu_items_to_delete = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts AS p LEFT JOIN $wpdb->postmeta AS m ON p.ID = m.post_id WHERE post_type = 'nav_menu_item' AND post_status = 'draft' AND meta_key = '_menu_item_orphaned' AND meta_value < %d", $delete_timestamp ) );
+>>>>>>> origin/master
 
 	foreach ( (array) $menu_items_to_delete as $menu_item_id )
 		wp_delete_post( $menu_item_id, true );

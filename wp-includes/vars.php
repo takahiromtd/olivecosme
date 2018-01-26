@@ -120,6 +120,11 @@ $is_iis7 = $is_IIS && intval( substr( $_SERVER['SERVER_SOFTWARE'], strpos( $_SER
 /**
  * Test if the current browser runs on a mobile device (smart phone, tablet, etc.)
  *
+<<<<<<< HEAD
+=======
+ * @since 3.4.0
+ * 
+>>>>>>> origin/master
  * @return bool
  */
 function wp_is_mobile() {
@@ -137,5 +142,16 @@ function wp_is_mobile() {
 		$is_mobile = false;
 	}
 
+<<<<<<< HEAD
 	return $is_mobile;
+=======
+	/**
+	 * Filters whether the request should be treated as coming from a mobile device or not.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @param bool $is_mobile Whether the request is from a mobile device or not.
+	 */
+	return apply_filters( 'wp_is_mobile', $is_mobile );
+>>>>>>> origin/master
 }

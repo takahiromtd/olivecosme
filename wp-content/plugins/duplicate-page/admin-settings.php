@@ -1,11 +1,19 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div class="wrap duplicate_page_settings">
+<<<<<<< HEAD
 <h1><?php _e('Duplicate Page Settings', 'duplicate_page')?></h1>
+=======
+<h1><?php _e('Duplicate Page Settings', 'duplicate-page')?></h1>
+>>>>>>> origin/master
 <?php $duplicatepageoptions = array();
 $opt = get_option('duplicate_page_options');
 $msg = isset($_GET['msg']) ? $_GET['msg'] : '';
 if(isset($_POST['submit_duplicate_page']) && wp_verify_nonce( $_POST['duplicatepage_nonce_field'], 'duplicatepage_action' )):
+<<<<<<< HEAD
 	_e("<strong>Saving Please wait...</strong>", 'duplicate_page');
+=======
+	_e("<strong>Saving Please wait...</strong>", 'duplicate-page');
+>>>>>>> origin/master
 	$needToUnset = array('submit_duplicate_page');//no need to save in Database
 	foreach($needToUnset as $noneed):
 	  unset($_POST[$noneed]);
@@ -25,10 +33,17 @@ if(isset($_POST['submit_duplicate_page']) && wp_verify_nonce( $_POST['duplicatep
 endif;
 if(!empty($msg) && $msg == 1):
   _e( '<div class="updated settings-error notice is-dismissible" id="setting-error-settings_updated"> 
+<<<<<<< HEAD
 <p><strong>Settings saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate_page');	
 elseif(!empty($msg) && $msg == 2):
   _e( '<div class="error settings-error notice is-dismissible" id="setting-error-settings_updated"> 
 <p><strong>Settings not saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate_page');
+=======
+<p><strong>Settings saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate-page');	
+elseif(!empty($msg) && $msg == 2):
+  _e( '<div class="error settings-error notice is-dismissible" id="setting-error-settings_updated"> 
+<p><strong>Settings not saved.</strong></p><button class="notice-dismiss" type="button"><span class="screen-reader-text">Dismiss this notice.</span></button></div>', 'duplicate-page');
+>>>>>>> origin/master
 endif;
 $duplicate_post_status = array('draft','publish','private','pending');
 ?> 
@@ -40,6 +55,7 @@ $duplicate_post_status = array('draft','publish','private','pending');
 <table class="form-table">
 <tbody>
 <tr>
+<<<<<<< HEAD
 <th scope="row"><label for="duplicate_post_status"><?php _e('Duplicate Post Status', 'duplicate_page')?></label></th>
 <td><select id="duplicate_post_status" name="duplicate_post_status">
     <?php foreach($duplicate_post_status as $val):
@@ -64,6 +80,32 @@ $duplicate_post_status = array('draft','publish','private','pending');
 <td>
  <input type="text" class="regular-text" value="<?php echo !empty($opt['duplicate_post_suffix']) ? $opt['duplicate_post_suffix'] : ''?>" id="duplicate_post_suffix" name="duplicate_post_suffix">
     <p><?php _e('Add a suffix for duplicate or clone post as Copy, Clone etc. It will show after title.', 'duplicate_page')?></p>
+=======
+<th scope="row"><label for="duplicate_post_status"><?php _e('Duplicate Post Status', 'duplicate-page')?></label></th>
+<td><select id="duplicate_post_status" name="duplicate_post_status">
+    <?php foreach($duplicate_post_status as $val):
+	$optionDisplayVal = ucfirst($val); ?>
+	<option value="<?php echo $val; ?>" <?php echo($opt['duplicate_post_status'] == $val ) ? "selected = 'selected'" : ""; ?>><?php _e($optionDisplayVal, 'duplicate-page')?></option>
+    <?php endforeach; ?>
+    </select>
+    <p><?php _e('Please select any post status you want to assign for duplicate post. <strong>Default:</strong> Draft.', 'duplicate-page')?></p>
+</td>
+</tr>
+<tr>
+<th scope="row"><label for="duplicate_post_redirect"><?php _e('Redirect to after click on <strong>Duplicate This Link</strong>', 'duplicate-page')?></label></th>
+<td><select id="duplicate_post_redirect" name="duplicate_post_redirect">
+	<option value="to_list" <?php echo($opt['duplicate_post_redirect'] == 'to_list' ) ? "selected = 'selected'" : ""; ?>><?php _e('To All Posts List', 'duplicate-page')?></option>
+	<option value="to_page" <?php echo($opt['duplicate_post_redirect'] == 'to_page' ) ? "selected = 'selected'" : ""; ?>><?php _e('To Duplicate Edit Screen', 'duplicate-page')?></option>
+    </select>
+    <p><?php _e('Please select any post redirection, redirect you to selected after click on duplicate this link. <strong>Default:</strong> To current list.', 'duplicate-page')?></p>
+</td>
+</tr>
+<tr>
+<th scope="row"><label for="duplicate_post_suffix"><?php _e('Duplicate Post Suffix', 'duplicate-page')?></label></th>
+<td>
+ <input type="text" class="regular-text" value="<?php echo !empty($opt['duplicate_post_suffix']) ? $opt['duplicate_post_suffix'] : ''?>" id="duplicate_post_suffix" name="duplicate_post_suffix">
+    <p><?php _e('Add a suffix for duplicate or clone post as Copy, Clone etc. It will show after title.', 'duplicate-page')?></p>
+>>>>>>> origin/master
 </td>
 </tr>
 </tbody></table>
@@ -73,7 +115,11 @@ $duplicate_post_status = array('draft','publish','private','pending');
 <div id="postbox-container-1" class="postbox-container">
 <div id="side-sortables" class="meta-box-sortables ui-sortable">
     <div id="submitdiv" class="postbox" style="padding: 6px;">
+<<<<<<< HEAD
     <p><strong style="color:#F00"><?php _e('Contribute some donation, to make plugin more stable. You can pay amount of your choice.', 'duplicate_page')?></strong></p>
+=======
+    <p><strong style="color:#F00"><?php _e('Contribute some donation, to make plugin more stable. You can pay amount of your choice.', 'duplicate-page')?></strong></p>
+>>>>>>> origin/master
     <form name="_xclick" action="https://www.paypal.com/yt/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="mndpsingh287@gmail.com">

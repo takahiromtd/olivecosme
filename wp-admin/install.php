@@ -49,7 +49,11 @@ nocache_headers();
 $step = isset( $_GET['step'] ) ? (int) $_GET['step'] : 0;
 
 /**
+<<<<<<< HEAD
  * Display install header.
+=======
+ * Display installation header.
+>>>>>>> origin/master
  *
  * @since 2.5.0
  *
@@ -87,6 +91,11 @@ function display_header( $body_classes = '' ) {
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
+=======
+ * @global wpdb $wpdb WordPress database abstraction object.
+ *
+>>>>>>> origin/master
  * @param string|null $error
  */
 function display_setup_form( $error = null ) {
@@ -279,7 +288,11 @@ if ( defined( 'DO_NOT_UPGRADE_GLOBAL_TABLES' ) ) {
  */
 $language = '';
 if ( ! empty( $_REQUEST['language'] ) ) {
+<<<<<<< HEAD
 	$language = preg_replace( '/[^a-zA-Z_]/', '', $_REQUEST['language'] );
+=======
+	$language = preg_replace( '/[^a-zA-Z0-9_]/', '', $_REQUEST['language'] );
+>>>>>>> origin/master
 } elseif ( isset( $GLOBALS['wp_local_package'] ) ) {
 	$language = $GLOBALS['wp_local_package'];
 }

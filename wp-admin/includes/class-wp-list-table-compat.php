@@ -29,7 +29,10 @@ class _WP_List_Table_Compat extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array
 	 */
@@ -43,7 +46,10 @@ class _WP_List_Table_Compat extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array
 	 */

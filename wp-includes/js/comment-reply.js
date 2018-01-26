@@ -1,4 +1,26 @@
+<<<<<<< HEAD
 var addComment = {
+=======
+/**
+ * @summary Handles the addition of the comment form.
+ *
+ * @since 2.7.0
+ *
+ * @type {Object}
+ */
+var addComment = {
+	/**
+	 * @summary Retrieves the elements corresponding to the given IDs.
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param {string} commId The comment ID.
+	 * @param {string} parentId The parent ID.
+	 * @param {string} respondId The respond ID.
+	 * @param {string} postId The post ID.
+	 * @returns {boolean} Always returns false.
+	 */
+>>>>>>> origin/master
 	moveForm: function( commId, parentId, respondId, postId ) {
 		var div, element, style, cssHidden,
 			t           = this,
@@ -30,6 +52,14 @@ var addComment = {
 		parent.value = parentId;
 		cancel.style.display = '';
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Puts back the comment, hides the cancel button and removes the onclick event.
+		 *
+		 * @returns {boolean} Always returns false.
+		 */
+>>>>>>> origin/master
 		cancel.onclick = function() {
 			var t       = addComment,
 				temp    = t.I( 'wp-temp-form-div' ),
@@ -48,8 +78,13 @@ var addComment = {
 		};
 
 		/*
+<<<<<<< HEAD
 		 * Set initial focus to the first form focusable element.
 		 * Try/catch used just to avoid errors in IE 7- which return visibility
+=======
+		 * Sets initial focus to the first form focusable element.
+		 * Uses try/catch just to avoid errors in IE 7- which return visibility
+>>>>>>> origin/master
 		 * 'inherit' when the visibility value is inherited from an ancestor.
 		 */
 		try {
@@ -90,6 +125,17 @@ var addComment = {
 		return false;
 	},
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @summary Returns the object corresponding to the given ID.
+	 *
+	 * @since 2.7.0
+	 *
+	 * @param {string} id The ID.
+	 * @returns {Element} The element belonging to the ID.
+	 */
+>>>>>>> origin/master
 	I: function( id ) {
 		return document.getElementById( id );
 	}

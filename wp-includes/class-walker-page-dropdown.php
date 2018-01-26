@@ -20,7 +20,10 @@ class Walker_PageDropdown extends Walker {
 	 * What the class handles.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 *
 	 * @see Walker::$tree_type
@@ -31,7 +34,10 @@ class Walker_PageDropdown extends Walker {
 	 * Database fields to use.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 *
 	 * @see Walker::$db_fields
@@ -43,7 +49,10 @@ class Walker_PageDropdown extends Walker {
 	 * Starts the element output.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see Walker::start_el()
 	 *

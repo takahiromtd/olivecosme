@@ -42,6 +42,7 @@
 $shortcode_tags = array();
 
 /**
+<<<<<<< HEAD
  * Add hook for shortcode tag.
  *
  * There can only be one hook for each shortcode. Which means that if another
@@ -78,15 +79,34 @@ $shortcode_tags = array();
  *         return "content = $content";
  *     }
  *     add_shortcode( 'baztag', 'baztag_func' );
+=======
+ * Adds a new shortcode.
+ *
+ * Care should be taken through prefixing or other means to ensure that the
+ * shortcode tag being added is unique and will not conflict with other,
+ * already-added shortcode tags. In the event of a duplicated tag, the tag
+ * loaded last will take precedence.
+>>>>>>> origin/master
  *
  * @since 2.5.0
  *
  * @global array $shortcode_tags
  *
+<<<<<<< HEAD
  * @param string   $tag  Shortcode tag to be searched in post content.
  * @param callable $func Hook to run when shortcode is found.
  */
 function add_shortcode($tag, $func) {
+=======
+ * @param string   $tag      Shortcode tag to be searched in post content.
+ * @param callable $callback The callback function to run when the shortcode is found.
+ *                           Every shortcode callback is passed three parameters by default,
+ *                           including an array of attributes (`$atts`), the shortcode content
+ *                           or null if not set (`$content`), and finally the shortcode tag
+ *                           itself (`$shortcode_tag`), in that order.
+ */
+function add_shortcode( $tag, $callback ) {
+>>>>>>> origin/master
 	global $shortcode_tags;
 
 	if ( '' == trim( $tag ) ) {
@@ -102,7 +122,11 @@ function add_shortcode($tag, $func) {
 		return;
 	}
 
+<<<<<<< HEAD
 	$shortcode_tags[ $tag ] = $func;
+=======
+	$shortcode_tags[ $tag ] = $callback;
+>>>>>>> origin/master
 }
 
 /**
@@ -331,9 +355,15 @@ function do_shortcode_tag( $m ) {
 	 * @since 4.7.0
 	 *
 	 * @param bool|string $return      Short-circuit return value. Either false or the value to replace the shortcode with.
+<<<<<<< HEAD
 	 * @param string      $tag         Shortcode name.
 	 * @param array       $attr        Shortcode attributes array,
 	 * @param array       $m           Regular expression match array.
+=======
+	 * @param string       $tag         Shortcode name.
+	 * @param array|string $attr        Shortcode attributes array or empty string.
+	 * @param array        $m           Regular expression match array.
+>>>>>>> origin/master
 	 */
 	$return = apply_filters( 'pre_do_shortcode_tag', false, $tag, $attr, $m );
 	if ( false !== $return ) {
@@ -349,10 +379,17 @@ function do_shortcode_tag( $m ) {
 	 *
 	 * @since 4.7.0
 	 *
+<<<<<<< HEAD
 	 * @param string $output Shortcode output.
 	 * @param string $tag    Shortcode name.
 	 * @param array  $attr   Shortcode attributes array,
 	 * @param array  $m      Regular expression match array.
+=======
+	 * @param string       $output Shortcode output.
+	 * @param string       $tag    Shortcode name.
+	 * @param array|string $attr   Shortcode attributes array or empty string.
+	 * @param array        $m      Regular expression match array.
+>>>>>>> origin/master
 	 */
 	return apply_filters( 'do_shortcode_tag', $output, $tag, $attr, $m );
 }
@@ -487,7 +524,11 @@ function unescape_invalid_shortcodes( $content ) {
  * @return string The shortcode attribute regular expression
  */
 function get_shortcode_atts_regex() {
+<<<<<<< HEAD
 	return '/([\w-]+)\s*=\s*"([^"]*)"(?:\s|$)|([\w-]+)\s*=\s*\'([^\']*)\'(?:\s|$)|([\w-]+)\s*=\s*([^\s\'"]+)(?:\s|$)|"([^"]*)"(?:\s|$)|(\S+)(?:\s|$)/';
+=======
+	return '/([\w-]+)\s*=\s*"([^"]*)"(?:\s|$)|([\w-]+)\s*=\s*\'([^\']*)\'(?:\s|$)|([\w-]+)\s*=\s*([^\s\'"]+)(?:\s|$)|"([^"]*)"(?:\s|$)|\'([^\']*)\'(?:\s|$)|(\S+)(?:\s|$)/';
+>>>>>>> origin/master
 }
 
 /**
@@ -519,8 +560,15 @@ function shortcode_parse_atts($text) {
 				$atts[strtolower($m[5])] = stripcslashes($m[6]);
 			elseif (isset($m[7]) && strlen($m[7]))
 				$atts[] = stripcslashes($m[7]);
+<<<<<<< HEAD
 			elseif (isset($m[8]))
 				$atts[] = stripcslashes($m[8]);
+=======
+			elseif (isset($m[8]) && strlen($m[8]))
+				$atts[] = stripcslashes($m[8]);
+			elseif (isset($m[9]))
+				$atts[] = stripcslashes($m[9]);
+>>>>>>> origin/master
 		}
 
 		// Reject any unclosed HTML elements

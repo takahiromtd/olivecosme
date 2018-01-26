@@ -88,6 +88,7 @@
 				}
 			}
 
+<<<<<<< HEAD
 			event.content = wp.mce.views.setMarkers( event.content );
 		} );
 
@@ -99,6 +100,13 @@
 				editor.quirks.refreshContentEditable();
 			}
 
+=======
+			event.content = wp.mce.views.setMarkers( event.content, editor );
+		} );
+
+		// Replace any new markers nodes with views.
+		editor.on( 'setcontent', function() {
+>>>>>>> origin/master
 			wp.mce.views.render();
 		} );
 
@@ -190,7 +198,11 @@
 				] );
 
 				editor.on( 'wptoolbar', function( event ) {
+<<<<<<< HEAD
 					if ( isView( event.element ) ) {
+=======
+					if ( ! event.collapsed && isView( event.element ) ) {
+>>>>>>> origin/master
 						event.toolbar = toolbar;
 					}
 				} );

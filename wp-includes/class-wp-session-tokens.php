@@ -18,7 +18,10 @@ abstract class WP_Session_Tokens {
 	 * User ID.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @var int User ID.
 	 */
 	protected $user_id;
@@ -35,6 +38,7 @@ abstract class WP_Session_Tokens {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Get a session token manager instance for a user.
 	 *
 	 * This method contains a filter that allows a plugin to swap out
@@ -45,6 +49,18 @@ abstract class WP_Session_Tokens {
 	 * @static
 	 *
 	 * @param int $user_id User whose session to manage.
+=======
+	 * Retrieves a session token manager instance for a user.
+	 *
+	 * This method contains a {@see 'session_token_manager'} filter, allowing a plugin to swap out
+	 * the session manager for a subclass of `WP_Session_Tokens`.
+	 *
+	 * @since 4.0.0
+	 * @static
+	 *
+	 * @param int $user_id User whose session to manage.
+	 * @return WP_User_Meta_Session_Tokens WP_User_Meta_Session_Tokens class instance by default.
+>>>>>>> origin/master
 	 */
 	final public static function get_instance( $user_id ) {
 		/**
@@ -63,7 +79,10 @@ abstract class WP_Session_Tokens {
 	 * Hashes a session token for storage.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token Session token to hash.
 	 * @return string A hash of the session token (a verifier).
@@ -81,7 +100,10 @@ abstract class WP_Session_Tokens {
 	 * Get a user's session.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token Session token
 	 * @return array User session
@@ -97,7 +119,10 @@ abstract class WP_Session_Tokens {
 	 * Checks that the given token is present and hasn't expired.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token Token to verify.
 	 * @return bool Whether the token is valid for the user.
@@ -119,7 +144,10 @@ abstract class WP_Session_Tokens {
 	 * {@see 'attach_session_information'} filter).
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int $expiration Session expiration timestamp.
 	 * @return string Session token.
@@ -163,7 +191,10 @@ abstract class WP_Session_Tokens {
 	 * Update a session token.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token Session token to update.
 	 * @param array  $session Session information.
@@ -177,7 +208,10 @@ abstract class WP_Session_Tokens {
 	 * Destroy a session token.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token Session token to destroy.
 	 */
@@ -191,7 +225,10 @@ abstract class WP_Session_Tokens {
 	 * except a single token, presumably the one in use.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $token_to_keep Session token to keep.
 	 */
@@ -210,7 +247,10 @@ abstract class WP_Session_Tokens {
 	 * based on expiration.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $session Session to check.
 	 * @return bool Whether session is valid.
@@ -223,7 +263,10 @@ abstract class WP_Session_Tokens {
 	 * Destroy all session tokens for a user.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	final public function destroy_all() {
 		$this->destroy_all_sessions();
@@ -233,10 +276,17 @@ abstract class WP_Session_Tokens {
 	 * Destroy all session tokens for all users.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
 	 * @static
 	 */
 	final public static function destroy_all_for_all_users() {
+=======
+	 * @static
+	 */
+	final public static function destroy_all_for_all_users() {
+		/** This filter is documented in wp-includes/class-wp-session-tokens.php */
+>>>>>>> origin/master
 		$manager = apply_filters( 'session_token_manager', 'WP_User_Meta_Session_Tokens' );
 		call_user_func( array( $manager, 'drop_sessions' ) );
 	}
@@ -245,7 +295,10 @@ abstract class WP_Session_Tokens {
 	 * Retrieve all sessions of a user.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Sessions of a user.
 	 */
@@ -257,7 +310,10 @@ abstract class WP_Session_Tokens {
 	 * This method should retrieve all sessions of a user, keyed by verifier.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Sessions of a user, keyed by verifier.
 	 */
@@ -267,7 +323,10 @@ abstract class WP_Session_Tokens {
 	 * This method should look up a session by its verifier (token hash).
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $verifier Verifier of the session to retrieve.
 	 * @return array|null The session, or null if it does not exist.
@@ -280,7 +339,10 @@ abstract class WP_Session_Tokens {
 	 * Omitting the second argument should destroy the session.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $verifier Verifier of the session to update.
 	 * @param array  $session  Optional. Session. Omitting this argument destroys the session.
@@ -292,7 +354,10 @@ abstract class WP_Session_Tokens {
 	 * except a single session passed.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $verifier Verifier of the session to keep.
 	 */
@@ -302,7 +367,10 @@ abstract class WP_Session_Tokens {
 	 * This method should destroy all sessions for a user.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	abstract protected function destroy_all_sessions();
 
@@ -310,7 +378,10 @@ abstract class WP_Session_Tokens {
 	 * This static method should destroy all session tokens for all users.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 */
 	public static function drop_sessions() {}

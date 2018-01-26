@@ -488,6 +488,7 @@ if ( ! function_exists( 'array_replace_recursive' ) ) :
 	}
 endif;
 
+<<<<<<< HEAD
 // SPL can be disabled on PHP 5.2
 if ( ! function_exists( 'spl_autoload_register' ) ):
 	$_wp_spl_autoloaders = array();
@@ -578,3 +579,14 @@ if ( ! function_exists( 'spl_autoload_register' ) ):
 		return $GLOBALS['_wp_spl_autoloaders'];
 	}
 endif;
+=======
+/**
+ * Polyfill for the SPL autoloader. In PHP 5.2 (but not 5.3 and later), SPL can
+ * be disabled, and PHP 7.2 raises notices if the compiler finds an __autoload()
+ * function declaration. Function availability is checked here, and the
+ * autoloader is included only if necessary.
+ */
+if ( ! function_exists( 'spl_autoload_register' ) ) {
+	require_once ABSPATH . WPINC . '/spl-autoload-compat.php';
+}
+>>>>>>> origin/master

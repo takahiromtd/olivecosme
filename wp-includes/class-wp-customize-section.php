@@ -26,7 +26,10 @@ class WP_Customize_Section {
 	 * @since 4.1.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -35,7 +38,10 @@ class WP_Customize_Section {
 	 * Order in which this instance was created in relation to other instances.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $instance_number;
@@ -44,7 +50,10 @@ class WP_Customize_Section {
 	 * WP_Customize_Manager instance.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var WP_Customize_Manager
 	 */
 	public $manager;
@@ -53,7 +62,10 @@ class WP_Customize_Section {
 	 * Unique identifier.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $id;
@@ -62,7 +74,10 @@ class WP_Customize_Section {
 	 * Priority of the section which informs load order of sections.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var integer
 	 */
 	public $priority = 160;
@@ -71,7 +86,10 @@ class WP_Customize_Section {
 	 * Panel in which to show the section, making it a sub-section.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $panel = '';
@@ -80,7 +98,10 @@ class WP_Customize_Section {
 	 * Capability required for the section.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $capability = 'edit_theme_options';
@@ -89,7 +110,10 @@ class WP_Customize_Section {
 	 * Theme feature support for the section.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string|array
 	 */
 	public $theme_supports = '';
@@ -98,7 +122,10 @@ class WP_Customize_Section {
 	 * Title of the section to show in UI.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $title = '';
@@ -107,7 +134,10 @@ class WP_Customize_Section {
 	 * Description to show in the UI.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $description = '';
@@ -116,7 +146,10 @@ class WP_Customize_Section {
 	 * Customizer controls for this section.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $controls;
@@ -125,7 +158,10 @@ class WP_Customize_Section {
 	 * Type of this section.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $type = 'default';
@@ -134,7 +170,10 @@ class WP_Customize_Section {
 	 * Active callback.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_Customize_Section::active()
 	 *
@@ -149,7 +188,10 @@ class WP_Customize_Section {
 	 * Show the description or hide it behind the help icon.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @var bool Indicates whether the Section's description should be
 	 *           hidden behind a help icon ("?") in the Section header,
@@ -191,7 +233,10 @@ class WP_Customize_Section {
 	 * Check whether section is active to current Customizer preview.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return bool Whether the section is active to the current preview.
 	 */
@@ -219,7 +264,10 @@ class WP_Customize_Section {
 	 * an 'active_callback' argument to the constructor.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return true Always true.
 	 */
@@ -331,7 +379,10 @@ class WP_Customize_Section {
 	 * WP_Customize_Manager::register_section_type().
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_Customize_Manager::render_template()
 	 */
@@ -350,7 +401,10 @@ class WP_Customize_Section {
 	 * export custom variables by overriding WP_Customize_Section::json().
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_Customize_Section::print_template()
 	 */
@@ -379,6 +433,11 @@ class WP_Customize_Section {
 								{{{ data.description }}}
 							</div>
 						<# } #>
+<<<<<<< HEAD
+=======
+
+						<div class="customize-control-notifications-container"></div>
+>>>>>>> origin/master
 					</div>
 
 					<# if ( data.description && ! data.description_hidden ) { #>
@@ -402,5 +461,17 @@ require_once( ABSPATH . WPINC . '/customize/class-wp-customize-sidebar-section.p
 /** WP_Customize_Nav_Menu_Section class */
 require_once( ABSPATH . WPINC . '/customize/class-wp-customize-nav-menu-section.php' );
 
+<<<<<<< HEAD
 /** WP_Customize_New_Menu_Section class */
+=======
+/**
+ * WP_Customize_New_Menu_Section class
+ *
+ * As this file is deprecated, it will trigger a deprecation notice if instantiated. In a subsequent
+ * release, the require_once() here will be removed and _deprecated_file() will be called if file is
+ * required at all.
+ *
+ * @deprecated 4.9.0 This file is no longer used due to new menu creation UX.
+ */
+>>>>>>> origin/master
 require_once( ABSPATH . WPINC . '/customize/class-wp-customize-new-menu-section.php' );

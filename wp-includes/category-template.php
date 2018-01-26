@@ -20,7 +20,11 @@ function get_category_link( $category ) {
 	if ( ! is_object( $category ) )
 		$category = (int) $category;
 
+<<<<<<< HEAD
 	$category = get_term_link( $category, 'category' );
+=======
+	$category = get_term_link( $category );
+>>>>>>> origin/master
 
 	if ( is_wp_error( $category ) )
 		return '';
@@ -32,11 +36,16 @@ function get_category_link( $category ) {
  * Retrieve category parents with separator.
  *
  * @since 1.2.0
+<<<<<<< HEAD
+=======
+ * @since 4.8.0 The `$visited` parameter was deprecated and renamed to `$deprecated`.
+>>>>>>> origin/master
  *
  * @param int $id Category ID.
  * @param bool $link Optional, default is false. Whether to format with link.
  * @param string $separator Optional, default is '/'. How to separate categories.
  * @param bool $nicename Optional, default is false. Whether to use nice name for display.
+<<<<<<< HEAD
  * @param array $visited Optional. Already linked to categories to prevent duplicates.
  * @return string|WP_Error A list of category parents on success, WP_Error on failure.
  */
@@ -61,6 +70,26 @@ function get_category_parents( $id, $link = false, $separator = '/', $nicename =
 	else
 		$chain .= $name.$separator;
 	return $chain;
+=======
+ * @param array $deprecated Not used.
+ * @return string|WP_Error A list of category parents on success, WP_Error on failure.
+ */
+function get_category_parents( $id, $link = false, $separator = '/', $nicename = false, $deprecated = array() ) {
+
+	if ( ! empty( $deprecated ) ) {
+		_deprecated_argument( __FUNCTION__, '4.8.0' );
+	}
+
+	$format = $nicename ? 'slug' : 'name';
+
+	$args = array(
+		'separator' => $separator,
+		'link'      => $link,
+		'format'    => $format,
+	);
+
+	return get_term_parents_list( $id, 'category', $args );
+>>>>>>> origin/master
 }
 
 /**
@@ -109,7 +138,11 @@ function get_the_category( $id = false ) {
  */
 function get_the_category_by_ID( $cat_ID ) {
 	$cat_ID = (int) $cat_ID;
+<<<<<<< HEAD
 	$category = get_term( $cat_ID, 'category' );
+=======
+	$category = get_term( $cat_ID );
+>>>>>>> origin/master
 
 	if ( is_wp_error( $category ) )
 		return $category;
@@ -118,18 +151,31 @@ function get_the_category_by_ID( $cat_ID ) {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieve category list in either HTML list or custom format.
+=======
+ * Retrieve category list for a post in either HTML list or custom format.
+>>>>>>> origin/master
  *
  * @since 1.5.1
  *
  * @global WP_Rewrite $wp_rewrite
  *
+<<<<<<< HEAD
  * @param string $separator Optional, default is empty string. Separator for between the categories.
+=======
+ * @param string $separator Optional. Separator between the categories. By default, the links are placed
+ *                          in an unordered list. An empty string will result in the default behavior.
+>>>>>>> origin/master
  * @param string $parents Optional. How to display the parents.
  * @param int $post_id Optional. Post ID to retrieve categories.
  * @return string
  */
+<<<<<<< HEAD
 function get_the_category_list( $separator = '', $parents='', $post_id = false ) {
+=======
+function get_the_category_list( $separator = '', $parents = '', $post_id = false ) {
+>>>>>>> origin/master
 	global $wp_rewrite;
 	if ( ! is_object_in_taxonomy( get_post_type( $post_id ), 'category' ) ) {
 		/** This filter is documented in wp-includes/category-template.php */
@@ -207,7 +253,11 @@ function get_the_category_list( $separator = '', $parents='', $post_id = false )
 	 *
 	 * @since 1.2.0
 	 *
+<<<<<<< HEAD
 	 * @param array  $thelist   List of categories for the current post.
+=======
+	 * @param string $thelist   List of categories for the current post.
+>>>>>>> origin/master
 	 * @param string $separator Separator used between the categories.
 	 * @param string $parents   How to display the category parents. Accepts 'multiple',
 	 *                          'single', or empty.
@@ -241,6 +291,7 @@ function in_category( $category, $post = null ) {
 }
 
 /**
+<<<<<<< HEAD
  * Display the category list for the post.
  *
  * @since 0.71
@@ -250,6 +301,18 @@ function in_category( $category, $post = null ) {
  * @param int $post_id Optional. Post ID to retrieve categories.
  */
 function the_category( $separator = '', $parents='', $post_id = false ) {
+=======
+ * Display category list for a post in either HTML list or custom format.
+ *
+ * @since 0.71
+ *
+ * @param string $separator Optional. Separator between the categories. By default, the links are placed
+ *                          in an unordered list. An empty string will result in the default behavior.
+ * @param string $parents Optional. How to display the parents.
+ * @param int $post_id Optional. Post ID to retrieve categories.
+ */
+function the_category( $separator = '', $parents = '', $post_id = false ) {
+>>>>>>> origin/master
 	echo get_the_category_list( $separator, $parents, $post_id );
 }
 
@@ -278,13 +341,19 @@ function category_description( $category = 0 ) {
  * @since 4.6.0 Introduced the `required` argument.
  *
  * @param string|array $args {
+<<<<<<< HEAD
  *     Optional. Array or string of arguments to generate a categories drop-down element.
+=======
+ *     Optional. Array or string of arguments to generate a categories drop-down element. See WP_Term_Query::__construct()
+ *     for information on additional accepted arguments.
+>>>>>>> origin/master
  *
  *     @type string       $show_option_all   Text to display for showing all categories. Default empty.
  *     @type string       $show_option_none  Text to display for showing no categories. Default empty.
  *     @type string       $option_none_value Value to use when no category is selected. Default empty.
  *     @type string       $orderby           Which column to use for ordering categories. See get_terms() for a list
  *                                           of accepted values. Default 'id' (term_id).
+<<<<<<< HEAD
  *     @type string       $order             Whether to order terms in ascending or descending order. Accepts 'ASC'
  *                                           or 'DESC'. Default 'ASC'.
  *     @type bool         $pad_counts        See get_terms() for an argument description. Default false.
@@ -295,6 +364,11 @@ function category_description( $category = 0 ) {
  *     @type int          $child_of          Term ID to retrieve child terms of. See get_terms(). Default 0.
  *     @type array|string $exclude           Array or comma/space-separated string of term ids to exclude.
  *                                           If `$include` is non-empty, `$exclude` is ignored. Default empty array.
+=======
+ *     @type bool         $pad_counts        See get_terms() for an argument description. Default false.
+ *     @type bool|int     $show_count        Whether to include post counts. Accepts 0, 1, or their bool equivalents.
+ *                                           Default 0.
+>>>>>>> origin/master
  *     @type bool|int     $echo              Whether to echo or return the generated markup. Accepts 0, 1, or their
  *                                           bool equivalents. Default 1.
  *     @type bool|int     $hierarchical      Whether to traverse the taxonomy hierarchy. Accepts 0, 1, or their bool
@@ -347,8 +421,13 @@ function wp_dropdown_categories( $args = '' ) {
 
 	// Back compat.
 	if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
+<<<<<<< HEAD
 		/* translators: 1: "type => link", 2: "taxonomy => link_category" alternative */
 		_deprecated_argument( __FUNCTION__, '3.0.0',
+=======
+		_deprecated_argument( __FUNCTION__, '3.0.0',
+			/* translators: 1: "type => link", 2: "taxonomy => link_category" */
+>>>>>>> origin/master
 			sprintf( __( '%1$s is deprecated. Use %2$s instead.' ),
 				'<code>type => link</code>',
 				'<code>taxonomy => link_category</code>'
@@ -400,9 +479,16 @@ function wp_dropdown_categories( $args = '' ) {
 		 *
 		 * @see wp_dropdown_categories()
 		 *
+<<<<<<< HEAD
 		 * @param string $element Taxonomy element to list.
 		 */
 		$show_option_none = apply_filters( 'list_cats', $r['show_option_none'] );
+=======
+		 * @param string       $element  Category name.
+		 * @param WP_Term|null $category The category object, or null if there's no corresponding category.
+		 */
+		$show_option_none = apply_filters( 'list_cats', $r['show_option_none'], null );
+>>>>>>> origin/master
 		$output .= "\t<option value='" . esc_attr( $option_none_value ) . "' selected='selected'>$show_option_none</option>\n";
 	}
 
@@ -411,7 +497,11 @@ function wp_dropdown_categories( $args = '' ) {
 		if ( $r['show_option_all'] ) {
 
 			/** This filter is documented in wp-includes/category-template.php */
+<<<<<<< HEAD
 			$show_option_all = apply_filters( 'list_cats', $r['show_option_all'] );
+=======
+			$show_option_all = apply_filters( 'list_cats', $r['show_option_all'], null );
+>>>>>>> origin/master
 			$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
 			$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
 		}
@@ -419,7 +509,11 @@ function wp_dropdown_categories( $args = '' ) {
 		if ( $r['show_option_none'] ) {
 
 			/** This filter is documented in wp-includes/category-template.php */
+<<<<<<< HEAD
 			$show_option_none = apply_filters( 'list_cats', $r['show_option_none'] );
+=======
+			$show_option_none = apply_filters( 'list_cats', $r['show_option_none'], null );
+>>>>>>> origin/master
 			$selected = selected( $option_none_value, $r['selected'], false );
 			$output .= "\t<option value='" . esc_attr( $option_none_value ) . "'$selected>$show_option_none</option>\n";
 		}
@@ -485,7 +579,11 @@ function wp_dropdown_categories( $args = '' ) {
  *                                               See get_terms(). Default true.
  *     @type string       $order                 Which direction to order categories. Accepts 'ASC' or 'DESC'.
  *                                               Default 'ASC'.
+<<<<<<< HEAD
  *     @type string       $orderby               The column to use for ordering categories. Default 'ID'.
+=======
+ *     @type string       $orderby               The column to use for ordering categories. Default 'name'.
+>>>>>>> origin/master
  *     @type string       $separator             Separator between links. Default '<br />'.
  *     @type bool|int     $show_count            Whether to show how many posts are in the category. Default 0.
  *     @type string       $show_option_all       Text to display for showing all categories. Default empty string.
@@ -662,10 +760,17 @@ function wp_list_categories( $args = '' ) {
  * be to return the top 45 tags in the tag cloud list.
  *
  * The 'topic_count_text' argument is a nooped plural from _n_noop() to generate the
+<<<<<<< HEAD
  * text for the tooltip of the tag link.
  *
  * The 'topic_count_text_callback' argument is a function, which given the count
  * of the posts with that tag returns a text for the tooltip of the tag link.
+=======
+ * text for the tag link count.
+ *
+ * The 'topic_count_text_callback' argument is a function, which given the count
+ * of the posts with that tag returns a text for the tag link count.
+>>>>>>> origin/master
  *
  * The 'post_type' argument is used only when 'link' is set to 'edit'. It determines the post_type
  * passed to edit.php for the popular tags edit links.
@@ -674,6 +779,10 @@ function wp_list_categories( $args = '' ) {
  * should be used, because only one will be used and the other ignored, if they are both set.
  *
  * @since 2.3.0
+<<<<<<< HEAD
+=======
+ * @since 4.8.0 Added the `show_count` argument.
+>>>>>>> origin/master
  *
  * @param array|string|null $args Optional. Override default arguments.
  * @return void|array Generated tag cloud, only if no failures and 'array' is set for the 'format' argument.
@@ -683,7 +792,12 @@ function wp_tag_cloud( $args = '' ) {
 	$defaults = array(
 		'smallest' => 8, 'largest' => 22, 'unit' => 'pt', 'number' => 45,
 		'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
+<<<<<<< HEAD
 		'exclude' => '', 'include' => '', 'link' => 'view', 'taxonomy' => 'post_tag', 'post_type' => '', 'echo' => true
+=======
+		'exclude' => '', 'include' => '', 'link' => 'view', 'taxonomy' => 'post_tag', 'post_type' => '', 'echo' => true,
+		'show_count' => 0,
+>>>>>>> origin/master
 	);
 	$args = wp_parse_args( $args, $defaults );
 
@@ -723,10 +837,19 @@ function wp_tag_cloud( $args = '' ) {
 }
 
 /**
+<<<<<<< HEAD
  * Default topic count scaling for tag links
  *
  * @param int $count number of posts with that tag
  * @return int scaled count
+=======
+ * Default topic count scaling for tag links.
+ *
+ * @since 2.9.0
+ *
+ * @param int $count Number of posts with that tag.
+ * @return int Scaled count.
+>>>>>>> origin/master
  */
 function default_topic_count_scale( $count ) {
 	return round(log10($count + 1) * 100);
@@ -737,6 +860,10 @@ function default_topic_count_scale( $count ) {
  *
  * @todo Complete functionality.
  * @since 2.3.0
+<<<<<<< HEAD
+=======
+ * @since 4.8.0 Added the `show_count` argument.
+>>>>>>> origin/master
  *
  * @param array $tags List of tags.
  * @param string|array $args {
@@ -767,11 +894,21 @@ function default_topic_count_scale( $count ) {
  *     @type int|bool $filter                     Whether to enable filtering of the final output
  *                                                via {@see 'wp_generate_tag_cloud'}. Default 1|true.
  *     @type string   $topic_count_text           Nooped plural text from _n_noop() to supply to
+<<<<<<< HEAD
  *                                                tag tooltips. Default null.
  *     @type callable $topic_count_text_callback  Callback used to generate nooped plural text for
  *                                                tag tooltips based on the count. Default null.
  *     @type callable $topic_count_scale_callback Callback used to determine the tag count scaling
  *                                                value. Default default_topic_count_scale().
+=======
+ *                                                tag counts. Default null.
+ *     @type callable $topic_count_text_callback  Callback used to generate nooped plural text for
+ *                                                tag counts based on the count. Default null.
+ *     @type callable $topic_count_scale_callback Callback used to determine the tag count scaling
+ *                                                value. Default default_topic_count_scale().
+ *     @type bool|int $show_count                 Whether to display the tag counts. Default 0. Accepts
+ *                                                0, 1, or their bool equivalents.
+>>>>>>> origin/master
  * }
  * @return string|array Tag cloud as a string or an array, depending on 'format' argument.
  */
@@ -781,6 +918,10 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 		'format' => 'flat', 'separator' => "\n", 'orderby' => 'name', 'order' => 'ASC',
 		'topic_count_text' => null, 'topic_count_text_callback' => null,
 		'topic_count_scale_callback' => 'default_topic_count_scale', 'filter' => 1,
+<<<<<<< HEAD
+=======
+		'show_count' => 0,
+>>>>>>> origin/master
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -791,14 +932,22 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 		return $return;
 	}
 
+<<<<<<< HEAD
 	// Juggle topic count tooltips:
+=======
+	// Juggle topic counts.
+>>>>>>> origin/master
 	if ( isset( $args['topic_count_text'] ) ) {
 		// First look for nooped plural support via topic_count_text.
 		$translate_nooped_plural = $args['topic_count_text'];
 	} elseif ( ! empty( $args['topic_count_text_callback'] ) ) {
 		// Look for the alternative callback style. Ignore the previous default.
 		if ( $args['topic_count_text_callback'] === 'default_topic_count_text' ) {
+<<<<<<< HEAD
 			$translate_nooped_plural = _n_noop( '%s topic', '%s topics' );
+=======
+			$translate_nooped_plural = _n_noop( '%s item', '%s items' );
+>>>>>>> origin/master
 		} else {
 			$translate_nooped_plural = false;
 		}
@@ -807,7 +956,11 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 		$translate_nooped_plural = _n_noop( $args['single_text'], $args['multiple_text'] );
 	} else {
 		// This is the default for when no callback, plural, or argument is passed in.
+<<<<<<< HEAD
 		$translate_nooped_plural = _n_noop( '%s topic', '%s topics' );
+=======
+		$translate_nooped_plural = _n_noop( '%s item', '%s items' );
+>>>>>>> origin/master
 	}
 
 	/**
@@ -862,6 +1015,25 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 		$font_spread = 1;
 	$font_step = $font_spread / $spread;
 
+<<<<<<< HEAD
+=======
+	$aria_label = false;
+	/*
+	 * Determine whether to output an 'aria-label' attribute with the tag name and count.
+	 * When tags have a different font size, they visually convey an important information
+	 * that should be available to assistive technologies too. On the other hand, sometimes
+	 * themes set up the Tag Cloud to display all tags with the same font size (setting
+	 * the 'smallest' and 'largest' arguments to the same value).
+	 * In order to always serve the same content to all users, the 'aria-label' gets printed out:
+	 * - when tags have a different size
+	 * - when the tag count is displayed (for example when users check the checkbox in the
+	 *   Tag Cloud widget), regardless of the tags font size
+	 */
+	if ( $args['show_count'] || 0 !== $font_spread ) {
+		$aria_label = true;
+	}
+
+>>>>>>> origin/master
 	// Assemble the data that will be used to generate the tag cloud markup.
 	$tags_data = array();
 	foreach ( $tags as $key => $tag ) {
@@ -871,6 +1043,7 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 		$real_count = $real_counts[ $key ];
 
 		if ( $translate_nooped_plural ) {
+<<<<<<< HEAD
 			$title = sprintf( translate_nooped_plural( $translate_nooped_plural, $real_count ), number_format_i18n( $real_count ) );
 		} else {
 			$title = call_user_func( $args['topic_count_text_callback'], $real_count, $tag, $args );
@@ -886,6 +1059,25 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 			'real_count' => $real_count,
 			'class'	     => 'tag-link-' . $tag_id,
 			'font_size'  => $args['smallest'] + ( $count - $min_count ) * $font_step,
+=======
+			$formatted_count = sprintf( translate_nooped_plural( $translate_nooped_plural, $real_count ), number_format_i18n( $real_count ) );
+		} else {
+			$formatted_count = call_user_func( $args['topic_count_text_callback'], $real_count, $tag, $args );
+		}
+
+		$tags_data[] = array(
+			'id'              => $tag_id,
+			'url'             => '#' != $tag->link ? $tag->link : '#',
+			'role'            => '#' != $tag->link ? '' : ' role="button"',
+			'name'            => $tag->name,
+			'formatted_count' => $formatted_count,
+			'slug'            => $tag->slug,
+			'real_count'      => $real_count,
+			'class'           => 'tag-cloud-link tag-link-' . $tag_id,
+			'font_size'       => $args['smallest'] + ( $count - $min_count ) * $font_step,
+			'aria_label'      => $aria_label ? sprintf( ' aria-label="%1$s (%2$s)"', esc_attr( $tag->name ), esc_attr( $formatted_count ) ) : '',
+			'show_count'      => $args['show_count'] ? '<span class="tag-link-count"> (' . $real_count . ')</span>' : '',
+>>>>>>> origin/master
 		);
 	}
 
@@ -900,10 +1092,26 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 
 	$a = array();
 
+<<<<<<< HEAD
 	// generate the output links array
 	foreach ( $tags_data as $key => $tag_data ) {
 		$class = $tag_data['class'] . ' tag-link-position-' . ( $key + 1 );
 		$a[] = "<a href='" . esc_url( $tag_data['url'] ) . "'" . $tag_data['role'] . " class='" . esc_attr( $class ) . "' title='" . esc_attr( $tag_data['title'] ) . "' style='font-size: " . esc_attr( str_replace( ',', '.', $tag_data['font_size'] ) . $args['unit'] ) . ";'>" . esc_html( $tag_data['name'] ) . "</a>";
+=======
+	// Generate the output links array.
+	foreach ( $tags_data as $key => $tag_data ) {
+		$class = $tag_data['class'] . ' tag-link-position-' . ( $key + 1 );
+		$a[] = sprintf(
+			'<a href="%1$s"%2$s class="%3$s" style="font-size: %4$s;"%5$s>%6$s%7$s</a>',
+			esc_url( $tag_data['url'] ),
+			$tag_data['role'],
+			esc_attr( $class ),
+			esc_attr( str_replace( ',', '.', $tag_data['font_size'] ) . $args['unit'] ),
+			$tag_data['aria_label'],
+			esc_html( $tag_data['name'] ),
+			$tag_data['show_count']
+		);
+>>>>>>> origin/master
 	}
 
 	switch ( $args['format'] ) {
@@ -911,7 +1119,16 @@ function wp_generate_tag_cloud( $tags, $args = '' ) {
 			$return =& $a;
 			break;
 		case 'list' :
+<<<<<<< HEAD
 			$return = "<ul class='wp-tag-cloud'>\n\t<li>";
+=======
+			/*
+			 * Force role="list", as some browsers (sic: Safari 10) don't expose to assistive
+			 * technologies the default role when the list is styled with `list-style: none`.
+			 * Note: this is redundant but doesn't harm.
+			 */
+			$return = "<ul class='wp-tag-cloud' role='list'>\n\t<li>";
+>>>>>>> origin/master
 			$return .= join( "</li>\n\t<li>", $a );
 			$return .= "</li>\n</ul>\n";
 			break;
@@ -1033,6 +1250,7 @@ function walk_category_dropdown_tree() {
  * @return string Link on success, empty string if tag does not exist.
  */
 function get_tag_link( $tag ) {
+<<<<<<< HEAD
 	if ( ! is_object( $tag ) )
 		$tag = (int) $tag;
 
@@ -1042,6 +1260,9 @@ function get_tag_link( $tag ) {
 		return '';
 
 	return $tag;
+=======
+	return get_category_link( $tag );
+>>>>>>> origin/master
 }
 
 /**
@@ -1129,6 +1350,7 @@ function tag_description( $tag = 0 ) {
  * Retrieve term description.
  *
  * @since 2.8.0
+<<<<<<< HEAD
  *
  * @param int $term Optional. Term ID. Will use global term ID by default.
  * @param string $taxonomy Optional taxonomy name. Defaults to 'post_tag'.
@@ -1143,6 +1365,22 @@ function term_description( $term = 0, $taxonomy = 'post_tag' ) {
 		}
 	}
 	$description = get_term_field( 'description', $term, $taxonomy );
+=======
+ * @since 4.9.2 The `$taxonomy` parameter was deprecated.
+ *
+ * @param int  $term       Optional. Term ID. Will use global term ID by default.
+ * @param null $deprecated Deprecated argument.
+ * @return string Term description, available.
+ */
+function term_description( $term = 0, $deprecated = null ) {
+	if ( ! $term && ( is_tax() || is_tag() || is_category() ) ) {
+		$term = get_queried_object();
+		if ( $term ) {
+			$term = $term->term_id;
+		}
+	}
+	$description = get_term_field( 'description', $term );
+>>>>>>> origin/master
 	return is_wp_error( $description ) ? '' : $description;
 }
 
@@ -1233,6 +1471,74 @@ function get_the_term_list( $id, $taxonomy, $before = '', $sep = '', $after = ''
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Retrieve term parents with separator.
+ *
+ * @since 4.8.0
+ *
+ * @param int     $term_id  Term ID.
+ * @param string  $taxonomy Taxonomy name.
+ * @param string|array $args {
+ *     Array of optional arguments.
+ *
+ *     @type string $format    Use term names or slugs for display. Accepts 'name' or 'slug'.
+ *                             Default 'name'.
+ *     @type string $separator Separator for between the terms. Default '/'.
+ *     @type bool   $link      Whether to format as a link. Default true.
+ *     @type bool   $inclusive Include the term to get the parents for. Default true.
+ * }
+ * @return string|WP_Error A list of term parents on success, WP_Error or empty string on failure.
+ */
+function get_term_parents_list( $term_id, $taxonomy, $args = array() ) {
+	$list = '';
+	$term = get_term( $term_id, $taxonomy );
+
+	if ( is_wp_error( $term ) ) {
+		return $term;
+	}
+
+	if ( ! $term ) {
+		return $list;
+	}
+
+	$term_id = $term->term_id;
+
+	$defaults = array(
+		'format'    => 'name',
+		'separator' => '/',
+		'link'      => true,
+		'inclusive' => true,
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	foreach ( array( 'link', 'inclusive' ) as $bool ) {
+		$args[ $bool ] = wp_validate_boolean( $args[ $bool ] );
+	}
+
+	$parents = get_ancestors( $term_id, $taxonomy, 'taxonomy' );
+
+	if ( $args['inclusive'] ) {
+		array_unshift( $parents, $term_id );
+	}
+
+	foreach ( array_reverse( $parents ) as $term_id ) {
+		$parent = get_term( $term_id, $taxonomy );
+		$name   = ( 'slug' === $args['format'] ) ? $parent->slug : $parent->name;
+
+		if ( $args['link'] ) {
+			$list .= '<a href="' . esc_url( get_term_link( $parent->term_id, $taxonomy ) ) . '">' . $name . '</a>' . $args['separator'];
+		} else {
+			$list .= $name . $args['separator'];
+		}
+	}
+
+	return $list;
+}
+
+/**
+>>>>>>> origin/master
  * Display the terms in a list.
  *
  * @since 2.5.0

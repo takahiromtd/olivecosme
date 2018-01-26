@@ -11,15 +11,24 @@
 /**
  * Core base class extended to register items.
  *
+<<<<<<< HEAD
  * @package WordPress
  * @since 2.6.0
  * @uses _WP_Dependency
+=======
+ * @since 2.6.0
+ *
+ * @see _WP_Dependency
+>>>>>>> origin/master
  */
 class WP_Dependencies {
 	/**
 	 * An array of registered handle objects.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.8
 	 * @var array
 	 */
@@ -28,7 +37,10 @@ class WP_Dependencies {
 	/**
 	 * An array of queued _WP_Dependency handle objects.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.8
 	 * @var array
 	 */
@@ -37,7 +49,10 @@ class WP_Dependencies {
 	/**
 	 * An array of _WP_Dependency handle objects to queue.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var array
 	 */
@@ -46,7 +61,10 @@ class WP_Dependencies {
 	/**
 	 * An array of _WP_Dependency handle objects already queued.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var array
 	 */
@@ -57,7 +75,10 @@ class WP_Dependencies {
 	 *
 	 * Arguments are appended to the item query string.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var array
 	 */
@@ -66,7 +87,10 @@ class WP_Dependencies {
 	/**
 	 * An array of handle groups to enqueue.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.8.0
 	 * @var array
 	 */
@@ -75,7 +99,10 @@ class WP_Dependencies {
 	/**
 	 * A handle group to enqueue.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.8.0
 	 * @deprecated 4.5.0
 	 * @var int
@@ -87,7 +114,10 @@ class WP_Dependencies {
 	 *
 	 * Processes the items passed to it or the queue, and their dependencies.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @since 2.8.0 Added the `$group` parameter.
 	 *
@@ -124,7 +154,10 @@ class WP_Dependencies {
 	/**
 	 * Processes a dependency.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 *
 	 * @param string $handle Name of the item. Should be unique.
@@ -140,7 +173,10 @@ class WP_Dependencies {
 	 * Recursively builds an array of items to process taking
 	 * dependencies into account. Does NOT catch infinite loops.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 * @since 2.8.0 Added the `$group` parameter.
@@ -200,7 +236,10 @@ class WP_Dependencies {
 	 *
 	 * Registers the item if no item of that name already exists.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
@@ -226,7 +265,10 @@ class WP_Dependencies {
 	 *
 	 * Adds data to a registered item.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 *
 	 * @param string $handle Name of the item. Should be unique.
@@ -246,7 +288,10 @@ class WP_Dependencies {
 	 *
 	 * Gets data associated with a registered item.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 3.3.0
 	 *
 	 * @param string $handle Name of the item. Should be unique.
@@ -266,7 +311,10 @@ class WP_Dependencies {
 	/**
 	 * Un-register an item or items.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
@@ -286,7 +334,10 @@ class WP_Dependencies {
 	 * classes, $args is appended to the item url as a query string.
 	 * Note $args is NOT the $args property of items in the $registered array.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
@@ -309,7 +360,10 @@ class WP_Dependencies {
 	 * Decodes handles and arguments, then dequeues handles
 	 * and removes arguments from the class property $args.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
@@ -354,7 +408,10 @@ class WP_Dependencies {
 	/**
 	 * Query list for an item.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.1.0
 	 * @since 2.6.0 Moved from `WP_Scripts`.
 	 *
@@ -391,7 +448,10 @@ class WP_Dependencies {
 	/**
 	 * Set item group, unless already in a lower group.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.8.0
 	 *
 	 * @param string $handle    Name of the item. Should be unique.

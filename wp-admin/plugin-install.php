@@ -67,7 +67,11 @@ wp_enqueue_script( 'updates' );
 do_action( "install_plugins_pre_{$tab}" );
 
 /*
+<<<<<<< HEAD
  * Call the pre upload action on every non-upload plugin install screen
+=======
+ * Call the pre upload action on every non-upload plugin installation screen
+>>>>>>> origin/master
  * because the form is always displayed on these screens.
  */
 if ( 'upload' !== $tab ) {
@@ -111,6 +115,7 @@ get_current_screen()->set_screen_reader_content( array(
 include(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 <div class="wrap <?php echo esc_attr( "plugin-install-tab-$tab" ); ?>">
+<<<<<<< HEAD
 <h1>
 	<?php
 	echo esc_html( $title );
@@ -127,6 +132,27 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 <?php
 /*
  * Output the upload plugin form on every non-upload plugin install screen, so it can be
+=======
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+if ( ! empty( $tabs['upload'] ) && current_user_can( 'upload_plugins' ) ) {
+	printf( ' <a href="%s" class="upload-view-toggle page-title-action"><span class="upload">%s</span><span class="browse">%s</span></a>',
+		( 'upload' === $tab ) ? self_admin_url( 'plugin-install.php' ) : self_admin_url( 'plugin-install.php?tab=upload' ),
+		__( 'Upload Plugin' ),
+		__( 'Browse Plugins' )
+	);
+}
+?>
+
+<hr class="wp-header-end">
+
+<?php
+/*
+ * Output the upload plugin form on every non-upload plugin installation screen, so it can be
+>>>>>>> origin/master
  * displayed via JavaScript rather then opening up the devoted upload plugin page.
  */
 if ( 'upload' !== $tab ) {

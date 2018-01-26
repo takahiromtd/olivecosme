@@ -26,7 +26,10 @@ class WP_Customize_Panel {
 	 * @since 4.1.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -35,7 +38,10 @@ class WP_Customize_Panel {
 	 * Order in which this instance was created in relation to other instances.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $instance_number;
@@ -44,7 +50,10 @@ class WP_Customize_Panel {
 	 * WP_Customize_Manager instance.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var WP_Customize_Manager
 	 */
 	public $manager;
@@ -53,7 +62,10 @@ class WP_Customize_Panel {
 	 * Unique identifier.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $id;
@@ -62,7 +74,10 @@ class WP_Customize_Panel {
 	 * Priority of the panel, defining the display order of panels and sections.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var integer
 	 */
 	public $priority = 160;
@@ -71,7 +86,10 @@ class WP_Customize_Panel {
 	 * Capability required for the panel.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $capability = 'edit_theme_options';
@@ -80,7 +98,10 @@ class WP_Customize_Panel {
 	 * Theme feature support for the panel.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string|array
 	 */
 	public $theme_supports = '';
@@ -89,7 +110,10 @@ class WP_Customize_Panel {
 	 * Title of the panel to show in UI.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $title = '';
@@ -98,7 +122,10 @@ class WP_Customize_Panel {
 	 * Description to show in the UI.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $description = '';
@@ -107,7 +134,10 @@ class WP_Customize_Panel {
 	 * Auto-expand a section in a panel when the panel is expanded when the panel only has the one section.
 	 *
 	 * @since 4.7.4
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var bool
 	 */
 	public $auto_expand_sole_section = false;
@@ -116,7 +146,10 @@ class WP_Customize_Panel {
 	 * Customizer sections for this panel.
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $sections;
@@ -125,7 +158,10 @@ class WP_Customize_Panel {
 	 * Type of this panel.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $type = 'default';
@@ -134,7 +170,10 @@ class WP_Customize_Panel {
 	 * Active callback.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_Customize_Section::active()
 	 *
@@ -179,7 +218,10 @@ class WP_Customize_Panel {
 	 * Check whether panel is active to current Customizer preview.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return bool Whether the panel is active to the current preview.
 	 */
@@ -207,7 +249,10 @@ class WP_Customize_Panel {
 	 * provide an 'active_callback' argument to the constructor.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return bool Always true.
 	 */
@@ -303,7 +348,10 @@ class WP_Customize_Panel {
 	 * Panel containers are now rendered in JS by default, see WP_Customize_Panel::print_template().
 	 *
 	 * @since 4.0.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	protected function render() {}
 
@@ -313,7 +361,10 @@ class WP_Customize_Panel {
 	 * Panel contents are now rendered in JS by default, see WP_Customize_Panel::print_template().
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	protected function render_content() {}
 
@@ -347,7 +398,10 @@ class WP_Customize_Panel {
 	 * @see WP_Customize_Panel::print_template()
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	protected function render_template() {
 		?>
@@ -370,7 +424,10 @@ class WP_Customize_Panel {
 	 * @see WP_Customize_Panel::print_template()
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 */
 	protected function content_template() {
 		?>
@@ -382,7 +439,11 @@ class WP_Customize_Panel {
 					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
 				?></span>
 				<# if ( data.description ) { #>
+<<<<<<< HEAD
 					<button class="customize-help-toggle dashicons dashicons-editor-help" tabindex="0" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+=======
+					<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+>>>>>>> origin/master
 				<# } #>
 			</div>
 			<# if ( data.description ) { #>
@@ -390,6 +451,11 @@ class WP_Customize_Panel {
 					{{{ data.description }}}
 				</div>
 			<# } #>
+<<<<<<< HEAD
+=======
+
+			<div class="customize-control-notifications-container"></div>
+>>>>>>> origin/master
 		</li>
 		<?php
 	}

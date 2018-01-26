@@ -1,6 +1,10 @@
 /* global _wpCustomizeHeader */
 (function( $, wp ) {
 	var api = wp.customize;
+<<<<<<< HEAD
+=======
+	/** @namespace wp.customize.HeaderTool */
+>>>>>>> origin/master
 	api.HeaderTool = {};
 
 
@@ -13,10 +17,20 @@
 	 * These calls are made regardless of whether the user actually saves new
 	 * Customizer settings.
 	 *
+<<<<<<< HEAD
 	 * @constructor
 	 * @augments Backbone.Model
 	 */
 	api.HeaderTool.ImageModel = Backbone.Model.extend({
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.ImageModel
+	 *
+	 * @constructor
+	 * @augments Backbone.Model
+	 */
+	api.HeaderTool.ImageModel = Backbone.Model.extend(/** @lends wp.customize.HeaderTool.ImageModel.prototype */{
+>>>>>>> origin/master
 		defaults: function() {
 			return {
 				header: {
@@ -125,6 +139,12 @@
 	/**
 	 * wp.customize.HeaderTool.ChoiceList
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.ChoiceList
+	 *
+>>>>>>> origin/master
 	 * @constructor
 	 * @augments Backbone.Collection
 	 */
@@ -157,6 +177,10 @@
 
 			this.on('control:setImage', this.setImage, this);
 			this.on('control:removeImage', this.removeImage, this);
+<<<<<<< HEAD
+=======
+			this.on('add', this.maybeRemoveOldCrop, this);
+>>>>>>> origin/master
 			this.on('add', this.maybeAddRandomChoice, this);
 
 			_.each(this.data, function(elt, index) {
@@ -180,6 +204,28 @@
 			}
 		},
 
+<<<<<<< HEAD
+=======
+		maybeRemoveOldCrop: function( model ) {
+			var newID = model.get( 'header' ).attachment_id || false,
+			 	oldCrop;
+
+			// Bail early if we don't have a new attachment ID.
+			if ( ! newID ) {
+				return;
+			}
+
+			oldCrop = this.find( function( item ) {
+				return ( item.cid !== model.cid && item.get( 'header' ).attachment_id === newID );
+			} );
+
+			// If we found an old crop, remove it from the collection.
+			if ( oldCrop ) {
+				this.remove( oldCrop );
+			}
+		},
+
+>>>>>>> origin/master
 		maybeAddRandomChoice: function() {
 			if (this.size() === 1) {
 				this.addRandomChoice();
@@ -232,6 +278,12 @@
 	/**
 	 * wp.customize.HeaderTool.DefaultsList
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.DefaultsList
+	 *
+>>>>>>> origin/master
 	 * @constructor
 	 * @augments wp.customize.HeaderTool.ChoiceList
 	 * @augments Backbone.Collection

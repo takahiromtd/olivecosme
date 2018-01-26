@@ -111,15 +111,56 @@ function the_modified_author() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieve the requested data of the author of the current post.
  * @link https://codex.wordpress.org/Template_Tags/the_author_meta
+=======
+ * Retrieves the requested data of the author of the current post.
+ *
+ * Valid values for the `$field` parameter include:
+ *
+ * - admin_color
+ * - aim
+ * - comment_shortcuts
+ * - description
+ * - display_name
+ * - first_name
+ * - ID
+ * - jabber
+ * - last_name
+ * - nickname
+ * - plugins_last_view
+ * - plugins_per_page
+ * - rich_editing
+ * - syntax_highlighting
+ * - user_activation_key
+ * - user_description
+ * - user_email
+ * - user_firstname
+ * - user_lastname
+ * - user_level
+ * - user_login
+ * - user_nicename
+ * - user_pass
+ * - user_registered
+ * - user_status
+ * - user_url
+ * - yim
+ *
+>>>>>>> origin/master
  * @since 2.8.0
  *
  * @global object $authordata The current author's DB object.
  *
+<<<<<<< HEAD
  * @param string $field selects the field of the users record.
  * @param int $user_id Optional. User ID.
  * @return string The author's field from the current author's DB object.
+=======
+ * @param string $field   Optional. The user field to retrieve. Default empty.
+ * @param int    $user_id Optional. User ID.
+ * @return string The author's field from the current author's DB object, otherwise an empty string.
+>>>>>>> origin/master
  */
 function get_the_author_meta( $field = '', $user_id = false ) {
 	$original_user_id = $user_id;
@@ -148,18 +189,32 @@ function get_the_author_meta( $field = '', $user_id = false ) {
 	 * @param int      $user_id          The user ID for the value.
 	 * @param int|bool $original_user_id The original user ID, as passed to the function.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'get_the_author_' . $field, $value, $user_id, $original_user_id );
+=======
+	return apply_filters( "get_the_author_{$field}", $value, $user_id, $original_user_id );
+>>>>>>> origin/master
 }
 
 /**
  * Outputs the field from the user's DB object. Defaults to current post's author.
  *
+<<<<<<< HEAD
  * @link https://codex.wordpress.org/Template_Tags/the_author_meta
  *
  * @since 2.8.0
  *
  * @param string $field selects the field of the users record.
  * @param int $user_id Optional. User ID.
+=======
+ * @since 2.8.0
+ *
+ * @param string $field   Selects the field of the users record. See get_the_author_meta()
+ *                        for the list of possible fields.
+ * @param int    $user_id Optional. User ID.
+ *
+ * @see get_the_author_meta()
+>>>>>>> origin/master
  */
 function the_author_meta( $field = '', $user_id = false ) {
 	$author_meta = get_the_author_meta( $field, $user_id );
@@ -174,7 +229,11 @@ function the_author_meta( $field = '', $user_id = false ) {
 	 * @param string $author_meta The value of the metadata.
 	 * @param int    $user_id     The user ID.
 	 */
+<<<<<<< HEAD
 	echo apply_filters( 'the_author_' . $field, $author_meta, $user_id );
+=======
+	echo apply_filters( "the_author_{$field}", $author_meta, $user_id );
+>>>>>>> origin/master
 }
 
 /**
@@ -183,6 +242,11 @@ function the_author_meta( $field = '', $user_id = false ) {
  * If the author has a home page set, return an HTML link, otherwise just return the
  * author's name.
  *
+<<<<<<< HEAD
+=======
+ * @since 3.0.0
+ *
+>>>>>>> origin/master
  * @return string|null An HTML link if the author's url exist in user meta,
  *                     else the result of get_the_author().
  */
@@ -502,7 +566,12 @@ function is_multi_author() {
 /**
  * Helper function to clear the cache for number of authors.
  *
+<<<<<<< HEAD
  * @private
+=======
+ * @since 3.2.0
+ * @access private
+>>>>>>> origin/master
  */
 function __clear_multi_author_cache() {
 	delete_transient( 'is_multi_author' );

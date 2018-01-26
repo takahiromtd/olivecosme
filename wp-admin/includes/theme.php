@@ -234,6 +234,7 @@ function get_theme_feature_list( $api = true ) {
 	// Hard-coded list is used if api not accessible.
 	$features = array(
 
+<<<<<<< HEAD
 		__( 'Layout' ) => array(
 			'grid-layout'   => __( 'Grid Layout' ),
 			'one-column'    => __( 'One Column' ),
@@ -242,15 +243,31 @@ function get_theme_feature_list( $api = true ) {
 			'four-columns'  => __( 'Four Columns' ),
 			'left-sidebar'  => __( 'Left Sidebar' ),
 			'right-sidebar' => __( 'Right Sidebar' ),
+=======
+		__( 'Subject' )  => array(
+			'blog'           => __( 'Blog' ),
+			'e-commerce'     => __( 'E-Commerce' ),
+			'education'      => __( 'Education' ),
+			'entertainment'  => __( 'Entertainment' ),
+			'food-and-drink' => __( 'Food & Drink' ),
+			'holiday'        => __( 'Holiday' ),
+			'news'           => __( 'News' ),
+			'photography'    => __( 'Photography' ),
+			'portfolio'      => __( 'Portfolio' ),
+>>>>>>> origin/master
 		),
 
 		__( 'Features' ) => array(
 			'accessibility-ready'   => __( 'Accessibility Ready' ),
+<<<<<<< HEAD
 			'buddypress'            => __( 'BuddyPress' ),
+=======
+>>>>>>> origin/master
 			'custom-background'     => __( 'Custom Background' ),
 			'custom-colors'         => __( 'Custom Colors' ),
 			'custom-header'         => __( 'Custom Header' ),
 			'custom-logo'           => __( 'Custom Logo' ),
+<<<<<<< HEAD
 			'custom-menu'           => __( 'Custom Menu' ),
 			'editor-style'          => __( 'Editor Style' ),
 			'featured-image-header' => __( 'Featured Image Header' ),
@@ -279,6 +296,28 @@ function get_theme_feature_list( $api = true ) {
 			'photography'    => __( 'Photography' ),
 			'portfolio'      => __( 'Portfolio' ),
 		)
+=======
+			'editor-style'          => __( 'Editor Style' ),
+			'featured-image-header' => __( 'Featured Image Header' ),
+			'featured-images'       => __( 'Featured Images' ),
+			'footer-widgets'        => __( 'Footer Widgets' ),
+			'full-width-template'   => __( 'Full Width Template' ),
+			'post-formats'          => __( 'Post Formats' ),
+			'sticky-post'           => __( 'Sticky Post' ),
+			'theme-options'         => __( 'Theme Options' ),
+		),
+
+		__( 'Layout' ) => array(
+			'grid-layout'   => __( 'Grid Layout' ),
+			'one-column'    => __( 'One Column' ),
+			'two-columns'   => __( 'Two Columns' ),
+			'three-columns' => __( 'Three Columns' ),
+			'four-columns'  => __( 'Four Columns' ),
+			'left-sidebar'  => __( 'Left Sidebar' ),
+			'right-sidebar' => __( 'Right Sidebar' ),
+		)
+
+>>>>>>> origin/master
 	);
 
 	if ( ! $api || ! current_user_can( 'install_themes' ) )
@@ -448,11 +487,21 @@ function themes_api( $action, $args = array() ) {
 	$res = apply_filters( 'themes_api', false, $action, $args );
 
 	if ( ! $res ) {
+<<<<<<< HEAD
+=======
+		// include an unmodified $wp_version
+		include( ABSPATH . WPINC . '/version.php' );
+
+>>>>>>> origin/master
 		$url = $http_url = 'http://api.wordpress.org/themes/info/1.0/';
 		if ( $ssl = wp_http_supports( array( 'ssl' ) ) )
 			$url = set_url_scheme( $url, 'https' );
 
 		$http_args = array(
+<<<<<<< HEAD
+=======
+			'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
+>>>>>>> origin/master
 			'body' => array(
 				'action' => $action,
 				'request' => serialize( $args )
@@ -570,8 +619,14 @@ function wp_prepare_themes_for_js( $themes = null ) {
 
 		$parent = false;
 		if ( $theme->parent() ) {
+<<<<<<< HEAD
 			$parent = $theme->parent()->display( 'Name' );
 			$parents[ $slug ] = $theme->parent()->get_stylesheet();
+=======
+			$parent = $theme->parent();
+			$parents[ $slug ] = $parent->get_stylesheet();
+			$parent = $parent->display( 'Name' );
+>>>>>>> origin/master
 		}
 
 		$customize_action = null;
@@ -631,12 +686,19 @@ function wp_prepare_themes_for_js( $themes = null ) {
  * @since 4.2.0
  */
 function customize_themes_print_templates() {
+<<<<<<< HEAD
 	$preview_url = esc_url( add_query_arg( 'theme', '__THEME__' ) ); // Token because esc_url() strips curly braces.
 	$preview_url = str_replace( '__THEME__', '{{ data.id }}', $preview_url );
 	?>
 	<script type="text/html" id="tmpl-customize-themes-details-view">
 		<div class="theme-backdrop"></div>
 		<div class="theme-wrap wp-clearfix">
+=======
+	?>
+	<script type="text/html" id="tmpl-customize-themes-details-view">
+		<div class="theme-backdrop"></div>
+		<div class="theme-wrap wp-clearfix" role="document">
+>>>>>>> origin/master
 			<div class="theme-header">
 				<button type="button" class="left dashicons dashicons-no"><span class="screen-reader-text"><?php _e( 'Show previous theme' ); ?></span></button>
 				<button type="button" class="right dashicons dashicons-no"><span class="screen-reader-text"><?php _e( 'Show next theme' ); ?></span></button>
@@ -644,7 +706,11 @@ function customize_themes_print_templates() {
 			</div>
 			<div class="theme-about wp-clearfix">
 				<div class="theme-screenshots">
+<<<<<<< HEAD
 				<# if ( data.screenshot[0] ) { #>
+=======
+				<# if ( data.screenshot && data.screenshot[0] ) { #>
+>>>>>>> origin/master
 					<div class="screenshot"><img src="{{ data.screenshot[0] }}" alt="" /></div>
 				<# } else { #>
 					<div class="screenshot blank"></div>
@@ -657,18 +723,48 @@ function customize_themes_print_templates() {
 					<# } #>
 					<h2 class="theme-name">{{{ data.name }}}<span class="theme-version"><?php printf( __( 'Version: %s' ), '{{ data.version }}' ); ?></span></h2>
 					<h3 class="theme-author"><?php printf( __( 'By %s' ), '{{{ data.authorAndUri }}}' ); ?></h3>
+<<<<<<< HEAD
 					<p class="theme-description">{{{ data.description }}}</p>
+=======
+
+					<# if ( data.stars && 0 != data.num_ratings ) { #>
+						<div class="theme-rating">
+							{{{ data.stars }}}
+							<span class="num-ratings">
+								<?php
+								/* translators: %s: number of ratings */
+								echo sprintf( __( '(%s ratings)' ), '{{ data.num_ratings }}' );
+								?>
+							</span>
+						</div>
+					<# } #>
+
+					<# if ( data.hasUpdate ) { #>
+						<div class="notice notice-warning notice-alt notice-large" data-slug="{{ data.id }}">
+							<h3 class="notice-title"><?php _e( 'Update Available' ); ?></h3>
+							{{{ data.update }}}
+						</div>
+					<# } #>
+>>>>>>> origin/master
 
 					<# if ( data.parent ) { #>
 						<p class="parent-theme"><?php printf( __( 'This is a child theme of %s.' ), '<strong>{{{ data.parent }}}</strong>' ); ?></p>
 					<# } #>
 
+<<<<<<< HEAD
 					<# if ( data.tags ) { #>
 						<p class="theme-tags"><span><?php _e( 'Tags:' ); ?></span> {{ data.tags }}</p>
+=======
+					<p class="theme-description">{{{ data.description }}}</p>
+
+					<# if ( data.tags ) { #>
+						<p class="theme-tags"><span><?php _e( 'Tags:' ); ?></span> {{{ data.tags }}}</p>
+>>>>>>> origin/master
 					<# } #>
 				</div>
 			</div>
 
+<<<<<<< HEAD
 			<# if ( ! data.active ) { #>
 				<div class="theme-actions">
 					<div class="inactive-theme">
@@ -680,6 +776,23 @@ function customize_themes_print_templates() {
 					</div>
 				</div>
 			<# } #>
+=======
+			<div class="theme-actions">
+				<# if ( data.active ) { #>
+					<button type="button" class="button button-primary customize-theme"><?php _e( 'Customize' ); ?></a>
+				<# } else if ( 'installed' === data.type ) { #>
+					<?php if ( current_user_can( 'delete_themes' ) ) { ?>
+						<# if ( data.actions && data.actions['delete'] ) { #>
+							<a href="{{{ data.actions['delete'] }}}" data-slug="{{ data.id }}" class="button button-secondary delete-theme"><?php _e( 'Delete' ); ?></a>
+						<# } #>
+					<?php } ?>
+					<button type="button" class="button button-primary preview-theme" data-slug="{{ data.id }}"><?php _e( 'Live Preview' ); ?></span>
+				<# } else { #>
+					<button type="button" class="button theme-install" data-slug="{{ data.id }}"><?php _e( 'Install' ); ?></button>
+					<button type="button" class="button button-primary theme-install preview" data-slug="{{ data.id }}"><?php _e( 'Install &amp; Preview' ); ?></button>
+				<# } #>
+			</div>
+>>>>>>> origin/master
 		</div>
 	</script>
 	<?php

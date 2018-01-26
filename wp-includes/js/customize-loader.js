@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 /* global _wpCustomizeLoaderSettings, confirm */
 /*
  * Expose a public API that allows the customizer to be
  * loaded on any page.
+=======
+/* global _wpCustomizeLoaderSettings */
+/**
+ * Expose a public API that allows the customizer to be
+ * loaded on any page.
+ *
+ * @namespace wp
+>>>>>>> origin/master
  */
 window.wp = window.wp || {};
 
@@ -22,9 +31,18 @@ window.wp = window.wp || {};
 	 *
 	 *     e.g. <a class="load-customize" href="<?php echo wp_customize_url(); ?>">Open Customizer</a>
 	 *
+<<<<<<< HEAD
 	 * @augments wp.customize.Events
 	 */
 	Loader = $.extend( {}, api.Events, {
+=======
+	 * @memberOf wp.customize
+	 *
+	 * @class
+	 * @augments wp.customize.Events
+	 */
+	Loader = $.extend( {}, api.Events,/** @lends wp.customize.Loader.prototype */{
+>>>>>>> origin/master
 		/**
 		 * Setup the Loader; triggered on document#ready.
 		 */
@@ -203,6 +221,7 @@ window.wp = window.wp || {};
 		 * Close the Customizer overlay.
 		 */
 		close: function() {
+<<<<<<< HEAD
 			if ( ! this.active ) {
 				return;
 			}
@@ -222,6 +241,32 @@ window.wp = window.wp || {};
 			if ( this.originalDocumentTitle ) {
 				document.title = this.originalDocumentTitle;
 			}
+=======
+			var self = this, onConfirmClose;
+			if ( ! self.active ) {
+				return;
+			}
+
+			onConfirmClose = function( confirmed ) {
+				if ( confirmed ) {
+					self.active = false;
+					self.trigger( 'close' );
+
+					// Restore document title prior to opening the Live Preview
+					if ( self.originalDocumentTitle ) {
+						document.title = self.originalDocumentTitle;
+					}
+				} else {
+
+					// Go forward since Customizer is exited by history.back()
+					history.forward();
+				}
+				self.messenger.unbind( 'confirmed-close', onConfirmClose );
+			};
+			self.messenger.bind( 'confirmed-close', onConfirmClose );
+
+			Loader.messenger.send( 'confirm-close' );
+>>>>>>> origin/master
 		},
 
 		/**

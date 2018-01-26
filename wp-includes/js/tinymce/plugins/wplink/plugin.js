@@ -1,10 +1,18 @@
 ( function( tinymce ) {
+<<<<<<< HEAD
 	tinymce.ui.WPLinkPreview = tinymce.ui.Control.extend( {
+=======
+	tinymce.ui.Factory.add( 'WPLinkPreview', tinymce.ui.Control.extend( {
+>>>>>>> origin/master
 		url: '#',
 		renderHtml: function() {
 			return (
 				'<div id="' + this._id + '" class="wp-link-preview">' +
+<<<<<<< HEAD
 					'<a href="' + this.url + '" target="_blank" tabindex="-1">' + this.url + '</a>' +
+=======
+					'<a href="' + this.url + '" target="_blank" rel="noopener" tabindex="-1">' + this.url + '</a>' +
+>>>>>>> origin/master
 				'</div>'
 			);
 		},
@@ -50,9 +58,15 @@
 				tinymce.$( this.getEl().firstChild ).attr( 'href', this.url ).text( url );
 			}
 		}
+<<<<<<< HEAD
 	} );
 
 	tinymce.ui.WPLinkInput = tinymce.ui.Control.extend( {
+=======
+	} ) );
+
+	tinymce.ui.Factory.add( 'WPLinkInput', tinymce.ui.Control.extend( {
+>>>>>>> origin/master
 		renderHtml: function() {
 			return (
 				'<div id="' + this._id + '" class="wp-link-input">' +
@@ -82,7 +96,11 @@
 			urlInput.value = '';
 			urlInput.nextSibling.value = '';
 		}
+<<<<<<< HEAD
 	} );
+=======
+	} ) );
+>>>>>>> origin/master
 
 	tinymce.PluginManager.add( 'wplink', function( editor ) {
 		var toolbar;
@@ -101,7 +119,11 @@
 
 		function getSelectedLink() {
 			var href, html,
+<<<<<<< HEAD
 				node = editor.selection.getNode(),
+=======
+				node = editor.selection.getStart(),
+>>>>>>> origin/master
 				link = editor.dom.getParent( node, 'a[href]' );
 
 			if ( ! link ) {
@@ -249,6 +271,16 @@
 				text = inputInstance.getLinkText();
 				editor.focus();
 
+<<<<<<< HEAD
+=======
+				var parser = document.createElement( 'a' );
+				parser.href = href;
+
+				if ( 'javascript:' === parser.protocol || 'data:' === parser.protocol ) { // jshint ignore:line
+					href = '';
+				}
+
+>>>>>>> origin/master
 				if ( ! href ) {
 					editor.dom.remove( linkNode, true );
 					return;
@@ -461,8 +493,16 @@
 							}
 						}
 					} ).autocomplete( 'instance' )._renderItem = function( ul, item ) {
+<<<<<<< HEAD
 						return $( '<li role="option" id="mce-wp-autocomplete-' + item.ID + '">' )
 						.append( '<span>' + item.title + '</span>&nbsp;<span class="wp-editor-float-right">' + item.info + '</span>' )
+=======
+						var fallbackTitle = ( typeof window.wpLinkL10n !== 'undefined' ) ? window.wpLinkL10n.noTitle : '',
+							title = item.title ? item.title : fallbackTitle;
+
+						return $( '<li role="option" id="mce-wp-autocomplete-' + item.ID + '">' )
+						.append( '<span>' + title + '</span>&nbsp;<span class="wp-editor-float-right">' + item.info + '</span>' )
+>>>>>>> origin/master
 						.appendTo( ul );
 					};
 
@@ -587,9 +627,15 @@
 						editor.focus(); // Needed for IE
 					}
 
+<<<<<<< HEAD
 					window.wpLink.open( editor.id, url, text, linkNode );
 
 					editToolbar.tempHide = true;
+=======
+					editToolbar.tempHide = true;
+					window.wpLink.open( editor.id, url, text, linkNode );
+
+>>>>>>> origin/master
 					inputInstance.reset();
 				}
 			}

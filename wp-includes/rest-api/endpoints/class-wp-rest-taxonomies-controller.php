@@ -20,7 +20,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Constructor.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __construct() {
 		$this->namespace = 'wp/v2';
@@ -31,7 +34,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Registers the routes for the objects of the controller.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see register_rest_route()
 	 */
@@ -70,7 +76,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Checks whether a given request has permission to read taxonomies.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
@@ -96,7 +105,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Retrieves all public taxonomies.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_REST_Response Response object on success, or WP_Error object on failure.
@@ -133,7 +145,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Checks if a given request has access to a taxonomy.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
 	 * @return true|WP_Error True if the request has read access for the item, otherwise false or WP_Error object.
@@ -158,7 +173,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Retrieves a specific taxonomy.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
@@ -176,7 +194,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Prepares a taxonomy object for serialization.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param stdClass        $taxonomy Taxonomy data.
 	 * @param WP_REST_Request $request  Full details about the request.
@@ -230,13 +251,20 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Retrieves the taxonomy's schema, conforming to JSON Schema.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Item schema data.
 	 */
 	public function get_item_schema() {
 		$schema = array(
+<<<<<<< HEAD
 			'$schema'              => 'http://json-schema.org/schema#',
+=======
+			'$schema'              => 'http://json-schema.org/draft-04/schema#',
+>>>>>>> origin/master
 			'title'                => 'taxonomy',
 			'type'                 => 'object',
 			'properties'           => array(
@@ -306,7 +334,10 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * Retrieves the query params for collections.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Collection parameters.
 	 */

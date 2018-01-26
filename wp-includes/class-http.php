@@ -98,7 +98,10 @@ class WP_Http {
 	 * Please note: The only URI that are supported in the HTTP Transport implementation
 	 * are the HTTP and HTTPS protocols.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 *
 	 * @param string       $url  The request URL.
@@ -114,7 +117,11 @@ class WP_Http {
 	 *     @type string       $httpversion         Version of the HTTP protocol to use. Accepts '1.0' and '1.1'.
 	 *                                             Default '1.0'.
 	 *     @type string       $user-agent          User-agent value sent.
+<<<<<<< HEAD
 	 *                                             Default WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ).
+=======
+	 *                                             Default 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ).
+>>>>>>> origin/master
 	 *     @type bool         $reject_unsafe_urls  Whether to pass URLs through wp_http_validate_url().
 	 *                                             Default false.
 	 *     @type bool         $blocking            Whether the calling code requires the result of the request.
@@ -306,6 +313,14 @@ class WP_Http {
 		// Ensure redirects follow browser behaviour.
 		$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'browser_redirect_compatibility' ) );
 
+<<<<<<< HEAD
+=======
+		// Validate redirected URLs.
+		if ( function_exists( 'wp_kses_bad_protocol' ) && $r['reject_unsafe_urls'] ) {
+			$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'validate_redirects' ) );
+		}
+
+>>>>>>> origin/master
 		if ( $r['stream'] ) {
 			$options['filename'] = $r['filename'];
 		}
@@ -386,7 +401,11 @@ class WP_Http {
 		 * @param array|WP_Error $response HTTP response or WP_Error object.
 		 * @param string         $context  Context under which the hook is fired.
 		 * @param string         $class    HTTP transport used.
+<<<<<<< HEAD
 		 * @param array          $args     HTTP request arguments.
+=======
+		 * @param array          $r        HTTP request arguments.
+>>>>>>> origin/master
 		 * @param string         $url      The request URL.
 		 */
 		do_action( 'http_api_debug', $response, 'response', 'Requests', $r, $url );
@@ -423,7 +442,10 @@ class WP_Http {
 	 * Normalizes cookies for using in Requests.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 *
 	 * @param array $cookies List of cookies to send with the request.
@@ -451,11 +473,18 @@ class WP_Http {
 	 * specification for compatibility purposes.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 *
 	 * @param string            $location URL to redirect to.
 	 * @param array             $headers  Headers for the redirect.
+<<<<<<< HEAD
+=======
+	 * @param string|array      $data     Body to send with the request.
+>>>>>>> origin/master
 	 * @param array             $options  Redirect request options.
 	 * @param Requests_Response $original Response object.
 	 */
@@ -467,10 +496,30 @@ class WP_Http {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Tests which transports are capable of supporting the request.
 	 *
 	 * @since 3.2.0
 	 * @access public
+=======
+	 * Validate redirected URLs.
+	 *
+	 * @since 4.7.5
+	 *
+	 * @throws Requests_Exception On unsuccessful URL validation
+	 * @param string $location URL to redirect to.
+	 */
+	public static function validate_redirects( $location ) {
+		if ( ! wp_http_validate_url( $location ) ) {
+			throw new Requests_Exception( __('A valid URL was not provided.'), 'wp_http.redirect_failed_validation' );
+		}
+	}
+
+	/**
+	 * Tests which transports are capable of supporting the request.
+	 *
+	 * @since 3.2.0
+>>>>>>> origin/master
 	 *
 	 * @param array $args Request arguments
 	 * @param string $url URL to Request
@@ -520,7 +569,10 @@ class WP_Http {
 	 * @since 3.2.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $url URL to Request
 	 * @param array $args Request arguments
@@ -562,7 +614,10 @@ class WP_Http {
 	 *
 	 * Used for sending data that is expected to be in the body.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 *
 	 * @param string       $url  The request URL.
@@ -580,7 +635,10 @@ class WP_Http {
 	 *
 	 * Used for sending data that is expected to be in the body.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 *
 	 * @param string $url The request URL.
@@ -598,7 +656,10 @@ class WP_Http {
 	 *
 	 * Used for sending data that is expected to be in the body.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 *
 	 * @param string $url The request URL.
@@ -614,7 +675,10 @@ class WP_Http {
 	/**
 	 * Parses the responses and splits the parts into headers and body.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 * @since 2.7.0
 	 *
@@ -633,7 +697,10 @@ class WP_Http {
 	 * If an array is given then it is assumed to be raw header data with numeric keys with the
 	 * headers as the values. No headers must be passed that were already processed.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @static
 	 * @since 2.7.0
 	 *
@@ -711,8 +778,12 @@ class WP_Http {
 	 * which are each parsed into strings and added to the Cookie: header (within the arguments array).
 	 * Edits the array by reference.
 	 *
+<<<<<<< HEAD
 	 * @access public
 	 * @version 2.8.0
+=======
+	 * @since 2.8.0
+>>>>>>> origin/master
 	 * @static
 	 *
 	 * @param array $r Full array of args passed into ::request()
@@ -742,7 +813,10 @@ class WP_Http {
 	 *
 	 * @link https://tools.ietf.org/html/rfc2616#section-19.4.6 Process for chunked decoding.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.7.0
 	 * @static
 	 *
@@ -851,7 +925,10 @@ class WP_Http {
 	/**
 	 * Used as a wrapper for PHP's parse_url() function that handles edgecases in < PHP 5.4.7.
 	 *
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @deprecated 4.4.0 Use wp_parse_url()
 	 * @see wp_parse_url()
 	 *
@@ -872,7 +949,10 @@ class WP_Http {
 	 * @since 3.4.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $maybe_relative_path The URL which might be relative
 	 * @param string $url                 The URL which $maybe_relative_path is relative to
@@ -943,7 +1023,10 @@ class WP_Http {
 	 * Handles HTTP Redirects and follows them if appropriate.
 	 *
 	 * @since 3.7.0
+<<<<<<< HEAD
 	 *
+=======
+>>>>>>> origin/master
 	 * @static
 	 *
 	 * @param string $url The URL which was requested.

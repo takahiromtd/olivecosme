@@ -10,9 +10,15 @@
 /**
  * Bridge to connect Requests internal hooks to WordPress actions.
  *
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage HTTP
  * @since 4.7.0
+=======
+ * @since 4.7.0
+ *
+ * @see Requests_Hooks
+>>>>>>> origin/master
  */
 class WP_HTTP_Requests_Hooks extends Requests_Hooks {
 	/**

@@ -235,7 +235,14 @@ function wp_print_media_templates() {
 
 				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
 					<p class="suggested-dimensions">
+<<<<<<< HEAD
 						<?php _e( 'Suggested image dimensions:' ); ?> {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
+=======
+						<?php
+							/* translators: 1: suggested width number, 2: suggested height number. */
+							printf( __( 'Suggested image dimensions: %1$s by %2$s pixels.' ), '{{data.suggestedWidth}}', '{{data.suggestedHeight}}' );
+						?>
+>>>>>>> origin/master
 					</p>
 				<# } #>
 
@@ -472,7 +479,11 @@ function wp_print_media_templates() {
 			<# } #>
 		</div>
 		<# if ( data.buttons.check ) { #>
+<<<<<<< HEAD
 			<button type="button" class="button-link check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text"><?php _e( 'Deselect' ); ?></span></button>
+=======
+			<button type="button" class="check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text"><?php _e( 'Deselect' ); ?></span></button>
+>>>>>>> origin/master
 		<# } #>
 		<#
 		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
@@ -605,7 +616,11 @@ function wp_print_media_templates() {
 		<h2><?php _e( 'Attachment Display Settings' ); ?></h2>
 
 		<# if ( 'image' === data.type ) { #>
+<<<<<<< HEAD
 			<label class="setting">
+=======
+			<label class="setting align">
+>>>>>>> origin/master
 				<span><?php _e('Alignment'); ?></span>
 				<select class="alignment"
 					data-setting="align"
@@ -761,7 +776,11 @@ function wp_print_media_templates() {
 				<# } #>
 				>
 				<?php
+<<<<<<< HEAD
 				// This filter is documented in wp-admin/includes/media.php
+=======
+				/** This filter is documented in wp-admin/includes/media.php */
+>>>>>>> origin/master
 				$size_names = apply_filters( 'image_size_names_choose', array(
 					'thumbnail' => __( 'Thumbnail' ),
 					'medium'    => __( 'Medium' ),
@@ -1006,7 +1025,11 @@ function wp_print_media_templates() {
 								</div>
 								<label class="setting link-rel">
 									<span><?php _e('Link Rel'); ?></span>
+<<<<<<< HEAD
 									<input type="text" data-setting="linkRel" value="{{ data.model.linkClassName }}" />
+=======
+									<input type="text" data-setting="linkRel" value="{{ data.model.linkRel }}" />
+>>>>>>> origin/master
 								</label>
 								<label class="setting link-class-name">
 									<span><?php _e('Link CSS Class'); ?></span>
@@ -1084,7 +1107,11 @@ function wp_print_media_templates() {
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<label class="setting checkbox-setting">
+=======
+				<label class="setting checkbox-setting autoplay">
+>>>>>>> origin/master
 					<input type="checkbox" data-setting="autoplay" />
 					<span><?php _e( 'Autoplay' ); ?></span>
 				</label>
@@ -1173,7 +1200,11 @@ function wp_print_media_templates() {
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<label class="setting checkbox-setting">
+=======
+				<label class="setting checkbox-setting autoplay">
+>>>>>>> origin/master
 					<input type="checkbox" data-setting="autoplay" />
 					<span><?php _e( 'Autoplay' ); ?></span>
 				</label>

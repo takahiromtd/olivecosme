@@ -1,13 +1,19 @@
 .customize-partial-refreshing {
 	opacity: 0.25;
+<<<<<<< HEAD
 	-webkit-transition: opacity 0.25s;
+=======
+>>>>>>> origin/master
 	transition: opacity 0.25s;
 	cursor: progress;
 }
 
 /* Override highlight when refreshing */
 .customize-partial-refreshing.widget-customizer-highlighted-widget {
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 }
 
@@ -23,7 +29,10 @@
 	border: 0;
 	background: transparent;
 	color: transparent;
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 	outline: none;
 	z-index: 5;
@@ -48,6 +57,7 @@
 	font-size: 18px;
 	z-index: 5;
 	background: #0085ba !important;
+<<<<<<< HEAD
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	border: 2px solid #fff;
@@ -57,6 +67,13 @@
 	cursor: pointer;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+=======
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-shadow: 0 2px 1px rgba(46,68,83,0.15);
+	text-align: center;
+	cursor: pointer;
+>>>>>>> origin/master
 	box-sizing: border-box;
 	padding: 3px;
 	-webkit-animation-fill-mode: both;
@@ -88,7 +105,10 @@
 }
 
 .customize-partial-edit-shortcut button:focus {
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 0 0 2px #008ec2;
+=======
+>>>>>>> origin/master
 	box-shadow: 0 0 0 2px #008ec2;
 }
 

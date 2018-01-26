@@ -10,15 +10,23 @@
  * WordPress Image Editor Class for Image Manipulation through Imagick PHP Module
  *
  * @since 3.5.0
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Image_Editor
  * @uses WP_Image_Editor Extends class
+=======
+ *
+ * @see WP_Image_Editor
+>>>>>>> origin/master
  */
 class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	/**
 	 * Imagick object.
 	 *
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @var Imagick
 	 */
 	protected $image;
@@ -40,7 +48,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * @since 3.5.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $args
 	 * @return bool
@@ -99,7 +110,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * @since 3.5.0
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $mime_type
 	 * @return bool
@@ -127,7 +141,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Loads image from $this->file into new Imagick Object.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return true|WP_Error True if loaded; WP_Error on failure.
 	 */
@@ -182,7 +199,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Sets Image Compression quality on a 1-100% scale.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int $quality Compression Quality. Range: [1,100]
 	 * @return true|WP_Error True if set successfully; WP_Error on failure.
@@ -215,7 +235,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Sets or updates current image size.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int $width
 	 * @param int $height
@@ -250,7 +273,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * maintain aspect ratio according to the provided dimension.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param  int|null $max_w Image width.
 	 * @param  int|null $max_h Image height.
@@ -286,7 +312,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * which resizes an image to given dimensions and removes any associated profiles.
 	 *
 	 * @since 4.5.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int    $dst_w       The destination width.
 	 * @param int    $dst_h       The destination height.
@@ -418,7 +447,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Resize multiple images from a single source.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $sizes {
 	 *     An array of image size arrays. Default sizes are 'small', 'medium', 'medium_large', 'large'.
@@ -489,7 +521,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Crops Image.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param int  $src_x The start x position to crop from.
 	 * @param int  $src_y The start y position to crop from.
@@ -536,7 +571,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Rotates current image counter-clockwise by $angle.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param float $angle
 	 * @return true|WP_Error
@@ -571,7 +609,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Flips current image.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param bool $horz Flip along Horizontal Axis
 	 * @param bool $vert Flip along Vertical Axis
@@ -595,7 +636,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Saves current image to file.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $destfilename
 	 * @param string $mime_type
@@ -665,10 +709,16 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Streams current image to browser.
 	 *
 	 * @since 3.5.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @param string $mime_type
 	 * @return true|WP_Error
+=======
+	 *
+	 * @param string $mime_type The mime type of the image.
+	 * @return bool|WP_Error True on success, WP_Error object on failure.
+>>>>>>> origin/master
 	 */
 	public function stream( $mime_type = null ) {
 		list( $filename, $extension, $mime_type ) = $this->get_output_format( null, $mime_type );
@@ -695,7 +745,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Strips all image meta except color profiles from an image.
 	 *
 	 * @since 4.5.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return true|WP_Error True if stripping metadata was successful. WP_Error object on error.
 	 */
@@ -748,7 +801,10 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 	 * Increases rendering DPI and only loads first page.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string|WP_Error File to load or WP_Error on failure.
 	 */

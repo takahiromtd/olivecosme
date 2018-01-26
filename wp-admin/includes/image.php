@@ -217,6 +217,10 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 		 * @since 4.7.0
 		 *
 		 * @param array $fallback_sizes An array of image size names.
+<<<<<<< HEAD
+=======
+		 * @param array $metadata       Current attachment metadata.
+>>>>>>> origin/master
 		 */
 		$fallback_sizes = apply_filters( 'fallback_intermediate_image_sizes', $fallback_sizes, $metadata );
 
@@ -342,7 +346,11 @@ function wp_read_image_metadata( $file ) {
 	if ( ! file_exists( $file ) )
 		return false;
 
+<<<<<<< HEAD
 	list( , , $sourceImageType ) = getimagesize( $file );
+=======
+	list( , , $sourceImageType ) = @getimagesize( $file );
+>>>>>>> origin/master
 
 	/*
 	 * EXIF contains a bunch of data we'll probably never need formatted in ways
@@ -371,10 +379,17 @@ function wp_read_image_metadata( $file ) {
 	 * as caption, description etc.
 	 */
 	if ( is_callable( 'iptcparse' ) ) {
+<<<<<<< HEAD
 		getimagesize( $file, $info );
 
 		if ( ! empty( $info['APP13'] ) ) {
 			$iptc = iptcparse( $info['APP13'] );
+=======
+		@getimagesize( $file, $info );
+
+		if ( ! empty( $info['APP13'] ) ) {
+			$iptc = @iptcparse( $info['APP13'] );
+>>>>>>> origin/master
 
 			// Headline, "A brief synopsis of the caption."
 			if ( ! empty( $iptc['2#105'][0] ) ) {

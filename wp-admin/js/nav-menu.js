@@ -500,8 +500,12 @@ var wpNavMenu;
 				title = menus.subMenuFocus.replace( '%1$s', itemName ).replace( '%2$d', itemPosition ).replace( '%3$s', parentItemName );
 			}
 
+<<<<<<< HEAD
 			// @todo Consider to update just the `aria-label` attribute.
 			$this.attr( 'aria-label', title ).text( title );
+=======
+			$this.attr( 'aria-label', title );
+>>>>>>> origin/master
 
 			// Mark this item's accessibility as refreshed
 			$this.data( 'needs_accessibility_refresh', false );
@@ -1003,6 +1007,7 @@ var wpNavMenu;
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Process the add menu item request response into menu list item.
 		 *
 		 * @param string menuMarkup The text server response of menu item markup.
@@ -1018,6 +1023,35 @@ var wpNavMenu;
 			$(menuMarkup).hideAdvancedMenuItemFields().prependTo( api.targetList );
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
+=======
+		 * Process the add menu item request response into menu list item. Appends to menu.
+		 *
+		 * @param {string} menuMarkup The text server response of menu item markup.
+		 *
+		 * @fires document#menu-item-added Passes menuMarkup as a jQuery object.
+		 */
+		addMenuItemToBottom : function( menuMarkup ) {
+			var $menuMarkup = $( menuMarkup );
+			$menuMarkup.hideAdvancedMenuItemFields().appendTo( api.targetList );
+			api.refreshKeyboardAccessibility();
+			api.refreshAdvancedAccessibility();
+			$( document ).trigger( 'menu-item-added', [ $menuMarkup ] );
+		},
+
+		/**
+		 * Process the add menu item request response into menu list item. Prepends to menu.
+		 *
+		 * @param {string} menuMarkup The text server response of menu item markup.
+		 *
+		 * @fires document#menu-item-added Passes menuMarkup as a jQuery object.
+		 */
+		addMenuItemToTop : function( menuMarkup ) {
+			var $menuMarkup = $( menuMarkup );
+			$menuMarkup.hideAdvancedMenuItemFields().prependTo( api.targetList );
+			api.refreshKeyboardAccessibility();
+			api.refreshAdvancedAccessibility();
+			$( document ).trigger( 'menu-item-added', [ $menuMarkup ] );
+>>>>>>> origin/master
 		},
 
 		attachUnsavedChangesListener : function() {
@@ -1243,9 +1277,22 @@ var wpNavMenu;
 			wrapper.removeClass( 'has-no-menu-item' );
 		},
 
+<<<<<<< HEAD
 		removeMenuItem : function(el) {
 			var children = el.childMenuItems();
 
+=======
+		/**
+		 * Remove a menu item.
+		 * @param  {object} el The element to be removed as a jQuery object.
+		 *
+		 * @fires document#menu-removing-item Passes the element to be removed.
+		 */
+		removeMenuItem : function(el) {
+			var children = el.childMenuItems();
+
+			$( document ).trigger( 'menu-removing-item', [ el ] );
+>>>>>>> origin/master
 			el.addClass('deleting').animate({
 					opacity : 0,
 					height: 0

@@ -1,9 +1,30 @@
 /* global ajaxurl */
+<<<<<<< HEAD
+=======
+
+/**
+ * @summary Registers all events for customizing the background.
+ *
+ * @since 3.0.0
+ *
+ * @requires jQuery
+ */
+>>>>>>> origin/master
 (function($) {
 	$(document).ready(function() {
 		var frame,
 			bgImage = $( '#custom-background-image' );
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Instantiates the WordPress color picker and binds the change and clear events.
+		 *
+		 * @since 3.5.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$('#background-color').wpColorPicker({
 			change: function( event, ui ) {
 				bgImage.css('background-color', ui.color.toString());
@@ -13,22 +34,72 @@
 			}
 		});
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Alters the background size CSS property whenever the background size input has changed.
+		 *
+		 * @since 4.7.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$( 'select[name="background-size"]' ).change( function() {
 			bgImage.css( 'background-size', $( this ).val() );
 		});
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Alters the background position CSS property whenever the background position input has changed.
+		 *
+		 * @since 4.7.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$( 'input[name="background-position"]' ).change( function() {
 			bgImage.css( 'background-position', $( this ).val() );
 		});
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Alters the background repeat CSS property whenever the background repeat input has changed.
+		 *
+		 * @since 3.0.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$( 'input[name="background-repeat"]' ).change( function() {
 			bgImage.css( 'background-repeat', $( this ).is( ':checked' ) ? 'repeat' : 'no-repeat' );
 		});
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Alters the background attachment CSS property whenever the background attachment input has changed.
+		 *
+		 * @since 4.7.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$( 'input[name="background-attachment"]' ).change( function() {
 			bgImage.css( 'background-attachment', $( this ).is( ':checked' ) ? 'scroll' : 'fixed' );
 		});
 
+<<<<<<< HEAD
+=======
+		/**
+		 * @summary Binds the event for opening the WP Media dialog.
+		 *
+		 * @since 3.5.0
+		 *
+		 * @returns {void}
+		 */
+>>>>>>> origin/master
 		$('#choose-from-library-link').click( function( event ) {
 			var $el = $(this);
 
@@ -54,13 +125,30 @@
 				button: {
 					// Set the text of the button.
 					text: $el.data('update'),
+<<<<<<< HEAD
 					// Tell the button not to close the modal, since we're
 					// going to refresh the page when the image is selected.
+=======
+					/*
+					 * Tell the button not to close the modal, since we're
+					 * going to refresh the page when the image is selected.
+					 */
+>>>>>>> origin/master
 					close: false
 				}
 			});
 
+<<<<<<< HEAD
 			// When an image is selected, run a callback.
+=======
+			/**
+			 * @summary When an image is selected, run a callback.
+			 *
+			 * @since 3.5.0
+			 *
+			 * @returns {void}
+ 			 */
+>>>>>>> origin/master
 			frame.on( 'select', function() {
 				// Grab the selected attachment.
 				var attachment = frame.state().get('selection').first();

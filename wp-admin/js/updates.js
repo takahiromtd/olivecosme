@@ -94,6 +94,10 @@
 	 * @type {object} filesystemCredentials.ssh                Holds SSH credentials.
 	 * @type {string} filesystemCredentials.ssh.publicKey      The public key. Default empty string.
 	 * @type {string} filesystemCredentials.ssh.privateKey     The private key. Default empty string.
+<<<<<<< HEAD
+=======
+	 * @type {string} filesystemCredentials.fsNonce            Filesystem credentials form nonce.
+>>>>>>> origin/master
 	 * @type {bool}   filesystemCredentials.available          Whether filesystem credentials have been provided.
 	 *                                                         Default 'false'.
 	 */
@@ -108,6 +112,10 @@
 			publicKey:  '',
 			privateKey: ''
 		},
+<<<<<<< HEAD
+=======
+		fsNonce: '',
+>>>>>>> origin/master
 		available: false
 	};
 
@@ -181,7 +189,15 @@
 		if ( $notice.length ) {
 			$notice.replaceWith( $adminNotice );
 		} else {
+<<<<<<< HEAD
 			$( '.wrap' ).find( '> h1' ).after( $adminNotice );
+=======
+			if ( 'customize' === pagenow ) {
+				$( '.customize-themes-notifications' ).append( $adminNotice );
+			} else {
+				$( '.wrap' ).find( '> h1' ).after( $adminNotice );
+			}
+>>>>>>> origin/master
 		}
 
 		$document.trigger( 'wp-updates-notice-added' );
@@ -225,6 +241,10 @@
 		options.data = _.extend( data, {
 			action:          action,
 			_ajax_nonce:     wp.updates.ajaxNonce,
+<<<<<<< HEAD
+=======
+			_fs_nonce:       wp.updates.filesystemCredentials.fsNonce,
+>>>>>>> origin/master
 			username:        wp.updates.filesystemCredentials.ftp.username,
 			password:        wp.updates.filesystemCredentials.ftp.password,
 			hostname:        wp.updates.filesystemCredentials.ftp.hostname,
@@ -319,6 +339,10 @@
 			$( '.subsubsub .upgrade .count' ).text( '(' + itemCount + ')' );
 		} else {
 			$( '.subsubsub .upgrade' ).remove();
+<<<<<<< HEAD
+=======
+			$( '.subsubsub li:last' ).html( function() { return $( this ).children(); } );
+>>>>>>> origin/master
 		}
 	};
 
@@ -370,11 +394,19 @@
 		if ( 'plugins' === pagenow || 'plugins-network' === pagenow ) {
 			$updateRow = $( 'tr[data-plugin="' + args.plugin + '"]' );
 			$message   = $updateRow.find( '.update-message' ).removeClass( 'notice-error' ).addClass( 'updating-message notice-warning' ).find( 'p' );
+<<<<<<< HEAD
 			message    = wp.updates.l10n.updatingLabel.replace( '%s', $updateRow.find( '.plugin-title strong' ).text() );
 		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 			$card    = $( '.plugin-card-' + args.slug );
 			$message = $card.find( '.update-now' ).addClass( 'updating-message' );
 			message  = wp.updates.l10n.updatingLabel.replace( '%s', $message.data( 'name' ) );
+=======
+			message    = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $updateRow.find( '.plugin-title strong' ).text() );
+		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
+			$card    = $( '.plugin-card-' + args.slug );
+			$message = $card.find( '.update-now' ).addClass( 'updating-message' );
+			message  = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $message.data( 'name' ) );
+>>>>>>> origin/master
 
 			// Remove previous error messages, if any.
 			$card.removeClass( 'plugin-card-update-failed' ).find( '.notice.notice-error' ).remove();
@@ -428,8 +460,13 @@
 		}
 
 		$updateMessage
+<<<<<<< HEAD
 			.attr( 'aria-label', wp.updates.l10n.updatedLabel.replace( '%s', response.pluginName ) )
 			.text( wp.updates.l10n.updated );
+=======
+			.attr( 'aria-label', wp.updates.l10n.pluginUpdatedLabel.replace( '%s', response.pluginName ) )
+			.text( wp.updates.l10n.pluginUpdated );
+>>>>>>> origin/master
 
 		wp.a11y.speak( wp.updates.l10n.updatedMsg, 'polite' );
 
@@ -475,7 +512,11 @@
 
 			if ( response.pluginName ) {
 				$message.find( 'p' )
+<<<<<<< HEAD
 					.attr( 'aria-label', wp.updates.l10n.updateFailedLabel.replace( '%s', response.pluginName ) );
+=======
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> origin/master
 			} else {
 				$message.find( 'p' ).removeAttr( 'aria-label' );
 			}
@@ -492,7 +533,11 @@
 
 			if ( response.pluginName ) {
 				$card.find( '.update-now' )
+<<<<<<< HEAD
 					.attr( 'aria-label', wp.updates.l10n.updateFailedLabel.replace( '%s', response.pluginName ) );
+=======
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> origin/master
 			} else {
 				$card.find( '.update-now' ).removeAttr( 'aria-label' );
 			}
@@ -579,7 +624,11 @@
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message installed button-disabled' )
 			.attr( 'aria-label', wp.updates.l10n.pluginInstalledLabel.replace( '%s', response.pluginName ) )
+<<<<<<< HEAD
 			.text( wp.updates.l10n.installed );
+=======
+			.text( wp.updates.l10n.pluginInstalled );
+>>>>>>> origin/master
 
 		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
 
@@ -840,7 +889,11 @@
 			}
 		} );
 
+<<<<<<< HEAD
 		wp.a11y.speak( wp.updates.l10n.deleted, 'polite' );
+=======
+		wp.a11y.speak( wp.updates.l10n.pluginDeleted, 'polite' );
+>>>>>>> origin/master
 
 		$document.trigger( 'wp-plugin-delete-success', response );
 	};
@@ -926,6 +979,20 @@
 		if ( 'themes-network' === pagenow ) {
 			$notice = $( '[data-slug="' + args.slug + '"]' ).find( '.update-message' ).removeClass( 'notice-error' ).addClass( 'updating-message notice-warning' ).find( 'p' );
 
+<<<<<<< HEAD
+=======
+		} else if ( 'customize' === pagenow ) {
+
+			// Update the theme details UI.
+			$notice = $( '[data-slug="' + args.slug + '"].notice' ).removeClass( 'notice-large' );
+
+			$notice.find( 'h3' ).remove();
+
+			// Add the top-level UI, and update both.
+			$notice = $notice.add( $( '#customize-control-installed_theme_' + args.slug ).find( '.update-message' ) );
+			$notice = $notice.addClass( 'updating-message' ).find( 'p' );
+
+>>>>>>> origin/master
 		} else {
 			$notice = $( '#update-theme' ).closest( '.notice' ).removeClass( 'notice-large' );
 
@@ -964,11 +1031,30 @@
 			$theme         = $( '[data-slug="' + response.slug + '"]' ),
 			updatedMessage = {
 				className: 'updated-message notice-success notice-alt',
+<<<<<<< HEAD
 				message:   wp.updates.l10n.updated
 			},
 			$notice, newText;
 
 		if ( 'themes-network' === pagenow ) {
+=======
+				message:   wp.updates.l10n.themeUpdated
+			},
+			$notice, newText;
+
+		if ( 'customize' === pagenow ) {
+			$theme = $( '.updating-message' ).siblings( '.theme-name' );
+
+			if ( $theme.length ) {
+
+				// Update the version number in the row.
+				newText = $theme.html().replace( response.oldVersion, response.newVersion );
+				$theme.html( newText );
+			}
+
+			$notice = $( '.theme-info .notice' ).add( wp.customize.control( 'installed_theme_' + response.slug ).container.find( '.theme' ).find( '.update-message' ) );
+		} else if ( 'themes-network' === pagenow ) {
+>>>>>>> origin/master
 			$notice = $theme.find( '.update-message' );
 
 			// Update the version number in the row.
@@ -993,7 +1079,11 @@
 		$document.trigger( 'wp-theme-update-success', response );
 
 		// Show updated message after modal re-rendered.
+<<<<<<< HEAD
 		if ( isModalOpen ) {
+=======
+		if ( isModalOpen && 'customize' !== pagenow ) {
+>>>>>>> origin/master
 			$( '.theme-info .theme-author' ).after( wp.updates.adminNotice( updatedMessage ) );
 		}
 	};
@@ -1022,6 +1112,13 @@
 			return;
 		}
 
+<<<<<<< HEAD
+=======
+		if ( 'customize' === pagenow ) {
+			$theme = wp.customize.control( 'installed_theme_' + response.slug ).container.find( '.theme' );
+		}
+
+>>>>>>> origin/master
 		if ( 'themes-network' === pagenow ) {
 			$notice = $theme.find( '.update-message ' );
 		} else {
@@ -1101,7 +1198,11 @@
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message disabled' )
 			.attr( 'aria-label', wp.updates.l10n.themeInstalledLabel.replace( '%s', response.themeName ) )
+<<<<<<< HEAD
 			.text( wp.updates.l10n.installed );
+=======
+			.text( wp.updates.l10n.themeInstalled );
+>>>>>>> origin/master
 
 		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
 
@@ -1158,12 +1259,32 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		if ( $document.find( 'body' ).hasClass( 'full-overlay-active' ) ) {
 			$button = $( '.theme-install[data-slug="' + response.slug + '"]' );
 			$card   = $( '.install-theme-info' ).prepend( $message );
 		} else {
 			$card   = $( '[data-slug="' + response.slug + '"]' ).removeClass( 'focus' ).addClass( 'theme-install-failed' ).append( $message );
 			$button = $card.find( '.theme-install' );
+=======
+		if ( 'customize' === pagenow ) {
+			if ( $document.find( 'body' ).hasClass( 'modal-open' ) ) {
+				$button = $( '.theme-install[data-slug="' + response.slug + '"]' );
+				$card   = $( '.theme-overlay .theme-info' ).prepend( $message );
+			} else {
+				$button = $( '.theme-install[data-slug="' + response.slug + '"]' );
+				$card   = $button.closest( '.theme' ).addClass( 'theme-install-failed' ).append( $message );
+			}
+			wp.customize.notifications.remove( 'theme_installing' );
+		} else {
+			if ( $document.find( 'body' ).hasClass( 'full-overlay-active' ) ) {
+				$button = $( '.theme-install[data-slug="' + response.slug + '"]' );
+				$card   = $( '.install-theme-info' ).prepend( $message );
+			} else {
+				$card   = $( '[data-slug="' + response.slug + '"]' ).removeClass( 'focus' ).addClass( 'theme-install-failed' ).append( $message );
+				$button = $card.find( '.theme-install' );
+			}
+>>>>>>> origin/master
 		}
 
 		$button
@@ -1177,7 +1298,11 @@
 	};
 
 	/**
+<<<<<<< HEAD
 	 * Sends an Ajax request to the server to install a theme.
+=======
+	 * Sends an Ajax request to the server to delete a theme.
+>>>>>>> origin/master
 	 *
 	 * @since 4.6.0
 	 *
@@ -1272,7 +1397,11 @@
 			} );
 		}
 
+<<<<<<< HEAD
 		wp.a11y.speak( wp.updates.l10n.deleted, 'polite' );
+=======
+		wp.a11y.speak( wp.updates.l10n.themeDeleted, 'polite' );
+>>>>>>> origin/master
 
 		$document.trigger( 'wp-theme-delete-success', response );
 	};
@@ -1705,6 +1834,10 @@
 			wp.updates.filesystemCredentials.ftp.connectionType = $( 'input[name="connection_type"]:checked' ).val();
 			wp.updates.filesystemCredentials.ssh.publicKey      = $( '#public_key' ).val();
 			wp.updates.filesystemCredentials.ssh.privateKey     = $( '#private_key' ).val();
+<<<<<<< HEAD
+=======
+			wp.updates.filesystemCredentials.fsNonce            = $( '#_fs_nonce' ).val();
+>>>>>>> origin/master
 			wp.updates.filesystemCredentials.available          = true;
 
 			// Unlock and invoke the queue.
@@ -1775,9 +1908,15 @@
 
 				if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 					if ( 'update-plugin' === job.action ) {
+<<<<<<< HEAD
 						$message.attr( 'aria-label', wp.updates.l10n.updateNowLabel.replace( '%s', $message.data( 'name' ) ) );
 					} else if ( 'install-plugin' === job.action ) {
 						$message.attr( 'aria-label', wp.updates.l10n.installNowLabel.replace( '%s', $message.data( 'name' ) ) );
+=======
+						$message.attr( 'aria-label', wp.updates.l10n.pluginUpdateNowLabel.replace( '%s', $message.data( 'name' ) ) );
+					} else if ( 'install-plugin' === job.action ) {
+						$message.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', $message.data( 'name' ) ) );
+>>>>>>> origin/master
 					}
 				}
 			}
@@ -1991,7 +2130,11 @@
 		 *
 		 * @param {Event} event Event interface.
 		 */
+<<<<<<< HEAD
 		$bulkActionForm.on( 'click', '[type="submit"]', function( event ) {
+=======
+		$bulkActionForm.on( 'click', '[type="submit"]:not([name="clear-recent-list"])', function( event ) {
+>>>>>>> origin/master
 			var bulkAction    = $( event.target ).siblings( 'select' ).val(),
 				itemsSelected = $bulkActionForm.find( 'input[name="checked[]"]:checked' ),
 				success       = 0,
@@ -2260,7 +2403,11 @@
 				} else if ( $oldSubTitle.length ) {
 					$oldSubTitle.replaceWith( $subTitle );
 				} else {
+<<<<<<< HEAD
 					$( '.wrap h1' ).append( $subTitle );
+=======
+					$( '.wp-header-end' ).before( $subTitle );
+>>>>>>> origin/master
 				}
 
 				$( 'body' ).removeClass( 'loading-content' );
@@ -2286,6 +2433,19 @@
 			$( 'input.wp-filter-search' ).trigger( 'input' );
 		} );
 
+<<<<<<< HEAD
+=======
+		/** 
+		 * Trigger a search event when the "Try Again" button is clicked. 
+		 * 
+		 * @since 4.9.0
+		 */ 
+		$document.on( 'click', '.try-again', function( event ) { 
+			event.preventDefault(); 
+			$pluginInstallSearch.trigger( 'input' ); 
+		} );
+
+>>>>>>> origin/master
 		/**
 		 * Trigger a search event when the search type gets changed.
 		 *

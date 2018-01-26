@@ -154,7 +154,10 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function no_items() {
 		_e( 'No themes match your request.' );
@@ -171,16 +174,25 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 
 		$display_tabs = array();
 		foreach ( (array) $tabs as $action => $text ) {
+<<<<<<< HEAD
 			$class = ( $action === $tab ) ? ' class="current"' : '';
 			$href = self_admin_url('theme-install.php?tab=' . $action);
 			$display_tabs['theme-install-'.$action] = "<a href='$href'$class>$text</a>";
+=======
+			$current_link_attributes = ( $action === $tab ) ? ' class="current" aria-current="page"' : '';
+			$href = self_admin_url('theme-install.php?tab=' . $action);
+			$display_tabs['theme-install-'.$action] = "<a href='$href'$current_link_attributes>$text</a>";
+>>>>>>> origin/master
 		}
 
 		return $display_tabs;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
@@ -209,7 +221,10 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display_rows() {
 		$themes = $this->items;
@@ -227,7 +242,10 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * Prints a theme from the WordPress.org API.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global array $themes_allowedtags
 	 *
@@ -436,7 +454,10 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * Send required variables to JavaScript land
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @global string $tab  Current tab within Themes->Install screen
 	 * @global string $type Type of search.
@@ -452,7 +473,10 @@ class WP_Theme_Install_List_Table extends WP_Themes_List_Table {
 	 * Check to see if the theme is already installed.
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @param object $theme - A WordPress.org Theme API object.
 	 * @return string Theme status.

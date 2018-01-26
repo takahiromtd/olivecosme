@@ -107,7 +107,11 @@ case 'edit':
 		wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
 
 	if ( ! $post_type_object )
+<<<<<<< HEAD
 		wp_die( __( 'Unknown post type.' ) );
+=======
+		wp_die( __( 'Invalid post type.' ) );
+>>>>>>> origin/master
 
 	if ( ! in_array( $typenow, get_post_types( array( 'show_ui' => true ) ) ) ) {
 		wp_die( __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
@@ -144,6 +148,21 @@ case 'edit':
 		$post_new_file = "post-new.php?post_type=$post_type";
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Allows replacement of the editor.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @param boolean      Whether to replace the editor. Default false.
+	 * @param object $post Post object.
+	 */
+	if ( apply_filters( 'replace_editor', false, $post ) === true ) {
+		break;
+	}
+
+>>>>>>> origin/master
 	if ( ! wp_check_post_lock( $post->ID ) ) {
 		$active_post_lock = wp_set_post_lock( $post->ID );
 
@@ -151,6 +170,7 @@ case 'edit':
 			wp_enqueue_script('autosave');
 	}
 
+<<<<<<< HEAD
 	if ( is_multisite() ) {
 		add_action( 'admin_footer', '_admin_notice_post_locked' );
 	} else {
@@ -162,6 +182,8 @@ case 'edit':
 		unset( $check_users );
 	}
 
+=======
+>>>>>>> origin/master
 	$title = $post_type_object->labels->edit_item;
 	$post = get_post($post_id, OBJECT, 'edit');
 
@@ -208,7 +230,11 @@ case 'trash':
 		wp_die( __( 'The item you are trying to move to the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
+<<<<<<< HEAD
 		wp_die( __( 'Unknown post type.' ) );
+=======
+		wp_die( __( 'Invalid post type.' ) );
+>>>>>>> origin/master
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
@@ -231,7 +257,11 @@ case 'untrash':
 		wp_die( __( 'The item you are trying to restore from the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
+<<<<<<< HEAD
 		wp_die( __( 'Unknown post type.' ) );
+=======
+		wp_die( __( 'Invalid post type.' ) );
+>>>>>>> origin/master
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
@@ -249,7 +279,11 @@ case 'delete':
 		wp_die( __( 'This item has already been deleted.' ) );
 
 	if ( ! $post_type_object )
+<<<<<<< HEAD
 		wp_die( __( 'Unknown post type.' ) );
+=======
+		wp_die( __( 'Invalid post type.' ) );
+>>>>>>> origin/master
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );

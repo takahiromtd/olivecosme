@@ -408,12 +408,16 @@ ul#adminmenu > li.current > a.current:after {
 }
 
 .media-selection .attachment.selection.details .thumbnail {
+<<<<<<< HEAD
 	-webkit-box-shadow:
 		0px 0px 0px 1px #fff,
 		0px 0px 0px 3px $highlight-color;
 	box-shadow:
 		0px 0px 0px 1px #fff,
 		0px 0px 0px 3px $highlight-color;
+=======
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px $highlight-color;
+>>>>>>> origin/master
 }
 
 

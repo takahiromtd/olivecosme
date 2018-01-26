@@ -440,7 +440,11 @@ final class Types_Page_Field_Control extends Types_Page_Abstract {
 		foreach( $groups as $group ) {
 			$group_data[ $group->get_slug() ] = array(
 				'slug' => $group->get_slug(),
+<<<<<<< HEAD
 				'displayName' => $group->get_display_name()
+=======
+				'displayName' => stripslashes( $group->get_display_name() )
+>>>>>>> origin/master
 			);
 		}
 

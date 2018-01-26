@@ -11,10 +11,20 @@
 	 *
 	 * Instantiate with model wp.customize.HeaderTool.currentHeader.
 	 *
+<<<<<<< HEAD
 	 * @constructor
 	 * @augments wp.Backbone.View
 	 */
 	api.HeaderTool.CurrentView = wp.Backbone.View.extend({
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.CurrentView
+	 *
+	 * @constructor
+	 * @augments wp.Backbone.View
+	 */
+	api.HeaderTool.CurrentView = wp.Backbone.View.extend(/** @lends wp.customize.HeaderTool.CurrentView.prototype */{
+>>>>>>> origin/master
 		template: wp.template('header-current'),
 
 		initialize: function() {
@@ -50,10 +60,20 @@
 	 * Manually changes model wp.customize.HeaderTool.currentHeader via the
 	 * `select` method.
 	 *
+<<<<<<< HEAD
 	 * @constructor
 	 * @augments wp.Backbone.View
 	 */
 	api.HeaderTool.ChoiceView = wp.Backbone.View.extend({
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.ChoiceView
+	 *
+	 * @constructor
+	 * @augments wp.Backbone.View
+	 */
+	api.HeaderTool.ChoiceView = wp.Backbone.View.extend(/** @lends wp.customize.HeaderTool.ChoiceView.prototype */{
+>>>>>>> origin/master
 		template: wp.template('header-choice'),
 
 		className: 'header-view',
@@ -125,10 +145,20 @@
 	 *
 	 * Takes a wp.customize.HeaderTool.ChoiceList.
 	 *
+<<<<<<< HEAD
 	 * @constructor
 	 * @augments wp.Backbone.View
 	 */
 	api.HeaderTool.ChoiceListView = wp.Backbone.View.extend({
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.ChoiceListView
+	 *
+	 * @constructor
+	 * @augments wp.Backbone.View
+	 */
+	api.HeaderTool.ChoiceListView = wp.Backbone.View.extend(/** @lends wp.customize.HeaderTool.ChoiceListView.prototype */{
+>>>>>>> origin/master
 		initialize: function() {
 			this.listenTo(this.collection, 'add', this.addOne);
 			this.listenTo(this.collection, 'remove', this.render);
@@ -168,10 +198,20 @@
 	 * Aggregates wp.customize.HeaderTool.ChoiceList collections (or any
 	 * Backbone object, really) and acts as a bus to feed them events.
 	 *
+<<<<<<< HEAD
 	 * @constructor
 	 * @augments wp.Backbone.View
 	 */
 	api.HeaderTool.CombinedList = wp.Backbone.View.extend({
+=======
+	 * @memberOf wp.customize.HeaderTool
+	 * @alias wp.customize.HeaderTool.CombinedList
+	 *
+	 * @constructor
+	 * @augments wp.Backbone.View
+	 */
+	api.HeaderTool.CombinedList = wp.Backbone.View.extend(/** @lends wp.customize.HeaderTool.CombinedList.prototype */{
+>>>>>>> origin/master
 		initialize: function(collections) {
 			this.collections = collections;
 			this.on('all', this.propagate, this);

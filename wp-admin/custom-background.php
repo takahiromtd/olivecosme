@@ -10,8 +10,11 @@
  * The custom background class.
  *
  * @since 3.0.0
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Administration
+=======
+>>>>>>> origin/master
  */
 class Custom_Background {
 
@@ -35,7 +38,10 @@ class Custom_Background {
 	 * Used to trigger a success message when settings updated and set to true.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var bool
 	 */
 	private $updated;

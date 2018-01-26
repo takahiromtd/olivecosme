@@ -17,7 +17,11 @@ $pagenum = $wp_list_table->get_pagenum();
 
 $action = $wp_list_table->current_action();
 
+<<<<<<< HEAD
 $plugin = isset($_REQUEST['plugin']) ? $_REQUEST['plugin'] : '';
+=======
+$plugin = isset($_REQUEST['plugin']) ? wp_unslash( $_REQUEST['plugin'] ) : '';
+>>>>>>> origin/master
 $s = isset($_REQUEST['s']) ? urlencode( wp_unslash( $_REQUEST['s'] ) ) : '';
 
 // Clean up request URI from temporary args for screen options/paging uri's to work as expected.
@@ -29,8 +33,14 @@ if ( $action ) {
 
 	switch ( $action ) {
 		case 'activate':
+<<<<<<< HEAD
 			if ( ! current_user_can('activate_plugins') )
 				wp_die(__('Sorry, you are not allowed to activate plugins for this site.'));
+=======
+			if ( ! current_user_can( 'activate_plugin', $plugin ) ) {
+				wp_die( __( 'Sorry, you are not allowed to activate this plugin.' ) );
+			}
+>>>>>>> origin/master
 
 			if ( is_multisite() && ! is_network_admin() && is_network_only_plugin( $plugin ) ) {
 				wp_redirect( self_admin_url("plugins.php?plugin_status=$status&paged=$page&s=$s") );
@@ -39,10 +49,17 @@ if ( $action ) {
 
 			check_admin_referer('activate-plugin_' . $plugin);
 
+<<<<<<< HEAD
 			$result = activate_plugin($plugin, self_admin_url('plugins.php?error=true&plugin=' . $plugin), is_network_admin() );
 			if ( is_wp_error( $result ) ) {
 				if ( 'unexpected_output' == $result->get_error_code() ) {
 					$redirect = self_admin_url('plugins.php?error=true&charsout=' . strlen($result->get_error_data()) . '&plugin=' . $plugin . "&plugin_status=$status&paged=$page&s=$s");
+=======
+			$result = activate_plugin($plugin, self_admin_url('plugins.php?error=true&plugin=' . urlencode( $plugin ) ), is_network_admin() );
+			if ( is_wp_error( $result ) ) {
+				if ( 'unexpected_output' == $result->get_error_code() ) {
+					$redirect = self_admin_url('plugins.php?error=true&charsout=' . strlen($result->get_error_data()) . '&plugin=' . urlencode( $plugin ) . "&plugin_status=$status&paged=$page&s=$s");
+>>>>>>> origin/master
 					wp_redirect(add_query_arg('_error_nonce', wp_create_nonce('plugin-activation-error_' . $plugin), $redirect));
 					exit;
 				} else {
@@ -62,6 +79,11 @@ if ( $action ) {
 
 			if ( isset($_GET['from']) && 'import' == $_GET['from'] ) {
 				wp_redirect( self_admin_url("import.php?import=" . str_replace('-importer', '', dirname($plugin))) ); // overrides the ?error=true one above and redirects to the Imports page, stripping the -importer suffix
+<<<<<<< HEAD
+=======
+			} else if ( isset($_GET['from']) && 'press-this' == $_GET['from'] ) {
+				wp_redirect( self_admin_url( "press-this.php") );
+>>>>>>> origin/master
 			} else {
 				wp_redirect( self_admin_url("plugins.php?activate=true&plugin_status=$status&paged=$page&s=$s") ); // overrides the ?error=true one above
 			}
@@ -73,7 +95,11 @@ if ( $action ) {
 
 			check_admin_referer('bulk-plugins');
 
+<<<<<<< HEAD
 			$plugins = isset( $_POST['checked'] ) ? (array) $_POST['checked'] : array();
+=======
+			$plugins = isset( $_POST['checked'] ) ? (array) wp_unslash( $_POST['checked'] ) : array();
+>>>>>>> origin/master
 
 			if ( is_network_admin() ) {
 				foreach ( $plugins as $i => $plugin ) {
@@ -88,6 +114,13 @@ if ( $action ) {
 					if ( is_plugin_active( $plugin ) || ( is_multisite() && is_network_only_plugin( $plugin ) ) ) {
 						unset( $plugins[ $i ] );
 					}
+<<<<<<< HEAD
+=======
+					// Only activate plugins which the user can activate.
+					if ( ! current_user_can( 'activate_plugin', $plugin ) ) {
+						unset( $plugins[ $i ] );
+					}
+>>>>>>> origin/master
 				}
 			}
 
@@ -122,9 +155,15 @@ if ( $action ) {
 			check_admin_referer( 'bulk-plugins' );
 
 			if ( isset( $_GET['plugins'] ) )
+<<<<<<< HEAD
 				$plugins = explode( ',', $_GET['plugins'] );
 			elseif ( isset( $_POST['checked'] ) )
 				$plugins = (array) $_POST['checked'];
+=======
+				$plugins = explode( ',', wp_unslash( $_GET['plugins'] ) );
+			elseif ( isset( $_POST['checked'] ) )
+				$plugins = (array) wp_unslash( $_POST['checked'] );
+>>>>>>> origin/master
 			else
 				$plugins = array();
 
@@ -146,8 +185,14 @@ if ( $action ) {
 			exit;
 
 		case 'error_scrape':
+<<<<<<< HEAD
 			if ( ! current_user_can('activate_plugins') )
 				wp_die(__('Sorry, you are not allowed to activate plugins for this site.'));
+=======
+			if ( ! current_user_can( 'activate_plugin', $plugin ) ) {
+				wp_die( __( 'Sorry, you are not allowed to activate this plugin.' ) );
+			}
+>>>>>>> origin/master
 
 			check_admin_referer('plugin-activation-error_' . $plugin);
 
@@ -167,8 +212,14 @@ if ( $action ) {
 			exit;
 
 		case 'deactivate':
+<<<<<<< HEAD
 			if ( ! current_user_can('activate_plugins') )
 				wp_die(__('Sorry, you are not allowed to deactivate plugins for this site.'));
+=======
+			if ( ! current_user_can( 'deactivate_plugin', $plugin ) ) {
+				wp_die( __( 'Sorry, you are not allowed to deactivate this plugin.' ) );
+			}
+>>>>>>> origin/master
 
 			check_admin_referer('deactivate-plugin_' . $plugin);
 
@@ -192,18 +243,39 @@ if ( $action ) {
 			exit;
 
 		case 'deactivate-selected':
+<<<<<<< HEAD
 			if ( ! current_user_can('activate_plugins') )
 				wp_die(__('Sorry, you are not allowed to deactivate plugins for this site.'));
 
 			check_admin_referer('bulk-plugins');
 
 			$plugins = isset( $_POST['checked'] ) ? (array) $_POST['checked'] : array();
+=======
+			if ( ! current_user_can( 'deactivate_plugins' ) ) {
+				wp_die(__('Sorry, you are not allowed to deactivate plugins for this site.'));
+			}
+
+			check_admin_referer('bulk-plugins');
+
+			$plugins = isset( $_POST['checked'] ) ? (array) wp_unslash( $_POST['checked'] ) : array();
+>>>>>>> origin/master
 			// Do not deactivate plugins which are already deactivated.
 			if ( is_network_admin() ) {
 				$plugins = array_filter( $plugins, 'is_plugin_active_for_network' );
 			} else {
 				$plugins = array_filter( $plugins, 'is_plugin_active' );
 				$plugins = array_diff( $plugins, array_filter( $plugins, 'is_plugin_active_for_network' ) );
+<<<<<<< HEAD
+=======
+
+				foreach ( $plugins as $i => $plugin ) {
+					// Only deactivate plugins which the user can deactivate.
+					if ( ! current_user_can( 'deactivate_plugin', $plugin ) ) {
+						unset( $plugins[ $i ] );
+					}
+				}
+
+>>>>>>> origin/master
 			}
 			if ( empty($plugins) ) {
 				wp_redirect( self_admin_url("plugins.php?plugin_status=$status&paged=$page&s=$s") );
@@ -234,7 +306,11 @@ if ( $action ) {
 			check_admin_referer('bulk-plugins');
 
 			//$_POST = from the plugin form; $_GET = from the FTP details screen.
+<<<<<<< HEAD
 			$plugins = isset( $_REQUEST['checked'] ) ? (array) $_REQUEST['checked'] : array();
+=======
+			$plugins = isset( $_REQUEST['checked'] ) ? (array) wp_unslash( $_REQUEST['checked'] ) : array();
+>>>>>>> origin/master
 			if ( empty( $plugins ) ) {
 				wp_redirect( self_admin_url("plugins.php?plugin_status=$status&paged=$page&s=$s") );
 				exit;
@@ -368,7 +444,11 @@ if ( $action ) {
 		default:
 			if ( isset( $_POST['checked'] ) ) {
 				check_admin_referer('bulk-plugins');
+<<<<<<< HEAD
 				$plugins = isset( $_POST['checked'] ) ? (array) $_POST['checked'] : array();
+=======
+				$plugins = isset( $_POST['checked'] ) ? (array) wp_unslash( $_POST['checked'] ) : array();
+>>>>>>> origin/master
 				$sendback = wp_get_referer();
 
 				/** This action is documented in wp-admin/edit-comments.php */
@@ -499,9 +579,19 @@ if ( ! empty( $invalid ) ) {
 <?php endif; ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1><?php echo esc_html( $title );
 if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plugins') ) { ?>
  <a href="<?php echo self_admin_url( 'plugin-install.php' ); ?>" class="page-title-action"><?php echo esc_html_x('Add New', 'plugin'); ?></a>
+=======
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plugins') ) { ?>
+	<a href="<?php echo self_admin_url( 'plugin-install.php' ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'plugin' ); ?></a>
+>>>>>>> origin/master
 <?php
 }
 
@@ -510,7 +600,12 @@ if ( strlen( $s ) ) {
 	printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', esc_html( urldecode( $s ) ) );
 }
 ?>
+<<<<<<< HEAD
 </h1>
+=======
+
+<hr class="wp-header-end">
+>>>>>>> origin/master
 
 <?php
 /**

@@ -11,7 +11,11 @@
  * Core class used to access revisions via the REST API.
  *
  * @since 4.7.0
+<<<<<<< HEAD
  *0
+=======
+ *
+>>>>>>> origin/master
  * @see WP_REST_Controller
  */
 class WP_REST_Revisions_Controller extends WP_REST_Controller {
@@ -20,7 +24,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Parent post type.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $parent_post_type;
@@ -29,7 +36,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Parent controller.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var WP_REST_Controller
 	 */
 	private $parent_controller;
@@ -38,7 +48,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * The base of the parent controller's route.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $parent_base;
@@ -47,7 +60,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Constructor.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $parent_post_type Post type of the parent.
 	 */
@@ -64,7 +80,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Registers routes for revisions based on post types supporting revisions.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see register_rest_route()
 	 */
@@ -148,7 +167,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Checks if a given request has access to get revisions.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
@@ -193,7 +215,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Gets a collection of revisions.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
@@ -218,7 +243,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Checks if a given request has access to get a specific revision.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return bool|WP_Error True if the request has read access for the item, WP_Error object otherwise.
@@ -231,7 +259,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Retrieves one revision from the collection.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full data about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
@@ -255,7 +286,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Checks if a given request has access to delete a revision.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
 	 * @return bool|WP_Error True if the request has access to delete the item, WP_Error object otherwise.
@@ -284,7 +318,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Deletes a single revision.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return true|WP_Error True on success, or WP_Error object on failure.
@@ -299,7 +336,12 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 
 		// We don't support trashing for revisions.
 		if ( ! $force ) {
+<<<<<<< HEAD
 			return new WP_Error( 'rest_trash_not_supported', __( 'Revisions do not support trashing. Set force=true to delete.' ), array( 'status' => 501 ) );
+=======
+			/* translators: %s: force=true */
+			return new WP_Error( 'rest_trash_not_supported', sprintf( __( "Revisions do not support trashing. Set '%s' to delete." ), 'force=true' ), array( 'status' => 501 ) );
+>>>>>>> origin/master
 		}
 
 		$previous = $this->prepare_item_for_response( $revision, $request );
@@ -312,7 +354,11 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 		 * @since 4.7.0
 		 *
 		 * @param (mixed) $result The revision object (if it was deleted or moved to the trash successfully)
+<<<<<<< HEAD
 		 *                        or false (failure). If the revision was moved to to the trash, $result represents
+=======
+		 *                        or false (failure). If the revision was moved to the trash, $result represents
+>>>>>>> origin/master
 		 *                        its new state; if it was deleted, $result represents its state before deletion.
 		 * @param WP_REST_Request $request The request sent to the API.
 		 */
@@ -331,13 +377,22 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Prepares the revision for the REST response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_Post         $post    Post revision object.
 	 * @param WP_REST_Request $request Request object.
 	 * @return WP_REST_Response Response object.
 	 */
 	public function prepare_item_for_response( $post, $request ) {
+<<<<<<< HEAD
+=======
+		$GLOBALS['post'] = $post;
+
+		setup_postdata( $post );
+>>>>>>> origin/master
 
 		$schema = $this->get_item_schema();
 
@@ -378,7 +433,11 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 		if ( ! empty( $schema['properties']['guid'] ) ) {
 			$data['guid'] = array(
 				/** This filter is documented in wp-includes/post-template.php */
+<<<<<<< HEAD
 				'rendered' => apply_filters( 'get_the_guid', $post->guid ),
+=======
+				'rendered' => apply_filters( 'get_the_guid', $post->guid, $post->ID ),
+>>>>>>> origin/master
 				'raw'      => $post->guid,
 			);
 		}
@@ -434,7 +493,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * modified date for single post output.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string      $date_gmt GMT publication time.
 	 * @param string|null $date     Optional. Local publication time. Default null.
@@ -456,13 +518,20 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Retrieves the revision's schema, conforming to JSON Schema.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Item schema data.
 	 */
 	public function get_item_schema() {
 		$schema = array(
+<<<<<<< HEAD
 			'$schema'    => 'http://json-schema.org/schema#',
+=======
+			'$schema'    => 'http://json-schema.org/draft-04/schema#',
+>>>>>>> origin/master
 			'title'      => "{$this->parent_post_type}-revision",
 			'type'       => 'object',
 			// Base properties for every Revision.
@@ -544,7 +613,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Retrieves the query params for collections.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Collection parameters.
 	 */
@@ -558,7 +630,10 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * Checks the post excerpt and prepare it for single post output.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string  $excerpt The post excerpt.
 	 * @param WP_Post $post    Post revision object.

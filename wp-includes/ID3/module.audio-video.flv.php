@@ -93,7 +93,11 @@ class getid3_flv extends getid3_handler {
 		$TypeFlags                          = getid3_lib::BigEndian2Int(substr($FLVheader, 4, 1));
 
 		if ($info['flv']['header']['signature'] != self::magic) {
+<<<<<<< HEAD
 			$info['error'][] = 'Expecting "'.getid3_lib::PrintHexBytes(self::magic).'" at offset '.$info['avdataoffset'].', found "'.getid3_lib::PrintHexBytes($info['flv']['header']['signature']).'"';
+=======
+			$this->error('Expecting "'.getid3_lib::PrintHexBytes(self::magic).'" at offset '.$info['avdataoffset'].', found "'.getid3_lib::PrintHexBytes($info['flv']['header']['signature']).'"');
+>>>>>>> origin/master
 			unset($info['flv'], $info['fileformat']);
 			return false;
 		}
@@ -541,7 +545,11 @@ class AMFReader {
 			// Long string
 			default:
 				$value = '(unknown or unsupported data type)';
+<<<<<<< HEAD
 			break;
+=======
+				break;
+>>>>>>> origin/master
 		}
 
 		return $value;

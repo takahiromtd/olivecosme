@@ -18,7 +18,10 @@ class WP_Feed_Cache_Transient {
 	 * Holds the transient name.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $name;
@@ -27,7 +30,10 @@ class WP_Feed_Cache_Transient {
 	 * Holds the transient mod name.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $mod_name;
@@ -38,7 +44,10 @@ class WP_Feed_Cache_Transient {
 	 * Defaults to 43200 seconds (12 hours).
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var int
 	 */
 	public $lifetime = 43200;
@@ -48,7 +57,10 @@ class WP_Feed_Cache_Transient {
 	 *
 	 * @since 2.8.0
 	 * @since 3.2.0 Updated to use a PHP5 constructor.
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $location  URL location (scheme is used to determine handler).
 	 * @param string $filename  Unique identifier for cache object.
@@ -74,7 +86,10 @@ class WP_Feed_Cache_Transient {
 	 * Sets the transient.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param SimplePie $data Data to save.
 	 * @return true Always true.
@@ -93,7 +108,10 @@ class WP_Feed_Cache_Transient {
 	 * Gets the transient.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return mixed Transient value.
 	 */
@@ -105,7 +123,10 @@ class WP_Feed_Cache_Transient {
 	 * Gets mod transient.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return mixed Transient value.
 	 */
@@ -117,7 +138,10 @@ class WP_Feed_Cache_Transient {
 	 * Sets mod transient.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return bool False if value was not set and true if value was set.
 	 */
@@ -129,7 +153,10 @@ class WP_Feed_Cache_Transient {
 	 * Deletes transients.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return true Always true.
 	 */

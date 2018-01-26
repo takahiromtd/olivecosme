@@ -34,8 +34,13 @@ get_current_screen()->add_help_tab( array(
 ) ) ;
 
 get_current_screen()->add_help_tab( array(
+<<<<<<< HEAD
 	'id'      => 'screen-display',
 	'title'   => __('Screen Display'),
+=======
+	'id'      => 'screen-content',
+	'title'   => __('Screen Content'),
+>>>>>>> origin/master
 	'content' => '<p>' . __('You can customize the display of this screen in a number of ways:') . '</p>' .
 					'<ul>' .
 					'<li>' . __('You can hide/display columns based on your needs and decide how many users to list per screen using the Screen Options tab.') . '</li>' .
@@ -46,18 +51,32 @@ get_current_screen()->add_help_tab( array(
 
 $help = '<p>' . __('Hovering over a row in the users list will display action links that allow you to manage users. You can perform the following actions:') . '</p>' .
 	'<ul>' .
+<<<<<<< HEAD
 	'<li>' . __('Edit takes you to the editable profile screen for that user. You can also reach that screen by clicking on the username.') . '</li>';
 
 if ( is_multisite() )
 	$help .= '<li>' . __( 'Remove allows you to remove a user from your site. It does not delete their content. You can also remove multiple users at once by using Bulk Actions.' ) . '</li>';
 else
 	$help .= '<li>' . __( 'Delete brings you to the Delete Users screen for confirmation, where you can permanently remove a user from your site and delete their content. You can also delete multiple users at once by using Bulk Actions.' ) . '</li>';
+=======
+	'<li>' . __('<strong>Edit</strong> takes you to the editable profile screen for that user. You can also reach that screen by clicking on the username.') . '</li>';
+
+if ( is_multisite() )
+	$help .= '<li>' . __( '<strong>Remove</strong> allows you to remove a user from your site. It does not delete their content. You can also remove multiple users at once by using Bulk Actions.' ) . '</li>';
+else
+	$help .= '<li>' . __( '<strong>Delete</strong> brings you to the Delete Users screen for confirmation, where you can permanently remove a user from your site and delete their content. You can also delete multiple users at once by using Bulk Actions.' ) . '</li>';
+>>>>>>> origin/master
 
 $help .= '</ul>';
 
 get_current_screen()->add_help_tab( array(
+<<<<<<< HEAD
 	'id'      => 'actions',
 	'title'   => __('Actions'),
+=======
+	'id'      => 'action-links',
+	'title'   => __('Available Actions'),
+>>>>>>> origin/master
 	'content' => $help,
 ) );
 unset( $help );
@@ -94,7 +113,11 @@ case 'promote':
 	check_admin_referer('bulk-users');
 
 	if ( ! current_user_can( 'promote_users' ) )
+<<<<<<< HEAD
 		wp_die( __( 'Sorry, you are not allowed to edit this user.' ) );
+=======
+		wp_die( __( 'Sorry, you are not allowed to edit this user.' ), 403 );
+>>>>>>> origin/master
 
 	if ( empty($_REQUEST['users']) ) {
 		wp_redirect($redirect);
@@ -110,7 +133,11 @@ case 'promote':
 	}
 
 	if ( ! $role || empty( $editable_roles[ $role ] ) ) {
+<<<<<<< HEAD
 		wp_die( __( 'Sorry, you are not allowed to give users that role.' ) );
+=======
+		wp_die( __( 'Sorry, you are not allowed to give users that role.' ), 403 );
+>>>>>>> origin/master
 	}
 
 	$userids = $_REQUEST['users'];
@@ -119,10 +146,17 @@ case 'promote':
 		$id = (int) $id;
 
 		if ( ! current_user_can('promote_user', $id) )
+<<<<<<< HEAD
 			wp_die(__('Sorry, you are not allowed to edit this user.'));
 		// The new role of the current user must also have the promote_users cap or be a multisite super admin
 		if ( $id == $current_user->ID && ! $wp_roles->role_objects[ $role ]->has_cap('promote_users')
 			&& ! ( is_multisite() && is_super_admin() ) ) {
+=======
+			wp_die( __( 'Sorry, you are not allowed to edit this user.' ), 403 );
+		// The new role of the current user must also have the promote_users cap or be a multisite super admin
+		if ( $id == $current_user->ID && ! $wp_roles->role_objects[ $role ]->has_cap('promote_users')
+			&& ! ( is_multisite() && current_user_can( 'manage_network_users' ) ) ) {
+>>>>>>> origin/master
 				$update = 'err_admin_role';
 				continue;
 		}
@@ -145,7 +179,11 @@ case 'promote':
 
 case 'dodelete':
 	if ( is_multisite() )
+<<<<<<< HEAD
 		wp_die( __('User deletion is not allowed from this screen.') );
+=======
+		wp_die( __('User deletion is not allowed from this screen.'), 400 );
+>>>>>>> origin/master
 
 	check_admin_referer('delete-users');
 
@@ -164,14 +202,22 @@ case 'dodelete':
 	}
 
 	if ( ! current_user_can( 'delete_users' ) )
+<<<<<<< HEAD
 		wp_die(__('Sorry, you are not allowed to delete users.'));
+=======
+		wp_die( __( 'Sorry, you are not allowed to delete users.' ), 403 );
+>>>>>>> origin/master
 
 	$update = 'del';
 	$delete_count = 0;
 
 	foreach ( $userids as $id ) {
 		if ( ! current_user_can( 'delete_user', $id ) )
+<<<<<<< HEAD
 			wp_die(__( 'Sorry, you are not allowed to delete that user.' ) );
+=======
+			wp_die( __( 'Sorry, you are not allowed to delete that user.' ), 403 );
+>>>>>>> origin/master
 
 		if ( $id == $current_user->ID ) {
 			$update = 'err_admin_del';
@@ -194,7 +240,11 @@ case 'dodelete':
 
 case 'delete':
 	if ( is_multisite() )
+<<<<<<< HEAD
 		wp_die( __('User deletion is not allowed from this screen.') );
+=======
+		wp_die( __('User deletion is not allowed from this screen.'), 400 );
+>>>>>>> origin/master
 
 	check_admin_referer('bulk-users');
 
@@ -306,7 +356,11 @@ case 'doremove':
 	check_admin_referer('remove-users');
 
 	if ( ! is_multisite() )
+<<<<<<< HEAD
 		wp_die( __( 'You can&#8217;t remove users.' ) );
+=======
+		wp_die( __( 'You can&#8217;t remove users.' ), 400 );
+>>>>>>> origin/master
 
 	if ( empty($_REQUEST['users']) ) {
 		wp_redirect($redirect);
@@ -314,17 +368,24 @@ case 'doremove':
 	}
 
 	if ( ! current_user_can( 'remove_users' ) )
+<<<<<<< HEAD
 		wp_die( __( 'Sorry, you are not allowed to remove users.' ) );
+=======
+		wp_die( __( 'Sorry, you are not allowed to remove users.' ), 403 );
+>>>>>>> origin/master
 
 	$userids = $_REQUEST['users'];
 
 	$update = 'remove';
  	foreach ( $userids as $id ) {
 		$id = (int) $id;
+<<<<<<< HEAD
 		if ( $id == $current_user->ID && !is_super_admin() ) {
 			$update = 'err_admin_remove';
 			continue;
 		}
+=======
+>>>>>>> origin/master
 		if ( !current_user_can('remove_user', $id) ) {
 			$update = 'err_admin_remove';
 			continue;
@@ -341,7 +402,11 @@ case 'remove':
 	check_admin_referer('bulk-users');
 
 	if ( ! is_multisite() )
+<<<<<<< HEAD
 		wp_die( __( 'You can&#8217;t remove users.' ) );
+=======
+		wp_die( __( 'You can&#8217;t remove users.' ), 400 );
+>>>>>>> origin/master
 
 	if ( empty($_REQUEST['users']) && empty($_REQUEST['user']) ) {
 		wp_redirect($redirect);
@@ -377,10 +442,14 @@ case 'remove':
  	foreach ( $userids as $id ) {
 		$id = (int) $id;
  		$user = get_userdata( $id );
+<<<<<<< HEAD
 		if ( $id == $current_user->ID && !is_super_admin() ) {
 			/* translators: 1: user id, 2: user login */
 			echo "<li>" . sprintf(__('ID #%1$s: %2$s <strong>The current user will not be removed.</strong>'), $id, $user->user_login) . "</li>\n";
 		} elseif ( !current_user_can('remove_user', $id) ) {
+=======
+		if ( ! current_user_can( 'remove_user', $id ) ) {
+>>>>>>> origin/master
 			/* translators: 1: user id, 2: user login */
 			echo "<li>" . sprintf(__('ID #%1$s: %2$s <strong>Sorry, you are not allowed to remove this user.</strong>'), $id, $user->user_login) . "</li>\n";
 		} else {
@@ -491,9 +560,17 @@ if ( ! empty($messages) ) {
 } ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1>
 <?php
 echo esc_html( $title );
+=======
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+>>>>>>> origin/master
 if ( current_user_can( 'create_users' ) ) { ?>
 	<a href="<?php echo admin_url( 'user-new.php' ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'user' ); ?></a>
 <?php } elseif ( is_multisite() && current_user_can( 'promote_users' ) ) { ?>
@@ -505,7 +582,12 @@ if ( strlen( $usersearch ) ) {
 	printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', esc_html( $usersearch ) );
 }
 ?>
+<<<<<<< HEAD
 </h1>
+=======
+
+<hr class="wp-header-end">
+>>>>>>> origin/master
 
 <?php $wp_list_table->views(); ?>
 
@@ -513,6 +595,13 @@ if ( strlen( $usersearch ) ) {
 
 <?php $wp_list_table->search_box( __( 'Search Users' ), 'user' ); ?>
 
+<<<<<<< HEAD
+=======
+<?php if ( ! empty( $_REQUEST['role'] ) ) { ?>
+<input type="hidden" name="role" value="<?php echo esc_attr( $_REQUEST['role'] ); ?>" />
+<?php } ?>
+
+>>>>>>> origin/master
 <?php $wp_list_table->display(); ?>
 </form>
 

@@ -20,7 +20,10 @@ class Walker_CategoryDropdown extends Walker {
 	 * What the class handles.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 *
 	 * @see Walker::$tree_type
@@ -31,7 +34,10 @@ class Walker_CategoryDropdown extends Walker {
 	 * Database fields to use.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @todo Decouple this
 	 * @var array
 	 *
@@ -43,11 +49,18 @@ class Walker_CategoryDropdown extends Walker {
 	 * Starts the element output.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @see Walker::start_el()
 	 *
 	 * @param string $output   Passed by reference. Used to append additional content.
+=======
+	 *
+	 * @see Walker::start_el()
+	 *
+	 * @param string $output   Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $category Category data object.
 	 * @param int    $depth    Depth of category. Used for padding.
 	 * @param array  $args     Uses 'selected', 'show_count', and 'value_field' keys, if they exist.

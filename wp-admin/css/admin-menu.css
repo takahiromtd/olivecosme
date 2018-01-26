@@ -47,7 +47,10 @@
 	display: inline-block;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
 	-webkit-transition: all .1s ease-in-out;
+=======
+>>>>>>> origin/master
 	transition: all .1s ease-in-out;
 }
 
@@ -203,7 +206,10 @@
 	padding: 7px 0 8px;
 	z-index: 9999;
 	background-color: #32373c;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 3px 5px rgba(0,0,0,0.2);
 }
 
@@ -227,7 +233,10 @@
 	bottom: auto;
 	border: 0 none;
 	margin-top: 0;
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 	background-color: #32373c;
 }
@@ -283,9 +292,15 @@
 
 #adminmenu .wp-submenu a {
 	font-size: 13px;
+<<<<<<< HEAD
 	line-height: 1.2;
 	margin: 0;
 	padding: 6px 0;
+=======
+	line-height: 18px;
+	margin: 0;
+	padding: 5px 0;
+>>>>>>> origin/master
 }
 
 #adminmenu .wp-submenu li.current,
@@ -301,13 +316,20 @@
 .folded #adminmenu .wp-has-current-submenu li > a {
 	padding-right: 16px;
 	padding-left: 14px;
+<<<<<<< HEAD
 	-webkit-transition: all .1s ease-in-out;
+=======
+>>>>>>> origin/master
 	transition: all .1s ease-in-out;
 }
 
 #adminmenu .wp-has-current-submenu ul > li > a,
 .folded #adminmenu li.menu-top .wp-submenu > li > a {
+<<<<<<< HEAD
 	padding: 6px 12px;
+=======
+	padding: 5px 12px;
+>>>>>>> origin/master
 }
 
 #adminmenu a.menu-top,
@@ -358,7 +380,10 @@
 #adminmenu div.wp-menu-image.svg {
 	background-repeat: no-repeat;
 	background-position: center;
+<<<<<<< HEAD
 	-webkit-background-size: 20px auto;
+=======
+>>>>>>> origin/master
 	background-size: 20px auto;
 }
 
@@ -366,7 +391,10 @@ div.wp-menu-image:before {
 	color: #a0a5aa;
 	color: rgba(240,245,250,0.6);
 	padding: 7px 0;
+<<<<<<< HEAD
 	-webkit-transition: all .1s ease-in-out;
+=======
+>>>>>>> origin/master
 	transition: all .1s ease-in-out;
 }
 
@@ -516,6 +544,7 @@ ul#adminmenu > li.current > a.current:after {
 	border: 0 none;
 }
 
+<<<<<<< HEAD
 #adminmenu .awaiting-mod,
 #adminmenu .update-plugins {
 	display: inline-block;
@@ -539,6 +568,28 @@ ul#adminmenu > li.current > a.current:after {
 
 #adminmenu li.current a .awaiting-mod,
 #adminmenu	li a.wp-has-current-submenu .update-plugins {
+=======
+/* @todo: consider to use a single rule for these counters and the list table comments counters. */
+#adminmenu .awaiting-mod,
+#adminmenu .update-plugins {
+	display: inline-block;
+	vertical-align: top;
+	margin: 1px 0 0 2px;
+	padding: 0 5px;
+	min-width: 7px;
+	height: 17px;
+	border-radius: 11px;
+	background-color: #ca4a1f;
+	color: #fff;
+	font-size: 9px;
+	line-height: 17px;
+	text-align: center;
+	z-index: 26;
+}
+
+#adminmenu li.current a .awaiting-mod,
+#adminmenu li a.wp-has-current-submenu .update-plugins {
+>>>>>>> origin/master
 	background-color: #00b9eb;
 	color: #fff;
 }
@@ -607,19 +658,28 @@ ul#adminmenu > li.current > a.current:after {
 .folded #collapse-button .collapse-button-icon:after,
 .rtl #collapse-button .collapse-button-icon:after {
 	-webkit-transform: rotate(180deg);
+<<<<<<< HEAD
 	-ms-transform: rotate(180deg);
+=======
+>>>>>>> origin/master
 	transform: rotate(180deg);
 }
 
 .rtl.folded #collapse-button .collapse-button-icon:after {
 	-webkit-transform: none;
+<<<<<<< HEAD
 	-ms-transform: none;
+=======
+>>>>>>> origin/master
 	transform: none;
 }
 
 #collapse-button .collapse-button-icon:after,
 #collapse-button .collapse-button-label {
+<<<<<<< HEAD
 	-webkit-transition: all .1s ease-in-out;
+=======
+>>>>>>> origin/master
 	transition: all .1s ease-in-out;
 }
 
@@ -741,13 +801,19 @@ li#wp-admin-bar-menu-toggle {
 	/* rtl:ignore */
 	.auto-fold #collapse-button .collapse-button-icon:after {
 		-webkit-transform: rotate(180deg);
+<<<<<<< HEAD
 		-ms-transform: rotate(180deg);
+=======
+>>>>>>> origin/master
 		transform: rotate(180deg);
 	}
 
 	.rtl.auto-fold #collapse-button .collapse-button-icon:after {
 		-webkit-transform: none;
+<<<<<<< HEAD
 		-ms-transform: none;
+=======
+>>>>>>> origin/master
 		transform: none;
 	}
 
@@ -828,7 +894,10 @@ li#wp-admin-bar-menu-toggle {
 		display: block;
 		top: 0;
 		left: -1px;
+<<<<<<< HEAD
 		-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 		box-shadow: none;
 	}
 
@@ -870,8 +939,11 @@ li#wp-admin-bar-menu-toggle {
 		padding-right: 10px;
 		z-index: 99999;
 		border: none;
+<<<<<<< HEAD
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
+=======
+>>>>>>> origin/master
 		box-sizing: border-box;
 	}
 
@@ -915,8 +987,11 @@ li#wp-admin-bar-menu-toggle {
 		border: none;
 		text-align: center;
 		text-decoration: none;
+<<<<<<< HEAD
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
+=======
+>>>>>>> origin/master
 		box-sizing: border-box;
 	}
 

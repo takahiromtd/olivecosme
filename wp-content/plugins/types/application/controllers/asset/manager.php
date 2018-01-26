@@ -41,6 +41,7 @@ final class Types_Asset_Manager extends Toolset_Assets_Manager {
 	protected function __initialize_scripts() {
 
 		$this->register_script(
+<<<<<<< HEAD
 			self::SCRIPT_KNOCKOUT,
 			TYPES_RELPATH . '/library/knockout/' . $this->choose_script_version( 'knockout-3.4.0.js', 'knockout-3.4.0.debug.js' ),
 			array(),
@@ -48,6 +49,8 @@ final class Types_Asset_Manager extends Toolset_Assets_Manager {
 		);
 
 		$this->register_script(
+=======
+>>>>>>> origin/master
 			self::SCRIPT_ADJUST_MENU_LINK,
 			TYPES_RELPATH . '/public/page/adjust_submenu_links.js',
 			array( 'jquery', 'underscore' ),

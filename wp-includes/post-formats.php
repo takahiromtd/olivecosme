@@ -102,11 +102,19 @@ function get_post_format_strings() {
 }
 
 /**
+<<<<<<< HEAD
  * Retrieves an array of post format slugs.
  *
  * @since 3.1.0
  *
  * @return array The array of post format slugs.
+=======
+ * Retrieves the array of post format slugs.
+ *
+ * @since 3.1.0
+ *
+ * @return array The array of post format slugs as both keys and values.
+>>>>>>> origin/master
  */
 function get_post_format_slugs() {
 	$slugs = array_keys( get_post_format_strings() );

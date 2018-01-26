@@ -12,7 +12,10 @@
                 <h1 class="article-headline"><?php the_title(); ?></h1>
                 <div class="article-body">
                   <?php the_content(); ?>
+<<<<<<< HEAD
                   sss
+=======
+>>>>>>> origin/master
                 </div>
               </div>
             <?php endwhile;endif; ?>

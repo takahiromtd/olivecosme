@@ -167,6 +167,7 @@ class PO extends Gettext_Translations {
 	 * @param string $with prepend lines with this string
 	 */
 	public static function prepend_each_line($string, $with) {
+<<<<<<< HEAD
 		$php_with = var_export($with, true);
 		$lines = explode("\n", $string);
 		// do not prepend the string on the last empty line, artefact by explode
@@ -175,6 +176,22 @@ class PO extends Gettext_Translations {
 		// give back the empty line, we ignored above
 		if ("\n" == substr($string, -1)) $res .= "\n";
 		return $res;
+=======
+		$lines = explode("\n", $string);
+		$append = '';
+		if ("\n" === substr($string, -1) && '' === end($lines)) {
+			// Last line might be empty because $string was terminated
+			// with a newline, remove it from the $lines array,
+			// we'll restore state by re-terminating the string at the end
+			array_pop($lines);
+			$append = "\n";
+		}
+		foreach ($lines as &$line) {
+			$line = $with . $line;
+		}
+		unset($line);
+		return implode("\n", $lines) . $append;
+>>>>>>> origin/master
 	}
 
 	/**
@@ -195,7 +212,11 @@ class PO extends Gettext_Translations {
 	 * Builds a string from the entry for inclusion in PO file
 	 *
 	 * @static
+<<<<<<< HEAD
 	 * @param Translation_Entry &$entry the entry to convert to po string
+=======
+	 * @param Translation_Entry $entry the entry to convert to po string (passed by reference).
+>>>>>>> origin/master
 	 * @return false|string PO-style formatted string for the entry or
 	 * 	false if the entry is empty
 	 */
@@ -280,6 +301,18 @@ class PO extends Gettext_Translations {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Helper function for read_entry
+	 * @param string $context
+	 * @return bool
+	 */
+	protected static function is_final($context) {
+		return ($context === 'msgstr') || ($context === 'msgstr_plural');
+	}
+
+	/**
+>>>>>>> origin/master
 	 * @param resource $f
 	 * @param int      $lineno
 	 * @return null|false|array
@@ -290,13 +323,20 @@ class PO extends Gettext_Translations {
 		// can be: comment, msgctxt, msgid, msgid_plural, msgstr, msgstr_plural
 		$context = '';
 		$msgstr_index = 0;
+<<<<<<< HEAD
 		$is_final = create_function('$context', 'return $context == "msgstr" || $context == "msgstr_plural";');
+=======
+>>>>>>> origin/master
 		while (true) {
 			$lineno++;
 			$line = PO::read_line($f);
 			if (!$line)  {
 				if (feof($f)) {
+<<<<<<< HEAD
 					if ($is_final($context))
+=======
+					if (self::is_final($context))
+>>>>>>> origin/master
 						break;
 					elseif (!$context) // we haven't read a line and eof came
 						return null;
@@ -310,7 +350,11 @@ class PO extends Gettext_Translations {
 			$line = trim($line);
 			if (preg_match('/^#/', $line, $m)) {
 				// the comment is the start of a new entry
+<<<<<<< HEAD
 				if ($is_final($context)) {
+=======
+				if (self::is_final($context)) {
+>>>>>>> origin/master
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -322,7 +366,11 @@ class PO extends Gettext_Translations {
 				// add comment
 				$this->add_comment_to_entry($entry, $line);
 			} elseif (preg_match('/^msgctxt\s+(".*")/', $line, $m)) {
+<<<<<<< HEAD
 				if ($is_final($context)) {
+=======
+				if (self::is_final($context)) {
+>>>>>>> origin/master
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -333,7 +381,11 @@ class PO extends Gettext_Translations {
 				$context = 'msgctxt';
 				$entry->context .= PO::unpoify($m[1]);
 			} elseif (preg_match('/^msgid\s+(".*")/', $line, $m)) {
+<<<<<<< HEAD
 				if ($is_final($context)) {
+=======
+				if (self::is_final($context)) {
+>>>>>>> origin/master
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -383,9 +435,24 @@ class PO extends Gettext_Translations {
 				return false;
 			}
 		}
+<<<<<<< HEAD
 		if (array() == array_filter($entry->translations, create_function('$t', 'return $t || "0" === $t;'))) {
 			$entry->translations = array();
 		}
+=======
+
+		$have_translations = false;
+		foreach ( $entry->translations as $t ) {
+			if ( $t || ('0' === $t) ) {
+				$have_translations = true;
+				break;
+			}
+		}
+		if ( false === $have_translations ) {
+			$entry->translations = array();
+		}
+
+>>>>>>> origin/master
 		return array('entry' => $entry, 'lineno' => $lineno);
 	}
 

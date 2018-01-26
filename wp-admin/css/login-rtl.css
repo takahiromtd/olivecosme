@@ -19,11 +19,16 @@ body {
 
 a {
 	color: #0073aa;
+<<<<<<< HEAD
 	-webkit-transition-property: border, background, color;
 	transition-property: border, background, color;
 	-webkit-transition-duration: .05s;
 	transition-duration: .05s;
 	-webkit-transition-timing-function: ease-in-out;
+=======
+	transition-property: border, background, color;
+	transition-duration: .05s;
+>>>>>>> origin/master
 	transition-timing-function: ease-in-out;
 }
 
@@ -38,9 +43,12 @@ a:active {
 
 a:focus {
 	color: #124964;
+<<<<<<< HEAD
 	-webkit-box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+=======
+>>>>>>> origin/master
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
@@ -59,8 +67,13 @@ p {
 	border-right: 4px solid #00a0d2;
 	padding: 12px;
 	margin-right: 0;
+<<<<<<< HEAD
 	background-color: #fff;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
+=======
+	margin-bottom: 20px;
+	background-color: #fff;
+>>>>>>> origin/master
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
 }
 
@@ -79,6 +92,28 @@ p {
 	padding: 0;
 }
 
+<<<<<<< HEAD
+=======
+.login .password-input-wrapper {
+    display: table;
+}
+
+.login .input.password-input {
+    display: table-cell;
+    margin: 0;
+}
+
+.login .pw-weak {
+    margin-bottom: 15px;
+}
+
+.login .button.button-secondary {
+    display: table-cell;
+    border-radius: 0;
+    vertical-align: middle;
+}
+
+>>>>>>> origin/master
 .login form {
 	margin-top: 20px;
 	margin-right: 0;
@@ -86,7 +121,10 @@ p {
 	font-weight: 400;
 	overflow: hidden;
 	background: #fff;
+<<<<<<< HEAD
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
+=======
+>>>>>>> origin/master
 	box-shadow: 0 1px 3px rgba(0,0,0,0.13);
 }
 
@@ -126,7 +164,10 @@ p {
 .login h1 a {
 	background-image: url(../images/w-logo-blue.png?ver=20131202);
 	background-image: none, url(../images/wordpress-logo.svg?ver=20131107);
+<<<<<<< HEAD
 	-webkit-background-size: 84px;
+=======
+>>>>>>> origin/master
 	background-size: 84px;
 	background-position: center top;
 	background-repeat: no-repeat;
@@ -203,7 +244,10 @@ p {
 }
 
 .login-action-rp input[type="text"] {
+<<<<<<< HEAD
 	-webkit-box-shadow: none;
+=======
+>>>>>>> origin/master
 	box-shadow: none;
 	margin: 0;
 }

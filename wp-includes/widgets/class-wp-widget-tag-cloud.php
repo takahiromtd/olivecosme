@@ -20,7 +20,10 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	 * Sets up a new Tag Cloud widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __construct() {
 		$widget_ops = array(
@@ -34,13 +37,17 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	 * Outputs the content for the current Tag Cloud widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
 	 * @param array $instance Settings for the current Tag Cloud widget instance.
 	 */
 	public function widget( $args, $instance ) {
+<<<<<<< HEAD
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
 		if ( !empty($instance['title']) ) {
 			$title = $instance['title'];
@@ -49,15 +56,32 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 				$title = __('Tags');
 			} else {
 				$tax = get_taxonomy($current_taxonomy);
+=======
+		$current_taxonomy = $this->_get_current_taxonomy( $instance );
+
+		if ( ! empty( $instance['title'] ) ) {
+			$title = $instance['title'];
+		} else {
+			if ( 'post_tag' === $current_taxonomy ) {
+				$title = __( 'Tags' );
+			} else {
+				$tax = get_taxonomy( $current_taxonomy );
+>>>>>>> origin/master
 				$title = $tax->labels->name;
 			}
 		}
 
+<<<<<<< HEAD
+=======
+		$show_count = ! empty( $instance['count'] );
+
+>>>>>>> origin/master
 		/**
 		 * Filters the taxonomy used in the Tag Cloud widget.
 		 *
 		 * @since 2.8.0
 		 * @since 3.0.0 Added taxonomy drop-down.
+<<<<<<< HEAD
 		 *
 		 * @see wp_tag_cloud()
 		 *
@@ -67,6 +91,20 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 			'taxonomy' => $current_taxonomy,
 			'echo' => false
 		) ) );
+=======
+		 * @since 4.9.0 Added the `$instance` parameter.
+		 *
+		 * @see wp_tag_cloud()
+		 *
+		 * @param array $args     Args used for the tag cloud widget.
+		 * @param array $instance Array of settings for the current widget.
+		 */
+		$tag_cloud = wp_tag_cloud( apply_filters( 'widget_tag_cloud_args', array(
+			'taxonomy'   => $current_taxonomy,
+			'echo'       => false,
+			'show_count' => $show_count,
+		), $instance ) );
+>>>>>>> origin/master
 
 		if ( empty( $tag_cloud ) ) {
 			return;
@@ -92,7 +130,10 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	 * Handles updating settings for the current Tag Cloud widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
 	 *                            WP_Widget::form().
@@ -102,6 +143,10 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
+<<<<<<< HEAD
+=======
+		$instance['count'] = ! empty( $new_instance['count'] ) ? 1 : 0;
+>>>>>>> origin/master
 		$instance['taxonomy'] = stripslashes($new_instance['taxonomy']);
 		return $instance;
 	}
@@ -110,13 +155,20 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	 * Outputs the Tag Cloud widget settings form.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $instance Current settings.
 	 */
 	public function form( $instance ) {
 		$current_taxonomy = $this->_get_current_taxonomy($instance);
 		$title_id = $this->get_field_id( 'title' );
+<<<<<<< HEAD
+=======
+		$count = isset( $instance['count'] ) ? (bool) $instance['count'] : false;
+>>>>>>> origin/master
 		$instance['title'] = ! empty( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 
 		echo '<p><label for="' . $title_id .'">' . __( 'Title:' ) . '</label>
@@ -128,6 +180,17 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 		$name = $this->get_field_name( 'taxonomy' );
 		$input = '<input type="hidden" id="' . $id . '" name="' . $name . '" value="%s" />';
 
+<<<<<<< HEAD
+=======
+		$count_checkbox = sprintf(
+			'<p><input type="checkbox" class="checkbox" id="%1$s" name="%2$s"%3$s /> <label for="%1$s">%4$s</label></p>',
+			$this->get_field_id( 'count' ),
+			$this->get_field_name( 'count' ),
+			checked( $count, true, false ),
+			__( 'Show tag counts' )
+		);
+
+>>>>>>> origin/master
 		switch ( count( $taxonomies ) ) {
 
 		// No tag cloud supporting taxonomies found, display error message
@@ -136,14 +199,25 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 			printf( $input, '' );
 			break;
 
+<<<<<<< HEAD
 		// Just a single tag cloud supporting taxonomy found, no need to display options
+=======
+		// Just a single tag cloud supporting taxonomy found, no need to display a select.
+>>>>>>> origin/master
 		case 1:
 			$keys = array_keys( $taxonomies );
 			$taxonomy = reset( $keys );
 			printf( $input, esc_attr( $taxonomy ) );
+<<<<<<< HEAD
 			break;
 
 		// More than one tag cloud supporting taxonomy found, display options
+=======
+			echo $count_checkbox;
+			break;
+
+		// More than one tag cloud supporting taxonomy found, display a select.
+>>>>>>> origin/master
 		default:
 			printf(
 				'<p><label for="%1$s">%2$s</label>' .
@@ -162,7 +236,11 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 				);
 			}
 
+<<<<<<< HEAD
 			echo '</select></p>';
+=======
+			echo '</select></p>' . $count_checkbox;
+>>>>>>> origin/master
 		}
 	}
 
@@ -170,7 +248,10 @@ class WP_Widget_Tag_Cloud extends WP_Widget {
 	 * Retrieves the taxonomy for the current Tag cloud widget instance.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $instance Current settings.
 	 * @return string Name of the current taxonomy if set, otherwise 'post_tag'.

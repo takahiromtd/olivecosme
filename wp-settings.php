@@ -22,7 +22,11 @@ require_once( ABSPATH . WPINC . '/plugin.php' );
 
 /*
  * These can't be directly globalized in version.php. When updating,
+<<<<<<< HEAD
  * we're including version.php from another install and don't want
+=======
+ * we're including version.php from another installation and don't want
+>>>>>>> origin/master
  * these values to be overridden if already set.
  */
 global $wp_version, $wp_db_version, $tinymce_version, $required_php_version, $required_mysql_version, $wp_local_package;
@@ -100,7 +104,10 @@ require( ABSPATH . WPINC . '/class-wp-matchesmapregex.php' );
 require( ABSPATH . WPINC . '/class-wp.php' );
 require( ABSPATH . WPINC . '/class-wp-error.php' );
 require( ABSPATH . WPINC . '/pomo/mo.php' );
+<<<<<<< HEAD
 require_once( ABSPATH . WPINC . '/class-phpass.php' );
+=======
+>>>>>>> origin/master
 
 // Include the wpdb class and, if present, a db.php database drop-in.
 global $wpdb;
@@ -295,6 +302,11 @@ require( ABSPATH . WPINC . '/vars.php' );
 create_initial_taxonomies();
 create_initial_post_types();
 
+<<<<<<< HEAD
+=======
+wp_start_scraping_edited_file_errors();
+
+>>>>>>> origin/master
 // Register the default theme directory root
 register_theme_directory( get_theme_root() );
 

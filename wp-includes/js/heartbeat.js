@@ -367,6 +367,13 @@
 				has_focus: settings.hasFocus
 			};
 
+<<<<<<< HEAD
+=======
+			if ( 'customize' === settings.screenId  ) {
+				ajaxData.wp_customize = 'on';
+			}
+
+>>>>>>> origin/master
 			settings.connecting = true;
 			settings.xhr = $.ajax({
 				url: settings.url,
@@ -742,7 +749,15 @@
 		};
 	};
 
+<<<<<<< HEAD
 	// Ensure the global `wp` object exists.
+=======
+	/**
+	 * Ensure the global `wp` object exists.
+	 *
+	 * @namespace wp
+	 */
+>>>>>>> origin/master
 	window.wp = window.wp || {};
 	window.wp.heartbeat = new Heartbeat();
 

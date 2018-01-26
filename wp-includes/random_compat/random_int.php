@@ -26,6 +26,10 @@
  * SOFTWARE.
  */
 
+<<<<<<< HEAD
+=======
+if ( ! is_callable( 'random_int' ) ):
+>>>>>>> origin/master
 /**
  * Fetch a random integer between $min and $max inclusive
  * 
@@ -189,3 +193,7 @@ function random_int($min, $max)
 
     return (int) $val;
 }
+<<<<<<< HEAD
+=======
+endif;
+>>>>>>> origin/master

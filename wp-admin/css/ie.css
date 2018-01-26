@@ -285,7 +285,11 @@ table.fixed td {
 	width: 29%;
 }
 
+<<<<<<< HEAD
 .inline-edit-row p.submit {
+=======
+.inline-edit-row .submit {
+>>>>>>> origin/master
 	zoom: 100%;
 }
 
@@ -441,7 +445,11 @@ div#dashboard-widgets {
 	padding-right: 1px;
 }
 
+<<<<<<< HEAD
 .tagchecklist > span, .tagchecklist .ntdelbutton {
+=======
+.tagchecklist > li, .tagchecklist .ntdelbutton {
+>>>>>>> origin/master
 	display: inline-block;
 	display: block;
 }

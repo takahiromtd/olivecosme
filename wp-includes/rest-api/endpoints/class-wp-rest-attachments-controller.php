@@ -21,7 +21,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * prepares for WP_Query.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array           $prepared_args Optional. Array of prepared arguments. Default empty array.
 	 * @param WP_REST_Request $request       Optional. Request to prepare items for.
@@ -59,7 +62,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Checks if a given request has access to create an attachment.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|true Boolean true if the attachment may be created, or a WP_Error if not.
@@ -92,7 +98,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Creates a single attachment.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|WP_REST_Response Response object on success, WP_Error object on failure.
@@ -126,7 +135,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		$file    = $file['file'];
 
 		// use image exif/iptc data for title and caption defaults if possible
+<<<<<<< HEAD
 		$image_meta = @wp_read_image_metadata( $file );
+=======
+		$image_meta = wp_read_image_metadata( $file );
+>>>>>>> origin/master
 
 		if ( ! empty( $image_meta ) ) {
 			if ( empty( $request['title'] ) && trim( $image_meta['title'] ) && ! is_numeric( sanitize_title( $image_meta['title'] ) ) ) {
@@ -200,7 +213,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Updates a single attachment.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|WP_REST_Response Response object on success, WP_Error object on failure.
@@ -225,7 +241,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 		$attachment = get_post( $request['id'] );
 
+<<<<<<< HEAD
 		/* This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php */
+=======
+		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php */
+>>>>>>> origin/master
 		do_action( 'rest_insert_attachment', $data, $request, false );
 
 		$fields_update = $this->update_additional_fields_for_object( $attachment, $request );
@@ -245,7 +265,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Prepares a single attachment for create or update.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_REST_Request $request Request object.
 	 * @return WP_Error|stdClass $prepared_attachment Post object.
@@ -282,7 +305,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Prepares a single attachment output for response.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_Post         $post    Attachment object.
 	 * @param WP_REST_Request $request Request object.
@@ -375,7 +401,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Retrieves the attachment's schema, conforming to JSON Schema.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Item schema as an array.
 	 */
@@ -398,6 +427,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 			'context'     => array( 'view', 'edit', 'embed' ),
 			'arg_options' => array(
 				'sanitize_callback' => null, // Note: sanitization implemented in self::prepare_item_for_database()
+<<<<<<< HEAD
+=======
+				'validate_callback' => null, // Note: validation implemented in self::prepare_item_for_database()
+>>>>>>> origin/master
 			),
 			'properties'  => array(
 				'raw' => array(
@@ -420,6 +453,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 			'context'     => array( 'view', 'edit' ),
 			'arg_options' => array(
 				'sanitize_callback' => null, // Note: sanitization implemented in self::prepare_item_for_database()
+<<<<<<< HEAD
+=======
+				'validate_callback' => null, // Note: validation implemented in self::prepare_item_for_database()
+>>>>>>> origin/master
 			),
 			'properties'  => array(
 				'raw' => array(
@@ -481,7 +518,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Handles an upload via raw POST data.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $data    Supplied file data.
 	 * @param array $headers HTTP headers from the request.
@@ -579,7 +619,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 *     ext-token           = <the characters in token, followed by "*">
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @link http://tools.ietf.org/html/rfc2388
 	 * @link http://tools.ietf.org/html/rfc6266
@@ -632,7 +675,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Retrieves the query params for collections of attachments.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Query parameters for the attachment collection as an array.
 	 */
@@ -662,7 +708,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Validates whether the user can query private statuses.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param mixed           $value     Status value.
 	 * @param WP_REST_Request $request   Request object.
@@ -681,7 +730,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Handles an upload via multipart/form-data ($_FILES).
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $files   Data from the `$_FILES` superglobal.
 	 * @param array $headers HTTP headers from the request.
@@ -731,7 +783,10 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * Media types are considered the MIME type category.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return array Array of supported media types.
 	 */

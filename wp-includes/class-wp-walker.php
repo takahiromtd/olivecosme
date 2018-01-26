@@ -16,7 +16,10 @@ class Walker {
 	 * What the class handles.
 	 *
 	 * @since 2.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $tree_type;
@@ -56,7 +59,11 @@ class Walker {
 	 * @since 2.1.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Depth of the item.
 	 * @param array  $args   An array of additional arguments.
 	 */
@@ -71,7 +78,11 @@ class Walker {
 	 * @since 2.1.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Depth of the item.
 	 * @param array  $args   An array of additional arguments.
 	 */
@@ -86,7 +97,11 @@ class Walker {
 	 * @since 2.1.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param string $output            Passed by reference. Used to append additional content.
+=======
+	 * @param string $output            Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $object            The data object.
 	 * @param int    $depth             Depth of the item.
 	 * @param array  $args              An array of additional arguments.
@@ -102,7 +117,11 @@ class Walker {
 	 * @since 2.1.0
 	 * @abstract
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $object The data object.
 	 * @param int    $depth  Depth of the item.
 	 * @param array  $args   An array of additional arguments.
@@ -122,11 +141,19 @@ class Walker {
 	 * @since 2.5.0
 	 *
 	 * @param object $element           Data object.
+<<<<<<< HEAD
 	 * @param array  $children_elements List of elements to continue traversing.
 	 * @param int    $max_depth         Max depth to traverse.
 	 * @param int    $depth             Depth of current element.
 	 * @param array  $args              An array of arguments.
 	 * @param string $output            Passed by reference. Used to append additional content.
+=======
+	 * @param array  $children_elements List of elements to continue traversing (passed by reference).
+	 * @param int    $max_depth         Max depth to traverse.
+	 * @param int    $depth             Depth of current element.
+	 * @param array  $args              An array of arguments.
+	 * @param string $output            Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
 		if ( ! $element ) {
@@ -385,7 +412,10 @@ class Walker {
 	 * Calculates the total number of root elements.
 	 *
 	 * @since 2.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $elements Elements to list.
 	 * @return int Number of root elements.
@@ -404,6 +434,11 @@ class Walker {
 	/**
 	 * Unset all the children for a given top level element.
 	 *
+<<<<<<< HEAD
+=======
+	 * @since 2.7.0
+	 *
+>>>>>>> origin/master
 	 * @param object $e
 	 * @param array $children_elements
 	 */

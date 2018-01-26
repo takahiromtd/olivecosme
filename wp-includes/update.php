@@ -97,6 +97,33 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 		'initial_db_version' => get_site_option( 'initial_db_version' ),
 	);
 
+<<<<<<< HEAD
+=======
+	/**
+	 * Filter the query arguments sent as part of the core version check.
+	 *
+	 * WARNING: Changing this data may result in your site not receiving security updates.
+	 * Please exercise extreme caution.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @param array $query {
+	 *     Version check query arguments. 
+	 *
+	 *     @type string $version            WordPress version number.
+	 *     @type string $php                PHP version number.
+	 *     @type string $locale             The locale to retrieve updates for.
+	 *     @type string $mysql              MySQL version number.
+	 *     @type string $local_package      The value of the $wp_local_package global, when set.
+	 *     @type int    $blogs              Number of sites on this WordPress installation.
+	 *     @type int    $users              Number of users on this WordPress installation.
+	 *     @type int    $multisite_enabled  Whether this WordPress installation uses Multisite.
+	 *     @type int    $initial_db_version Database version of WordPress at time of installation.
+	 * }
+	 */
+	$query = apply_filters( 'core_version_check_query_args', $query );
+
+>>>>>>> origin/master
 	$post_body = array(
 		'translations' => wp_json_encode( $translations ),
 	);
@@ -108,8 +135,15 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	if ( $ssl = wp_http_supports( array( 'ssl' ) ) )
 		$url = set_url_scheme( $url, 'https' );
 
+<<<<<<< HEAD
 	$options = array(
 		'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3 ),
+=======
+	$doing_cron = wp_doing_cron();
+
+	$options = array(
+		'timeout' => $doing_cron ? 30 : 3,
+>>>>>>> origin/master
 		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
 		'headers' => array(
 			'wp_install' => $wp_install,
@@ -177,7 +211,11 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	}
 
 	// Trigger background updates if running non-interactively, and we weren't called from the update handler.
+<<<<<<< HEAD
 	if ( defined( 'DOING_CRON' ) && DOING_CRON && ! doing_action( 'wp_maybe_auto_update' ) ) {
+=======
+	if ( $doing_cron && ! doing_action( 'wp_maybe_auto_update' ) ) {
+>>>>>>> origin/master
 		do_action( 'wp_maybe_auto_update' );
 	}
 }
@@ -217,6 +255,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 	$new_option = new stdClass;
 	$new_option->last_checked = time();
 
+<<<<<<< HEAD
+=======
+	$doing_cron = wp_doing_cron();
+
+>>>>>>> origin/master
 	// Check for update on a different schedule, depending on the page.
 	switch ( current_filter() ) {
 		case 'upgrader_process_complete' :
@@ -230,7 +273,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
+<<<<<<< HEAD
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+=======
+			if ( $doing_cron ) {
+>>>>>>> origin/master
 				$timeout = 0;
 			} else {
 				$timeout = 12 * HOUR_IN_SECONDS;
@@ -282,7 +329,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 	$locales = apply_filters( 'plugins_update_check_locales', $locales );
 	$locales = array_unique( $locales );
 
+<<<<<<< HEAD
 	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+=======
+	if ( $doing_cron ) {
+>>>>>>> origin/master
 		$timeout = 30;
 	} else {
 		// Three seconds, plus one extra second for every 10 plugins
@@ -297,7 +348,11 @@ function wp_update_plugins( $extra_stats = array() ) {
 			'locale'       => wp_json_encode( $locales ),
 			'all'          => wp_json_encode( true ),
 		),
+<<<<<<< HEAD
 		'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
+=======
+		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' )
+>>>>>>> origin/master
 	);
 
 	if ( $extra_stats ) {
@@ -400,6 +455,11 @@ function wp_update_themes( $extra_stats = array() ) {
 		);
 	}
 
+<<<<<<< HEAD
+=======
+	$doing_cron = wp_doing_cron();
+
+>>>>>>> origin/master
 	// Check for update on a different schedule, depending on the page.
 	switch ( current_filter() ) {
 		case 'upgrader_process_complete' :
@@ -413,11 +473,15 @@ function wp_update_themes( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
+<<<<<<< HEAD
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
 				$timeout = 0;
 			} else {
 				$timeout = 12 * HOUR_IN_SECONDS;
 			}
+=======
+			$timeout = $doing_cron ? 0 : 12 * HOUR_IN_SECONDS;
+>>>>>>> origin/master
 	}
 
 	$time_not_changed = isset( $last_update->last_checked ) && $timeout > ( time() - $last_update->last_checked );
@@ -463,7 +527,11 @@ function wp_update_themes( $extra_stats = array() ) {
 	$locales = apply_filters( 'themes_update_check_locales', $locales );
 	$locales = array_unique( $locales );
 
+<<<<<<< HEAD
 	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+=======
+	if ( $doing_cron ) {
+>>>>>>> origin/master
 		$timeout = 30;
 	} else {
 		// Three seconds, plus one extra second for every 10 themes
@@ -477,7 +545,11 @@ function wp_update_themes( $extra_stats = array() ) {
 			'translations' => wp_json_encode( $translations ),
 			'locale'       => wp_json_encode( $locales ),
 		),
+<<<<<<< HEAD
 		'user-agent'	=> 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' )
+=======
+		'user-agent'	=> 'WordPress/' . $wp_version . '; ' . home_url( '/' )
+>>>>>>> origin/master
 	);
 
 	if ( $extra_stats ) {

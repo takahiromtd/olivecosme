@@ -1045,6 +1045,11 @@ function wp_calculate_image_srcset( $size_array, $image_src, $image_meta, $attac
 	/**
 	 * Let plugins pre-filter the image meta to be able to fix inconsistencies in the stored data.
 	 *
+<<<<<<< HEAD
+=======
+	 * @since 4.5.0
+	 *
+>>>>>>> origin/master
 	 * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
 	 * @param array  $size_array    Array of width and height values in pixels (in that order).
 	 * @param string $image_src     The 'src' of the image.
@@ -1333,12 +1338,19 @@ function wp_make_content_images_responsive( $content ) {
 
 	if ( count( $attachment_ids ) > 1 ) {
 		/*
+<<<<<<< HEAD
 		 * Warm object cache for use with 'get_post_meta()'.
 		 *
 		 * To avoid making a database call for each image, a single query
 		 * warms the object cache with the meta information for all images.
 		 */
 		update_meta_cache( 'post', array_keys( $attachment_ids ) );
+=======
+		 * Warm the object cache with post and meta information for all found
+		 * images to avoid making individual database calls.
+		 */
+		_prime_post_caches( array_keys( $attachment_ids ), false, true );
+>>>>>>> origin/master
 	}
 
 	foreach ( $selected_images as $image => $attachment_id ) {
@@ -1578,7 +1590,11 @@ function img_caption_shortcode( $attr, $content = null ) {
 
 	$style = '';
 	if ( $caption_width ) {
+<<<<<<< HEAD
 		$style = 'style="width: ' . (int) $caption_width . 'px" ';
+=======
+		$style = 'style="max-width: ' . (int) $caption_width . 'px" ';
+>>>>>>> origin/master
 	}
 
 	if ( $html5 ) {
@@ -2157,9 +2173,15 @@ function wp_get_audio_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support audio formats. Defaults are
+<<<<<<< HEAD
 	 *                          'mp3', 'ogg', 'wma', 'm4a', 'wav'.
 	 */
 	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'wma', 'm4a', 'wav' ) );
+=======
+	 *                          'mp3', 'ogg', 'flac', 'm4a', 'wav'.
+	 */
+	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'flac', 'm4a', 'wav' ) );
+>>>>>>> origin/master
 }
 
 /**
@@ -2311,10 +2333,19 @@ function wp_audio_shortcode( $attr, $content = '' ) {
 	 * Filters the class attribute for the audio shortcode output container.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 *
 	 * @param string $class CSS class or list of space-separated classes.
 	 */
 	$atts['class'] = apply_filters( 'wp_audio_shortcode_class', $atts['class'] );
+=======
+	 * @since 4.9.0 The `$atts` parameter was added.
+	 *
+	 * @param string $class CSS class or list of space-separated classes.
+	 * @param array  $atts  Array of audio shortcode attributes.
+	 */
+	$atts['class'] = apply_filters( 'wp_audio_shortcode_class', $atts['class'], $atts );
+>>>>>>> origin/master
 
 	$html_atts = array(
 		'class'    => $atts['class'],
@@ -2390,9 +2421,15 @@ function wp_get_video_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support video formats. Defaults are
+<<<<<<< HEAD
 	 *                          'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv'.
 	 */
 	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv' ) );
+=======
+	 *                          'mp4', 'm4v', 'webm', 'ogv', 'flv'.
+	 */
+	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'flv' ) );
+>>>>>>> origin/master
 }
 
 /**
@@ -2441,7 +2478,11 @@ function wp_video_shortcode( $attr, $content = '' ) {
 	 * @see wp_video_shortcode()
 	 *
 	 * @param string $html     Empty variable to be replaced with shortcode markup.
+<<<<<<< HEAD
 	 * @param array  $attr     Attributes of the video shortcode.
+=======
+	 * @param array  $attr     Attributes of the shortcode. @see wp_video_shortcode()
+>>>>>>> origin/master
 	 * @param string $content  Video shortcode content.
 	 * @param int    $instance Unique numeric ID of this video shortcode instance.
 	 */
@@ -2500,7 +2541,11 @@ function wp_video_shortcode( $attr, $content = '' ) {
 		}
 
 		if ( $is_vimeo ) {
+<<<<<<< HEAD
 			wp_enqueue_script( 'froogaloop' );
+=======
+		    wp_enqueue_script( 'mediaelement-vimeo' );
+>>>>>>> origin/master
 		}
 
 		$primary = true;
@@ -2542,16 +2587,47 @@ function wp_video_shortcode( $attr, $content = '' ) {
 	if ( 'mediaelement' === $library && did_action( 'init' ) ) {
 		wp_enqueue_style( 'wp-mediaelement' );
 		wp_enqueue_script( 'wp-mediaelement' );
+<<<<<<< HEAD
+=======
+		wp_enqueue_script( 'mediaelement-vimeo' );
+	}
+
+	// Mediaelement has issues with some URL formats for Vimeo and YouTube, so
+	// update the URL to prevent the ME.js player from breaking.
+	if ( 'mediaelement' === $library ) {
+		if ( $is_youtube ) {
+			// Remove `feature` query arg and force SSL - see #40866.
+			$atts['src'] = remove_query_arg( 'feature', $atts['src'] );
+			$atts['src'] = set_url_scheme( $atts['src'], 'https' );
+		} elseif ( $is_vimeo ) {
+			// Remove all query arguments and force SSL - see #40866.
+			$parsed_vimeo_url = wp_parse_url( $atts['src'] );
+			$vimeo_src = 'https://' . $parsed_vimeo_url['host'] . $parsed_vimeo_url['path'];
+
+			// Add loop param for mejs bug - see #40977, not needed after #39686.
+			$loop = $atts['loop'] ? '1' : '0';
+			$atts['src'] = add_query_arg( 'loop', $loop, $vimeo_src );
+		}
+>>>>>>> origin/master
 	}
 
 	/**
 	 * Filters the class attribute for the video shortcode output container.
 	 *
 	 * @since 3.6.0
+<<<<<<< HEAD
 	 *
 	 * @param string $class CSS class or list of space-separated classes.
 	 */
 	$atts['class'] = apply_filters( 'wp_video_shortcode_class', $atts['class'] );
+=======
+	 * @since 4.9.0 The `$atts` parameter was added.
+	 *
+	 * @param string $class CSS class or list of space-separated classes.
+	 * @param array  $atts  Array of video shortcode attributes.
+	 */
+	$atts['class'] = apply_filters( 'wp_video_shortcode_class', $atts['class'], $atts );
+>>>>>>> origin/master
 
 	$html_atts = array(
 		'class'    => $atts['class'],
@@ -2979,12 +3055,22 @@ function wp_plupload_default_settings() {
 		$extensions = array_merge( $extensions, explode( '|', $extension ) );
 	}
 
+<<<<<<< HEAD
 	$defaults = array(
 		'runtimes'            => 'html5,flash,silverlight,html4',
 		'file_data_name'      => 'async-upload', // key passed to $_FILE.
 		'url'                 => admin_url( 'async-upload.php', 'relative' ),
 		'flash_swf_url'       => includes_url( 'js/plupload/plupload.flash.swf' ),
 		'silverlight_xap_url' => includes_url( 'js/plupload/plupload.silverlight.xap' ),
+=======
+	/*
+	 * Since 4.9 the `runtimes` setting is hardcoded in our version of Plupload to `html5,html4`,
+	 * and the `flash_swf_url` and `silverlight_xap_url` are not used.
+	 */
+	$defaults = array(
+		'file_data_name'      => 'async-upload', // key passed to $_FILE.
+		'url'                 => admin_url( 'async-upload.php', 'relative' ),
+>>>>>>> origin/master
 		'filters' => array(
 			'max_file_size'   => $max_upload_size . 'b',
 			'mime_types'      => array( array( 'extensions' => implode( ',', $extensions ) ) ),
@@ -3096,7 +3182,15 @@ function wp_prepare_attachment_for_js( $attachment ) {
 	);
 
 	$author = new WP_User( $attachment->post_author );
+<<<<<<< HEAD
 	$response['authorName'] = $author->display_name;
+=======
+	if ( $author->exists() ) {
+		$response['authorName'] = html_entity_decode( $author->display_name, ENT_QUOTES, get_bloginfo( 'charset' ) );
+	} else {
+		$response['authorName'] = __( '(no author)' );
+	}
+>>>>>>> origin/master
 
 	if ( $attachment->post_parent ) {
 		$post_parent = get_post( $attachment->post_parent );
@@ -3131,6 +3225,12 @@ function wp_prepare_attachment_for_js( $attachment ) {
 		$response['filesizeHumanReadable'] = size_format( $bytes );
 	}
 
+<<<<<<< HEAD
+=======
+	$context = get_post_meta( $attachment->ID, '_wp_attachment_context', true );
+	$response['context'] = ( $context ) ? $context : '';
+
+>>>>>>> origin/master
 	if ( current_user_can( 'edit_post', $attachment->ID ) ) {
 		$response['nonces']['update'] = wp_create_nonce( 'update-post_' . $attachment->ID );
 		$response['nonces']['edit'] = wp_create_nonce( 'image_editor-' . $attachment->ID );
@@ -3322,6 +3422,7 @@ function wp_enqueue_media( $args = array() ) {
 	/**
 	 * Allows showing or hiding the "Create Audio Playlist" button in the media library.
 	 *
+<<<<<<< HEAD
 	 * By default (if this filter returns `null`), a query will be run to
 	 * determine whether the media library contains any audio items.  This
 	 * query is expensive for large media libraries, so it may be desirable for
@@ -3334,6 +3435,23 @@ function wp_enqueue_media( $args = array() ) {
 	 * @param bool|null Whether to show the button, or `null` for default behavior.
 	 */
 	$show_audio_playlist = apply_filters( 'media_library_show_audio_playlist', null );
+=======
+	 * By default, the "Create Audio Playlist" button will always be shown in
+	 * the media library.  If this filter returns `null`, a query will be run
+	 * to determine whether the media library contains any audio items.  This
+	 * was the default behavior prior to version 4.8.0, but this query is
+	 * expensive for large media libraries.
+	 *
+	 * @since 4.7.4
+	 * @since 4.8.0 The filter's default value is `true` rather than `null`.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/31071
+	 *
+	 * @param bool|null Whether to show the button, or `null` to decide based
+	 *                  on whether any audio files exist in the media library.
+	 */
+	$show_audio_playlist = apply_filters( 'media_library_show_audio_playlist', true );
+>>>>>>> origin/master
 	if ( null === $show_audio_playlist ) {
 		$show_audio_playlist = $wpdb->get_var( "
 			SELECT ID
@@ -3347,6 +3465,7 @@ function wp_enqueue_media( $args = array() ) {
 	/**
 	 * Allows showing or hiding the "Create Video Playlist" button in the media library.
 	 *
+<<<<<<< HEAD
 	 * By default (if this filter returns `null`), a query will be run to
 	 * determine whether the media library contains any video items.  This
 	 * query is expensive for large media libraries, so it may be desirable for
@@ -3359,6 +3478,23 @@ function wp_enqueue_media( $args = array() ) {
 	 * @param bool|null Whether to show the button, or `null` for default behavior.
 	 */
 	$show_video_playlist = apply_filters( 'media_library_show_video_playlist', null );
+=======
+	 * By default, the "Create Video Playlist" button will always be shown in
+	 * the media library.  If this filter returns `null`, a query will be run
+	 * to determine whether the media library contains any video items.  This
+	 * was the default behavior prior to version 4.8.0, but this query is
+	 * expensive for large media libraries.
+	 *
+	 * @since 4.7.4
+	 * @since 4.8.0 The filter's default value is `true` rather than `null`.
+	 *
+	 * @link https://core.trac.wordpress.org/ticket/31071
+	 *
+	 * @param bool|null Whether to show the button, or `null` to decide based
+	 *                  on whether any video files exist in the media library.
+	 */
+	$show_video_playlist = apply_filters( 'media_library_show_video_playlist', true );
+>>>>>>> origin/master
 	if ( null === $show_video_playlist ) {
 		$show_video_playlist = $wpdb->get_var( "
 			SELECT ID
@@ -3415,6 +3551,10 @@ function wp_enqueue_media( $args = array() ) {
 			'audio' => ( $show_audio_playlist ) ? 1 : 0,
 			'video' => ( $show_video_playlist ) ? 1 : 0,
 		),
+<<<<<<< HEAD
+=======
+		'oEmbedProxyUrl' => rest_url( 'oembed/1.0/proxy' ),
+>>>>>>> origin/master
 		'embedExts'    => $exts,
 		'embedMimes'   => $ext_mimes,
 		'contentWidth' => $content_width,
@@ -3475,7 +3615,11 @@ function wp_enqueue_media( $args = array() ) {
 
 		// Library
 		'mediaLibraryTitle'      => __( 'Media Library' ),
+<<<<<<< HEAD
 		'insertMediaTitle'       => __( 'Insert Media' ),
+=======
+		'insertMediaTitle'       => __( 'Add Media' ),
+>>>>>>> origin/master
 		'createNewGallery'       => __( 'Create a new gallery' ),
 		'createNewPlaylist'      => __( 'Create a new playlist' ),
 		'createNewVideoPlaylist' => __( 'Create a new video playlist' ),
@@ -3487,8 +3631,13 @@ function wp_enqueue_media( $args = array() ) {
 		'unattached'             => __( 'Unattached' ),
 		'trash'                  => _x( 'Trash', 'noun' ),
 		'uploadedToThisPost'     => $post_type_object->labels->uploaded_to_this_item,
+<<<<<<< HEAD
 		'warnDelete'             => __( "You are about to permanently delete this item.\n  'Cancel' to stop, 'OK' to delete." ),
 		'warnBulkDelete'         => __( "You are about to permanently delete these items.\n  'Cancel' to stop, 'OK' to delete." ),
+=======
+		'warnDelete'             => __( "You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
+		'warnBulkDelete'         => __( "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
+>>>>>>> origin/master
 		'warnBulkTrash'          => __( "You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete." ),
 		'bulkSelect'             => __( 'Bulk Select' ),
 		'cancelSelection'        => __( 'Cancel Selection' ),
@@ -3536,7 +3685,12 @@ function wp_enqueue_media( $args = array() ) {
 		'cropImage' => __( 'Crop Image' ),
 		'cropYourImage' => __( 'Crop your image' ),
 		'cropping' => __( 'Cropping&hellip;' ),
+<<<<<<< HEAD
 		'suggestedDimensions' => __( 'Suggested image dimensions:' ),
+=======
+		/* translators: 1: suggested width number, 2: suggested height number. */
+		'suggestedDimensions' => __( 'Suggested image dimensions: %1$s by %2$s pixels.' ),
+>>>>>>> origin/master
 		'cropError' => __( 'There has been an error cropping your image.' ),
 
 		// Edit Audio
@@ -3734,7 +3888,11 @@ function get_post_galleries( $post, $html = true ) {
 			if ( 'gallery' === $shortcode[2] ) {
 				$srcs = array();
 
+<<<<<<< HEAD
 				$shortcode_attrs = shortcode_parse_atts( $shortcode[3] ); 
+=======
+				$shortcode_attrs = shortcode_parse_atts( $shortcode[3] );
+>>>>>>> origin/master
 				if ( ! is_array( $shortcode_attrs ) ) {
 					$shortcode_attrs = array();
 				}
@@ -3912,7 +4070,11 @@ function attachment_url_to_postid( $url ) {
  */
 function wpview_media_sandbox_styles() {
  	$version = 'ver=' . get_bloginfo( 'version' );
+<<<<<<< HEAD
  	$mediaelement = includes_url( "js/mediaelement/mediaelementplayer.min.css?$version" );
+=======
+ 	$mediaelement = includes_url( "js/mediaelement/mediaelementplayer-legacy.min.css?$version" );
+>>>>>>> origin/master
  	$wpmediaelement = includes_url( "js/mediaelement/wp-mediaelement.css?$version" );
 
 	return array( $mediaelement, $wpmediaelement );

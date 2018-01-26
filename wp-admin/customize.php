@@ -27,14 +27,62 @@ if ( ! current_user_can( 'customize' ) ) {
 global $wp_scripts, $wp_customize;
 
 if ( $wp_customize->changeset_post_id() ) {
+<<<<<<< HEAD
 	if ( ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->edit_post, $wp_customize->changeset_post_id() ) ) {
+=======
+	$changeset_post = get_post( $wp_customize->changeset_post_id() );
+
+	if ( ! current_user_can( get_post_type_object( 'customize_changeset' )->cap->edit_post, $changeset_post->ID ) ) {
+>>>>>>> origin/master
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
 			'<p>' . __( 'Sorry, you are not allowed to edit this changeset.' ) . '</p>',
 			403
 		);
 	}
+<<<<<<< HEAD
 	if ( in_array( get_post_status( $wp_customize->changeset_post_id() ), array( 'publish', 'trash' ), true ) ) {
+=======
+
+	$missed_schedule = (
+		'future' === $changeset_post->post_status &&
+		get_post_time( 'G', true, $changeset_post ) < time()
+	);
+	if ( $missed_schedule ) {
+		/*
+		 * Note that an Ajax request spawns here instead of just calling `wp_publish_post( $changeset_post->ID )`.
+		 *
+		 * Because WP_Customize_Manager is not instantiated for customize.php with the `settings_previewed=false`
+		 * argument, settings cannot be reliably saved. Some logic short-circuits if the current value is the
+		 * same as the value being saved. This is particularly true for options via `update_option()`.
+		 *
+		 * By opening an Ajax request, this is avoided and the changeset is published. See #39221.
+		 */
+		$nonces = $wp_customize->get_nonces();
+		$request_args = array(
+			'nonce' => $nonces['save'],
+			'customize_changeset_uuid' => $wp_customize->changeset_uuid(),
+			'wp_customize' => 'on',
+			'customize_changeset_status' => 'publish',
+		);
+		ob_start();
+		?>
+		<?php wp_print_scripts( array( 'wp-util' ) ); ?>
+		<script>
+			wp.ajax.post( 'customize_save', <?php echo wp_json_encode( $request_args ); ?> );
+		</script>
+		<?php
+		$script = ob_get_clean();
+
+		wp_die(
+			'<h1>' . __( 'Your scheduled changes just published' ) . '</h1>' .
+			'<p><a href="' . esc_url( remove_query_arg( 'changeset_uuid' ) ) . '">' . __( 'Customize New Changes' ) . '</a></p>' . $script,
+			200
+		);
+	}
+
+	if ( in_array( get_post_status( $changeset_post->ID ), array( 'publish', 'trash' ), true ) ) {
+>>>>>>> origin/master
 		wp_die(
 			'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
 			'<p>' . __( 'This changeset has already been published and cannot be further modified.' ) . '</p>' .
@@ -71,6 +119,10 @@ add_action( 'customize_controls_print_styles',         'print_admin_styles', 20 
  */
 do_action( 'customize_controls_init' );
 
+<<<<<<< HEAD
+=======
+wp_enqueue_script( 'heartbeat' );
+>>>>>>> origin/master
 wp_enqueue_script( 'customize-controls' );
 wp_enqueue_style( 'customize-controls' );
 
@@ -109,7 +161,12 @@ $admin_title = sprintf( $wp_customize->get_document_title_template(), __( 'Loadi
 ?><title><?php echo $admin_title; ?></title>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 var ajaxurl = <?php echo wp_json_encode( admin_url( 'admin-ajax.php', 'relative' ) ); ?>;
+=======
+var ajaxurl = <?php echo wp_json_encode( admin_url( 'admin-ajax.php', 'relative' ) ); ?>,
+	pagenow = 'customize';
+>>>>>>> origin/master
 </script>
 
 <?php
@@ -132,6 +189,7 @@ do_action( 'customize_controls_print_scripts' );
 <div class="wp-full-overlay expanded">
 	<form id="customize-controls" class="wrap wp-full-overlay-sidebar">
 		<div id="customize-header-actions" class="wp-full-overlay-header">
+<<<<<<< HEAD
 			<?php
 			$save_text = $wp_customize->is_theme_active() ? __( 'Save &amp; Publish' ) : __( 'Save &amp; Activate' );
 			$save_attrs = array();
@@ -140,6 +198,13 @@ do_action( 'customize_controls_print_scripts' );
 			}
 			submit_button( $save_text, 'primary save', 'save', false, $save_attrs );
 			?>
+=======
+			<?php $save_text = $wp_customize->is_theme_active() ? __( 'Publish' ) : __( 'Activate &amp; Publish' ); ?>
+			<div id="customize-save-button-wrapper" class="customize-save-button-wrapper" >
+				<?php submit_button( $save_text, 'primary save', 'save', false ); ?>
+				<button id="publish-settings" class="publish-settings button-primary button dashicons dashicons-admin-generic" aria-label="<?php esc_attr_e( 'Publish Settings' ); ?>" aria-expanded="false" disabled></button>
+			</div>
+>>>>>>> origin/master
 			<span class="spinner"></span>
 			<button type="button" class="customize-controls-preview-toggle">
 				<span class="controls"><?php _e( 'Customize' ); ?></span>
@@ -150,6 +215,7 @@ do_action( 'customize_controls_print_scripts' );
 			</a>
 		</div>
 
+<<<<<<< HEAD
 		<div id="widgets-right" class="wp-clearfix"><!-- For Widget Customizer, many widgets try to look for instances under div#widgets-right, so we have to add that ID to a container div in the Customizer for compat -->
 		<div class="wp-full-overlay-sidebar-content" tabindex="-1">
 			<div id="customize-info" class="accordion-section customize-info">
@@ -191,10 +257,67 @@ do_action( 'customize_controls_print_scripts' );
 				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>
+=======
+		<div id="customize-sidebar-outer-content">
+			<div id="customize-outer-theme-controls">
+				<ul class="customize-outer-pane-parent"><?php // Outer panel and sections are not implemented, but its here as a placeholder to avoid any side-effect in api.Section. ?></ul>
+			</div>
+		</div>
+
+		<div id="widgets-right" class="wp-clearfix"><!-- For Widget Customizer, many widgets try to look for instances under div#widgets-right, so we have to add that ID to a container div in the Customizer for compat -->
+			<div id="customize-notifications-area" class="customize-control-notifications-container">
+				<ul></ul>
+			</div>
+			<div class="wp-full-overlay-sidebar-content" tabindex="-1">
+				<div id="customize-info" class="accordion-section customize-info">
+					<div class="accordion-section-title">
+						<span class="preview-notice"><?php
+							echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title site-title">' . get_bloginfo( 'name', 'display' ) . '</strong>' );
+						?></span>
+						<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
+					</div>
+					<div class="customize-panel-description"><?php
+						_e( 'The Customizer allows you to preview changes to your site before publishing them. You can navigate to different pages on your site within the preview. Edit shortcuts are shown for some editable elements.' );
+					?></div>
+				</div>
+
+				<div id="customize-theme-controls">
+					<ul class="customize-pane-parent"><?php // Panels and sections are managed here via JavaScript ?></ul>
+				</div>
+			</div>
+		</div>
+
+		<div id="customize-footer-actions" class="wp-full-overlay-footer">
+>>>>>>> origin/master
 			<button type="button" class="collapse-sidebar button" aria-expanded="true" aria-label="<?php echo esc_attr( _x( 'Hide Controls', 'label for hide controls button without length constraints' ) ); ?>">
 				<span class="collapse-sidebar-arrow"></span>
 				<span class="collapse-sidebar-label"><?php _ex( 'Hide Controls', 'short (~12 characters) label for hide controls button' ); ?></span>
 			</button>
+<<<<<<< HEAD
+=======
+			<?php $previewable_devices = $wp_customize->get_previewable_devices(); ?>
+			<?php if ( ! empty( $previewable_devices ) ) : ?>
+			<div class="devices-wrapper">
+				<div class="devices">
+					<?php foreach ( (array) $previewable_devices as $device => $settings ) : ?>
+						<?php
+						if ( empty( $settings['label'] ) ) {
+							continue;
+						}
+						$active = ! empty( $settings['default'] );
+						$class = 'preview-' . $device;
+						if ( $active ) {
+							$class .= ' active';
+						}
+						?>
+						<button type="button" class="<?php echo esc_attr( $class ); ?>" aria-pressed="<?php echo esc_attr( $active ) ?>" data-device="<?php echo esc_attr( $device ); ?>">
+							<span class="screen-reader-text"><?php echo esc_html( $settings['label'] ); ?></span>
+						</button>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<?php endif; ?>
+>>>>>>> origin/master
 		</div>
 	</form>
 	<div id="customize-preview" class="wp-full-overlay-main"></div>

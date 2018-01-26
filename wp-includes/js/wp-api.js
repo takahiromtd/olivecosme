@@ -6,12 +6,26 @@
 	 * Initialise the WP_API.
 	 */
 	function WP_API() {
+<<<<<<< HEAD
 		this.models = {};
 		this.collections = {};
 		this.views = {};
 	}
 
 	window.wp            = window.wp || {};
+=======
+		/** @namespace wp.api.models */
+		this.models = {};
+		/** @namespace wp.api.collections */
+		this.collections = {};
+		/** @namespace wp.api.views */
+		this.views = {};
+	}
+
+	/** @namespace wp */
+	window.wp            = window.wp || {};
+	/** @namespace wp.api */
+>>>>>>> origin/master
 	wp.api               = wp.api || new WP_API();
 	wp.api.versionString = wp.api.versionString || 'wp/v2/';
 
@@ -28,11 +42,49 @@
 
 	var pad, r;
 
+<<<<<<< HEAD
 	window.wp = window.wp || {};
 	wp.api = wp.api || {};
 	wp.api.utils = wp.api.utils || {};
 
 	/**
+=======
+	/** @namespace wp */
+	window.wp = window.wp || {};
+	/** @namespace wp.api */
+	wp.api = wp.api || {};
+	/** @namespace wp.api.utils */
+	wp.api.utils = wp.api.utils || {};
+
+	/**
+	 * Determine model based on API route.
+	 *
+	 * @param {string} route    The API route.
+	 *
+	 * @return {Backbone Model} The model found at given route. Undefined if not found.
+	 */
+	wp.api.getModelByRoute = function( route ) {
+		return _.find( wp.api.models, function( model ) {
+			return model.prototype.route && route === model.prototype.route.index;
+		} );
+	};
+
+	/**
+	 * Determine collection based on API route.
+	 *
+	 * @param {string} route    The API route.
+	 *
+	 * @return {Backbone Model} The collection found at given route. Undefined if not found.
+	 */
+	wp.api.getCollectionByRoute = function( route ) {
+		return _.find( wp.api.collections, function( collection ) {
+			return collection.prototype.route && route === collection.prototype.route.index;
+		} );
+	};
+
+
+	/**
+>>>>>>> origin/master
 	 * ECMAScript 5 shim, adapted from MDN.
 	 * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString
 	 */
@@ -466,8 +518,54 @@
 			 * Add a helper function to handle post Meta.
 			 */
 			MetaMixin = {
+<<<<<<< HEAD
 				getMeta: function() {
 					return buildCollectionGetter( this, 'PostMeta', 'https://api.w.org/meta' );
+=======
+
+				/**
+				 * Get meta by key for a post.
+				 *
+				 * @param {string} key The meta key.
+				 *
+				 * @return {object} The post meta value.
+				 */
+				getMeta: function( key ) {
+					var metas = this.get( 'meta' );
+					return metas[ key ];
+				},
+
+				/**
+				 * Get all meta key/values for a post.
+				 *
+				 * @return {object} The post metas, as a key value pair object.
+				 */
+				getMetas: function() {
+					return this.get( 'meta' );
+				},
+
+				/**
+				 * Set a group of meta key/values for a post.
+				 *
+				 * @param {object} meta The post meta to set, as key/value pairs.
+				 */
+				setMetas: function( meta ) {
+					var metas = this.get( 'meta' );
+					_.extend( metas, meta );
+					this.set( 'meta', metas );
+				},
+
+				/**
+				 * Set a single meta value for a post, by key.
+				 *
+				 * @param {string} key   The meta key.
+				 * @param {object} value The meta value.
+				 */
+				setMeta: function( key, value ) {
+					var metas = this.get( 'meta' );
+					metas[ key ] = value;
+					this.set( 'meta', metas );
+>>>>>>> origin/master
 				}
 			},
 
@@ -699,8 +797,13 @@
 			model = model.extend( CategoriesMixin );
 		}
 
+<<<<<<< HEAD
 		// Add the MetaMixin for models that support meta collections.
 		if ( ! _.isUndefined( loadingObjects.collections[ modelClassName + 'Meta' ] ) ) {
+=======
+		// Add the MetaMixin for models that support meta.
+		if ( ! _.isUndefined( model.prototype.args.meta ) ) {
+>>>>>>> origin/master
 			model = model.extend( MetaMixin );
 		}
 
@@ -727,7 +830,12 @@
 
 	'use strict';
 
+<<<<<<< HEAD
 	var wpApiSettings = window.wpApiSettings || {};
+=======
+	var wpApiSettings = window.wpApiSettings || {},
+	trashableTypes    = [ 'Comment', 'Media', 'Comment', 'Post', 'Page', 'Status', 'Taxonomy', 'Type' ];
+>>>>>>> origin/master
 
 	/**
 	 * Backbone base model for all models.
@@ -735,6 +843,22 @@
 	wp.api.WPApiBaseModel = Backbone.Model.extend(
 		/** @lends WPApiBaseModel.prototype  */
 		{
+<<<<<<< HEAD
+=======
+
+			// Initialize the model.
+			initialize: function() {
+
+				/**
+				* Types that don't support trashing require passing ?force=true to delete.
+				*
+				*/
+				if ( -1 === _.indexOf( trashableTypes, this.name ) ) {
+					this.requireForceForDelete = true;
+				}
+			},
+
+>>>>>>> origin/master
 			/**
 			 * Set nonce header before every Backbone sync.
 			 *
@@ -758,19 +882,41 @@
 					model.unset( 'slug' );
 				}
 
+<<<<<<< HEAD
 				if ( ! _.isUndefined( wpApiSettings.nonce ) && ! _.isNull( wpApiSettings.nonce ) ) {
+=======
+				if ( _.isFunction( model.nonce ) && ! _.isUndefined( model.nonce() ) && ! _.isNull( model.nonce() ) ) {
+>>>>>>> origin/master
 					beforeSend = options.beforeSend;
 
 					// @todo enable option for jsonp endpoints
 					// options.dataType = 'jsonp';
 
+<<<<<<< HEAD
 					options.beforeSend = function( xhr ) {
 						xhr.setRequestHeader( 'X-WP-Nonce', wpApiSettings.nonce );
+=======
+					// Include the nonce with requests.
+					options.beforeSend = function( xhr ) {
+						xhr.setRequestHeader( 'X-WP-Nonce', model.nonce() );
+>>>>>>> origin/master
 
 						if ( beforeSend ) {
 							return beforeSend.apply( this, arguments );
 						}
 					};
+<<<<<<< HEAD
+=======
+
+					// Update the nonce when a new nonce is returned with the response.
+					options.complete = function( xhr ) {
+						var returnedNonce = xhr.getResponseHeader( 'X-WP-Nonce' );
+
+						if ( returnedNonce && _.isFunction( model.nonce ) && model.nonce() !== returnedNonce ) {
+							model.endpointModel.set( 'nonce', returnedNonce );
+						}
+					};
+>>>>>>> origin/master
 				}
 
 				// Add '?force=true' to use delete method when required.
@@ -997,7 +1143,15 @@
 
 	var Endpoint, initializedDeferreds = {},
 		wpApiSettings = window.wpApiSettings || {};
+<<<<<<< HEAD
 	window.wp = window.wp || {};
+=======
+
+	/** @namespace wp */
+	window.wp = window.wp || {};
+
+	/** @namespace wp.api */
+>>>>>>> origin/master
 	wp.api    = wp.api || {};
 
 	// If wpApiSettings is unavailable, try the default.
@@ -1005,10 +1159,18 @@
 		wpApiSettings.root = window.location.origin + '/wp-json/';
 	}
 
+<<<<<<< HEAD
 	Endpoint = Backbone.Model.extend( {
 		defaults: {
 			apiRoot: wpApiSettings.root,
 			versionString: wp.api.versionString,
+=======
+	Endpoint = Backbone.Model.extend(/** @lends Endpoint.prototype */{
+		defaults: {
+			apiRoot: wpApiSettings.root,
+			versionString: wp.api.versionString,
+			nonce: null,
+>>>>>>> origin/master
 			schema: null,
 			models: {},
 			collections: {}
@@ -1026,8 +1188,14 @@
 			model.schemaConstructed = deferred.promise();
 
 			model.schemaModel = new wp.api.models.Schema( null, {
+<<<<<<< HEAD
 				apiRoot: model.get( 'apiRoot' ),
 				versionString: model.get( 'versionString' )
+=======
+				apiRoot:       model.get( 'apiRoot' ),
+				versionString: model.get( 'versionString' ),
+				nonce:         model.get( 'nonce' )
+>>>>>>> origin/master
 			} );
 
 			// When the model loads, resolve the promise.
@@ -1054,6 +1222,11 @@
 					 * When the server returns the schema model data, store the data in a sessionCache so we don't
 					 * have to retrieve it again for this session. Then, construct the models and collections based
 					 * on the schema model data.
+<<<<<<< HEAD
+=======
+					 *
+					 * @callback
+>>>>>>> origin/master
 					 */
 					success: function( newSchemaModel ) {
 
@@ -1112,7 +1285,14 @@
 					'PostsRevisions':  'PostRevisions',
 					'PostsTags':       'PostTags'
 				}
+<<<<<<< HEAD
 			};
+=======
+			},
+
+			modelEndpoints = routeModel.get( 'modelEndpoints' ),
+			modelRegex     = new RegExp( '(?:.*[+)]|\/(' + modelEndpoints.join( '|' ) + '))$' );
+>>>>>>> origin/master
 
 			/**
 			 * Iterate thru the routes, picking up models and collections to build. Builds two arrays,
@@ -1126,8 +1306,13 @@
 			/**
 			 * Tracking objects for models and collections.
 			 */
+<<<<<<< HEAD
 			loadingObjects.models      = routeModel.get( 'models' );
 			loadingObjects.collections = routeModel.get( 'collections' );
+=======
+			loadingObjects.models      = {};
+			loadingObjects.collections = {};
+>>>>>>> origin/master
 
 			_.each( routeModel.schemaModel.get( 'routes' ), function( route, index ) {
 
@@ -1137,8 +1322,13 @@
 						index !== ( '/' + routeModel.get( 'versionString' ).slice( 0, -1 ) )
 				) {
 
+<<<<<<< HEAD
 					// Single items end with a regex (or the special case 'me').
 					if ( /(?:.*[+)]|\/me)$/.test( index ) ) {
+=======
+					// Single items end with a regex, or a special case word.
+					if ( modelRegex.test( index ) ) {
+>>>>>>> origin/master
 						modelRoutes.push( { index: index, route: route } );
 					} else {
 
@@ -1194,6 +1384,16 @@
 							return url;
 						},
 
+<<<<<<< HEAD
+=======
+						// Track nonces on the Endpoint 'routeModel'.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
+
+>>>>>>> origin/master
 						// Include a reference to the original route object.
 						route: modelRoute,
 
@@ -1203,6 +1403,7 @@
 						// Include the array of route methods for easy reference.
 						methods: modelRoute.route.methods,
 
+<<<<<<< HEAD
 						initialize: function( attributes, options ) {
 							wp.api.WPApiBaseModel.prototype.initialize.call( this, attributes, options );
 
@@ -1220,6 +1421,10 @@
 								this.requireForceForDelete = true;
 							}
 						}
+=======
+						// Include the array of route endpoints for easy reference.
+						endpoints: modelRoute.route.endpoints
+>>>>>>> origin/master
 					} );
 				} else {
 
@@ -1240,6 +1445,16 @@
 							return url;
 						},
 
+<<<<<<< HEAD
+=======
+						// Track nonces at the Endpoint level.
+						nonce: function() {
+							return routeModel.get( 'nonce' );
+						},
+
+						endpointModel: routeModel,
+
+>>>>>>> origin/master
 						// Include a reference to the original route object.
 						route: modelRoute,
 
@@ -1247,7 +1462,14 @@
 						name: modelClassName,
 
 						// Include the array of route methods for easy reference.
+<<<<<<< HEAD
 						methods: modelRoute.route.methods
+=======
+						methods: modelRoute.route.methods,
+
+						// Include the array of route endpoints for easy reference.
+						endpoints: modelRoute.route.endpoints
+>>>>>>> origin/master
 					} );
 				}
 
@@ -1310,7 +1532,13 @@
 					loadingObjects.collections[ collectionClassName ] = wp.api.WPApiBaseCollection.extend( {
 
 						// For the url of a root level collection, use a string.
+<<<<<<< HEAD
 						url: routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) + routeName,
+=======
+						url: function() {
+							return routeModel.get( 'apiRoot' ) + routeModel.get( 'versionString' ) + routeName;
+						},
+>>>>>>> origin/master
 
 						// Specify the model that this collection contains.
 						model: function( attrs, options ) {
@@ -1337,13 +1565,24 @@
 				loadingObjects.models[ index ] = wp.api.utils.addMixinsAndHelpers( model, index, loadingObjects );
 			} );
 
+<<<<<<< HEAD
+=======
+			// Set the routeModel models and collections.
+			routeModel.set( 'models', loadingObjects.models );
+			routeModel.set( 'collections', loadingObjects.collections );
+
+>>>>>>> origin/master
 		}
 
 	} );
 
+<<<<<<< HEAD
 	wp.api.endpoints = new Backbone.Collection( {
 		model: Endpoint
 	} );
+=======
+	wp.api.endpoints = new Backbone.Collection();
+>>>>>>> origin/master
 
 	/**
 	 * Initialize the wp-api, optionally passing the API root.
@@ -1356,29 +1595,56 @@
 	wp.api.init = function( args ) {
 		var endpoint, attributes = {}, deferred, promise;
 
+<<<<<<< HEAD
 		args                     = args || {};
 		attributes.apiRoot       = args.apiRoot || wpApiSettings.root;
 		attributes.versionString = args.versionString || wpApiSettings.versionString;
 		attributes.schema        = args.schema || null;
+=======
+		args                      = args || {};
+		attributes.nonce          = args.nonce || wpApiSettings.nonce || '';
+		attributes.apiRoot        = args.apiRoot || wpApiSettings.root || '/wp-json';
+		attributes.versionString  = args.versionString || wpApiSettings.versionString || 'wp/v2/';
+		attributes.schema         = args.schema || null;
+		attributes.modelEndpoints = args.modelEndpoints || [ 'me', 'settings' ];
+>>>>>>> origin/master
 		if ( ! attributes.schema && attributes.apiRoot === wpApiSettings.root && attributes.versionString === wpApiSettings.versionString ) {
 			attributes.schema = wpApiSettings.schema;
 		}
 
 		if ( ! initializedDeferreds[ attributes.apiRoot + attributes.versionString ] ) {
+<<<<<<< HEAD
 			endpoint = wp.api.endpoints.findWhere( { apiRoot: attributes.apiRoot, versionString: attributes.versionString } );
 			if ( ! endpoint ) {
 				endpoint = new Endpoint( attributes );
 				wp.api.endpoints.add( endpoint );
+=======
+
+			// Look for an existing copy of this endpoint
+			endpoint = wp.api.endpoints.findWhere( { 'apiRoot': attributes.apiRoot, 'versionString': attributes.versionString } );
+			if ( ! endpoint ) {
+				endpoint = new Endpoint( attributes );
+>>>>>>> origin/master
 			}
 			deferred = jQuery.Deferred();
 			promise = deferred.promise();
 
+<<<<<<< HEAD
 			endpoint.schemaConstructed.done( function( endpoint ) {
 
 				// Map the default endpoints, extending any already present items (including Schema model).
 				wp.api.models      = _.extend( endpoint.get( 'models' ), wp.api.models );
 				wp.api.collections = _.extend( endpoint.get( 'collections' ), wp.api.collections );
 				deferred.resolveWith( wp.api, [ endpoint ] );
+=======
+			endpoint.schemaConstructed.done( function( resolvedEndpoint ) {
+				wp.api.endpoints.add( resolvedEndpoint );
+
+				// Map the default endpoints, extending any already present items (including Schema model).
+				wp.api.models      = _.extend( wp.api.models, resolvedEndpoint.get( 'models' ) );
+				wp.api.collections = _.extend( wp.api.collections, resolvedEndpoint.get( 'collections' ) );
+				deferred.resolve( resolvedEndpoint );
+>>>>>>> origin/master
 			} );
 			initializedDeferreds[ attributes.apiRoot + attributes.versionString ] = promise;
 		}

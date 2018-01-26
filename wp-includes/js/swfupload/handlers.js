@@ -1,5 +1,6 @@
 var topWin = window.dialogArguments || opener || parent || top;
 
+<<<<<<< HEAD
 function fileDialogStart() {
 	jQuery("#media-upload-error").empty();
 }
@@ -357,6 +358,43 @@ function cancelUpload() {
 // remember the last used image size, alignment and url
 jQuery(document).ready(function($){
 	$('input[type="radio"]', '#media-items').live('click', function(){
+=======
+function fileDialogStart() {}
+function fileQueued() {}
+function uploadStart() {}
+function uploadProgress() {}
+function prepareMediaItem() {}
+function prepareMediaItemInit() {}
+function itemAjaxError() {}
+function deleteSuccess() {}
+function deleteError() {}
+function updateMediaForm() {}
+function uploadSuccess() {}
+function uploadComplete() {}
+function wpQueueError() {}
+function wpFileError() {}
+function fileQueueError() {}
+function fileDialogComplete() {}
+function uploadError() {}
+function cancelUpload() {}
+
+function switchUploader() {
+	jQuery( '#' + swfu.customSettings.swfupload_element_id ).hide();
+	jQuery( '#' + swfu.customSettings.degraded_element_id ).show();
+	jQuery( '.upload-html-bypass' ).hide();
+}
+
+function swfuploadPreLoad() {
+	switchUploader();
+}
+
+function swfuploadLoadFailed() {
+	switchUploader();
+}
+
+jQuery(document).ready(function($){
+	$( 'input[type="radio"]', '#media-items' ).on( 'click', function(){
+>>>>>>> origin/master
 		var tr = $(this).closest('tr');
 
 		if ( $(tr).hasClass('align') )
@@ -365,7 +403,11 @@ jQuery(document).ready(function($){
 			setUserSetting('imgsize', $(this).val());
 	});
 
+<<<<<<< HEAD
 	$('button.button', '#media-items').live('click', function(){
+=======
+	$( 'button.button', '#media-items' ).on( 'click', function(){
+>>>>>>> origin/master
 		var c = this.className || '';
 		c = c.match(/url([^ '"]+)/);
 		if ( c && c[1] ) {

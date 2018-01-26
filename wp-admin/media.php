@@ -103,6 +103,7 @@ case 'edit' :
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
 <h1>
 <?php
 echo esc_html( $title );
@@ -110,6 +111,18 @@ if ( current_user_can( 'upload_files' ) ) { ?>
 	<a href="media-new.php" class="page-title-action"><?php echo esc_html_x('Add New', 'file'); ?></a>
 <?php } ?>
 </h1>
+=======
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+if ( current_user_can( 'upload_files' ) ) { ?>
+	<a href="media-new.php" class="page-title-action"><?php echo esc_html_x('Add New', 'file'); ?></a>
+<?php } ?>
+
+<hr class="wp-header-end">
+>>>>>>> origin/master
 
 <form method="post" class="media-upload-form" id="media-single-form">
 <p class="submit" style="padding-bottom: 0;">

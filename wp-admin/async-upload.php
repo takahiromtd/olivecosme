@@ -1,6 +1,10 @@
 <?php
 /**
+<<<<<<< HEAD
  * Server-side file upload handler from wp-plupload, swfupload or other asynchronous upload methods.
+=======
+ * Server-side file upload handler from wp-plupload or other asynchronous upload methods.
+>>>>>>> origin/master
  *
  * @package WordPress
  * @subpackage Administration
@@ -14,6 +18,7 @@ if ( ! defined( 'WP_ADMIN' ) ) {
 	define( 'WP_ADMIN', true );
 }
 
+<<<<<<< HEAD
 if ( defined('ABSPATH') )
 	require_once(ABSPATH . 'wp-load.php');
 else
@@ -28,6 +33,12 @@ if ( ! ( isset( $_REQUEST['action'] ) && 'upload-attachment' == $_REQUEST['actio
 	if ( empty($_COOKIE[LOGGED_IN_COOKIE]) && !empty($_REQUEST['logged_in_cookie']) )
 		$_COOKIE[LOGGED_IN_COOKIE] = $_REQUEST['logged_in_cookie'];
 	unset($current_user);
+=======
+if ( defined( 'ABSPATH' ) ) {
+	require_once( ABSPATH . 'wp-load.php' );
+} else {
+	require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
+>>>>>>> origin/master
 }
 
 require_once( ABSPATH . 'wp-admin/admin.php' );
@@ -52,7 +63,11 @@ if ( ! current_user_can( 'upload_files' ) ) {
 if ( isset($_REQUEST['attachment_id']) && ($id = intval($_REQUEST['attachment_id'])) && $_REQUEST['fetch'] ) {
 	$post = get_post( $id );
 	if ( 'attachment' != $post->post_type )
+<<<<<<< HEAD
 		wp_die( __( 'Unknown post type.' ) );
+=======
+		wp_die( __( 'Invalid post type.' ) );
+>>>>>>> origin/master
 	if ( ! current_user_can( 'edit_post', $id ) )
 		wp_die( __( 'Sorry, you are not allowed to edit this item.' ) );
 

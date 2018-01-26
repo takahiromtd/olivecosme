@@ -8,7 +8,11 @@
  * @subpackage Administration
  */
 
+<<<<<<< HEAD
 /** Include user install customize script. */
+=======
+/** Include user installation customization script. */
+>>>>>>> origin/master
 if ( file_exists(WP_CONTENT_DIR . '/install.php') )
 	require (WP_CONTENT_DIR . '/install.php');
 
@@ -95,7 +99,11 @@ function wp_install( $blog_title, $user_name, $user_email, $public, $deprecated 
 
 	flush_rewrite_rules();
 
+<<<<<<< HEAD
 	wp_new_blog_notification($blog_title, $guessurl, $user_id, ($email_password ? $user_password : __('The password you chose during the install.') ) );
+=======
+	wp_new_blog_notification($blog_title, $guessurl, $user_id, ($email_password ? $user_password : __('The password you chose during installation.') ) );
+>>>>>>> origin/master
 
 	wp_cache_flush();
 
@@ -194,6 +202,7 @@ function wp_install_defaults( $user_id ) {
 	$wpdb->insert( $wpdb->term_relationships, array('term_taxonomy_id' => $cat_tt_id, 'object_id' => 1) );
 
 	// Default comment
+<<<<<<< HEAD
 	$first_comment_author = __( 'A WordPress Commenter' );
 	$first_comment_email = 'wapuu@wordpress.example';
 	$first_comment_url = 'https://wordpress.org/';
@@ -206,6 +215,21 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.' );
 		$first_comment_url = get_site_option( 'first_comment_url', network_home_url() );
 		$first_comment = get_site_option( 'first_comment', $first_comment );
 	}
+=======
+	if ( is_multisite() ) {
+		$first_comment_author = get_site_option( 'first_comment_author' );
+		$first_comment_email = get_site_option( 'first_comment_email' );
+		$first_comment_url = get_site_option( 'first_comment_url', network_home_url() );
+		$first_comment = get_site_option( 'first_comment' );
+	}
+
+	$first_comment_author = ! empty( $first_comment_author ) ? $first_comment_author : __( 'A WordPress Commenter' );
+	$first_comment_email = ! empty( $first_comment_email ) ? $first_comment_email : 'wapuu@wordpress.example';
+	$first_comment_url = ! empty( $first_comment_url ) ? $first_comment_url : 'https://wordpress.org/';
+	$first_comment = ! empty( $first_comment ) ? $first_comment :  __( 'Hi, this is a comment.
+To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
+Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.' );
+>>>>>>> origin/master
 	$wpdb->insert( $wpdb->comments, array(
 		'comment_post_ID' => 1,
 		'comment_author' => $first_comment_author,
@@ -217,7 +241,14 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.' );
 	));
 
 	// First Page
+<<<<<<< HEAD
 	$first_page = sprintf( __( "This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:
+=======
+	if ( is_multisite() )
+		$first_page = get_site_option( 'first_page' );
+
+	$first_page = ! empty( $first_page ) ? $first_page : sprintf( __( "This is an example page. It's different from a blog post because it will stay in one place and will show up in your site navigation (in most themes). Most people start with an About page that introduces them to potential site visitors. It might say something like this:
+>>>>>>> origin/master
 
 <blockquote>Hi there! I'm a bike messenger by day, aspiring actor by night, and this is my website. I live in Los Angeles, have a great dog named Jack, and I like pi&#241;a coladas. (And gettin' caught in the rain.)</blockquote>
 
@@ -226,8 +257,12 @@ Commenter avatars come from <a href="https://gravatar.com">Gravatar</a>.' );
 <blockquote>The XYZ Doohickey Company was founded in 1971, and has been providing quality doohickeys to the public ever since. Located in Gotham City, XYZ employs over 2,000 people and does all kinds of awesome things for the Gotham community.</blockquote>
 
 As a new WordPress user, you should go to <a href=\"%s\">your dashboard</a> to delete this page and create new pages for your content. Have fun!" ), admin_url() );
+<<<<<<< HEAD
 	if ( is_multisite() )
 		$first_page = get_site_option( 'first_page', $first_page );
+=======
+
+>>>>>>> origin/master
 	$first_post_guid = get_option('home') . '/?page_id=2';
 	$wpdb->insert( $wpdb->posts, array(
 		'post_author' => $user_id,
@@ -282,7 +317,11 @@ As a new WordPress user, you should go to <a href=\"%s\">your dashboard</a> to d
 endif;
 
 /**
+<<<<<<< HEAD
  * Maybe enable pretty permalinks on install.
+=======
+ * Maybe enable pretty permalinks on installation.
+>>>>>>> origin/master
  *
  * If after enabling pretty permalinks don't work, fallback to query-string permalinks.
  *
@@ -430,10 +469,20 @@ function wp_upgrade() {
 	wp_cache_flush();
 
 	if ( is_multisite() ) {
+<<<<<<< HEAD
 		if ( $wpdb->get_row( "SELECT blog_id FROM {$wpdb->blog_versions} WHERE blog_id = '{$wpdb->blogid}'" ) )
 			$wpdb->query( "UPDATE {$wpdb->blog_versions} SET db_version = '{$wp_db_version}' WHERE blog_id = '{$wpdb->blogid}'" );
 		else
 			$wpdb->query( "INSERT INTO {$wpdb->blog_versions} ( `blog_id` , `db_version` , `last_updated` ) VALUES ( '{$wpdb->blogid}', '{$wp_db_version}', NOW());" );
+=======
+		$site_id = get_current_blog_id();
+
+		if ( $wpdb->get_row( $wpdb->prepare( "SELECT blog_id FROM {$wpdb->blog_versions} WHERE blog_id = %d", $site_id ) ) ) {
+			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->blog_versions} SET db_version = %d WHERE blog_id = %d", $wp_db_version, $site_id ) );
+		} else {
+			$wpdb->query( $wpdb->prepare( "INSERT INTO {$wpdb->blog_versions} ( `blog_id` , `db_version` , `last_updated` ) VALUES ( %d, %d, NOW() );", $site_id, $wp_db_version ) );
+		}
+>>>>>>> origin/master
 	}
 
 	/**
@@ -449,7 +498,11 @@ function wp_upgrade() {
 endif;
 
 /**
+<<<<<<< HEAD
  * Functions to be called in install and upgrade scripts.
+=======
+ * Functions to be called in installation and upgrade scripts.
+>>>>>>> origin/master
  *
  * Contains conditional checks to determine which upgrade scripts to run,
  * based on database version and WP version being updated-to.
@@ -1254,7 +1307,11 @@ function upgrade_280() {
 			}
 			$start += 20;
 		}
+<<<<<<< HEAD
 		refresh_blog_details( $wpdb->blogid );
+=======
+		clean_blog_cache( get_current_blog_id() );
+>>>>>>> origin/master
 	}
 }
 
@@ -1740,6 +1797,7 @@ function upgrade_460() {
 function upgrade_network() {
 	global $wp_current_db_version, $wpdb;
 
+<<<<<<< HEAD
 	// Always.
 	if ( is_main_network() ) {
 		/*
@@ -1755,6 +1813,10 @@ function upgrade_network() {
 			AND b.meta_value < %d";
 		$wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like ( '_site_transient_timeout_' ) . '%', $time ) );
 	}
+=======
+	// Always clear expired transients
+	delete_expired_transients( true );
+>>>>>>> origin/master
 
 	// 2.8.
 	if ( $wp_current_db_version < 11549 ) {
@@ -2057,7 +2119,11 @@ function get_alloptions_110() {
 }
 
 /**
+<<<<<<< HEAD
  * Utility version of get_option that is private to install/upgrade.
+=======
+ * Utility version of get_option that is private to installation/upgrade.
+>>>>>>> origin/master
  *
  * @ignore
  * @since 1.5.1
@@ -2216,7 +2282,11 @@ function dbDelta( $queries = '', $execute = true ) {
 			continue;
 
 		// Clear the field and index arrays.
+<<<<<<< HEAD
 		$cfields = $indices = array();
+=======
+		$cfields = $indices = $indices_without_subparts = array();
+>>>>>>> origin/master
 
 		// Get all of the field names in the query from between the parentheses.
 		preg_match("|\((.*)\)|ms", $qry, $match2);
@@ -2289,10 +2359,17 @@ function dbDelta( $queries = '', $execute = true ) {
 					$index_name = ( 'PRIMARY KEY' === $index_type ) ? '' : '`' . strtolower( $index_matches['index_name'] ) . '`';
 
 					// Parse the columns. Multiple columns are separated by a comma.
+<<<<<<< HEAD
 					$index_columns = array_map( 'trim', explode( ',', $index_matches['index_columns'] ) );
 
 					// Normalize columns.
 					foreach ( $index_columns as &$index_column ) {
+=======
+					$index_columns = $index_columns_without_subparts = array_map( 'trim', explode( ',', $index_matches['index_columns'] ) );
+
+					// Normalize columns.
+					foreach ( $index_columns as $id => &$index_column ) {
+>>>>>>> origin/master
 						// Extract column name and number of indexed characters (sub_part).
 						preg_match(
 							  '/'
@@ -2319,6 +2396,12 @@ function dbDelta( $queries = '', $execute = true ) {
 						// Escape the column name with backticks.
 						$index_column = '`' . $index_column_matches['column_name'] . '`';
 
+<<<<<<< HEAD
+=======
+						// We don't need to add the subpart to $index_columns_without_subparts
+						$index_columns_without_subparts[ $id ] = $index_column;
+
+>>>>>>> origin/master
 						// Append the optional sup part with the number of indexed characters.
 						if ( isset( $index_column_matches['sub_part'] ) ) {
 							$index_column .= '(' . $index_column_matches['sub_part'] . ')';
@@ -2327,9 +2410,16 @@ function dbDelta( $queries = '', $execute = true ) {
 
 					// Build the normalized index definition and add it to the list of indices.
 					$indices[] = "{$index_type} {$index_name} (" . implode( ',', $index_columns ) . ")";
+<<<<<<< HEAD
 
 					// Destroy no longer needed variables.
 					unset( $index_column, $index_column_matches, $index_matches, $index_type, $index_name, $index_columns );
+=======
+					$indices_without_subparts[] = "{$index_type} {$index_name} (" . implode( ',', $index_columns_without_subparts ) . ")";
+
+					// Destroy no longer needed variables.
+					unset( $index_column, $index_column_matches, $index_matches, $index_type, $index_name, $index_columns, $index_columns_without_subparts );
+>>>>>>> origin/master
 
 					break;
 			}
@@ -2446,6 +2536,7 @@ function dbDelta( $queries = '', $execute = true ) {
 
 					// Add the field to the column list string.
 					$index_columns .= '`' . $column_data['fieldname'] . '`';
+<<<<<<< HEAD
 					if ($column_data['subpart'] != '') {
 						$index_columns .= '('.$column_data['subpart'].')';
 					}
@@ -2465,6 +2556,18 @@ function dbDelta( $queries = '', $execute = true ) {
 						unset( $indices[ $aindex ] );
 						break;
 					}
+=======
+				}
+
+				// Add the column list to the index create string.
+				$index_string .= " ($index_columns)";
+
+				// Check if the index definition exists, ignoring subparts.
+				if ( ! ( ( $aindex = array_search( $index_string, $indices_without_subparts ) ) === false ) ) {
+					// If the index already exists (even with different subparts), we don't need to create it.
+					unset( $indices_without_subparts[ $aindex ] );
+					unset( $indices[ $aindex ] );
+>>>>>>> origin/master
 				}
 			}
 		}
@@ -2860,6 +2963,10 @@ function pre_schema_upgrade() {
 	}
 }
 
+<<<<<<< HEAD
+=======
+if ( !function_exists( 'install_global_terms' ) ) :
+>>>>>>> origin/master
 /**
  * Install global terms.
  *
@@ -2868,7 +2975,10 @@ function pre_schema_upgrade() {
  * @global wpdb   $wpdb
  * @global string $charset_collate
  */
+<<<<<<< HEAD
 if ( !function_exists( 'install_global_terms' ) ) :
+=======
+>>>>>>> origin/master
 function install_global_terms() {
 	global $wpdb, $charset_collate;
 	$ms_queries = "

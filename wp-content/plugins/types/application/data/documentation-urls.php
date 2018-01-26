@@ -16,12 +16,17 @@ $urls = array(
 	'creating-archives-with-toolset'   => 'https://wp-types.com/documentation/user-guides/learn-about-creating-archives-with-toolset/',
 	'creating-archives-with-php'       => 'https://wp-types.com/documentation/customizing-sites-using-php/creating-templates-custom-post-type-archives/',
 	'how-views-work'                   => 'https://wp-types.com/documentation/user-guides/learn-what-you-can-do-with-views/',
+<<<<<<< HEAD
 	'how-to-add-views-to-layouts'      => 'https://wp-types.com/documentation/user-guides/views/',
+=======
+	'how-to-add-views-to-layouts'      => 'https://wp-types.com/documentation/getting-started-with-toolset/adding-lists-of-contents/',
+>>>>>>> origin/master
 	'learn-views'                      => 'https://wp-types.com/documentation/user-guides/learn-what-you-can-do-with-views/',
 	'how-cred-work'                    => 'https://wp-types.com/documentation/user-guides/learn-what-you-can-do-with-cred/',
 	'how-to-add-forms-to-layouts'      => 'https://wp-types.com/documentation/user-guides/creating-cred-forms/',
 	'learn-cred'                       => 'https://wp-types.com/documentation/user-guides/learn-what-you-can-do-with-cred/',
 	'free-trial'                       => 'https://wp-types.com/?add-to-cart=363363&buy_now=1',
+<<<<<<< HEAD
 	'adding-custom-fields-with-php'    => 'https://wp-types.com/documentation/user-guides/displaying-wordpress-custom-fields/#1',
 	'themes-compatible-with-layouts'   => 'https://wp-types.com/documentation/user-guides/layouts-theme-integration/#popular-integrated-themes',
 	'layouts-integration-instructions' => 'https://wp-types.com/documentation/user-guides/layouts-theme-integration/#replacing-wp-loop-with-layouts',
@@ -30,6 +35,16 @@ $urls = array(
 	'using-post-fields'                => 'https://wp-types.com/user-guides/using-custom-fields/',
 	'adding-fields'                    => 'https://wp-types.com/documentation/user-guides/using-custom-fields/#introduction-to-wordpress-custom-fields',
 	'displaying-fields'                => 'https://wp-types.com/documentation/user-guides/displaying-wordpress-custom-fields/',
+=======
+	'adding-custom-fields-with-php'    => 'https://wp-types.com/documentation/getting-started-with-toolset/creating-templates-for-displaying-post-types/',
+	'themes-compatible-with-layouts'   => 'https://wp-types.com/documentation/user-guides/layouts-theme-integration/#popular-integrated-themes',
+	'layouts-integration-instructions' => 'https://wp-types.com/documentation/user-guides/layouts-theme-integration/#replacing-wp-loop-with-layouts',
+	'adding-views-to-layouts'          => 'https://wp-types.com/documentation/getting-started-with-toolset/adding-lists-of-contents/',
+	'adding-forms-to-layouts'          => 'https://wp-types.com/documentation/user-guides/adding-cred-forms-to-layouts/',
+	'using-post-fields'                => 'https://wp-types.com/user-guides/using-custom-fields/',
+	'adding-fields'                    => 'https://wp-types.com/documentation/user-guides/using-custom-fields/#introduction-to-wordpress-custom-fields',
+	'displaying-fields'                => 'https://wp-types.com/documentation/getting-started-with-toolset/creating-templates-for-displaying-post-types/',
+>>>>>>> origin/master
 	'adding-user-fields'               => 'https://wp-types.com/documentation/user-guides/user-fields/',
 	'displaying-user-fields'           => 'https://wp-types.com/documentation/user-guides/displaying-wordpress-user-fields/',
 	'adding-term-fields'               => 'https://wp-types.com/documentation/user-guides/term-fields/',
@@ -46,7 +61,11 @@ $urls = array(
 	'repeating-fields-group'           => 'https://wp-types.com/documentation/user-guides/creating-groups-of-repeating-fields-using-fields-tables/',
 	'single-pages'                     => 'https://wp-types.com/documentation/user-guides/view-templates/',
 	'content-templates'                => 'https://wp-types.com/documentation/user-guides/view-templates/',
+<<<<<<< HEAD
 	'views-user-guide'                 => 'https://wp-types.com/documentation/user-guides/views/',
+=======
+	'views-user-guide'                 => 'https://wp-types.com/documentation/getting-started-with-toolset/adding-lists-of-contents/',
+>>>>>>> origin/master
 	'wp-types'                         => 'https://wp-types.com/',
 	'date-filters'                     => 'http://wp-types.com/documentation/user-guides/date-filters/',
 	'getting-started-types'            => 'https://wp-types.com/documentation/user-guides/getting-starting-with-types/',

@@ -18,7 +18,10 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	/**
 	 * Type.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $type = 'color';
@@ -26,7 +29,10 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	/**
 	 * Statuses.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var array
 	 */
 	public $statuses;
@@ -35,7 +41,10 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 * Mode.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	public $mode = 'full';
@@ -92,15 +101,22 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 */
 	public function content_template() {
 		?>
+<<<<<<< HEAD
 		<# var defaultValue = '',
 			isHueSlider = data.mode === 'hue';
 
 		if ( data.defaultValue && ! isHueSlider ) {
+=======
+		<# var defaultValue = '#RRGGBB', defaultValueAttr = '',
+			isHueSlider = data.mode === 'hue';
+		if ( data.defaultValue && _.isString( data.defaultValue ) && ! isHueSlider ) {
+>>>>>>> origin/master
 			if ( '#' !== data.defaultValue.substring( 0, 1 ) ) {
 				defaultValue = '#' + data.defaultValue;
 			} else {
 				defaultValue = data.defaultValue;
 			}
+<<<<<<< HEAD
 			defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
 		} #>
 		<label>
@@ -118,6 +134,25 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 				<# } #>
 			</div>
 		</label>
+=======
+			defaultValueAttr = ' data-default-color=' + defaultValue; // Quotes added automatically.
+		} #>
+		<# if ( data.label ) { #>
+			<span class="customize-control-title">{{{ data.label }}}</span>
+		<# } #>
+		<# if ( data.description ) { #>
+			<span class="description customize-control-description">{{{ data.description }}}</span>
+		<# } #>
+		<div class="customize-control-content">
+			<label><span class="screen-reader-text">{{{ data.label }}}</span>
+			<# if ( isHueSlider ) { #>
+				<input class="color-picker-hue" type="text" data-type="hue" />
+			<# } else { #>
+				<input class="color-picker-hex" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} />
+ 			<# } #>
+			</label>
+		</div>
+>>>>>>> origin/master
 		<?php
 	}
 }

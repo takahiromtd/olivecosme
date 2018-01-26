@@ -22,7 +22,10 @@ class WP_Widget_Meta extends WP_Widget {
 	 * Sets up a new Meta widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __construct() {
 		$widget_ops = array(
@@ -37,17 +40,30 @@ class WP_Widget_Meta extends WP_Widget {
 	 * Outputs the content for the current Meta widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
 	 * @param array $instance Settings for the current Meta widget instance.
 	 */
 	public function widget( $args, $instance ) {
+<<<<<<< HEAD
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', empty($instance['title']) ? __( 'Meta' ) : $instance['title'], $instance, $this->id_base );
 
 		echo $args['before_widget'];
+=======
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Meta' );
+
+		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+		echo $args['before_widget'];
+
+>>>>>>> origin/master
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
@@ -62,19 +78,34 @@ class WP_Widget_Meta extends WP_Widget {
 			 * Filters the "Powered by WordPress" text in the Meta widget.
 			 *
 			 * @since 3.6.0
+<<<<<<< HEAD
 			 *
 			 * @param string $title_text Default title text for the WordPress.org link.
+=======
+			 * @since 4.9.0 Added the `$instance` parameter.
+			 *
+			 * @param string $title_text Default title text for the WordPress.org link.
+			 * @param array  $instance   Array of settings for the current widget.
+>>>>>>> origin/master
 			 */
 			echo apply_filters( 'widget_meta_poweredby', sprintf( '<li><a href="%s" title="%s">%s</a></li>',
 				esc_url( __( 'https://wordpress.org/' ) ),
 				esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform.' ),
 				_x( 'WordPress.org', 'meta widget link text' )
+<<<<<<< HEAD
 			) );
+=======
+			), $instance );
+>>>>>>> origin/master
 
 			wp_meta();
 			?>
 			</ul>
 			<?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 		echo $args['after_widget'];
 	}
 
@@ -82,7 +113,10 @@ class WP_Widget_Meta extends WP_Widget {
 	 * Handles updating settings for the current Meta widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
 	 *                            WP_Widget::form().
@@ -100,7 +134,10 @@ class WP_Widget_Meta extends WP_Widget {
 	 * Outputs the settings form for the Meta widget.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $instance Current settings.
 	 */

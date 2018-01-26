@@ -10,16 +10,24 @@
  * WordPress Filesystem Class for direct PHP file and folder manipulation.
  *
  * @since 2.5.0
+<<<<<<< HEAD
  * @package WordPress
  * @subpackage Filesystem
  * @uses WP_Filesystem_Base Extends class
+=======
+ *
+ * @see WP_Filesystem_Base
+>>>>>>> origin/master
  */
 class WP_Filesystem_Direct extends WP_Filesystem_Base {
 
 	/**
 	 * constructor
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param mixed $arg ignored argument
 	 */
@@ -31,7 +39,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Reads entire file into a string
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file Name of the file to read.
 	 * @return string|bool The function returns the read data or false on failure.
@@ -43,7 +54,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Reads entire file into an array
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file Path to the file.
 	 * @return array|bool the file contents in an array or false on failure.
@@ -55,7 +69,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Write a string to a file
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file     Remote path to the file where to write the data.
 	 * @param string $contents The data to write.
@@ -89,7 +106,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Gets the current working directory
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string|bool the current working directory on success, or false on failure.
 	 */
@@ -100,7 +120,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Change directory
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $dir The new current directory.
 	 * @return bool Returns true on success or false on failure.
@@ -112,7 +135,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Changes file group
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file      Path to the file.
 	 * @param mixed  $group     A group name or number.
@@ -138,7 +164,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Changes filesystem permissions
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file      Path to the file.
 	 * @param int    $mode      Optional. The permissions as octal number, usually 0644 for files,
@@ -170,7 +199,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Changes file owner
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file      Path to the file.
 	 * @param mixed  $owner     A user name or number.
@@ -196,7 +228,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	/**
 	 * Gets file owner
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file Path to the file.
 	 * @return string|bool Username of the user or false on error.
@@ -216,7 +251,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	 *
 	 * FIXME does not handle errors in fileperms()
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file Path to the file.
 	 * @return string Mode of the file (last 3 digits).
@@ -226,7 +264,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return string|false
@@ -242,7 +283,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $source
 	 * @param string $destination
@@ -261,7 +305,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $source
 	 * @param string $destination
@@ -285,7 +332,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @param bool $recursive
@@ -320,7 +370,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		return $retval;
 	}
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -329,7 +382,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		return @file_exists($file);
 	}
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -338,7 +394,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 		return @is_file($file);
 	}
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @return bool
@@ -348,7 +407,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -358,7 +420,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return bool
@@ -368,7 +433,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return int
@@ -378,7 +446,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return int
@@ -388,7 +459,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @return int
@@ -398,7 +472,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $file
 	 * @param int $time
@@ -414,7 +491,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param mixed  $chmod
@@ -442,7 +522,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param bool $recursive
@@ -453,7 +536,10 @@ class WP_Filesystem_Direct extends WP_Filesystem_Base {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string $path
 	 * @param bool $include_hidden

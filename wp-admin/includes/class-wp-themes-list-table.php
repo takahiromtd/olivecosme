@@ -24,7 +24,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	 * Constructor.
 	 *
 	 * @since 3.1.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @see WP_List_Table::__construct() for more information on default arguments.
 	 *
@@ -47,7 +50,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function prepare_items() {
 		$themes = wp_get_themes( array( 'allowed' => true ) );
@@ -83,7 +89,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function no_items() {
 		if ( $this->search_terms || $this->features ) {
@@ -130,7 +139,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display() {
 		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
@@ -154,7 +166,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display_rows_or_placeholder() {
 		if ( $this->has_items() ) {
@@ -167,7 +182,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function display_rows() {
 		$themes = $this->items;
@@ -198,10 +216,17 @@ class WP_Themes_List_Table extends WP_List_Table {
 					. "' );" . '">' . __( 'Delete' ) . '</a>';
 
 			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
+<<<<<<< HEAD
 			$actions       = apply_filters( 'theme_action_links', $actions, $theme );
 
 			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
 			$actions       = apply_filters( "theme_action_links_$stylesheet", $actions, $theme );
+=======
+			$actions       = apply_filters( 'theme_action_links', $actions, $theme, 'all' );
+
+			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
+			$actions       = apply_filters( "theme_action_links_$stylesheet", $actions, $theme, 'all' );
+>>>>>>> origin/master
 			$delete_action = isset( $actions['delete'] ) ? '<div class="delete-theme">' . $actions['delete'] . '</div>' : '';
 			unset( $actions['delete'] );
 
@@ -286,7 +311,10 @@ class WP_Themes_List_Table extends WP_List_Table {
 	 * Send required variables to JavaScript land
 	 *
 	 * @since 3.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $extra_args
 	 */

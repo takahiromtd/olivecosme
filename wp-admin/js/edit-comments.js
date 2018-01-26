@@ -461,6 +461,16 @@ setCommentsList = function() {
 			updateCountText( 'span.trash-count', trashDiff );
 		}
 
+<<<<<<< HEAD
+=======
+		if (
+			( ( 'trash' === settings.data.comment_status ) && !getCount( $( 'span.trash-count' ) ) ) ||
+			( ( 'spam' === settings.data.comment_status ) && !getCount( $( 'span.spam-count' ) ) )
+		) {
+			$( '#delete_all' ).hide();
+		}
+
+>>>>>>> origin/master
 		if ( ! isDashboard ) {
 			total = totalInput.val() ? parseInt( totalInput.val(), 10 ) : 0;
 			if ( $(settings.target).parent().is('span.undo') )
@@ -646,7 +656,13 @@ commentReply = {
 		$('#com-reply').append( replyrow );
 		$('#replycontent').css('height', '').val('');
 		$('#edithead input').val('');
+<<<<<<< HEAD
 		$('.error', replyrow).empty().hide();
+=======
+		$( '.notice-error', replyrow )
+			.addClass( 'hidden' )
+			.find( '.error' ).empty();
+>>>>>>> origin/master
 		$( '.spinner', replyrow ).removeClass( 'is-active' );
 
 		this.cid = '';
@@ -747,9 +763,16 @@ commentReply = {
 	},
 
 	send : function() {
+<<<<<<< HEAD
 		var post = {};
 
 		$('#replysubmit .error').hide();
+=======
+		var post = {},
+			$errorNotice = $( '#replysubmit .error-notice' );
+
+		$errorNotice.addClass( 'hidden' );
+>>>>>>> origin/master
 		$( '#replysubmit .spinner' ).addClass( 'is-active' );
 
 		$('#replyrow input').not(':button').each(function() {
@@ -840,16 +863,29 @@ commentReply = {
 	},
 
 	error : function(r) {
+<<<<<<< HEAD
 		var er = r.statusText;
+=======
+		var er = r.statusText,
+			$errorNotice = $( '#replysubmit .notice-error' ),
+			$error = $errorNotice.find( '.error' );
+>>>>>>> origin/master
 
 		$( '#replysubmit .spinner' ).removeClass( 'is-active' );
 
 		if ( r.responseText )
 			er = r.responseText.replace( /<.[^<>]*?>/g, '' );
 
+<<<<<<< HEAD
 		if ( er )
 			$('#replysubmit .error').html(er).show();
 
+=======
+		if ( er ) {
+			$errorNotice.removeClass( 'hidden' );
+			$error.html( er );
+		}
+>>>>>>> origin/master
 	},
 
 	addcomment: function(post_id) {

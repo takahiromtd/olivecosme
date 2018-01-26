@@ -47,7 +47,11 @@
  *
  * @since 1.5.0
  *
+<<<<<<< HEAD
  * @param string $plugin_file Path to the plugin file
+=======
+ * @param string $plugin_file Path to the main plugin file.
+>>>>>>> origin/master
  * @param bool   $markup      Optional. If the returned data should have HTML markup applied.
  *                            Default true.
  * @param bool   $translate   Optional. If the returned data should be translated. Default true.
@@ -187,6 +191,7 @@ function _get_plugin_data_markup_translate( $plugin_file, $plugin_data, $markup 
  *
  * @since 2.8.0
  *
+<<<<<<< HEAD
  * @param string $plugin Plugin ID
  * @return array List of files relative to the plugin root.
  */
@@ -217,6 +222,33 @@ function get_plugin_files($plugin) {
 			}
 			@closedir( $plugins_dir );
 		}
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+ * @return array List of files relative to the plugin root.
+ */
+function get_plugin_files( $plugin ) {
+	$plugin_file = WP_PLUGIN_DIR . '/' . $plugin;
+	$dir = dirname( $plugin_file );
+
+	$plugin_files = array( plugin_basename( $plugin_file ) );
+
+	if ( is_dir( $dir ) && WP_PLUGIN_DIR !== $dir ) {
+
+		/**
+		 * Filters the array of excluded directories and files while scanning the folder.
+		 *
+		 * @since 4.9.0
+		 *
+		 * @param array $exclusions Array of excluded directories and files.
+		 */
+		$exclusions = (array) apply_filters( 'plugin_files_exclusions', array( 'CVS', 'node_modules', 'vendor', 'bower_components' ) );
+
+		$list_files = list_files( $dir, 100, $exclusions );
+		$list_files = array_map( 'plugin_basename', $list_files );
+
+		$plugin_files = array_merge( $plugin_files, $list_files );
+		$plugin_files = array_values( array_unique( $plugin_files ) );
+>>>>>>> origin/master
 	}
 
 	return $plugin_files;
@@ -419,7 +451,11 @@ function _get_dropins() {
 		'advanced-cache.php' => array( __( 'Advanced caching plugin.'       ), 'WP_CACHE' ), // WP_CACHE
 		'db.php'             => array( __( 'Custom database class.'         ), true ), // auto on load
 		'db-error.php'       => array( __( 'Custom database error message.' ), true ), // auto on error
+<<<<<<< HEAD
 		'install.php'        => array( __( 'Custom install script.'         ), true ), // auto on install
+=======
+		'install.php'        => array( __( 'Custom installation script.'    ), true ), // auto on installation
+>>>>>>> origin/master
 		'maintenance.php'    => array( __( 'Custom maintenance message.'    ), true ), // auto on maintenance
 		'object-cache.php'   => array( __( 'External object cache.'         ), true ), // auto on load
 	);
@@ -444,7 +480,11 @@ function _get_dropins() {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @param string $plugin Base plugin path from plugins directory.
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return bool True, if in the active plugins list. False, not in the list.
  */
 function is_plugin_active( $plugin ) {
@@ -459,7 +499,11 @@ function is_plugin_active( $plugin ) {
  * @since 3.1.0
  * @see is_plugin_active()
  *
+<<<<<<< HEAD
  * @param string $plugin Base plugin path from plugins directory.
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return bool True if inactive. False if active.
  */
 function is_plugin_inactive( $plugin ) {
@@ -476,7 +520,11 @@ function is_plugin_inactive( $plugin ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string $plugin Base plugin path from plugins directory.
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return bool True, if active for the network, otherwise false.
  */
 function is_plugin_active_for_network( $plugin ) {
@@ -499,7 +547,11 @@ function is_plugin_active_for_network( $plugin ) {
  *
  * @since 3.0.0
  *
+<<<<<<< HEAD
  * @param string $plugin Plugin to check
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return bool True if plugin is network only, false otherwise.
  */
 function is_network_only_plugin( $plugin ) {
@@ -529,7 +581,11 @@ function is_network_only_plugin( $plugin ) {
  *
  * @since 2.5.0
  *
+<<<<<<< HEAD
  * @param string $plugin       Plugin path to main plugin file with plugin data.
+=======
+ * @param string $plugin       Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @param string $redirect     Optional. URL to redirect to.
  * @param bool   $network_wide Optional. Whether to enable the plugin for all sites in the network
  *                             or just the current site. Multisite only. Default false.
@@ -569,7 +625,11 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 			 *
 			 * @since 2.9.0
 			 *
+<<<<<<< HEAD
 			 * @param string $plugin       Plugin path to main plugin file with plugin data.
+=======
+			 * @param string $plugin       Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
 			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
 			 *                             or just the current site. Multisite only. Default is false.
 			 */
@@ -611,7 +671,11 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 			 *
 			 * @since 2.9.0
 			 *
+<<<<<<< HEAD
 			 * @param string $plugin       Plugin path to main plugin file with plugin data.
+=======
+			 * @param string $plugin       Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
 			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
 			 *                             or just the current site. Multisite only. Default is false.
 			 */
@@ -663,7 +727,11 @@ function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
 			 *
 			 * @since 2.9.0
 			 *
+<<<<<<< HEAD
 			 * @param string $plugin               Plugin path to main plugin file with plugin data.
+=======
+			 * @param string $plugin               Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
 			 * @param bool   $network_deactivating Whether the plugin is deactivated for all sites in the network
 			 *                                     or just the current site. Multisite only. Default is false.
 			 */
@@ -711,8 +779,13 @@ function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
 			 *
 			 * @since 2.9.0
 			 *
+<<<<<<< HEAD
 			 * @param string $plugin               Plugin basename.
 			 * @param bool   $network_deactivating Whether the plugin is deactivated for all sites in the network
+=======
+			 * @param string $plugin               Path to the main plugin file from plugins directory.
+			 * @param bool   $network_deactivating Whether the plugin is deactivated for all sites in the network.
+>>>>>>> origin/master
 			 *                                     or just the current site. Multisite only. Default false.
 			 */
 			do_action( 'deactivated_plugin', $plugin, $network_deactivating );
@@ -893,8 +966,22 @@ function delete_plugins( $plugins, $deprecated = '' ) {
 		set_site_transient( 'update_plugins', $current );
 	}
 
+<<<<<<< HEAD
 	if ( ! empty($errors) )
 		return new WP_Error('could_not_remove_plugin', sprintf(__('Could not fully remove the plugin(s) %s.'), implode(', ', $errors)) );
+=======
+	if ( ! empty( $errors ) ) {
+		if ( 1 === count( $errors ) ) {
+			/* translators: %s: plugin filename */
+			$message = __( 'Could not fully remove the plugin %s.' );
+		} else {
+			/* translators: %s: comma-separated list of plugin filenames */
+			$message = __( 'Could not fully remove the plugins %s.' );
+		}
+
+		return new WP_Error( 'could_not_remove_plugin', sprintf( $message, implode( ', ', $errors ) ) );
+	}
+>>>>>>> origin/master
 
 	return true;
 }
@@ -940,11 +1027,19 @@ function validate_active_plugins() {
 /**
  * Validate the plugin path.
  *
+<<<<<<< HEAD
  * Checks that the file exists and is a valid file. See validate_file().
  *
  * @since 2.5.0
  *
  * @param string $plugin Plugin Path.
+=======
+ * Checks that the main plugin file exists and is a valid plugin. See validate_file().
+ *
+ * @since 2.5.0
+ *
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return WP_Error|int 0 on success, WP_Error on failure.
  */
 function validate_plugin($plugin) {
@@ -964,7 +1059,11 @@ function validate_plugin($plugin) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @param string $plugin Plugin path to check.
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return bool Whether plugin can be uninstalled.
  */
 function is_uninstallable_plugin($plugin) {
@@ -984,7 +1083,11 @@ function is_uninstallable_plugin($plugin) {
  *
  * @since 2.7.0
  *
+<<<<<<< HEAD
  * @param string $plugin Relative plugin path from Plugin Directory.
+=======
+ * @param string $plugin Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
  * @return true True if a plugin's uninstall.php file has been found and included.
  */
 function uninstall_plugin($plugin) {
@@ -997,7 +1100,11 @@ function uninstall_plugin($plugin) {
 	 *
 	 * @since 4.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string $plugin                Relative plugin path from plugin directory.
+=======
+	 * @param string $plugin                Path to the main plugin file from plugins directory.
+>>>>>>> origin/master
 	 * @param array  $uninstallable_plugins Uninstallable plugins.
 	 */
 	do_action( 'pre_uninstall_plugin', $plugin, $uninstallable_plugins );
@@ -1025,7 +1132,11 @@ function uninstall_plugin($plugin) {
 		wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $file );
 		include( WP_PLUGIN_DIR . '/' . $file );
 
+<<<<<<< HEAD
 		add_action( 'uninstall_' . $file, $callable );
+=======
+		add_action( "uninstall_{$file}", $callable );
+>>>>>>> origin/master
 
 		/**
 		 * Fires in uninstall_plugin() once the plugin has been uninstalled.
@@ -1035,7 +1146,11 @@ function uninstall_plugin($plugin) {
 		 *
 		 * @since 2.7.0
 		 */
+<<<<<<< HEAD
 		do_action( 'uninstall_' . $file );
+=======
+		do_action( "uninstall_{$file}" );
+>>>>>>> origin/master
 	}
 }
 
@@ -1060,7 +1175,13 @@ function uninstall_plugin($plugin) {
  * @param string   $page_title The text to be displayed in the title tags of the page when the menu is selected.
  * @param string   $menu_title The text to be used for the menu.
  * @param string   $capability The capability required for this menu to be displayed to the user.
+<<<<<<< HEAD
  * @param string   $menu_slug  The slug name to refer to this menu by (should be unique for this menu).
+=======
+ * @param string   $menu_slug  The slug name to refer to this menu by. Should be unique for this menu page and only
+ *                             include lowercase alphanumeric, dashes, and underscores characters to be compatible
+ *                             with sanitize_key().
+>>>>>>> origin/master
  * @param callable $function   The function to be called to output the content for this page.
  * @param string   $icon_url   The URL to the icon to be used for this menu.
  *                             * Pass a base64-encoded SVG using a data URI, which will be colored to match
@@ -1126,11 +1247,23 @@ function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $func
  * @global array $_registered_pages
  * @global array $_parent_pages
  *
+<<<<<<< HEAD
  * @param string   $parent_slug The slug name for the parent menu (or the file name of a standard WordPress admin page).
  * @param string   $page_title  The text to be displayed in the title tags of the page when the menu is selected.
  * @param string   $menu_title  The text to be used for the menu.
  * @param string   $capability  The capability required for this menu to be displayed to the user.
  * @param string   $menu_slug   The slug name to refer to this menu by (should be unique for this menu).
+=======
+ * @param string   $parent_slug The slug name for the parent menu (or the file name of a standard
+ *                              WordPress admin page).
+ * @param string   $page_title  The text to be displayed in the title tags of the page when the menu
+ *                              is selected.
+ * @param string   $menu_title  The text to be used for the menu.
+ * @param string   $capability  The capability required for this menu to be displayed to the user.
+ * @param string   $menu_slug   The slug name to refer to this menu by. Should be unique for this menu
+ *                              and only include lowercase alphanumeric, dashes, and underscores characters
+ *                              to be compatible with sanitize_key().
+>>>>>>> origin/master
  * @param callable $function    The function to be called to output the content for this page.
  * @return false|string The resulting page's hook_suffix, or false if the user does not have the capability required.
  */
@@ -1875,7 +2008,16 @@ function wp_clean_plugins_cache( $clear_update_cache = true ) {
 }
 
 /**
+<<<<<<< HEAD
  * @param string $plugin
+=======
+ * Load a given plugin attempt to generate errors.
+ *
+ * @since 3.0.0
+ * @since 4.4.0 Function was moved into the `wp-admin/includes/plugin.php` file.
+ *
+ * @param string $plugin Plugin file to load.
+>>>>>>> origin/master
  */
 function plugin_sandbox_scrape( $plugin ) {
 	wp_register_plugin_realpath( WP_PLUGIN_DIR . '/' . $plugin );

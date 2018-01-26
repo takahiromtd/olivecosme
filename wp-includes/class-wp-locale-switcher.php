@@ -17,7 +17,10 @@ class WP_Locale_Switcher {
 	 * Locale stack.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string[]
 	 */
 	private $locales = array();
@@ -26,7 +29,10 @@ class WP_Locale_Switcher {
 	 * Original locale.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var string
 	 */
 	private $original_locale;
@@ -35,7 +41,10 @@ class WP_Locale_Switcher {
 	 * Holds all available languages.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 * @var array An array of language codes (file names without the .mo extension).
 	 */
 	private $available_languages = array();
@@ -161,11 +170,19 @@ class WP_Locale_Switcher {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the WordPress install's locale.
 	 *
 	 * @since 4.7.0
 	 *
 	 * @param string $locale The WordPress install's locale.
+=======
+	 * Filters the locale of the WordPress installation.
+	 *
+	 * @since 4.7.0
+	 *
+	 * @param string $locale The locale of the WordPress installation.
+>>>>>>> origin/master
 	 * @return string The locale currently being switched to.
 	 */
 	public function filter_locale( $locale ) {
@@ -184,7 +201,10 @@ class WP_Locale_Switcher {
 	 * When switching to a locale, translations for this locale must be loaded from scratch.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @global Mo[] $l10n An array of all currently loaded text domains.
 	 *
@@ -214,7 +234,10 @@ class WP_Locale_Switcher {
 	 * all post type labels.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @access private
+=======
+>>>>>>> origin/master
 	 *
 	 * @global WP_Locale $wp_locale The WordPress date and time locale object.
 	 *

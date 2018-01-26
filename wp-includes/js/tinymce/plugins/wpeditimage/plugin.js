@@ -331,7 +331,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	}
 
 	function hasTextContent( node ) {
+<<<<<<< HEAD
 		return node && !! ( node.textContent || node.innerText );
+=======
+		return node && !! ( node.textContent || node.innerText ).replace( /\ufeff/g, '' );
+>>>>>>> origin/master
 	}
 
 	// Verify HTML in captions
@@ -587,6 +591,7 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 
 		dom.addClass( editor.getBody(), captionClass );
 
+<<<<<<< HEAD
 		// Add caption field to the default image dialog
 		editor.on( 'wpLoadImageForm', function( event ) {
 			if ( editor.getParam( 'wpeditimage_disable_captions' ) ) {
@@ -812,6 +817,8 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 			}
 		});
 
+=======
+>>>>>>> origin/master
 		// Prevent IE11 from making dl.wp-caption resizable
 		if ( tinymce.Env.ie && tinymce.Env.ie > 10 ) {
 			// The 'mscontrolselect' event is supported only in IE11+
@@ -912,6 +919,17 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 					p = dom.create( 'p' );
 					dom.insertAfter( p, captionParent );
 					editor.selection.setCursorLocation( p, 0 );
+<<<<<<< HEAD
+=======
+
+					// If the image is selected and the user pastes "over" it,
+					// replace both the image and the caption elements with the pasted content.
+					// This matches the behavior when pasting over non-caption images.
+					if ( node.nodeName === 'IMG' ) {
+                        editor.$( captionParent ).remove();
+                    }
+
+>>>>>>> origin/master
 					editor.nodeChanged();
 				} else {
 					// Clicking Indent or Outdent while an image with a caption is selected breaks the caption.

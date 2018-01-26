@@ -9,7 +9,11 @@
  * @package WordPress
  * @subpackage Twenty_Seventeen
  * @since 1.0
+<<<<<<< HEAD
  * @version 1.2
+=======
+ * @version 1.0
+>>>>>>> origin/master
  */
 
 ?>
@@ -30,6 +34,7 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 
+<<<<<<< HEAD
 		<?php if ( is_front_page() && ! is_home() ) {
 
 			// The excerpt is being displayed within a front page section, so it's a lower hierarchy than h2.
@@ -37,6 +42,9 @@
 		} else {
 			the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 		} ?>
+=======
+		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+>>>>>>> origin/master
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">

@@ -49,7 +49,11 @@ do_action( 'rss_tag_pre', 'rss2-comments' );
 	<description><?php bloginfo_rss("description") ?></description>
 	<lastBuildDate><?php
 		$date = get_lastcommentmodified( 'GMT' );
+<<<<<<< HEAD
 		echo $date ? mysql2date( 'r', $date ) : date( 'r' );
+=======
+		echo $date ? mysql2date( 'r', $date, false ) : date( 'r' );
+>>>>>>> origin/master
 	?></lastBuildDate>
 	<sy:updatePeriod><?php
 		/** This filter is documented in wp-includes/feed-rss2.php */

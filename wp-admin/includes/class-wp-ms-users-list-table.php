@@ -117,7 +117,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function no_items() {
 		_e( 'No users found.' );
@@ -135,17 +138,30 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 		$super_admins = get_super_admins();
 		$total_admins = count( $super_admins );
 
+<<<<<<< HEAD
 		$class = $role != 'super' ? ' class="current"' : '';
 		$role_links = array();
 		$role_links['all'] = "<a href='" . network_admin_url('users.php') . "'$class>" . sprintf( _nx( 'All <span class="count">(%s)</span>', 'All <span class="count">(%s)</span>', $total_users, 'users' ), number_format_i18n( $total_users ) ) . '</a>';
 		$class = $role === 'super' ? ' class="current"' : '';
 		$role_links['super'] = "<a href='" . network_admin_url('users.php?role=super') . "'$class>" . sprintf( _n( 'Super Admin <span class="count">(%s)</span>', 'Super Admins <span class="count">(%s)</span>', $total_admins ), number_format_i18n( $total_admins ) ) . '</a>';
+=======
+		$current_link_attributes = $role !== 'super' ? ' class="current" aria-current="page"' : '';
+		$role_links = array();
+		$role_links['all'] = "<a href='" . network_admin_url( 'users.php' ) . "'$current_link_attributes>" . sprintf( _nx( 'All <span class="count">(%s)</span>', 'All <span class="count">(%s)</span>', $total_users, 'users' ), number_format_i18n( $total_users ) ) . '</a>';
+		$current_link_attributes = $role === 'super' ? ' class="current" aria-current="page"' : '';
+		$role_links['super'] = "<a href='" . network_admin_url( 'users.php?role=super' ) . "'$current_link_attributes>" . sprintf( _n( 'Super Admin <span class="count">(%s)</span>', 'Super Admins <span class="count">(%s)</span>', $total_admins ), number_format_i18n( $total_admins ) ) . '</a>';
+>>>>>>> origin/master
 
 		return $role_links;
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @global string $mode
+=======
+	 * @global string $mode List table view mode.
+	 *
+>>>>>>> origin/master
 	 * @param string $which
 	 */
 	protected function pagination( $which ) {
@@ -174,7 +190,11 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 		/**
 		 * Filters the columns displayed in the Network Admin Users list table.
 		 *
+<<<<<<< HEAD
 		 * @since MU
+=======
+		 * @since MU (3.0.0)
+>>>>>>> origin/master
 		 *
 		 * @param array $users_columns An array of user columns. Default 'cb', 'username',
 		 *                             'name', 'email', 'registered', 'blogs'.
@@ -199,7 +219,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the checkbox column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -217,7 +240,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the ID column output.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -229,7 +255,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the username column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -242,7 +271,11 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 
 		?><strong><a href="<?php echo $edit_link; ?>" class="edit"><?php echo $user->user_login; ?></a><?php
 		if ( in_array( $user->user_login, $super_admins ) ) {
+<<<<<<< HEAD
 			echo ' - ' . __( 'Super Admin' );
+=======
+			echo ' &mdash; ' . __( 'Super Admin' );
+>>>>>>> origin/master
 		}
 		?></strong>
 	<?php
@@ -252,19 +285,33 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the name column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
 	public function column_name( $user ) {
+<<<<<<< HEAD
 		echo "$user->first_name $user->last_name";
+=======
+		if ( $user->first_name && $user->last_name ) {
+			echo "$user->first_name $user->last_name";
+		} else {
+			echo '<span aria-hidden="true">&#8212;</span><span class="screen-reader-text">' . _x( 'Unknown', 'name' ) . '</span>';
+		}
+>>>>>>> origin/master
 	}
 
 	/**
 	 * Handles the email column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -276,9 +323,14 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the registered date column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
 	 *
 	 * @global string $mode
+=======
+	 *
+	 * @global string $mode List table view mode.
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -294,7 +346,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 
 	/**
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user
 	 * @param string  $classes
@@ -312,7 +367,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the sites column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user The current WP_User object.
 	 */
@@ -377,7 +435,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Handles the default column output.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param WP_User $user       The current WP_User object.
 	 * @param string $column_name The current column name.
@@ -411,7 +472,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Gets the name of the default primary column.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string Name of the default primary column, in this case, 'username'.
 	 */
@@ -423,7 +487,10 @@ class WP_MS_Users_List_Table extends WP_List_Table {
 	 * Generates and displays row action links.
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 *
 	 * @param object $user        User being acted upon.
 	 * @param string $column_name Current column name.

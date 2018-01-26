@@ -31,7 +31,11 @@ class Walker_Nav_Menu_Checklist extends Walker_Nav_Menu {
 	 *
 	 * @since 3.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Depth of page. Used for padding.
 	 * @param array  $args   Not used.
 	 */
@@ -47,7 +51,11 @@ class Walker_Nav_Menu_Checklist extends Walker_Nav_Menu {
 	 *
 	 * @since 3.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param int    $depth  Depth of page. Used for padding.
 	 * @param array  $args   Not used.
 	 */
@@ -65,7 +73,11 @@ class Walker_Nav_Menu_Checklist extends Walker_Nav_Menu {
 	 *
 	 * @global int $_nav_menu_placeholder
 	 *
+<<<<<<< HEAD
 	 * @param string $output Passed by reference. Used to append additional content.
+=======
+	 * @param string $output Used to append additional content (passed by reference).
+>>>>>>> origin/master
 	 * @param object $item   Menu item data object.
 	 * @param int    $depth  Depth of menu item. Used for padding.
 	 * @param array  $args   Not used.

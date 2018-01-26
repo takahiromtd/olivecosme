@@ -74,7 +74,11 @@ class Types_Twig_Autoloader
 		}
 
 		// Modified path to Twig in Types.
+<<<<<<< HEAD
 		$file = TYPES_ABSPATH . '/library/twig/twig/lib/' . str_replace( array( '_', "\0" ), array( '/', '' ), $class .'.php' );
+=======
+		$file = TYPES_ABSPATH . '/vendor/twig/twig/lib/' . str_replace( array( '_', "\0" ), array( '/', '' ), $class .'.php' );
+>>>>>>> origin/master
 
 		if( is_file( $file ) ) {
 			/** @noinspection PhpIncludeInspection */

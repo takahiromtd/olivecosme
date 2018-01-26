@@ -1,4 +1,9 @@
 /* global _wpWidgetCustomizerPreviewSettings */
+<<<<<<< HEAD
+=======
+
+/** @namespace wp.customize.widgetsPreview */
+>>>>>>> origin/master
 wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( $, _, wp, api ) {
 
 	var self;
@@ -37,16 +42,47 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 		api.preview.bind( 'active', function() {
 			self.highlightControls();
 		} );
+<<<<<<< HEAD
+=======
+
+		/*
+		 * Refresh a partial when the controls pane requests it. This is used currently just by the
+		 * Gallery widget so that when an attachment's caption is updated in the media modal,
+		 * the widget in the preview will then be refreshed to show the change. Normally doing this
+		 * would not be necessary because all of the state should be contained inside the changeset,
+		 * as everything done in the Customizer should not make a change to the site unless the
+		 * changeset itself is published. Attachments are a current exception to this rule.
+		 * For a proposal to include attachments in the customized state, see #37887.
+		 */
+		api.preview.bind( 'refresh-widget-partial', function( widgetId ) {
+			var partialId = 'widget[' + widgetId + ']';
+			if ( api.selectiveRefresh.partial.has( partialId ) ) {
+				api.selectiveRefresh.partial( partialId ).refresh();
+			} else if ( self.renderedWidgets[ widgetId ] ) {
+				api.preview.send( 'refresh' ); // Fallback in case theme does not support 'customize-selective-refresh-widgets'.
+			}
+		} );
+>>>>>>> origin/master
 	};
 
 	/**
 	 * Partial representing a widget instance.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 * @alias wp.customize.widgetsPreview.WidgetPartial
+	 *
+>>>>>>> origin/master
 	 * @class
 	 * @augments wp.customize.selectiveRefresh.Partial
 	 * @since 4.5.0
 	 */
+<<<<<<< HEAD
 	self.WidgetPartial = api.selectiveRefresh.Partial.extend({
+=======
+	self.WidgetPartial = api.selectiveRefresh.Partial.extend(/** @lends wp.customize.widgetsPreview.WidgetPartial.prototype */{
+>>>>>>> origin/master
 
 		/**
 		 * Constructor.
@@ -112,11 +148,21 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Partial representing a widget area.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 * @alias wp.customize.widgetsPreview.SidebarPartial
+	 *
+>>>>>>> origin/master
 	 * @class
 	 * @augments wp.customize.selectiveRefresh.Partial
 	 * @since 4.5.0
 	 */
+<<<<<<< HEAD
 	self.SidebarPartial = api.selectiveRefresh.Partial.extend({
+=======
+	self.SidebarPartial = api.selectiveRefresh.Partial.extend(/** @lends wp.customize.widgetsPreview.SidebarPartial.prototype */{
+>>>>>>> origin/master
 
 		/**
 		 * Constructor.
@@ -399,7 +445,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 				wasInserted = true;
 			} );
 
+<<<<<<< HEAD
 			api.selectiveRefresh.partial.add( widgetPartial.id, widgetPartial );
+=======
+			api.selectiveRefresh.partial.add( widgetPartial );
+>>>>>>> origin/master
 
 			if ( wasInserted ) {
 				sidebarPartial.reflowWidgets();
@@ -443,6 +493,10 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 						}
 					} );
 				}
+<<<<<<< HEAD
+=======
+				delete self.renderedWidgets[ removedWidgetId ];
+>>>>>>> origin/master
 			} );
 
 			// Handle insertion of widgets.
@@ -450,6 +504,10 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 			_.each( widgetsAdded, function( addedWidgetId ) {
 				var widgetPartial = sidebarPartial.ensureWidgetPlacementContainers( addedWidgetId );
 				addedWidgetPartials.push( widgetPartial );
+<<<<<<< HEAD
+=======
+				self.renderedWidgets[ addedWidgetId ] = true;
+>>>>>>> origin/master
 			} );
 
 			_.each( addedWidgetPartials, function( widgetPartial ) {
@@ -502,7 +560,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 						sidebarArgs: registeredSidebar
 					}
 				} );
+<<<<<<< HEAD
 				api.selectiveRefresh.partial.add( partial.id, partial );
+=======
+				api.selectiveRefresh.partial.add( partial );
+>>>>>>> origin/master
 			}
 		} );
 	};
@@ -510,6 +572,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Calculate the selector for the sidebar's widgets based on the registered sidebar's info.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 3.9.0
 	 */
 	self.buildWidgetSelectors = function() {
@@ -548,6 +615,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Highlight the widget on widget updates or widget control mouse overs.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 3.9.0
 	 * @param  {string} widgetId ID of the widget.
 	 */
@@ -567,6 +639,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	 * Show a title and highlight widgets on hover. On shift+clicking
 	 * focus the widget control.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 3.9.0
 	 */
 	self.highlightControls = function() {
@@ -598,6 +675,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Parse a widget ID.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 4.5.0
 	 *
 	 * @param {string} widgetId Widget ID.
@@ -623,6 +705,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Parse a widget setting ID.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 4.5.0
 	 *
 	 * @param {string} settingId Widget setting ID.
@@ -648,6 +735,11 @@ wp.customize.widgetsPreview = wp.customize.WidgetCustomizerPreview = (function( 
 	/**
 	 * Convert a widget ID into a Customizer setting ID.
 	 *
+<<<<<<< HEAD
+=======
+	 * @memberOf wp.customize.widgetsPreview
+	 *
+>>>>>>> origin/master
 	 * @since 4.5.0
 	 *
 	 * @param {string} widgetId Widget ID.

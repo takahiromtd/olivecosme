@@ -20,7 +20,10 @@ class _WP_Dependency {
 	/**
 	 * The handle name.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var null
 	 */
@@ -29,7 +32,10 @@ class _WP_Dependency {
 	/**
 	 * The handle source.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var null
 	 */
@@ -38,7 +44,10 @@ class _WP_Dependency {
 	/**
 	 * An array of handle dependencies.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var array
 	 */
@@ -49,7 +58,10 @@ class _WP_Dependency {
 	 *
 	 * Used for cache-busting.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var bool|string
 	 */
@@ -58,7 +70,10 @@ class _WP_Dependency {
 	/**
 	 * Additional arguments for the handle.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var null
 	 */
@@ -67,7 +82,10 @@ class _WP_Dependency {
 	/**
 	 * Extra data to supply to the handle.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 * @var array
 	 */
@@ -87,7 +105,10 @@ class _WP_Dependency {
 	/**
 	 * Add handle data.
 	 *
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 * @since 2.6.0
 	 *
 	 * @param string $name The data key to add.

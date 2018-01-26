@@ -41,7 +41,10 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function bulk_footer() {
 		parent::bulk_footer();

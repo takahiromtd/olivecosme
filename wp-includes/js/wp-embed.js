@@ -19,6 +19,10 @@
 			}
 		}
 
+<<<<<<< HEAD
+=======
+	/** @namespace wp */
+>>>>>>> origin/master
 	window.wp = window.wp || {};
 
 	if ( !! window.wp.receiveEmbedMessage ) {

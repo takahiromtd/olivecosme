@@ -51,14 +51,21 @@ function options_general_add_js() {
 
 		$("input[name='date_format']").click(function(){
 			if ( "date_format_custom_radio" != $(this).attr("id") )
+<<<<<<< HEAD
 				$( "input[name='date_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
 		$("input[name='date_format_custom']").focus(function(){
+=======
+				$( 'input[name="date_format_custom"]' ).val( $( this ).val() ).closest( 'fieldset' ).find( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
+		});
+		$( 'input[name="date_format_custom"]' ).on( 'click input', function() {
+>>>>>>> origin/master
 			$( '#date_format_custom_radio' ).prop( 'checked', true );
 		});
 
 		$("input[name='time_format']").click(function(){
 			if ( "time_format_custom_radio" != $(this).attr("id") )
+<<<<<<< HEAD
 				$( "input[name='time_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
 		$("input[name='time_format_custom']").focus(function(){
@@ -71,6 +78,25 @@ function options_general_add_js() {
 					action: 'date_format_custom' == format.attr('name') ? 'date_format' : 'time_format',
 					date : format.val()
 				}, function(d) { format.siblings( '.spinner' ).removeClass( 'is-active' ); format.siblings('.example').text(d); } );
+=======
+				$( 'input[name="time_format_custom"]' ).val( $( this ).val() ).closest( 'fieldset' ).find( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
+		});
+		$( 'input[name="time_format_custom"]' ).on( 'click input', function() {
+			$( '#time_format_custom_radio' ).prop( 'checked', true );
+		});
+		$("input[name='date_format_custom'], input[name='time_format_custom']").change( function() {
+			var format = $( this ),
+				fieldset = format.closest( 'fieldset' ),
+				example = fieldset.find( '.example' ),
+				spinner = fieldset.find( '.spinner' );
+
+			spinner.addClass( 'is-active' );
+
+			$.post( ajaxurl, {
+					action: 'date_format_custom' == format.attr( 'name' ) ? 'date_format' : 'time_format',
+					date : format.val()
+				}, function( d ) { spinner.removeClass( 'is-active' ); example.text( d ); } );
+>>>>>>> origin/master
 		});
 
 		var languageSelect = $( '#WPLANG' );
@@ -78,7 +104,11 @@ function options_general_add_js() {
 			// Don't show a spinner for English and installed languages,
 			// as there is nothing to download.
 			if ( ! languageSelect.find( 'option:selected' ).data( 'installed' ) ) {
+<<<<<<< HEAD
 				$( '#submit', this ).after( '<span class="spinner language-install-spinner" />' );
+=======
+				$( '#submit', this ).after( '<span class="spinner language-install-spinner is-active" />' );
+>>>>>>> origin/master
 			}
 		});
 	});
@@ -91,6 +121,7 @@ function options_general_add_js() {
  *
  * @since 3.5.0
  */
+<<<<<<< HEAD
 function options_permalink_add_js() {
 	?>
 <script type="text/javascript">
@@ -113,6 +144,8 @@ jQuery(document).ready(function() {
  *
  * @since 3.5.0
  */
+=======
+>>>>>>> origin/master
 function options_reading_add_js() {
 ?>
 <script type="text/javascript">

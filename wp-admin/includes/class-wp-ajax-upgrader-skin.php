@@ -22,7 +22,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Holds the WP_Error object.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access protected
+=======
+>>>>>>> origin/master
 	 * @var null|WP_Error
 	 */
 	protected $errors = null;
@@ -31,7 +34,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Constructor.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $args Options for the upgrader, see WP_Upgrader_Skin::__construct().
 	 */
@@ -45,7 +51,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Retrieves the list of errors.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return WP_Error Errors during an upgrade.
 	 */
@@ -57,7 +66,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Retrieves a string for error messages.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @return string Error messages during an upgrade.
 	 */
@@ -79,7 +91,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Stores a log entry for an error.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string|WP_Error $errors Errors.
 	 */
@@ -99,7 +114,11 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 			}
 
 			// Count existing errors to generate an unique error code.
+<<<<<<< HEAD
 			$errors_count = count( $errors->get_error_codes() );
+=======
+			$errors_count = count( $this->errors->get_error_codes() );
+>>>>>>> origin/master
 			$this->errors->add( 'unknown_upgrade_error_' . $errors_count + 1 , $string );
 		} elseif ( is_wp_error( $errors ) ) {
 			foreach ( $errors->get_error_codes() as $error_code ) {
@@ -115,7 +134,10 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 	 * Stores a log entry.
 	 *
 	 * @since 4.6.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param string|array|WP_Error $data Log entry data.
 	 */

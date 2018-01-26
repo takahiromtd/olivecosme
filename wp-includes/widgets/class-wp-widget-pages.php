@@ -20,7 +20,10 @@ class WP_Widget_Pages extends WP_Widget {
 	 * Sets up a new Pages widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 */
 	public function __construct() {
 		$widget_ops = array(
@@ -35,13 +38,20 @@ class WP_Widget_Pages extends WP_Widget {
 	 * Outputs the content for the current Pages widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $args     Display arguments including 'before_title', 'after_title',
 	 *                        'before_widget', and 'after_widget'.
 	 * @param array $instance Settings for the current Pages widget instance.
 	 */
 	public function widget( $args, $instance ) {
+<<<<<<< HEAD
+=======
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Pages' );
+>>>>>>> origin/master
 
 		/**
 		 * Filters the widget title.
@@ -49,10 +59,17 @@ class WP_Widget_Pages extends WP_Widget {
 		 * @since 2.6.0
 		 *
 		 * @param string $title    The widget title. Default 'Pages'.
+<<<<<<< HEAD
 		 * @param array  $instance An array of the widget's settings.
 		 * @param mixed  $id_base  The widget ID.
 		 */
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Pages' ) : $instance['title'], $instance, $this->id_base );
+=======
+		 * @param array  $instance Array of settings for the current widget.
+		 * @param mixed  $id_base  The widget ID.
+		 */
+		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+>>>>>>> origin/master
 
 		$sortby = empty( $instance['sortby'] ) ? 'menu_order' : $instance['sortby'];
 		$exclude = empty( $instance['exclude'] ) ? '' : $instance['exclude'];
@@ -64,17 +81,30 @@ class WP_Widget_Pages extends WP_Widget {
 		 * Filters the arguments for the Pages widget.
 		 *
 		 * @since 2.8.0
+<<<<<<< HEAD
 		 *
 		 * @see wp_list_pages()
 		 *
 		 * @param array $args An array of arguments to retrieve the pages list.
+=======
+		 * @since 4.9.0 Added the `$instance` parameter.
+		 *
+		 * @see wp_list_pages()
+		 *
+		 * @param array $args     An array of arguments to retrieve the pages list.
+		 * @param array $instance Array of settings for the current widget.
+>>>>>>> origin/master
 		 */
 		$out = wp_list_pages( apply_filters( 'widget_pages_args', array(
 			'title_li'    => '',
 			'echo'        => 0,
 			'sort_column' => $sortby,
 			'exclude'     => $exclude
+<<<<<<< HEAD
 		) ) );
+=======
+		), $instance ) );
+>>>>>>> origin/master
 
 		if ( ! empty( $out ) ) {
 			echo $args['before_widget'];
@@ -94,7 +124,10 @@ class WP_Widget_Pages extends WP_Widget {
 	 * Handles updating settings for the current Pages widget instance.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $new_instance New settings for this instance as input by the user via
 	 *                            WP_Widget::form().
@@ -119,7 +152,10 @@ class WP_Widget_Pages extends WP_Widget {
 	 * Outputs the settings form for the Pages widget.
 	 *
 	 * @since 2.8.0
+<<<<<<< HEAD
 	 * @access public
+=======
+>>>>>>> origin/master
 	 *
 	 * @param array $instance Current settings.
 	 */

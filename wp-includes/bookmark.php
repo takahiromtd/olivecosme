@@ -383,7 +383,11 @@ function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 
 	if ( 'edit' == $context ) {
 		/** This filter is documented in wp-includes/post.php */
+<<<<<<< HEAD
 		$value = apply_filters( "edit_$field", $value, $bookmark_id );
+=======
+		$value = apply_filters( "edit_{$field}", $value, $bookmark_id );
+>>>>>>> origin/master
 
 		if ( 'link_notes' == $field ) {
 			$value = esc_html( $value ); // textarea_escaped
@@ -392,10 +396,17 @@ function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 		}
 	} elseif ( 'db' == $context ) {
 		/** This filter is documented in wp-includes/post.php */
+<<<<<<< HEAD
 		$value = apply_filters( "pre_$field", $value );
 	} else {
 		/** This filter is documented in wp-includes/post.php */
 		$value = apply_filters( $field, $value, $bookmark_id, $context );
+=======
+		$value = apply_filters( "pre_{$field}", $value );
+	} else {
+		/** This filter is documented in wp-includes/post.php */
+		$value = apply_filters( "{$field}", $value, $bookmark_id, $context );
+>>>>>>> origin/master
 
 		if ( 'attribute' == $context ) {
 			$value = esc_attr( $value );

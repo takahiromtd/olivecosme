@@ -16,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/style.css">
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<<<<<<< HEAD
   <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.matchHeight-min.js"></script> -->
   <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/stonewall.js"></script> -->
   <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/click.js"></script> -->
@@ -23,6 +24,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/dropdown.js"></script> -->
   <!--script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->
   <!-- <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/nav.js"></script> -->
+=======
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.matchHeight-min.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/stonewall.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/click.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.mixitup.min.js"></script>
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/dropdown.js"></script>
+  <!--script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script-->
+  <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/nav.js"></script>
+>>>>>>> origin/master
   <title><?php wp_title ( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
